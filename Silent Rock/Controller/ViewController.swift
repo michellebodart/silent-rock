@@ -93,22 +93,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         startButton.isEnabled = true
     }
     
-    //testing current locaiton
-    
-//    @IBOutlet weak var targetLocation: UILabel!
-//    @IBOutlet weak var currentLocation: UILabel!
-    
     var inRegion:Bool = false
+    let targetLat:Double = 45.5467
+    let targetLon:Double = -122.8612
+    let span:Double = 0.0001
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // still doesn't work if you're in the location when you press start
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let lat: Double = locValue.latitude
         let lon: Double = locValue.longitude
-//        currentLocation.text = "\(lat), \(lon)"
-//        targetLocation.text = "47.624 - 47.625,\n -122.327 - -122.326"
         // Creating didEnterRegion basically
-        if (47.624 < lat && lat < 47.625) && (-122.327 < lon && lon < -122.326) {
+        if (targetLat - span < lat && lat < targetLat + span) && (targetLon - span < lon && lon < targetLon + span) {
             if !inRegion {
                 soundAlarm()
                 inRegion = true
@@ -119,8 +116,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 inRegion = false
             }
         }
-        
     }
-    
 }
 
