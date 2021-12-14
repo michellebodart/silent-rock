@@ -24,6 +24,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         exitButton.isHidden = true
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        locationManager.activityType = .other //not sure if I need this
+        locationManager.allowsBackgroundLocationUpdates = true //for alarm
         locationManager.startUpdatingLocation()
         locationManager.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
     }
@@ -94,9 +96,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     var inRegion:Bool = false
-    let targetLat:Double = 45.5467
-    let targetLon:Double = -122.8612
-    let span:Double = 0.0001
+    let targetLat:Double = 47.623034
+    let targetLon:Double = -122.327062
+    let span:Double = 0.000001
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
