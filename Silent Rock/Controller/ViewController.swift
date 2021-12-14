@@ -96,9 +96,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     var inRegion:Bool = false
-    let targetLat:Double = 47.623034
-    let targetLon:Double = -122.327062
-    let span:Double = 0.000001
+    let targetLat:Double = 47.623988
+    let targetLon:Double = -122.326607
+    let span:Double = 0.0001
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
