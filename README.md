@@ -8,8 +8,11 @@ Silent Rock app - to notify users when approaching silent rock.
 ## Problem Statement #1
 
 Silent Rock is a mound of rock en route to Mt. Hood on Hwy 26 just above Rhodedendron. When you pass Silent Rock, you must be absolutely silent. You have to stop talking, turn the radio off, and do whatever you can to remain silent when passing through the Rock.
+
 If you are quiet and respect the Silent Rock, you will have a good day on the mountain. If you are not quiet, you will encounter unfortunate events and bad luck. Don’t test the power of the Rock.
+
 If, like me, you ALWAYS forget where Silent Rock is on the dark early morning drive to Mt. Hood, and therefore risk the perils of disrespecting the Rock, this app will help you remember by sounding an alarm when you near the rock, as well as silencing your phone (not sure if this is actually possible).
+
 Additionally, you will be able to track the number of times you and your passengers pass Silent Rock and compete on a global leaderboard of other Silent Rock app users.
 
 ## MVP Feature Set
