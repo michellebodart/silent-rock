@@ -31,6 +31,7 @@ Additionally, you will be able to track the number of times you and your passeng
 2.  Turning on the microphone and recording any sound you make while in the vicinity of Silent Rock, and somehow displaying this on the leaderboard to publicly shame you and discourage you from making sound
 3.  Deployment to the App store
 4.  Allow users to select options for what they want to happen when nearing Silent Rock, ie just a warning versus a warning and silencing the phone
+5.  User profile/login including a photo to show up on the leaderboard
 
 ## Draft Technology Choices
 
