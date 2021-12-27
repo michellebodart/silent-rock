@@ -42,3 +42,4 @@ Additionally, you will be able to track the number of times you and your passeng
 
 ## Additional content, diagrams, wireframes, user flows, etc.
 wireframe: https://drive.google.com/file/d/1sz6eJ1DoMS5-F3OjlLjK8MsFUz2RBbhG/view?usp=sharing
+database structure: https://drive.google.com/file/d/1tGvE534EoHaKS44U2VmLgftNqrSrtOGn/view?usp=sharing
