@@ -32,6 +32,7 @@ Additionally, you will be able to track the number of times you and your passeng
 3.  Deployment to the App store
 4.  Allow users to select options for what they want to happen when nearing Silent Rock, ie just a warning versus a warning and silencing the phone
 5.  User profile/login including a photo to show up on the leaderboard
+6.  Some type of data validation for adding users to someone's trip, ie sending an invite that the other users have to accept. Kind of like Strava or Ikonpass.
 
 ## Draft Technology Choices
 
