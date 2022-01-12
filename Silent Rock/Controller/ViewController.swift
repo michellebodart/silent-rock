@@ -12,30 +12,34 @@ import AVFoundation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager:CLLocationManager = CLLocationManager()
+    let state = UIApplication.shared.applicationState
     
     var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // enable the right buttons
         stopButton.isEnabled = false
         startButton.isEnabled = true
         warningLabel.isHidden = true
         exitButton.isHidden = true
+        
+        // set up location manager
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        locationManager.activityType = .other //not sure if I need this
         locationManager.allowsBackgroundLocationUpdates = true //for alarm
-        locationManager.startUpdatingLocation()
         locationManager.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
         
+        // Set up local notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
             if success {
-                print("fine")
             } else if let error = error {
                 print(error.localizedDescription)
             }
         }
+        
+        UNUserNotificationCenter.current().delegate = self
         
     }
     
@@ -46,31 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             stopButton.isHidden = true
             warningLabel.isHidden = false
             exitButton.isHidden = false
-            
-                // set up player and play
-            let urlString = Bundle.main.path(forResource: "arcade", ofType: "wav")
-
-            do {
-                try AVAudioSession.sharedInstance().setMode(.default)
-                try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-
-                guard let urlString = urlString else {
-                    return
-                }
-
-                player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
-
-                    guard let player = player else {
-                        return
-                    }
-
-                player.play()
-
-            }
-            catch {
-                print("something went wrong")
-            }
-
+            sendLocalNotification()
         }
     }
     
@@ -87,13 +67,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         content.title = "APPROACHING SILENT ROCK"
         content.subtitle = "SHHHHHH"
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "arcade.wav"))
-        
-        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false) //Maybe update this to a location based trigger?
-        
-//        let center = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
-//        let region = CLCircularRegion(center: center, radius: 5, identifier: "silent rock") // not sure how big the radius should be
-//        let trigger = UNLocationNotificationTrigger(region: region, repeats: false) //not sure if this should repeat or not
         
         let request = UNNotificationRequest(identifier: "Silent rock notification", content: content, trigger: trigger)
         
@@ -114,11 +88,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func startButtonPressed(_ sender: Any) {
         stopButton.isEnabled = true
         startButton.isEnabled = false
+        locationManager.startUpdatingLocation()
     }
     
     @IBAction func stopButtonPressed(_ sender: Any) {
         stopButton.isEnabled = false
         startButton.isEnabled = true
+        locationManager.stopUpdatingLocation()
     }
     
     var inRegion:Bool = false
@@ -129,16 +105,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // still doesn't work if you're in the location when you press start
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let lat: Double = locValue.latitude
         let lon: Double = locValue.longitude
         // Creating didEnterRegion basically
         if (targetLat - span < lat && lat < targetLat + span) && (targetLon - span < lon && lon < targetLon + span) {
             if !inRegion {
-                soundAlarm() //put  this back later!
+                soundAlarm()
                 inRegion = true
-                sendLocalNotification()
             }
         } else {
             if inRegion {
@@ -146,6 +120,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 inRegion = false
             }
         }
+    }
+}
+
+extension ViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .list, .badge, .sound])
     }
 }
 
