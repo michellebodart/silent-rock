@@ -28,6 +28,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.allowsBackgroundLocationUpdates = true //for alarm
         locationManager.startUpdatingLocation()
         locationManager.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
+            if success {
+                print("fine")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
     }
     
     func soundAlarm() {
@@ -43,7 +52,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
             do {
                 try AVAudioSession.sharedInstance().setMode(.default)
-                try AVAudioSession.sharedInstance().setCategory(.playback)
                 try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
 
                 guard let urlString = urlString else {
@@ -74,6 +82,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         exitButton.isHidden = true
     }
     
+    func sendLocalNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "APPROACHING SILENT ROCK"
+        content.subtitle = "SHHHHHH"
+        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "arcade.wav"))
+        
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false) //Maybe update this to a location based trigger?
+        
+//        let center = CLLocationCoordinate2D(latitude: targetLat, longitude: targetLon)
+//        let region = CLCircularRegion(center: center, radius: 5, identifier: "silent rock") // not sure how big the radius should be
+//        let trigger = UNLocationNotificationTrigger(region: region, repeats: false) //not sure if this should repeat or not
+        
+        let request = UNNotificationRequest(identifier: "Silent rock notification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request)
+    }
+    
     @IBAction func exitButtonPressed(_ sender: Any) {
         alarmOff()
     }
@@ -96,9 +122,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     var inRegion:Bool = false
-    let targetLat:Double = 47.623988
-    let targetLon:Double = -122.326607
-    let span:Double = 0.0001
+//    For testing near my house
+    let targetLat:Double = 47.623549
+    let targetLon:Double = -122.326578
+    let span:Double = 0.0002
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -109,8 +136,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Creating didEnterRegion basically
         if (targetLat - span < lat && lat < targetLat + span) && (targetLon - span < lon && lon < targetLon + span) {
             if !inRegion {
-                soundAlarm()
+                soundAlarm() //put  this back later!
                 inRegion = true
+                sendLocalNotification()
             }
         } else {
             if inRegion {
