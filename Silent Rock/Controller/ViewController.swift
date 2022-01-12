@@ -66,7 +66,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let content = UNMutableNotificationContent()
         content.title = "APPROACHING SILENT ROCK"
         content.subtitle = "SHHHHHH"
-        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "arcade.wav"))
+        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "LocalNotificationSound.mp3"))
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false) //Maybe update this to a location based trigger?
         
         let request = UNNotificationRequest(identifier: "Silent rock notification", content: content, trigger: trigger)
