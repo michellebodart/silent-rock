@@ -30,6 +30,10 @@ Additionally, you will be able to track the number of times you and your passeng
 1.  Silencing any music playing in addition to sounding an alarm when you pass Silent Rock
 2.  Turning on the microphone and recording any sound you make while in the vicinity of Silent Rock, and somehow displaying this on the leaderboard to publicly shame you and discourage you from making sound
 3.  Deployment to the App store
+4.  Allow users to select options for what they want to happen when nearing Silent Rock, ie just a warning versus a warning and silencing the phone
+5.  User profile/login including a photo to show up on the leaderboard
+6.  Some type of data validation for adding users to someone's trip, ie sending an invite that the other users have to accept. Kind of like Strava or Ikonpass.
+7.  Being able to customize the alarm that sounds, as well as how early a user is notified
 
 ## Draft Technology Choices
 
@@ -38,4 +42,5 @@ Additionally, you will be able to track the number of times you and your passeng
 - Python/flask/heroku for management of the leaderboard
 
 ## Additional content, diagrams, wireframes, user flows, etc.
-wireframe: https://drive.google.com/file/d/1sz6eJ1DoMS5-F3OjlLjK8MsFUz2RBbhG/view?usp=sharing
+- wireframe: https://drive.google.com/file/d/1sz6eJ1DoMS5-F3OjlLjK8MsFUz2RBbhG/view?usp=sharing
+- database structure: https://drive.google.com/file/d/1tGvE534EoHaKS44U2VmLgftNqrSrtOGn/view?usp=sharing
