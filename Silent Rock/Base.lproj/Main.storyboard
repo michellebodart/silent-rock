@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,20 +13,20 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Silent_Rock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wRi-jm-g75">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vMg-aS-PUa">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="FAq-C9-K61">
-                                <rect key="frame" x="-32" y="-7" width="439" height="236"/>
+                                <rect key="frame" x="-32" y="-7" width="478" height="257"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FAq-C9-K61" secondAttribute="height" multiplier="426:229" id="NvO-6O-A2g"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="YZr-UH-3mm">
-                                <rect key="frame" x="-32" y="583" width="439" height="236"/>
+                                <rect key="frame" x="-32" y="646" width="478" height="257"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="2Ts-2g-xFC"/>
                                     <constraint firstAttribute="width" secondItem="YZr-UH-3mm" secondAttribute="height" multiplier="426:229" id="A4Y-ri-AAE"/>
@@ -57,10 +57,10 @@
                                 </variation>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="2QO-eG-JMJ">
-                                <rect key="frame" x="50" y="328.66666666666669" width="275" height="155"/>
+                                <rect key="frame" x="50" y="370.66666666666669" width="314" height="155.00000000000006"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d73-mT-q2H" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="55"/>
                                         <color key="backgroundColor" red="0.20684530540000001" green="0.83969046849999995" blue="0.4707128324" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
@@ -72,7 +72,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCu-HO-tEq" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="100" width="275" height="55"/>
+                                        <rect key="frame" x="0.0" y="100" width="314" height="55"/>
                                         <color key="backgroundColor" red="1" green="0.28647291180000001" blue="0.2240761506" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
@@ -86,7 +86,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APPROACHING SILENT ROCK" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TY-t9-9nM">
-                                <rect key="frame" x="10" y="256" width="355" height="300"/>
+                                <rect key="frame" x="10" y="298" width="394" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="DVU-gt-eOl"/>
                                 </constraints>
@@ -94,8 +94,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRf-0M-zgZ">
-                                <rect key="frame" x="20.000000000000004" y="284.33333333333326" width="55.333333333333343" height="38.666666666666686"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRf-0M-zgZ">
+                                <rect key="frame" x="20" y="284" width="55.333333333333343" height="38.666666666666686"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38.666666666666686" id="HiM-1e-Fhn"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Exit">
@@ -118,6 +121,7 @@
                             <constraint firstItem="5TY-t9-9nM" firstAttribute="leading" secondItem="2oS-Mh-ldg" secondAttribute="leading" constant="10" id="Jqa-Mt-gm9"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="width" secondItem="FAq-C9-K61" secondAttribute="width" id="JvU-uU-IyZ"/>
                             <constraint firstAttribute="trailing" secondItem="FAq-C9-K61" secondAttribute="trailing" constant="-50" id="NLc-fR-mvD"/>
+                            <constraint firstItem="2QO-eG-JMJ" firstAttribute="top" secondItem="uRf-0M-zgZ" secondAttribute="bottom" constant="47.670000000000002" id="XfB-J4-yah"/>
                             <constraint firstItem="vMg-aS-PUa" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" id="YOK-In-aM5"/>
                             <constraint firstAttribute="trailing" secondItem="5TY-t9-9nM" secondAttribute="trailing" constant="10" id="cY4-zk-lT7"/>
                             <constraint firstItem="2oS-Mh-ldg" firstAttribute="trailing" secondItem="2QO-eG-JMJ" secondAttribute="trailing" constant="50" id="dBV-uW-lSd"/>
