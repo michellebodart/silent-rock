@@ -48,7 +48,7 @@ Additionally, you will be able to track the number of times you and your passeng
 ## Developer contact info
 - michelle.bodart@gmail.com
 
-##Privacy Policy##
+## Privacy Policy
 
 I have built the Silent Rock app as a Free app. This SERVICE is provided by at no cost and is intended for use as is.
 
