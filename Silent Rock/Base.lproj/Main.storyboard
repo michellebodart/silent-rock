@@ -142,19 +142,17 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="vgU-B7-hzs"/>
                                 <exclude reference="11X-jg-iuf"/>
                                 <exclude reference="NLc-fR-mvD"/>
                                 <exclude reference="m1n-6L-G8H"/>
                                 <exclude reference="xYF-f6-6D5"/>
+                                <exclude reference="vgU-B7-hzs"/>
                                 <exclude reference="LAz-7I-LzC"/>
                                 <exclude reference="pc5-lm-GFC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="vgU-B7-hzs"/>
-                                <include reference="z62-Rf-2D6"/>
                                 <include reference="11X-jg-iuf"/>
                                 <include reference="NLc-fR-mvD"/>
                                 <exclude reference="XfB-J4-yah"/>
@@ -163,6 +161,8 @@
                                 <include reference="m1n-6L-G8H"/>
                                 <exclude reference="sj6-x0-K8f"/>
                                 <include reference="xYF-f6-6D5"/>
+                                <include reference="vgU-B7-hzs"/>
+                                <include reference="z62-Rf-2D6"/>
                                 <exclude reference="7oY-8c-l3B"/>
                                 <exclude reference="HNJ-pv-6Df"/>
                                 <exclude reference="InY-f5-glz"/>
@@ -173,8 +173,6 @@
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="vgU-B7-hzs"/>
-                                <include reference="z62-Rf-2D6"/>
                                 <include reference="11X-jg-iuf"/>
                                 <include reference="NLc-fR-mvD"/>
                                 <exclude reference="XfB-J4-yah"/>
@@ -183,6 +181,8 @@
                                 <include reference="m1n-6L-G8H"/>
                                 <exclude reference="sj6-x0-K8f"/>
                                 <include reference="xYF-f6-6D5"/>
+                                <include reference="vgU-B7-hzs"/>
+                                <include reference="z62-Rf-2D6"/>
                                 <exclude reference="7oY-8c-l3B"/>
                                 <exclude reference="HNJ-pv-6Df"/>
                                 <exclude reference="JvU-uU-IyZ"/>
