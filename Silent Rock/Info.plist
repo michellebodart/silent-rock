@@ -2,10 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the &quot;start&quot; button until you press the &quot;stop&quot; button or the app is closed.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the &quot;start&quot; button until you press the &quot;stop&quot; button or the app is closed.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.565414123621-3ug1bh15b9un6430bu2fvjt2p83iu814</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

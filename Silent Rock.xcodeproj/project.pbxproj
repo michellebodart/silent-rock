@@ -15,8 +15,12 @@
 		C91D871B273C2F6F00283190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91D8719273C2F6F00283190 /* LaunchScreen.storyboard */; };
 		C91D8726273C35CA00283190 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8725273C35CA00283190 /* BorderButton.swift */; };
 		C93191A9273C3FD4009A743F /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93191A8273C3FD4009A743F /* Driver.swift */; };
+		C985836327A08AC1002197FD /* verificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C985836227A08AC1002197FD /* verificationViewController.swift */; };
 		C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9957C7E279F7E750062A009 /* loginViewController.swift */; };
 		C9957C81279F7F4C0062A009 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9957C80279F7F4C0062A009 /* registerViewController.swift */; };
+		C9957C8327A0754D0062A009 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9957C8227A0754D0062A009 /* GoogleService-Info.plist */; };
+		C9957C8627A078380062A009 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C9957C8527A078380062A009 /* FirebaseAnalyticsSwift-Beta */; };
+		C9957C8827A078380062A009 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C9957C8727A078380062A009 /* FirebaseAuth */; };
 		C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */; };
 		C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9F033BC274F4606000E3EF6 /* arcade.wav */; };
 /* End PBXBuildFile section */
@@ -32,8 +36,11 @@
 		C91D871C273C2F6F00283190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C91D8725273C35CA00283190 /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		C93191A8273C3FD4009A743F /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
+		C985836227A08AC1002197FD /* verificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verificationViewController.swift; sourceTree = "<group>"; };
 		C9957C7E279F7E750062A009 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		C9957C80279F7F4C0062A009 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
+		C9957C8227A0754D0062A009 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C9957C8927A07C750062A009 /* Silent Rock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Silent Rock.entitlements"; sourceTree = "<group>"; };
 		C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LocalNotificationSound.mp3; sourceTree = "<group>"; };
 		C9F033BC274F4606000E3EF6 /* arcade.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arcade.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9957C8627A078380062A009 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
+				C9957C8827A078380062A009 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +77,7 @@
 		C91D870D273C2F6B00283190 /* Silent Rock */ = {
 			isa = PBXGroup;
 			children = (
+				C9957C8927A07C750062A009 /* Silent Rock.entitlements */,
 				C91D8724273C35A300283190 /* Model */,
 				C91D8723273C359A00283190 /* Controller */,
 				C91D8722273C358F00283190 /* View */,
@@ -79,6 +89,7 @@
 				C91D8717273C2F6F00283190 /* Assets.xcassets */,
 				C91D8719273C2F6F00283190 /* LaunchScreen.storyboard */,
 				C91D871C273C2F6F00283190 /* Info.plist */,
+				C9957C8227A0754D0062A009 /* GoogleService-Info.plist */,
 			);
 			path = "Silent Rock";
 			sourceTree = "<group>";
@@ -96,6 +107,7 @@
 			children = (
 				C91D8712273C2F6B00283190 /* ViewController.swift */,
 				C9957C7E279F7E750062A009 /* loginViewController.swift */,
+				C985836227A08AC1002197FD /* verificationViewController.swift */,
 				C9957C80279F7F4C0062A009 /* registerViewController.swift */,
 			);
 			path = Controller;
@@ -125,6 +137,10 @@
 			dependencies = (
 			);
 			name = "Silent Rock";
+			packageProductDependencies = (
+				C9957C8527A078380062A009 /* FirebaseAnalyticsSwift-Beta */,
+				C9957C8727A078380062A009 /* FirebaseAuth */,
+			);
 			productName = "Silent Rock";
 			productReference = C91D870B273C2F6B00283190 /* Silent Rock.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +169,9 @@
 				Base,
 			);
 			mainGroup = C91D8702273C2F6B00283190;
+			packageReferences = (
+				C9957C8427A078380062A009 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C91D870C273C2F6B00283190 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,6 +191,7 @@
 				C91D8718273C2F6F00283190 /* Assets.xcassets in Resources */,
 				C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */,
 				C91D8716273C2F6B00283190 /* Main.storyboard in Resources */,
+				C9957C8327A0754D0062A009 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +204,7 @@
 			files = (
 				C93191A9273C3FD4009A743F /* Driver.swift in Sources */,
 				C91D8713273C2F6B00283190 /* ViewController.swift in Sources */,
+				C985836327A08AC1002197FD /* verificationViewController.swift in Sources */,
 				C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */,
 				C91D870F273C2F6B00283190 /* AppDelegate.swift in Sources */,
 				C91D8711273C2F6B00283190 /* SceneDelegate.swift in Sources */,
@@ -335,13 +356,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Silent Rock/Silent Rock.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3AP6R4PMV3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Silent Rock/Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please ?";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please ??";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -366,13 +388,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Silent Rock/Silent Rock.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3AP6R4PMV3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Silent Rock/Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please ?";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please ??";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -414,6 +437,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C9957C8427A078380062A009 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C9957C8527A078380062A009 /* FirebaseAnalyticsSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9957C8427A078380062A009 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAnalyticsSwift-Beta";
+		};
+		C9957C8727A078380062A009 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9957C8427A078380062A009 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C91D8703273C2F6B00283190 /* Project object */;
 }
