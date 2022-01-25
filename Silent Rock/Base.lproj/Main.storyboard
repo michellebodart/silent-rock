@@ -258,7 +258,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The phone number you entered is not registered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-d3-CUu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-d3-CUu">
                                 <rect key="frame" x="16" y="237" width="359" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -360,6 +360,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="errorMessageLabel" destination="OhH-d3-CUu" id="uKu-IN-QX4"/>
                         <outlet property="phoneNumberTextField" destination="TtP-o7-0Pl" id="NjI-s9-B29"/>
                         <segue destination="MU7-mY-LaO" kind="presentation" identifier="verificationViewController" id="es7-6y-SqN"/>
                     </connections>
@@ -595,7 +596,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The code you entered is incorrect." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thZ-2T-h15">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thZ-2T-h15">
                                 <rect key="frame" x="16" y="237" width="359" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -703,7 +704,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="errorMessageLabel" destination="thZ-2T-h15" id="UoB-RQ-7G0"/>
                         <outlet property="verificationCodeTextField" destination="tcs-zV-Sdi" id="Ih2-xi-oBs"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" id="gTG-EQ-TeT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zlz-zA-fYf" sceneMemberID="firstResponder"/>
@@ -731,6 +734,9 @@
             <size key="intrinsicContentSize" width="244.33333333333334" height="38.666666666666664"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="gTG-EQ-TeT"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="silent_rock_2-removebg-preview" width="650" height="384"/>
         <systemColor name="labelColor">

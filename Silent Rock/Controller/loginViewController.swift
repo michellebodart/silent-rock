@@ -11,6 +11,7 @@ import Firebase
 class loginViewController: UIViewController {
     var verificationID = ""
     @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var errorMessageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +24,9 @@ class loginViewController: UIViewController {
         if let phoneNumber = phoneNumberTextField.text {
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
-                  print(error)
-                  print("erroooooooor")
-                  return
+                    self.errorMessageLabel.text = "there was an error"
+//                    Need to check if the phone number is valid, then check if it is in the database, then return an appropriate error message 
+                    return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
                 print(verificationID)
