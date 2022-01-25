@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mjF-yl-qZT">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Silent_Rock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="Silent_Rock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wRi-jm-g75">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,6 +191,8 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="hTT-KX-qpW"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="backgroundColor" destination="vMg-aS-PUa" id="XgV-eI-5HT"/>
                         <outlet property="exitButton" destination="uRf-0M-zgZ" id="Yeu-k0-H0b"/>
@@ -201,7 +203,354 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
+            <point key="canvasLocation" x="2631.1999999999998" y="122.66009852216749"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="rwS-GF-6sn">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="mjF-yl-qZT" customClass="loginViewController" customModule="Silent_Rock" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GpI-V8-P5m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="aAQ-ae-l1g">
+                                <rect key="frame" x="-32" y="-7" width="439" height="236"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aAQ-ae-l1g" secondAttribute="height" multiplier="426:229" id="UwR-ke-w33"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="iub-H0-jGu">
+                                <rect key="frame" x="-32" y="583" width="439" height="236"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iub-H0-jGu" secondAttribute="height" multiplier="426:229" id="7hR-bx-pxc"/>
+                                    <constraint firstAttribute="height" id="Iek-Gr-zSb"/>
+                                    <constraint firstAttribute="height" id="R6T-lW-NCs"/>
+                                    <constraint firstAttribute="width" id="ZAA-lQ-AD1"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="R6T-lW-NCs"/>
+                                        <exclude reference="Iek-Gr-zSb"/>
+                                        <exclude reference="ZAA-lQ-AD1"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="R6T-lW-NCs"/>
+                                        <exclude reference="7hR-bx-pxc"/>
+                                        <include reference="Iek-Gr-zSb"/>
+                                        <include reference="ZAA-lQ-AD1"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="R6T-lW-NCs"/>
+                                        <exclude reference="7hR-bx-pxc"/>
+                                        <include reference="Iek-Gr-zSb"/>
+                                        <include reference="ZAA-lQ-AD1"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="TtP-o7-0Pl">
+                                <rect key="frame" x="74" y="273" width="227" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Username"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="DFC-q5-6rN">
+                                <rect key="frame" x="74" y="320" width="227" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Username"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The username or password you entered is incorrect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-d3-CUu">
+                                <rect key="frame" x="16" y="237" width="359" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                <color key="textColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJP-AT-jsa">
+                                <rect key="frame" x="8" y="547" width="184" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VND-yf-Ndr" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
+                                <rect key="frame" x="148" y="363" width="79" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign in">
+                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="QuO-FA-9TC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTI-WI-eHr">
+                                <rect key="frame" x="175" y="544" width="72" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign up">
+                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="qaZ-5G-l31" kind="presentation" identifier="registerView" id="fD4-nI-xTN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Utf-I7-Mvp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iub-H0-jGu" firstAttribute="width" secondItem="iub-H0-jGu" secondAttribute="height" multiplier="426:229" id="2sJ-MN-GDB"/>
+                            <constraint firstItem="aAQ-ae-l1g" firstAttribute="top" secondItem="GpI-V8-P5m" secondAttribute="top" constant="-7" id="5ju-YS-1ku"/>
+                            <constraint firstAttribute="trailing" secondItem="aAQ-ae-l1g" secondAttribute="trailing" constant="-50" id="Af8-XK-poi"/>
+                            <constraint firstAttribute="trailing" secondItem="aAQ-ae-l1g" secondAttribute="trailing" constant="-32" id="MbJ-GH-bWF"/>
+                            <constraint firstItem="aAQ-ae-l1g" firstAttribute="leading" relation="lessThanOrEqual" secondItem="GpI-V8-P5m" secondAttribute="leading" constant="-50" id="XZQ-q3-HJV"/>
+                            <constraint firstAttribute="bottom" secondItem="iub-H0-jGu" secondAttribute="bottom" constant="-7" id="Zn7-cY-ntM"/>
+                            <constraint firstItem="iub-H0-jGu" firstAttribute="centerX" secondItem="aAQ-ae-l1g" secondAttribute="centerX" id="dxD-4E-U6U"/>
+                            <constraint firstAttribute="bottom" secondItem="iub-H0-jGu" secondAttribute="bottom" constant="-46" id="e5T-4a-iwh"/>
+                            <constraint firstItem="aAQ-ae-l1g" firstAttribute="leading" secondItem="GpI-V8-P5m" secondAttribute="leading" constant="-32" id="flE-rO-k0p"/>
+                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="aAQ-ae-l1g" secondAttribute="bottom" constant="-10" id="gML-c3-y4E"/>
+                            <constraint firstItem="iub-H0-jGu" firstAttribute="leading" secondItem="GpI-V8-P5m" secondAttribute="leading" id="kdA-Fp-u28"/>
+                            <constraint firstItem="iub-H0-jGu" firstAttribute="width" secondItem="aAQ-ae-l1g" secondAttribute="width" id="lgU-rH-qNC"/>
+                            <constraint firstItem="aAQ-ae-l1g" firstAttribute="top" secondItem="GpI-V8-P5m" secondAttribute="top" constant="-35" id="rn3-47-qcO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gML-c3-y4E"/>
+                                <exclude reference="Af8-XK-poi"/>
+                                <exclude reference="rn3-47-qcO"/>
+                                <exclude reference="XZQ-q3-HJV"/>
+                                <exclude reference="kdA-Fp-u28"/>
+                                <exclude reference="e5T-4a-iwh"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="gML-c3-y4E"/>
+                                <include reference="Af8-XK-poi"/>
+                                <exclude reference="flE-rO-k0p"/>
+                                <exclude reference="5ju-YS-1ku"/>
+                                <include reference="rn3-47-qcO"/>
+                                <exclude reference="MbJ-GH-bWF"/>
+                                <include reference="XZQ-q3-HJV"/>
+                                <exclude reference="dxD-4E-U6U"/>
+                                <exclude reference="2sJ-MN-GDB"/>
+                                <exclude reference="Zn7-cY-ntM"/>
+                                <exclude reference="lgU-rH-qNC"/>
+                                <include reference="kdA-Fp-u28"/>
+                                <include reference="e5T-4a-iwh"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="gML-c3-y4E"/>
+                                <include reference="Af8-XK-poi"/>
+                                <exclude reference="flE-rO-k0p"/>
+                                <exclude reference="5ju-YS-1ku"/>
+                                <include reference="rn3-47-qcO"/>
+                                <exclude reference="MbJ-GH-bWF"/>
+                                <include reference="XZQ-q3-HJV"/>
+                                <exclude reference="dxD-4E-U6U"/>
+                                <exclude reference="2sJ-MN-GDB"/>
+                                <exclude reference="lgU-rH-qNC"/>
+                                <include reference="kdA-Fp-u28"/>
+                                <include reference="e5T-4a-iwh"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6x-Aq-0M5" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3440.8000000000002" y="122.66009852216749"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="fZs-H0-2fX">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="qaZ-5G-l31" customClass="registerViewController" customModule="Silent_Rock" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eZb-8Z-vTb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="RaG-Zj-Uj7">
+                                <rect key="frame" x="-32" y="-7" width="439" height="236"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RaG-Zj-Uj7" secondAttribute="height" multiplier="426:229" id="m7m-fg-gcC"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="zgf-g0-RRs">
+                                <rect key="frame" x="-32" y="583" width="439" height="236"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="0Y2-vb-4A8"/>
+                                    <constraint firstAttribute="height" id="2jM-07-oYB"/>
+                                    <constraint firstAttribute="width" id="MmL-Wi-2cX"/>
+                                    <constraint firstAttribute="width" secondItem="zgf-g0-RRs" secondAttribute="height" multiplier="426:229" id="QhT-2e-NAf"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0Y2-vb-4A8"/>
+                                        <exclude reference="2jM-07-oYB"/>
+                                        <exclude reference="MmL-Wi-2cX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="0Y2-vb-4A8"/>
+                                        <exclude reference="QhT-2e-NAf"/>
+                                        <include reference="2jM-07-oYB"/>
+                                        <include reference="MmL-Wi-2cX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="0Y2-vb-4A8"/>
+                                        <exclude reference="QhT-2e-NAf"/>
+                                        <include reference="2jM-07-oYB"/>
+                                        <include reference="MmL-Wi-2cX"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="y9l-Jk-1OJ">
+                                <rect key="frame" x="74" y="273" width="227" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Username"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="d8p-sc-Pp8">
+                                <rect key="frame" x="74" y="350" width="227" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Username"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-enter password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Hur-zr-CYq">
+                                <rect key="frame" x="74" y="393" width="227" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Username"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sorry, that username is taken" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W37-B8-LPH">
+                                <rect key="frame" x="16" y="237" width="359" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                <color key="textColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qE5-es-kg8">
+                                <rect key="frame" x="8" y="547" width="184" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="je0-J3-VrD" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
+                                <rect key="frame" x="144" y="447" width="86" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign up">
+                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="hJ1-Up-9pc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYO-o5-CuH">
+                                <rect key="frame" x="178" y="544" width="67" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign in">
+                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" id="QeX-ch-uNS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Passwords do not match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrL-gm-er0">
+                                <rect key="frame" x="8" y="314" width="359" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                <color key="textColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zn1-5c-YuV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="RaG-Zj-Uj7" secondAttribute="bottom" constant="-10" id="BDK-JV-McA"/>
+                            <constraint firstAttribute="trailing" secondItem="RaG-Zj-Uj7" secondAttribute="trailing" constant="-32" id="EOm-XQ-gGQ"/>
+                            <constraint firstItem="zgf-g0-RRs" firstAttribute="width" secondItem="zgf-g0-RRs" secondAttribute="height" multiplier="426:229" id="Hhe-z4-JGS"/>
+                            <constraint firstItem="RaG-Zj-Uj7" firstAttribute="leading" relation="lessThanOrEqual" secondItem="eZb-8Z-vTb" secondAttribute="leading" constant="-50" id="NQ9-BA-Xhb"/>
+                            <constraint firstItem="RaG-Zj-Uj7" firstAttribute="leading" secondItem="eZb-8Z-vTb" secondAttribute="leading" constant="-32" id="PLn-jO-dn0"/>
+                            <constraint firstItem="RaG-Zj-Uj7" firstAttribute="top" secondItem="eZb-8Z-vTb" secondAttribute="top" constant="-7" id="Qtw-DH-oel"/>
+                            <constraint firstAttribute="bottom" secondItem="zgf-g0-RRs" secondAttribute="bottom" constant="-46" id="UgF-dx-lTC"/>
+                            <constraint firstItem="zgf-g0-RRs" firstAttribute="leading" secondItem="eZb-8Z-vTb" secondAttribute="leading" id="W90-dQ-1z3"/>
+                            <constraint firstItem="RaG-Zj-Uj7" firstAttribute="top" secondItem="eZb-8Z-vTb" secondAttribute="top" constant="-35" id="XbE-8f-1No"/>
+                            <constraint firstItem="zgf-g0-RRs" firstAttribute="centerX" secondItem="RaG-Zj-Uj7" secondAttribute="centerX" id="a6q-kg-GqG"/>
+                            <constraint firstAttribute="trailing" secondItem="RaG-Zj-Uj7" secondAttribute="trailing" constant="-50" id="cNA-b4-Y4w"/>
+                            <constraint firstAttribute="bottom" secondItem="zgf-g0-RRs" secondAttribute="bottom" constant="-7" id="hBS-4w-QeP"/>
+                            <constraint firstItem="zgf-g0-RRs" firstAttribute="width" secondItem="RaG-Zj-Uj7" secondAttribute="width" id="nWQ-Mj-GfN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BDK-JV-McA"/>
+                                <exclude reference="cNA-b4-Y4w"/>
+                                <exclude reference="XbE-8f-1No"/>
+                                <exclude reference="NQ9-BA-Xhb"/>
+                                <exclude reference="W90-dQ-1z3"/>
+                                <exclude reference="UgF-dx-lTC"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="BDK-JV-McA"/>
+                                <include reference="cNA-b4-Y4w"/>
+                                <exclude reference="PLn-jO-dn0"/>
+                                <exclude reference="Qtw-DH-oel"/>
+                                <include reference="XbE-8f-1No"/>
+                                <exclude reference="EOm-XQ-gGQ"/>
+                                <include reference="NQ9-BA-Xhb"/>
+                                <exclude reference="a6q-kg-GqG"/>
+                                <exclude reference="Hhe-z4-JGS"/>
+                                <exclude reference="hBS-4w-QeP"/>
+                                <exclude reference="nWQ-Mj-GfN"/>
+                                <include reference="W90-dQ-1z3"/>
+                                <include reference="UgF-dx-lTC"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="BDK-JV-McA"/>
+                                <include reference="cNA-b4-Y4w"/>
+                                <exclude reference="PLn-jO-dn0"/>
+                                <exclude reference="Qtw-DH-oel"/>
+                                <include reference="XbE-8f-1No"/>
+                                <exclude reference="EOm-XQ-gGQ"/>
+                                <include reference="NQ9-BA-Xhb"/>
+                                <exclude reference="a6q-kg-GqG"/>
+                                <exclude reference="Hhe-z4-JGS"/>
+                                <exclude reference="nWQ-Mj-GfN"/>
+                                <include reference="W90-dQ-1z3"/>
+                                <include reference="UgF-dx-lTC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WD0-w2-JXq" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4159" y="123"/>
         </scene>
     </scenes>
     <designables>
@@ -211,7 +560,13 @@
         <designable name="gCu-HO-tEq">
             <size key="intrinsicContentSize" width="88" height="55"/>
         </designable>
+        <designable name="je0-J3-VrD">
+            <size key="intrinsicContentSize" width="85.666666666666671" height="38.666666666666664"/>
+        </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="hJ1-Up-9pc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="silent_rock_2-removebg-preview" width="650" height="384"/>
         <systemColor name="labelColor">

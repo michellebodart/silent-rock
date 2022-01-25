@@ -15,6 +15,8 @@
 		C91D871B273C2F6F00283190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91D8719273C2F6F00283190 /* LaunchScreen.storyboard */; };
 		C91D8726273C35CA00283190 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8725273C35CA00283190 /* BorderButton.swift */; };
 		C93191A9273C3FD4009A743F /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93191A8273C3FD4009A743F /* Driver.swift */; };
+		C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9957C7E279F7E750062A009 /* loginViewController.swift */; };
+		C9957C81279F7F4C0062A009 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9957C80279F7F4C0062A009 /* registerViewController.swift */; };
 		C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */; };
 		C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9F033BC274F4606000E3EF6 /* arcade.wav */; };
 /* End PBXBuildFile section */
@@ -30,6 +32,8 @@
 		C91D871C273C2F6F00283190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C91D8725273C35CA00283190 /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		C93191A8273C3FD4009A743F /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
+		C9957C7E279F7E750062A009 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		C9957C80279F7F4C0062A009 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LocalNotificationSound.mp3; sourceTree = "<group>"; };
 		C9F033BC274F4606000E3EF6 /* arcade.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arcade.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				C91D8712273C2F6B00283190 /* ViewController.swift */,
+				C9957C7E279F7E750062A009 /* loginViewController.swift */,
+				C9957C80279F7F4C0062A009 /* registerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,9 +184,11 @@
 			files = (
 				C93191A9273C3FD4009A743F /* Driver.swift in Sources */,
 				C91D8713273C2F6B00283190 /* ViewController.swift in Sources */,
+				C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */,
 				C91D870F273C2F6B00283190 /* AppDelegate.swift in Sources */,
 				C91D8711273C2F6B00283190 /* SceneDelegate.swift in Sources */,
 				C91D8726273C35CA00283190 /* BorderButton.swift in Sources */,
+				C9957C81279F7F4C0062A009 /* registerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
