@@ -263,11 +263,11 @@
                                     <action selector="phoneNumberTextFieldUpdated:" destination="mjF-yl-qZT" eventType="editingChanged" id="YQp-BB-Jhu"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-d3-CUu">
-                                <rect key="frame" x="20" y="245" width="350" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-d3-CUu">
+                                <rect key="frame" x="20" y="245" width="350" height="56"/>
                                 <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="khU-ZA-ZyN"/>
+                                    <constraint firstAttribute="height" constant="56" id="khU-ZA-ZyN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                 <color key="textColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -451,7 +451,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Jqp-36-8Tm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" spellCheckingType="no" textContentType="username"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, that username is taken" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W37-B8-LPH">
                                 <rect key="frame" x="20" y="245" width="350" height="28"/>
@@ -504,6 +504,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="phonePad" textContentType="tel"/>
+                                <connections>
+                                    <action selector="phoneNumberTextFieldUpdated:" destination="qaZ-5G-l31" eventType="editingChanged" id="xCp-uH-WAI"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSh-Vl-XhF">
                                 <rect key="frame" x="20" y="557" width="163" height="30"/>
@@ -597,6 +600,12 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="phoneNumberErrorMessage" destination="GrL-gm-er0" id="LAA-Fu-T1Y"/>
+                        <outlet property="phoneNumberTextField" destination="d8p-sc-Pp8" id="Lho-1r-YVm"/>
+                        <outlet property="signUpButton" destination="je0-J3-VrD" id="fpY-pp-Gsg"/>
+                        <outlet property="usernameTextField" destination="y9l-Jk-1OJ" id="DTR-r0-Uqt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WD0-w2-JXq" sceneMemberID="firstResponder"/>
             </objects>

@@ -42,7 +42,7 @@ class loginViewController: UIViewController {
         if let phoneNumber = phoneNumberTextField.text {
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
-                    self.errorMessageLabel.text = "the phone number you entered is not registered with an account"
+                    self.errorMessageLabel.text = "The phone number you entered is not registered with an account"
                     return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
@@ -54,11 +54,15 @@ class loginViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is verificationViewController {
-            let vc = segue.destination as? verificationViewController
-            vc?.phoneNumber = phoneNumberTextField.text ?? "1234567890"
-            vc?.verificationID = self.verificationID
+            let vvc = segue.destination as? verificationViewController
+            vvc?.phoneNumber = phoneNumberTextField.text ?? ""
+            vvc?.verificationID = self.verificationID
+        } else if segue.destination is registerViewController {
+            let rvc = segue.destination as? registerViewController
+            rvc?.phoneNumber = phoneNumberTextField.text ?? ""
         }
     }
+    
     
     func format(with mask: String, phone: String) -> String {
         let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
@@ -81,11 +85,5 @@ class loginViewController: UIViewController {
         return result
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return false }
-        let newString = (text as NSString).replacingCharacters(in: range, with: string)
-        textField.text = format(with: "+X (XXX) XXX-XXXX", phone: newString)
-        return false
-    }
 }
 
