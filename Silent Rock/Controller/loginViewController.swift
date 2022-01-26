@@ -24,9 +24,9 @@ class loginViewController: UIViewController {
     
     @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
         phoneNumberTextField.text = format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
-        var phoneNumber = phoneNumberTextField.text ?? ""
-        var result = phoneNumber.range(of: "^\\+[0-9]+ \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}", options: .regularExpression)
-        var phoneNumberIsValid = (result != nil)
+        let phoneNumber = phoneNumberTextField.text ?? ""
+        let result = phoneNumber.range(of: "^\\+[0-9]+ \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}", options: .regularExpression)
+        let phoneNumberIsValid = (result != nil)
         if !phoneNumberIsValid {
             errorMessageLabel.text = "Please enter a valid phone number"
             signInButton.isEnabled = false
@@ -35,7 +35,6 @@ class loginViewController: UIViewController {
             signInButton.isEnabled = true
         }
         
-        
     }
     
     
@@ -43,12 +42,10 @@ class loginViewController: UIViewController {
         if let phoneNumber = phoneNumberTextField.text {
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
-                    self.errorMessageLabel.text = "there was an error"
-//                    Need to check if the phone number is valid, then check if it is in the database, then return an appropriate error message 
+                    self.errorMessageLabel.text = "the phone number you entered is not registered with an account"
                     return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
-                print(verificationID)
                 self.verificationID = verificationID!
                 self.performSegue(withIdentifier: "verificationViewController", sender: self)
             }
