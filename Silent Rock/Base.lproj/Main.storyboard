@@ -259,6 +259,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                <connections>
+                                    <action selector="phoneNumberTextFieldUpdated:" destination="mjF-yl-qZT" eventType="editingChanged" id="YQp-BB-Jhu"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-d3-CUu">
                                 <rect key="frame" x="20" y="245" width="350" height="28"/>
@@ -387,6 +390,7 @@
                     <connections>
                         <outlet property="errorMessageLabel" destination="OhH-d3-CUu" id="uKu-IN-QX4"/>
                         <outlet property="phoneNumberTextField" destination="TtP-o7-0Pl" id="NjI-s9-B29"/>
+                        <outlet property="signInButton" destination="VND-yf-Ndr" id="hgf-FX-E4G"/>
                         <segue destination="MU7-mY-LaO" kind="presentation" identifier="verificationViewController" animates="NO" id="es7-6y-SqN"/>
                     </connections>
                 </viewController>
@@ -622,25 +626,25 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="v1Y-fL-4Ei"/>
-                                        <exclude reference="lPe-fl-47T"/>
                                         <exclude reference="9Fn-Ei-pNm"/>
+                                        <exclude reference="lPe-fl-47T"/>
+                                        <exclude reference="v1Y-fL-4Ei"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="6CM-oe-df7"/>
-                                        <include reference="v1Y-fL-4Ei"/>
-                                        <include reference="lPe-fl-47T"/>
                                         <include reference="9Fn-Ei-pNm"/>
+                                        <include reference="lPe-fl-47T"/>
+                                        <include reference="v1Y-fL-4Ei"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
                                     <mask key="constraints">
                                         <exclude reference="6CM-oe-df7"/>
-                                        <include reference="v1Y-fL-4Ei"/>
-                                        <include reference="lPe-fl-47T"/>
                                         <include reference="9Fn-Ei-pNm"/>
+                                        <include reference="lPe-fl-47T"/>
+                                        <include reference="v1Y-fL-4Ei"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -681,7 +685,7 @@
                                     <constraint firstAttribute="height" constant="40" id="tVt-jK-2ma"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPr-A2-tcc">
                                 <rect key="frame" x="170" y="555" width="72" height="34"/>
@@ -818,7 +822,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="1U9-d3-oBS"/>
+        <segue reference="fD4-nI-xTN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="silent_rock_2-removebg-preview" width="650" height="384"/>
