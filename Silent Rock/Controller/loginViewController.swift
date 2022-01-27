@@ -42,6 +42,9 @@ class loginViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text {
+            if self.checkIfUserExists(phoneNumber: phoneNumber){
+                return
+            }
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
                     self.errorMessageLabel.text = "The phone number you entered is not valid"
@@ -86,6 +89,31 @@ class loginViewController: UIViewController {
         }
         return result
     }
+    
+    func checkIfUserExists(phoneNumber: String) -> Bool {
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
+        request.httpMethod = "GET"
+        var userExists = false
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+//            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
+                for player in json {
+                    var phone = (player as! NSDictionary)["phone"]
+                    if phoneNumber == (phone! as! String){
+                        userExists = true
+                    }
+                }
+                print("user exists?", userExists)
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
+        return userExists
+    }
+    
     
 }
 
