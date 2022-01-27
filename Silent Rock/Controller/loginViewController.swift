@@ -20,8 +20,6 @@ class loginViewController: UIViewController {
         signInButton.isEnabled = false
         
         self.hideKeyboardWhenTappedAround()
-        //do initial setup
-
     }
     
     @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
@@ -36,27 +34,48 @@ class loginViewController: UIViewController {
             errorMessageLabel.text = ""
             signInButton.isEnabled = true
         }
-        
     }
     
     
-    @IBAction func signInButtonTapped(_ sender: Any) {
-        if let phoneNumber = phoneNumberTextField.text {
-            if self.checkIfUserExists(phoneNumber: phoneNumber){
+    func signIn(phoneNumber: String) {
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+            if let error = error {
+                self.errorMessageLabel.text = "The phone number you entered is not valid"
                 return
             }
-            PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    self.errorMessageLabel.text = "The phone number you entered is not valid"
-                    return
-                }
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
-                self.verificationID = verificationID!
-                self.performSegue(withIdentifier: "verificationViewController", sender: self)
-            }
+            UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
+            self.verificationID = verificationID!
+            self.performSegue(withIdentifier: "verificationViewController", sender: self)
         }
     }
     
+    @IBAction func signInButtonTapped(_ sender: Any) {
+        if let phoneNumber = phoneNumberTextField.text {
+            var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
+            request.httpMethod = "GET"
+            var userExists = false
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
+                    for player in json {
+                        var phone = (player as! NSDictionary)["phone"]
+                        if phoneNumber == (phone! as! String) {
+                            userExists = true
+                        }
+                    }
+                    print("user exists?", userExists)
+                    if userExists {
+                        self.signIn(phoneNumber: phoneNumber)
+                    }
+                } catch {
+                    print(error)
+                }
+            })
+            task.resume()
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is verificationViewController {
             let vvc = segue.destination as? verificationViewController
@@ -90,29 +109,7 @@ class loginViewController: UIViewController {
         return result
     }
     
-    func checkIfUserExists(phoneNumber: String) -> Bool {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
-        request.httpMethod = "GET"
-        var userExists = false
-        let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-//            print(response!)
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
-                for player in json {
-                    var phone = (player as! NSDictionary)["phone"]
-                    if phoneNumber == (phone! as! String){
-                        userExists = true
-                    }
-                }
-                print("user exists?", userExists)
-            } catch {
-                print("error")
-            }
-        })
-        task.resume()
-        return userExists
-    }
+    
     
     
 }
