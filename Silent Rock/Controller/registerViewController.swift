@@ -20,6 +20,8 @@ class registerViewController: UIViewController {
         
         phoneNumberTextField.text = phoneNumber
         signUpButton.isEnabled = false
+        
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     

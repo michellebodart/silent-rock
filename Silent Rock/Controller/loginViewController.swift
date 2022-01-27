@@ -18,6 +18,8 @@ class loginViewController: UIViewController {
         super.viewDidLoad()
         
         signInButton.isEnabled = false
+        
+        self.hideKeyboardWhenTappedAround()
         //do initial setup
 
     }
@@ -42,7 +44,7 @@ class loginViewController: UIViewController {
         if let phoneNumber = phoneNumberTextField.text {
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
-                    self.errorMessageLabel.text = "The phone number you entered is not registered with an account"
+                    self.errorMessageLabel.text = "The phone number you entered is not valid"
                     return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
@@ -87,3 +89,14 @@ class loginViewController: UIViewController {
     
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
