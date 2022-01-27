@@ -263,7 +263,7 @@
                                     <action selector="phoneNumberTextFieldUpdated:" destination="mjF-yl-qZT" eventType="editingChanged" id="YQp-BB-Jhu"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-d3-CUu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhH-d3-CUu">
                                 <rect key="frame" x="20" y="245" width="350" height="56"/>
                                 <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

@@ -51,31 +51,37 @@ class loginViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text {
+            var userExists = false
             var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
             request.httpMethod = "GET"
-            var userExists = false
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
                 do {
+                    let httpResponseCode = (response as? HTTPURLResponse)!.statusCode
+                    print(httpResponseCode)
                     let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
                     for player in json {
-                        var phone = (player as! NSDictionary)["phone"]
+                        let phone = (player as! NSDictionary)["phone"]
                         if phoneNumber == (phone! as! String) {
                             userExists = true
                         }
                     }
-                    print("user exists?", userExists)
                     if userExists {
                         self.signIn(phoneNumber: phoneNumber)
                     }
+                    DispatchQueue.main.async {
+                        if !userExists {
+                            self.errorMessageLabel.text = "The phone number you entered is not registered with an account"
+                        }
+                    }
                 } catch {
-                    print(error)
+                    print("error: ", error)
                 }
             })
             task.resume()
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is verificationViewController {
             let vvc = segue.destination as? verificationViewController
