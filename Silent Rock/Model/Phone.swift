@@ -1,5 +1,5 @@
 //
-//  Player.swift
+//  Phone.swift
 //  Silent Rock
 //
 //  Created by Michelle Bodart on 1/27/22.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class Player: NSObject {
+class Phone: NSObject {
     func format(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9a-zA-Z_.]", with: "", options: .regularExpression)
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         var result = ""
         var index = numbers.startIndex // numbers iterator
 
@@ -28,4 +28,11 @@ class Player: NSObject {
         }
         return result
     }
+    
+    func isPhoneValid(phoneNumber: String) -> Bool {
+        let result = phoneNumber.range(of: "^\\+[0-9]+ \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}", options: .regularExpression)
+        var phoneNumberIsValid = (result != nil)
+        return phoneNumberIsValid
+    }
+    
 }

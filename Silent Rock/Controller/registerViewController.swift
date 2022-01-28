@@ -9,10 +9,13 @@ import UIKit
 
 class registerViewController: UIViewController {
     
+    var phone = Phone()
+    var username = Username()
     var phoneNumber: String = ""
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneNumberErrorMessage: UILabel!
+    @IBOutlet weak var usernameErrorMessage: UILabel!
     @IBOutlet weak var signUpButton: BorderButton!
     
     override func viewDidLoad() {
@@ -20,43 +23,81 @@ class registerViewController: UIViewController {
         
         phoneNumberTextField.text = phoneNumber
         signUpButton.isEnabled = false
-        
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
     @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
-        phoneNumberTextField.text = format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
-        let phoneNumber = phoneNumberTextField.text ?? ""
-        let result = phoneNumber.range(of: "^\\+[0-9]+ \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}", options: .regularExpression)
-        let phoneNumberIsValid = (result != nil)
+        phoneNumberTextField.text = phone.format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
+        
+        var phoneNumberIsValid = phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? ""
+        )
         if !phoneNumberIsValid {
             phoneNumberErrorMessage.text = "Please enter a valid phone number"
         } else {
             phoneNumberErrorMessage.text = ""
         }
+        if (phoneNumberIsValid && usernameTextField.text != "") {
+            signUpButton.isEnabled = true
+        } else {
+            signUpButton.isEnabled = false
+        }
     }
     
-    func format(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        var result = ""
-        var index = numbers.startIndex // numbers iterator
-
-        // iterate over the mask characters until the iterator of numbers ends
-        for ch in mask where index < numbers.endIndex {
-            if ch == "X" {
-                // mask requires a number in this place, so take the next one
-                result.append(numbers[index])
-
-                // move numbers iterator to the next index
-                index = numbers.index(after: index)
-
-            } else {
-                result.append(ch) // just append a mask character
-            }
+    @IBAction func usernameTextFieldUpdated(_ sender: Any) {
+        usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", phone: usernameTextField.text ?? "")
+        if ((phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")) && usernameTextField.text != "") {
+            signUpButton.isEnabled = true
+        } else {
+            signUpButton.isEnabled = false
+            
         }
-        return result
     }
-
+    
+    @IBAction func signUpTapped(_ sender: Any) {
+        if let phoneNumber = phoneNumberTextField.text, let username = usernameTextField.text {
+            var phoneUsed = false
+            var usernameUsed = false
+            var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
+            request.httpMethod = "GET"
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                do {
+                    // NEED TO ADD WHAT TO DO IF SERVER IS DOWN
+                    let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
+                    for player in json {
+                        let phone = (player as! NSDictionary)["phone"]
+                        let playerUsername = (player as! NSDictionary)["username"]
+                        if phoneNumber == (phone! as! String) {
+                            phoneUsed = true
+                        }
+                        if username == (playerUsername! as! String) {
+                            usernameUsed = true
+                        }
+                    }
+                    if !phoneUsed && !usernameUsed {
+                        // sign up
+                    }
+                    DispatchQueue.main.async {
+                        if phoneUsed {
+                            self.phoneNumberErrorMessage.text = "The phone number you entered is already registered with an account"
+                            self.phoneNumberTextField.text = ""
+                        } else {
+                            self.phoneNumberErrorMessage.text = ""
+                        }
+                        if usernameUsed {
+                            self.usernameErrorMessage.text = "Sorry, that username is taken"
+                            self.usernameTextField.text = ""
+                        } else {
+                            self.usernameErrorMessage.text = ""
+                        }
+                    }
+                } catch {
+                    print("error: ", error)
+                }
+            })
+            task.resume()
+        }
+    }
 
 }

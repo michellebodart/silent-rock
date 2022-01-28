@@ -23,6 +23,8 @@
 		C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */; };
 		C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9F033BC274F4606000E3EF6 /* arcade.wav */; };
 		C9FA01A027A31B2E00612E10 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FA019F27A31B2E00612E10 /* Player.swift */; };
+		C9FA01A227A366FD00612E10 /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FA01A127A366FD00612E10 /* Phone.swift */; };
+		C9FA01A427A36A0200612E10 /* Username.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FA01A327A36A0200612E10 /* Username.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LocalNotificationSound.mp3; sourceTree = "<group>"; };
 		C9F033BC274F4606000E3EF6 /* arcade.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arcade.wav; sourceTree = "<group>"; };
 		C9FA019F27A31B2E00612E10 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		C9FA01A127A366FD00612E10 /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
+		C9FA01A327A36A0200612E10 /* Username.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Username.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				C9FA019F27A31B2E00612E10 /* Player.swift */,
+				C9FA01A127A366FD00612E10 /* Phone.swift */,
+				C9FA01A327A36A0200612E10 /* Username.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,9 +209,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C91D8713273C2F6B00283190 /* ViewController.swift in Sources */,
+				C9FA01A427A36A0200612E10 /* Username.swift in Sources */,
 				C985836327A08AC1002197FD /* verificationViewController.swift in Sources */,
 				C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */,
 				C91D870F273C2F6B00283190 /* AppDelegate.swift in Sources */,
+				C9FA01A227A366FD00612E10 /* Phone.swift in Sources */,
 				C9FA01A027A31B2E00612E10 /* Player.swift in Sources */,
 				C91D8711273C2F6B00283190 /* SceneDelegate.swift in Sources */,
 				C91D8726273C35CA00283190 /* BorderButton.swift in Sources */,

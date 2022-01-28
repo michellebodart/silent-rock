@@ -1,5 +1,5 @@
 //
-//  Player.swift
+//  Username.swift
 //  Silent Rock
 //
 //  Created by Michelle Bodart on 1/27/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Player: NSObject {
+class Username: NSObject {
     func format(with mask: String, phone: String) -> String {
         let numbers = phone.replacingOccurrences(of: "[^0-9a-zA-Z_.]", with: "", options: .regularExpression)
         var result = ""

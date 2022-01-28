@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 class loginViewController: UIViewController {
+    let phone = Phone()
     var verificationID = ""
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -23,10 +24,9 @@ class loginViewController: UIViewController {
     }
     
     @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
-        phoneNumberTextField.text = format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
-        let phoneNumber = phoneNumberTextField.text ?? ""
-        let result = phoneNumber.range(of: "^\\+[0-9]+ \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}", options: .regularExpression)
-        let phoneNumberIsValid = (result != nil)
+        phoneNumberTextField.text = phone.format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
+
+        let phoneNumberIsValid = phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")
         if !phoneNumberIsValid {
             errorMessageLabel.text = "Please enter a valid phone number"
             signInButton.isEnabled = false
@@ -41,6 +41,7 @@ class loginViewController: UIViewController {
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
             if let error = error {
                 self.errorMessageLabel.text = "The phone number you entered is not valid"
+                self.phoneNumberTextField.text = ""
                 return
             }
             UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
@@ -57,6 +58,7 @@ class loginViewController: UIViewController {
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
                 do {
+                    // NEED TO ADD WHAT TO DO IF SERVER IS DOWN
                     let httpResponseCode = (response as? HTTPURLResponse)!.statusCode
                     print(httpResponseCode)
                     let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
@@ -92,32 +94,6 @@ class loginViewController: UIViewController {
             rvc?.phoneNumber = phoneNumberTextField.text ?? ""
         }
     }
-    
-    
-    func format(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        var result = ""
-        var index = numbers.startIndex // numbers iterator
-
-        // iterate over the mask characters until the iterator of numbers ends
-        for ch in mask where index < numbers.endIndex {
-            if ch == "X" {
-                // mask requires a number in this place, so take the next one
-                result.append(numbers[index])
-
-                // move numbers iterator to the next index
-                index = numbers.index(after: index)
-
-            } else {
-                result.append(ch) // just append a mask character
-            }
-        }
-        return result
-    }
-    
-    
-    
-    
 }
 
 extension UIViewController {
