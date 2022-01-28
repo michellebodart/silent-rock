@@ -10,6 +10,7 @@ import Firebase
 
 class verificationViewController: UIViewController {
 
+    let player: Player = Player()
     @IBOutlet weak var verificationCodeTextField: UITextField!
     var phoneNumber: String = ""
     var verificationID: String = ""
@@ -35,7 +36,11 @@ class verificationViewController: UIViewController {
               return
             }
             // User is signed in
-            // ...
+            // Register user if new user
+            if self.username != "" {
+                self.player.addToDatabase(username: self.username, phoneNumber: self.phoneNumber)
+            }
+            
             self.performSegue(withIdentifier: "mainViewController", sender: self)
         }
     }

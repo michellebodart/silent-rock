@@ -8,24 +8,45 @@
 import UIKit
 
 class Player: NSObject {
-    func format(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9a-zA-Z_.]", with: "", options: .regularExpression)
-        var result = ""
-        var index = numbers.startIndex // numbers iterator
-
-        // iterate over the mask characters until the iterator of numbers ends
-        for ch in mask where index < numbers.endIndex {
-            if ch == "X" {
-                // mask requires a number in this place, so take the next one
-                result.append(numbers[index])
-
-                // move numbers iterator to the next index
-                index = numbers.index(after: index)
-
-            } else {
-                result.append(ch) // just append a mask character
-            }
+    
+    func addToDatabase(username: String, phoneNumber: String) {
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
+        request.httpMethod = "POST"
+        
+        struct UploadData: Codable {
+            let username: String
+            let phone: String
         }
-        return result
+        
+        let uploadDataModel = UploadData(username: username, phone: phoneNumber)
+        
+        guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
+            print("error trying to convert model to JSON data")
+            return
+        }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = jsonData
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                print("error calling POST")
+                return
+            }
+            guard let data = data else {
+                print("error, did not receive data")
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                print("error, HTTP request failed")
+                return
+            }
+            do {
+                let httpResponseCode = (response as? HTTPURLResponse)!.statusCode
+                print(httpResponseCode)
+            }
+        })
+        task.resume()
     }
 }

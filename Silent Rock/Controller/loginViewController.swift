@@ -57,8 +57,14 @@ class loginViewController: UIViewController {
             request.httpMethod = "GET"
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                guard error == nil else {
+                    print("error")
+                    DispatchQueue.main.async {
+                        self.errorMessageLabel.text = "Oops, something went wrong"
+                    }
+                    return
+                }
                 do {
-                    // NEED TO ADD WHAT TO DO IF SERVER IS DOWN
                     let httpResponseCode = (response as? HTTPURLResponse)!.statusCode
                     print(httpResponseCode)
                     let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
