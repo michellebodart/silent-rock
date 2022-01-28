@@ -13,6 +13,7 @@ class verificationViewController: UIViewController {
     @IBOutlet weak var verificationCodeTextField: UITextField!
     var phoneNumber: String = ""
     var verificationID: String = ""
+    var username: String = ""
     @IBOutlet weak var errorMessageLabel: UILabel!
     
     override func viewDidLoad() {

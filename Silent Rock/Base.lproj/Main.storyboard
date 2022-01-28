@@ -667,11 +667,12 @@
                         <outlet property="signUpButton" destination="je0-J3-VrD" id="fpY-pp-Gsg"/>
                         <outlet property="usernameErrorMessage" destination="W37-B8-LPH" id="KtZ-15-QvF"/>
                         <outlet property="usernameTextField" destination="y9l-Jk-1OJ" id="DTR-r0-Uqt"/>
+                        <segue destination="MU7-mY-LaO" kind="presentation" identifier="verificationViewController" animates="NO" id="zhb-Ty-BYA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WD0-w2-JXq" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5033.8461538461534" y="122.27488151658767"/>
+            <point key="canvasLocation" x="4994" y="122"/>
         </scene>
         <!--Verification View Controller-->
         <scene sceneID="QfP-vZ-0id">
@@ -925,6 +926,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
+        <segue reference="zhb-Ty-BYA"/>
         <segue reference="bQc-8K-LML"/>
         <segue reference="0pN-Oc-g1N"/>
     </inferredMetricsTieBreakers>

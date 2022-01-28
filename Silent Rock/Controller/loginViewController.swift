@@ -9,8 +9,8 @@ import UIKit
 import Firebase
 
 class loginViewController: UIViewController {
-    let phone = Phone()
-    var verificationID = ""
+    let phone: Phone = Phone()
+    var verificationID: String = ""
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var signInButton: BorderButton!

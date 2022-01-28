@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class registerViewController: UIViewController {
     
     var phone = Phone()
     var username = Username()
     var phoneNumber: String = ""
+    var verificationID:String = ""
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneNumberErrorMessage: UILabel!
@@ -76,7 +78,7 @@ class registerViewController: UIViewController {
                         }
                     }
                     if !phoneUsed && !usernameUsed {
-                        // sign up
+                        self.signUp(phoneNumber: phoneNumber, username: username)
                     }
                     DispatchQueue.main.async {
                         if phoneUsed {
@@ -97,6 +99,28 @@ class registerViewController: UIViewController {
                 }
             })
             task.resume()
+        }
+    }
+    
+    func signUp(phoneNumber: String, username: String) {
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+            if let error = error {
+                self.phoneNumberErrorMessage.text = "The phone number you entered is not valid"
+                self.phoneNumberTextField.text = ""
+                return
+            }
+            UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
+            self.verificationID = verificationID!
+            self.performSegue(withIdentifier: "verificationViewController", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is verificationViewController {
+            let vvc = segue.destination as? verificationViewController
+            vvc?.phoneNumber = phoneNumberTextField.text ?? ""
+            vvc?.verificationID = self.verificationID
+            vvc?.username = usernameTextField.text ?? ""
         }
     }
 
