@@ -10,6 +10,7 @@ import Firebase
 
 class loginViewController: UIViewController {
     let phone: Phone = Phone()
+    let player: Player = Player()
     var verificationID: String = ""
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -35,20 +36,7 @@ class loginViewController: UIViewController {
             signInButton.isEnabled = true
         }
     }
-    
-    
-    func signIn(phoneNumber: String) {
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-            if let error = error {
-                self.errorMessageLabel.text = "The phone number you entered is not valid"
-                self.phoneNumberTextField.text = ""
-                return
-            }
-            UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
-            self.verificationID = verificationID!
-            self.performSegue(withIdentifier: "verificationViewController", sender: self)
-        }
-    }
+
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text {
@@ -89,7 +77,7 @@ class loginViewController: UIViewController {
                         }
                     }
                     if userExists {
-                        self.signIn(phoneNumber: phoneNumber)
+                        self.player.verifyFromLogin(phoneNumber: phoneNumber, vc: self)
                     }
                     DispatchQueue.main.async {
                         if !userExists {

@@ -10,8 +10,9 @@ import Firebase
 
 class registerViewController: UIViewController {
     
-    var phone = Phone()
-    var username = Username()
+    var phone: Phone = Phone()
+    var username: Username = Username()
+    var player: Player = Player()
     var phoneNumber: String = ""
     var verificationID:String = ""
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -99,7 +100,8 @@ class registerViewController: UIViewController {
                         }
                     }
                     if !phoneUsed && !usernameUsed {
-                        self.signUp(phoneNumber: phoneNumber, username: username)
+//                        self.signUp(phoneNumber: phoneNumber, username: username)
+                        self.player.verifyFromRegister(phoneNumber: phoneNumber, vc: self)
                     }
                     DispatchQueue.main.async {
                         if phoneUsed {

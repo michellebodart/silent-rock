@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class Player: NSObject {
     
@@ -43,10 +44,38 @@ class Player: NSObject {
                 return
             }
             do {
-                let httpResponseCode = (response as? HTTPURLResponse)!.statusCode
+                let httpResponseCode = response.statusCode
                 print(httpResponseCode)
             }
         })
         task.resume()
     }
+    
+    func verifyFromLogin(phoneNumber: String, vc: loginViewController) {
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+                if let error = error {
+                    vc.errorMessageLabel.text = "The phone number you entered is not valid"
+                    return
+                }
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
+                vc.verificationID = verificationID!
+                vc.performSegue(withIdentifier: "verificationViewController", sender: vc)
+            }
+    }
+    
+    func verifyFromRegister(phoneNumber: String, vc: registerViewController) {
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+                if let error = error {
+                    vc.phoneNumberErrorMessage.text = "The phone number you entered is not valid"
+                    return
+                }
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
+                vc.verificationID = verificationID!
+                vc.performSegue(withIdentifier: "verificationViewController", sender: vc)
+            }
+    }
+    
+    
 }

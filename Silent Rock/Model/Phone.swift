@@ -31,7 +31,7 @@ class Phone: NSObject {
     
     func isPhoneValid(phoneNumber: String) -> Bool {
         let result = phoneNumber.range(of: "^\\+[0-9]+ \\([0-9]{3}\\) [0-9]{3}-[0-9]{4}", options: .regularExpression)
-        var phoneNumberIsValid = (result != nil)
+        let phoneNumberIsValid = (result != nil)
         return phoneNumberIsValid
     }
     
