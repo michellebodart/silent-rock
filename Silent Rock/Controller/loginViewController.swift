@@ -64,10 +64,24 @@ class loginViewController: UIViewController {
                     }
                     return
                 }
+                guard let data = data else {
+                    print("error, did not receive data")
+                    DispatchQueue.main.async {
+                        self.errorMessageLabel.text = "Oops, something went wrong"
+                    }
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                    print("error, HTTP request failed")
+                    DispatchQueue.main.async {
+                        self.errorMessageLabel.text = "Oops, something went wrong"
+                    }
+                    return
+                }
                 do {
-                    let httpResponseCode = (response as? HTTPURLResponse)!.statusCode
+                    let httpResponseCode = response.statusCode
                     print(httpResponseCode)
-                    let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
+                    let json = try JSONSerialization.jsonObject(with: data) as! Array<Any>
                     for player in json {
                         let phone = (player as! NSDictionary)["phone"]
                         if phoneNumber == (phone! as! String) {

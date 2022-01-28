@@ -54,7 +54,6 @@ class verificationViewController: UIViewController {
                     return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
-                print(verificationID)
                 self.verificationID = verificationID!
             }
     }

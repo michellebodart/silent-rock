@@ -48,6 +48,7 @@ class registerViewController: UIViewController {
     
     @IBAction func usernameTextFieldUpdated(_ sender: Any) {
         usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", phone: usernameTextField.text ?? "")
+        usernameErrorMessage.text = ""
         if ((phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")) && usernameTextField.text != "") {
             signUpButton.isEnabled = true
         } else {
@@ -71,8 +72,22 @@ class registerViewController: UIViewController {
                     }
                     return
                 }
+                guard let data = data else {
+                    print("error, did not receive data")
+                    DispatchQueue.main.async {
+                        self.usernameErrorMessage.text = "Oops, something went wrong"
+                    }
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                    print("error, HTTP request failed")
+                    DispatchQueue.main.async {
+                        self.usernameErrorMessage.text = "Oops, something went wrong"
+                    }
+                    return
+                }
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data!) as! Array<Any>
+                    let json = try JSONSerialization.jsonObject(with: data) as! Array<Any>
                     for player in json {
                         let phone = (player as! NSDictionary)["phone"]
                         let playerUsername = (player as! NSDictionary)["username"]
