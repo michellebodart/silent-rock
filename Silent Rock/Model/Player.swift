@@ -79,7 +79,7 @@ class Player: NSObject {
             }
     }
     
-    func checkPlayerDataFromLogin (phoneNumber: String, vc: loginViewController, completion: @escaping (_ phoneNumber: String, _ json: Array<Any>, _ vc: loginViewController) -> Void) {
+    func checkPlayerDataFromLogin (phoneNumber: String, vc: loginViewController, completion: @escaping (_ phoneNumber: String, _ json: Array<Any>) -> Void) {
         var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
@@ -107,7 +107,7 @@ class Player: NSObject {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: data) as! Array<Any>
-                completion(phoneNumber, json, vc)
+                completion(phoneNumber, json)
             } catch {
                 print("error: ", error)
             }
@@ -115,28 +115,7 @@ class Player: NSObject {
         task.resume()
     }
     
-    func signInOrError(phoneNumber: String, json: Array<Any>, vc: loginViewController) -> Void {
-        var phoneUsed = false
-        for player in json {
-            let phone = (player as! NSDictionary)["phone"]
-            if phoneNumber == (phone! as! String) {
-                phoneUsed = true
-            }
-        }
-        if !phoneUsed {
-            DispatchQueue.main.async {
-                vc.signInButton.isEnabled = false
-                vc.errorMessageLabel.text = "The phone number you entered is not registered with an account"
-                vc.phoneNumberTextField.text = ""
-            }
-        } else {
-            vc.player.verifyFromLogin(phoneNumber: phoneNumber, vc: vc)
-        }
-        
-    }
-    
-    
-    func checkPlayerDataFromRegister (phoneNumber: String, username: String, vc: registerViewController, completion: @escaping (_ phoneNumber: String, _ username: String, _ json: Array<Any>, _ vc: registerViewController) -> Void){
+    func checkPlayerDataFromRegister (phoneNumber: String, username: String, vc: registerViewController, completion: @escaping (_ phoneNumber: String, _ username: String, _ json: Array<Any>) -> Void){
         var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
@@ -164,7 +143,7 @@ class Player: NSObject {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: data) as! Array<Any>
-                completion(phoneNumber, username, json, vc)
+                completion(phoneNumber, username, json)
             } catch {
                 print("error: ", error)
             }

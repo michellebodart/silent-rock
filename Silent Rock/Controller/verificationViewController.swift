@@ -11,19 +11,29 @@ import Firebase
 class verificationViewController: UIViewController {
 
     let player: Player = Player()
+    let verificationCode: VerificationCode = VerificationCode()
     @IBOutlet weak var verificationCodeTextField: UITextField!
     var phoneNumber: String = ""
     var verificationID: String = ""
     var username: String = ""
     @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var signInButton: BorderButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        signInButton.isEnabled = false
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func verificationCodeTextFieldUpdated(_ sender: Any) {
+        verificationCodeTextField.text = verificationCode.format(with: "XXXXXX", code: verificationCodeTextField.text ?? "")
+        if (verificationCodeTextField.text ?? "")?.count == 6 {
+            signInButton.isEnabled = true
+        } else {
+            signInButton.isEnabled = false
+        }
+    }
     
     @IBAction func signInTapped(_ sender: Any) {
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
@@ -32,6 +42,8 @@ class verificationViewController: UIViewController {
             if let error = error {
               let authError = error as NSError
                 self.errorMessageLabel.text = "The code you entered was incorrect"
+                self.signInButton.isEnabled = false
+                self.verificationCodeTextField.text = ""
               // ...
               return
             }

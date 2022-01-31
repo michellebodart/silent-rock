@@ -758,6 +758,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="verificationCodeTextFieldUpdated:" destination="MU7-mY-LaO" eventType="editingChanged" id="pjg-ym-cWE"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPr-A2-tcc">
                                 <rect key="frame" x="148" y="556.66666666666663" width="65" height="30.666666666666629"/>
@@ -896,6 +899,7 @@
                     </view>
                     <connections>
                         <outlet property="errorMessageLabel" destination="thZ-2T-h15" id="UoB-RQ-7G0"/>
+                        <outlet property="signInButton" destination="9sp-UM-f2L" id="ONW-iG-PED"/>
                         <outlet property="verificationCodeTextField" destination="tcs-zV-Sdi" id="Ih2-xi-oBs"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="gTG-EQ-TeT"/>
                     </connections>
@@ -927,8 +931,8 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="zhb-Ty-BYA"/>
-        <segue reference="bQc-8K-LML"/>
-        <segue reference="0pN-Oc-g1N"/>
+        <segue reference="gnw-4U-HX2"/>
+        <segue reference="gTG-EQ-TeT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="silent_rock_2-removebg-preview" width="650" height="384"/>

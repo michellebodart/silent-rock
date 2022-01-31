@@ -50,7 +50,7 @@ class registerViewController: UIViewController {
     }
     
     @IBAction func usernameTextFieldUpdated(_ sender: Any) {
-        usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", phone: usernameTextField.text ?? "")
+        usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", username: usernameTextField.text ?? "")
         usernameErrorMessage.text = ""
         if ((phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")) && usernameTextField.text != "") {
             signUpButton.isEnabled = true
@@ -62,9 +62,43 @@ class registerViewController: UIViewController {
     
     @IBAction func signUpTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text, let username = usernameTextField.text {
-            player.checkPlayerDataFromRegister(phoneNumber: phoneNumber, username: username, vc: self, completion: { phoneNumber, username, json, vc in
-                self.self.player.signUpOrError(phoneNumber: phoneNumber, username: username, json: json, vc: vc)
+            player.checkPlayerDataFromRegister(phoneNumber: phoneNumber, username: username, vc: self, completion: { phoneNumber, username, json in
+                self.signUpOrError(phoneNumber: phoneNumber, username: username, json: json)
             })
+        }
+    }
+    
+    func signUpOrError(phoneNumber: String, username: String, json: Array<Any> ) -> Void {
+        var phoneUsed = false
+        var usernameUsed = false
+        for player in json {
+            let phone = (player as! NSDictionary)["phone"]
+            let playerUsername = (player as! NSDictionary)["username"]
+            if phoneNumber == (phone! as! String) {
+                phoneUsed = true
+            }
+            if username == (playerUsername! as! String) {
+                usernameUsed = true
+            }
+        }
+        if phoneUsed || usernameUsed {
+            DispatchQueue.main.async {
+                self.signUpButton.isEnabled = false
+                if phoneUsed {
+                    self.phoneNumberErrorMessage.text = "The phone number you entered is already registered with an account"
+                    self.phoneNumberTextField.text = ""
+                } else {
+                    self.phoneNumberErrorMessage.text = ""
+                }
+                if usernameUsed {
+                    self.usernameErrorMessage.text = "Sorry, that username is taken"
+                    self.usernameTextField.text = ""
+                } else {
+                    self.usernameErrorMessage.text = ""
+                }
+            }
+        } else {
+            self.player.verifyFromRegister(phoneNumber: phoneNumber, vc: self)
         }
     }
     

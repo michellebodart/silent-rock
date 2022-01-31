@@ -1,15 +1,15 @@
 //
-//  Username.swift
+//  VerificationCode.swift
 //  Silent Rock
 //
-//  Created by Michelle Bodart on 1/27/22.
+//  Created by Michelle Bodart on 1/30/22.
 //
 
 import UIKit
 
-class Username: NSObject {
-    func format(with mask: String, username: String) -> String {
-        let numbers = username.replacingOccurrences(of: "[^0-9a-zA-Z_.]", with: "", options: .regularExpression)
+class VerificationCode: NSObject {
+    func format(with mask: String, code: String) -> String {
+        let numbers = code.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         var result = ""
         var index = numbers.startIndex // numbers iterator
 
@@ -27,5 +27,5 @@ class Username: NSObject {
             }
         }
         return result
-    }
+    }    
 }

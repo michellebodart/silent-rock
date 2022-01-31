@@ -41,9 +41,28 @@ class loginViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text {
-            player.checkPlayerDataFromLogin(phoneNumber: phoneNumber, vc: self, completion: { phoneNumber, json, vc in
-                self.self.player.signInOrError(phoneNumber: phoneNumber, json: json, vc: vc)
+            player.checkPlayerDataFromLogin(phoneNumber: phoneNumber, vc: self, completion: { phoneNumber, json in
+                self.signInOrError(phoneNumber: phoneNumber, json: json)
             })
+        }
+    }
+    
+    func signInOrError(phoneNumber: String, json: Array<Any>) -> Void {
+        var phoneUsed = false
+        for player in json {
+            let phone = (player as! NSDictionary)["phone"]
+            if phoneNumber == (phone! as! String) {
+                phoneUsed = true
+            }
+        }
+        if !phoneUsed {
+            DispatchQueue.main.async {
+                self.signInButton.isEnabled = false
+                self.errorMessageLabel.text = "The phone number you entered is not registered with an account"
+                self.phoneNumberTextField.text = ""
+            }
+        } else {
+            self.player.verifyFromLogin(phoneNumber: phoneNumber, vc: self)
         }
     }
     
