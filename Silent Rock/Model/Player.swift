@@ -191,4 +191,40 @@ class Player: NSObject {
         task.resume()
     }
     
+    func deletePlayer (playerID: Int, vc: profileViewController, completion: @escaping () -> Void){
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        request.httpMethod = "DELETE"
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                print("error")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                }
+                return
+            }
+            guard let data = data else {
+                print("error, did not receive data")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                print("error, HTTP request failed")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                }
+                return
+            }
+            do {
+//                let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
+                completion()
+            } catch {
+                print("error: ", error)
+            }
+        })
+        task.resume()
+    }
+    
 }

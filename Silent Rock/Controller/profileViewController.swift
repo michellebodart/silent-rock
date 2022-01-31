@@ -53,6 +53,15 @@ class profileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func deleteAccountTapped(_ sender: Any) {
+        player.deletePlayer(playerID: self.playerID!, vc: self, completion: {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "loginView", sender: self)
+            }
+        })
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
