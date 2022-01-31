@@ -109,19 +109,41 @@
                                     <action selector="exitButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UvX-H5-XCR"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4oz-um-nLQ">
+                                <rect key="frame" x="0.0" y="734.33333333333337" width="390" height="109.66666666666663"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="NAu-v7-Mfz">
+                                <rect key="frame" x="20" y="734.33333333333337" width="350" height="109.66666666666663"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaderboard" translatesAutoresizingMaskIntoConstraints="NO" id="kkz-Qa-zfN">
+                                        <rect key="frame" x="0.0" y="0.0" width="83.333333333333329" height="109.66666666666667"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Ukt-Ze-FBB">
+                                        <rect key="frame" x="133.33333333333334" y="0.0" width="83.333333333333343" height="109.66666666666667"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="XBS-m0-Y8s">
+                                        <rect key="frame" x="266.66666666666669" y="0.0" width="83.333333333333314" height="109.66666666666667"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2oS-Mh-ldg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="FAq-C9-K61" secondAttribute="bottom" constant="-10" id="11X-jg-iuf"/>
                             <constraint firstItem="2QO-eG-JMJ" firstAttribute="leading" secondItem="2oS-Mh-ldg" secondAttribute="leading" constant="50" id="3wQ-2S-dpa"/>
+                            <constraint firstItem="NAu-v7-Mfz" firstAttribute="height" secondItem="4oz-um-nLQ" secondAttribute="height" id="4eK-Td-dfs"/>
                             <constraint firstItem="vMg-aS-PUa" firstAttribute="trailing" secondItem="wRi-jm-g75" secondAttribute="trailing" id="7Ho-c0-D3E"/>
+                            <constraint firstItem="4oz-um-nLQ" firstAttribute="height" secondItem="YZr-UH-3mm" secondAttribute="height" multiplier="0.45" id="7aJ-UM-fCz"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="centerX" secondItem="FAq-C9-K61" secondAttribute="centerX" id="7oY-8c-l3B"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="width" secondItem="YZr-UH-3mm" secondAttribute="height" multiplier="426:229" id="HNJ-pv-6Df"/>
                             <constraint firstAttribute="bottom" secondItem="YZr-UH-3mm" secondAttribute="bottom" constant="-7" id="InY-f5-glz"/>
                             <constraint firstItem="5TY-t9-9nM" firstAttribute="leading" secondItem="2oS-Mh-ldg" secondAttribute="leading" constant="10" id="Jqa-Mt-gm9"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="width" secondItem="FAq-C9-K61" secondAttribute="width" id="JvU-uU-IyZ"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" id="LAz-7I-LzC"/>
+                            <constraint firstAttribute="bottom" secondItem="NAu-v7-Mfz" secondAttribute="bottom" id="MS2-kt-inY"/>
+                            <constraint firstItem="4oz-um-nLQ" firstAttribute="trailing" secondItem="2oS-Mh-ldg" secondAttribute="trailing" id="Mv0-PD-ueb"/>
                             <constraint firstAttribute="trailing" secondItem="FAq-C9-K61" secondAttribute="trailing" constant="-50" id="NLc-fR-mvD"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="bottom" secondItem="uRf-0M-zgZ" secondAttribute="top" constant="-30" id="XfB-J4-yah"/>
                             <constraint firstItem="vMg-aS-PUa" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" id="YOK-In-aM5"/>
@@ -132,12 +154,16 @@
                             <constraint firstAttribute="bottom" secondItem="vMg-aS-PUa" secondAttribute="bottom" id="e7o-TX-DSH"/>
                             <constraint firstItem="vMg-aS-PUa" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" id="ix1-S4-ZBU"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" constant="-35" id="m1n-6L-G8H"/>
+                            <constraint firstAttribute="bottom" secondItem="4oz-um-nLQ" secondAttribute="bottom" id="nG0-iu-Vg0"/>
                             <constraint firstItem="2QO-eG-JMJ" firstAttribute="centerY" secondItem="wRi-jm-g75" secondAttribute="centerY" id="ntn-mb-qhi"/>
                             <constraint firstAttribute="bottom" secondItem="YZr-UH-3mm" secondAttribute="bottom" constant="-46" id="pc5-lm-GFC"/>
+                            <constraint firstAttribute="trailing" secondItem="NAu-v7-Mfz" secondAttribute="trailing" constant="20" id="poU-oW-RTQ"/>
                             <constraint firstAttribute="trailing" secondItem="FAq-C9-K61" secondAttribute="trailing" constant="-32" id="sj6-x0-K8f"/>
+                            <constraint firstItem="NAu-v7-Mfz" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" constant="20" id="vWf-u0-nad"/>
                             <constraint firstItem="uRf-0M-zgZ" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" constant="30" id="vgU-B7-hzs"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="leading" relation="lessThanOrEqual" secondItem="wRi-jm-g75" secondAttribute="leading" constant="-50" id="xYF-f6-6D5"/>
                             <constraint firstItem="5TY-t9-9nM" firstAttribute="centerY" secondItem="wRi-jm-g75" secondAttribute="centerY" id="xil-dA-bGc"/>
+                            <constraint firstItem="4oz-um-nLQ" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" id="yPu-qX-Cgs"/>
                             <constraint firstItem="uRf-0M-zgZ" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" constant="30" id="z62-Rf-2D6"/>
                         </constraints>
                         <variation key="default">
@@ -203,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3430" y="839"/>
+            <point key="canvasLocation" x="3429.2307692307691" y="838.86255924170609"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="rwS-GF-6sn">
@@ -935,6 +961,9 @@
         <segue reference="gTG-EQ-TeT"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="home" width="512" height="512"/>
+        <image name="leaderboard" width="512" height="512"/>
+        <image name="profile" width="512" height="512"/>
         <image name="silent_rock_2-removebg-preview" width="650" height="384"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
