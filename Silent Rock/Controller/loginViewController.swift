@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Contacts
 
 class loginViewController: UIViewController {
     let phone: Phone = Phone()
@@ -40,55 +41,9 @@ class loginViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text {
-            var userExists = false
-            var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
-            request.httpMethod = "GET"
-            let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                guard error == nil else {
-                    print("error")
-                    DispatchQueue.main.async {
-                        self.errorMessageLabel.text = "Oops, something went wrong"
-                    }
-                    return
-                }
-                guard let data = data else {
-                    print("error, did not receive data")
-                    DispatchQueue.main.async {
-                        self.errorMessageLabel.text = "Oops, something went wrong"
-                    }
-                    return
-                }
-                guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
-                    print("error, HTTP request failed")
-                    DispatchQueue.main.async {
-                        self.errorMessageLabel.text = "Oops, something went wrong"
-                    }
-                    return
-                }
-                do {
-                    let httpResponseCode = response.statusCode
-                    print(httpResponseCode)
-                    let json = try JSONSerialization.jsonObject(with: data) as! Array<Any>
-                    for player in json {
-                        let phone = (player as! NSDictionary)["phone"]
-                        if phoneNumber == (phone! as! String) {
-                            userExists = true
-                        }
-                    }
-                    if userExists {
-                        self.player.verifyFromLogin(phoneNumber: phoneNumber, vc: self)
-                    }
-                    DispatchQueue.main.async {
-                        if !userExists {
-                            self.errorMessageLabel.text = "The phone number you entered is not registered with an account"
-                        }
-                    }
-                } catch {
-                    print("error: ", error)
-                }
+            player.checkPlayerDataFromLogin(phoneNumber: phoneNumber, vc: self, completion: { phoneNumber, json, vc in
+                self.self.player.signInOrError(phoneNumber: phoneNumber, json: json, vc: vc)
             })
-            task.resume()
         }
     }
     
