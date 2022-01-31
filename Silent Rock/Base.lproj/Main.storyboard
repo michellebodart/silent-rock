@@ -144,6 +144,9 @@
                                         <rect key="frame" x="284" y="0.0" width="130" height="115.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="profileButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVB-EV-Cb1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -249,6 +252,8 @@
                         <outlet property="startButton" destination="d73-mT-q2H" id="98G-ti-aYL"/>
                         <outlet property="stopButton" destination="gCu-HO-tEq" id="xlc-xW-XXX"/>
                         <outlet property="warningLabel" destination="5TY-t9-9nM" id="XvQ-re-JNX"/>
+                        <segue destination="58s-Nn-4xE" kind="presentation" identifier="profileView" animates="NO" id="ZcJ-PY-ttx"/>
+                        <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" id="bas-GN-Um6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -622,6 +627,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Use without account">
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" id="0FR-R7-2b5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zn1-5c-YuV"/>
@@ -958,6 +966,144 @@
             </objects>
             <point key="canvasLocation" x="4135.3846153846152" y="122.27488151658767"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="raN-PQ-yqt">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="58s-Nn-4xE" customClass="profileViewController" customModule="Silent_Rock" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZBJ-jA-bjf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="bM8-yS-C1T">
+                                <rect key="frame" x="-32" y="-7" width="478" height="257"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bM8-yS-C1T" secondAttribute="height" multiplier="426:229" id="LX6-6g-A9z"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sac-Td-gTP">
+                                <rect key="frame" x="0.0" y="780.5" width="414" height="115.5"/>
+                                <color key="backgroundColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="R4h-Lj-9J8">
+                                <rect key="frame" x="20" y="780.5" width="374" height="115.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaderboard" translatesAutoresizingMaskIntoConstraints="NO" id="Di7-ZZ-Nw1">
+                                        <rect key="frame" x="0.0" y="0.0" width="91.5" height="115.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="X5J-iV-UU3">
+                                        <rect key="frame" x="141.5" y="0.0" width="91" height="115.5"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="a1U-Tk-qpm">
+                                        <rect key="frame" x="282.5" y="0.0" width="91.5" height="115.5"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Uf7-OE-6zB">
+                                <rect key="frame" x="0.0" y="780.5" width="414" height="115.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogm-eF-atR">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="115.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCx-ko-cpe">
+                                        <rect key="frame" x="142" y="0.0" width="130" height="115.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="hz3-qv-AwS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHz-zV-vZq">
+                                        <rect key="frame" x="284" y="0.0" width="130" height="115.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="hIL-Cf-NRf">
+                                <rect key="frame" x="10" y="260" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="SBQ-5d-QLa"/>
+                                    <constraint firstAttribute="width" constant="45" id="ivm-uL-cJd"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awa-lf-vw6">
+                                <rect key="frame" x="10" y="260" width="45" height="45"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" id="Zmc-7I-d7K"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MDP-ga-cyv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="awa-lf-vw6" firstAttribute="leading" secondItem="hIL-Cf-NRf" secondAttribute="leading" id="3vo-ma-Wjt"/>
+                            <constraint firstItem="bM8-yS-C1T" firstAttribute="leading" secondItem="ZBJ-jA-bjf" secondAttribute="leading" constant="-32" id="DoX-1i-1Eu"/>
+                            <constraint firstItem="bM8-yS-C1T" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ZBJ-jA-bjf" secondAttribute="leading" constant="-50" id="Efd-wu-Ctu"/>
+                            <constraint firstAttribute="bottom" secondItem="Sac-Td-gTP" secondAttribute="bottom" id="Fco-B7-P3b"/>
+                            <constraint firstAttribute="bottom" secondItem="R4h-Lj-9J8" secondAttribute="bottom" id="GT6-1X-GC4"/>
+                            <constraint firstAttribute="bottom" secondItem="Uf7-OE-6zB" secondAttribute="bottom" id="MOP-j6-uOR"/>
+                            <constraint firstItem="R4h-Lj-9J8" firstAttribute="height" secondItem="Sac-Td-gTP" secondAttribute="height" id="PE2-6L-de9"/>
+                            <constraint firstItem="Sac-Td-gTP" firstAttribute="trailing" secondItem="MDP-ga-cyv" secondAttribute="trailing" id="QTy-eD-TGD"/>
+                            <constraint firstItem="hIL-Cf-NRf" firstAttribute="leading" secondItem="MDP-ga-cyv" secondAttribute="leading" constant="10" id="QtC-tg-3ND"/>
+                            <constraint firstItem="Uf7-OE-6zB" firstAttribute="leading" secondItem="MDP-ga-cyv" secondAttribute="leading" id="Qzt-HF-pkk"/>
+                            <constraint firstItem="bM8-yS-C1T" firstAttribute="top" secondItem="ZBJ-jA-bjf" secondAttribute="top" constant="-7" id="RdM-qU-zOj"/>
+                            <constraint firstItem="awa-lf-vw6" firstAttribute="centerY" secondItem="hIL-Cf-NRf" secondAttribute="centerY" id="Rz1-N3-oyq"/>
+                            <constraint firstItem="MDP-ga-cyv" firstAttribute="trailing" secondItem="Uf7-OE-6zB" secondAttribute="trailing" id="W9S-Gl-Y1s"/>
+                            <constraint firstItem="hIL-Cf-NRf" firstAttribute="top" secondItem="bM8-yS-C1T" secondAttribute="bottom" constant="10" id="YLI-Fb-7Dk"/>
+                            <constraint firstAttribute="trailing" secondItem="bM8-yS-C1T" secondAttribute="trailing" constant="-32" id="Ypn-yS-Cod"/>
+                            <constraint firstItem="bM8-yS-C1T" firstAttribute="top" secondItem="ZBJ-jA-bjf" secondAttribute="top" constant="-35" id="b9c-xg-dN3"/>
+                            <constraint firstItem="Sac-Td-gTP" firstAttribute="leading" secondItem="ZBJ-jA-bjf" secondAttribute="leading" id="bSB-xr-fXI"/>
+                            <constraint firstItem="awa-lf-vw6" firstAttribute="height" secondItem="hIL-Cf-NRf" secondAttribute="height" id="dAx-Yf-fv6"/>
+                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="bM8-yS-C1T" secondAttribute="bottom" constant="-10" id="dT2-34-p6u"/>
+                            <constraint firstItem="Uf7-OE-6zB" firstAttribute="height" secondItem="R4h-Lj-9J8" secondAttribute="height" id="eub-RL-ez9"/>
+                            <constraint firstItem="R4h-Lj-9J8" firstAttribute="leading" secondItem="ZBJ-jA-bjf" secondAttribute="leading" constant="20" id="m3H-bQ-e3J"/>
+                            <constraint firstItem="Sac-Td-gTP" firstAttribute="height" secondItem="bM8-yS-C1T" secondAttribute="height" multiplier="0.45" id="mEN-Ot-gg1"/>
+                            <constraint firstItem="awa-lf-vw6" firstAttribute="width" secondItem="hIL-Cf-NRf" secondAttribute="width" id="nPK-c7-ABD"/>
+                            <constraint firstAttribute="trailing" secondItem="bM8-yS-C1T" secondAttribute="trailing" constant="-50" id="qNg-Ib-DxV"/>
+                            <constraint firstAttribute="trailing" secondItem="R4h-Lj-9J8" secondAttribute="trailing" constant="20" id="yt8-de-vC2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Efd-wu-Ctu"/>
+                                <exclude reference="b9c-xg-dN3"/>
+                                <exclude reference="dT2-34-p6u"/>
+                                <exclude reference="qNg-Ib-DxV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="DoX-1i-1Eu"/>
+                                <include reference="Efd-wu-Ctu"/>
+                                <exclude reference="RdM-qU-zOj"/>
+                                <exclude reference="Ypn-yS-Cod"/>
+                                <include reference="b9c-xg-dN3"/>
+                                <include reference="dT2-34-p6u"/>
+                                <include reference="qNg-Ib-DxV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="DoX-1i-1Eu"/>
+                                <include reference="Efd-wu-Ctu"/>
+                                <exclude reference="RdM-qU-zOj"/>
+                                <exclude reference="Ypn-yS-Cod"/>
+                                <include reference="b9c-xg-dN3"/>
+                                <include reference="dT2-34-p6u"/>
+                                <include reference="qNg-Ib-DxV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="iKT-K5-jtf"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6KM-d0-Gsn" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4292.753623188406" y="837.72321428571422"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="9sp-UM-f2L">
@@ -982,11 +1128,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="zhb-Ty-BYA"/>
         <segue reference="gnw-4U-HX2"/>
-        <segue reference="gTG-EQ-TeT"/>
+        <segue reference="oZu-LY-NIg"/>
+        <segue reference="8pi-xI-2oO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="home" width="512" height="512"/>
         <image name="leaderboard" width="512" height="512"/>
+        <image name="logout" width="512" height="512"/>
         <image name="profile" width="512" height="512"/>
         <image name="silent_rock_2-removebg-preview" width="650" height="384"/>
         <systemColor name="labelColor">

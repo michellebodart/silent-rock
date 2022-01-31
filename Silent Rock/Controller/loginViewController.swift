@@ -13,6 +13,7 @@ class loginViewController: UIViewController {
     let phone: Phone = Phone()
     let player: Player = Player()
     var verificationID: String = ""
+    var playerID: Int? = nil
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var signInButton: BorderButton!
@@ -53,13 +54,13 @@ class loginViewController: UIViewController {
             let phone = (player as! NSDictionary)["phone"]
             if phoneNumber == (phone! as! String) {
                 phoneUsed = true
+                self.playerID = (player as! NSDictionary)["id"] as! Int
             }
         }
         if !phoneUsed {
             DispatchQueue.main.async {
                 self.signInButton.isEnabled = false
                 self.errorMessageLabel.text = "The phone number you entered is not registered with an account"
-                self.phoneNumberTextField.text = ""
             }
         } else {
             self.player.verifyFromLogin(phoneNumber: phoneNumber, vc: self)
@@ -71,6 +72,7 @@ class loginViewController: UIViewController {
             let vvc = segue.destination as? verificationViewController
             vvc?.phoneNumber = phoneNumberTextField.text ?? ""
             vvc?.verificationID = self.verificationID
+            vvc?.playerID = self.playerID
         } else if segue.destination is registerViewController {
             let rvc = segue.destination as? registerViewController
             rvc?.phoneNumber = phoneNumberTextField.text ?? ""

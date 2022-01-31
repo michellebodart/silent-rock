@@ -10,7 +10,7 @@ import Firebase
 
 class Player: NSObject {
     
-    func addToDatabase(username: String, phoneNumber: String) {
+    func addToDatabase(username: String, phoneNumber: String, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {
         var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
         request.httpMethod = "POST"
         
@@ -44,8 +44,12 @@ class Player: NSObject {
                 return
             }
             do {
+                let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
+                completion(json)
                 let httpResponseCode = response.statusCode
                 print(httpResponseCode)
+            } catch {
+                print(error)
             }
         })
         task.resume()

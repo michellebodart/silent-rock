@@ -10,9 +10,9 @@ import Firebase
 
 class verificationViewController: UIViewController {
 
+    var playerID: Int? = nil
     let player: Player = Player()
     let verificationCode: VerificationCode = VerificationCode()
-    var verified: Bool = false
     @IBOutlet weak var verificationCodeTextField: UITextField!
     var phoneNumber: String = ""
     var verificationID: String = ""
@@ -51,11 +51,15 @@ class verificationViewController: UIViewController {
             // User is signed in
             // Register user if new user
             if self.username != "" {
-                self.player.addToDatabase(username: self.username, phoneNumber: self.phoneNumber)
+                self.player.addToDatabase(username: self.username, phoneNumber: self.phoneNumber, completion: { json in
+                        self.playerID = (json["id"] as? Int)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "mainViewController", sender: self)
+                    }
+                })
+            } else {
+                self.performSegue(withIdentifier: "mainViewController", sender: self)
             }
-            
-            self.verified = true
-            self.performSegue(withIdentifier: "mainViewController", sender: self)
         }
     }
     
@@ -75,7 +79,7 @@ class verificationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
-            vc?.loggedIn = self.verified
+            vc?.playerID = self.playerID
         }
     }
     

@@ -11,7 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    var loggedIn: Bool = false
+    var playerID: Int? = nil
     let locationManager:CLLocationManager = CLLocationManager()
     let state = UIApplication.shared.applicationState
     
@@ -126,6 +126,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 alarmOff()
                 inRegion = false
             }
+        }
+    }
+    
+    @IBAction func profileButtonTapped(_ sender: Any) {
+        if self.playerID == nil {
+            self.performSegue(withIdentifier: "loginView", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "profileView", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is profileViewController {
+            let pvc = segue.destination as? profileViewController
+            pvc?.playerID = self.playerID
         }
     }
     
