@@ -155,39 +155,40 @@ class Player: NSObject {
         task.resume()
     }
     
-    func signUpOrError(phoneNumber: String, username: String, json: Array<Any>, vc: registerViewController) -> Void {
-        var phoneUsed = false
-        var usernameUsed = false
-        for player in json {
-            let phone = (player as! NSDictionary)["phone"]
-            let playerUsername = (player as! NSDictionary)["username"]
-            if phoneNumber == (phone! as! String) {
-                phoneUsed = true
-            }
-            if username == (playerUsername! as! String) {
-                usernameUsed = true
-            }
-        }
-        if phoneUsed || usernameUsed {
-            DispatchQueue.main.async {
-                vc.signUpButton.isEnabled = false
-                if phoneUsed {
-                    vc.phoneNumberErrorMessage.text = "The phone number you entered is already registered with an account"
-                    vc.phoneNumberTextField.text = ""
-                } else {
-                    vc.phoneNumberErrorMessage.text = ""
+    func getPhoneUsername (playerID: Int, vc: profileViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void){
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        request.httpMethod = "GET"
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                print("error")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
                 }
-                if usernameUsed {
-                    vc.usernameErrorMessage.text = "Sorry, that username is taken"
-                    vc.usernameTextField.text = ""
-                } else {
-                    vc.usernameErrorMessage.text = ""
-                }
+                return
             }
-        } else {
-            vc.player.verifyFromRegister(phoneNumber: phoneNumber, vc: vc)
-        }
-        
+            guard let data = data else {
+                print("error, did not receive data")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                print("error, HTTP request failed")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                }
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
+                completion(json)
+            } catch {
+                print("error: ", error)
+            }
+        })
+        task.resume()
     }
     
 }
