@@ -273,7 +273,7 @@ class Player: NSObject {
                 DispatchQueue.main.async {
                     if (response as? HTTPURLResponse)?.statusCode == 400 {
                         vc.errorMessageLabel.text = "Sorry, that username is taken"
-                        // CHECK IF THIS WORKS -MB
+                        vc.usernameTextField.text = ""
                     } else {
                     vc.errorMessageLabel.text = "oops, something went wrong"
                     }

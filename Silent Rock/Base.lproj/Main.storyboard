@@ -1111,7 +1111,10 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="eMU-Xp-zcb">
                                 <rect key="frame" x="20" y="353" width="374" height="36"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="26"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
+                                <connections>
+                                    <action selector="usernameTextFieldUpdated:" destination="58s-Nn-4xE" eventType="editingChanged" id="zFG-qD-xsf"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrb-fL-hyV" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
                                 <rect key="frame" x="147" y="740.5" width="120" height="20"/>
@@ -1139,7 +1142,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show my stats on leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDt-9l-dYZ">
                                         <rect key="frame" x="56" y="0.0" width="318" height="36"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1284,7 +1287,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="es7-6y-SqN"/>
+        <segue reference="zhb-Ty-BYA"/>
         <segue reference="gnw-4U-HX2"/>
         <segue reference="Zmc-7I-d7K"/>
         <segue reference="hz3-qv-AwS"/>

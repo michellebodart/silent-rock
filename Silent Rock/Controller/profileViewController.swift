@@ -9,6 +9,7 @@ import UIKit
 
 class profileViewController: UIViewController {
     
+    let username: Username = Username()
     let player: Player = Player()
     @IBOutlet weak var errorMessageLabel: UILabel!
     var playerID: Int? = nil
@@ -52,18 +53,34 @@ class profileViewController: UIViewController {
             }
         })
         
+        // Hide keyboard
+        self.hideKeyboardWhenTappedAround()
+        
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func editUsernameButtonTapped(_ sender: Any) {
         self.usernameTextField.text = ""
+        self.submitButton.isEnabled = false
         self.usernameLabel.isHidden = true
         self.editUsernameButton.isHidden = true
         self.usernameTextField.isHidden = false
         self.cancelButton.isHidden = false
         self.submitButton.isHidden = false
     }
+    
+    @IBAction func usernameTextFieldUpdated(_ sender: Any) {
+        usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", username: usernameTextField.text ?? "")
+        errorMessageLabel.text = ""
+        if  usernameTextField.text != "" {
+            submitButton.isEnabled = true
+        } else {
+            submitButton.isEnabled = false
+            
+        }
+    }
+    
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.usernameLabel.isHidden = false
