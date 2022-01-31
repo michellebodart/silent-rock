@@ -11,6 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+    var loggedIn: Bool = false
     let locationManager:CLLocationManager = CLLocationManager()
     let state = UIApplication.shared.applicationState
     
@@ -45,7 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func soundAlarm() {
         if stopButton.isEnabled {
-            backgroundColor.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 1)
+            backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
             startButton.isHidden = true
             stopButton.isHidden = true
             warningLabel.isHidden = false
@@ -127,6 +128,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
+    
 }
 
 extension ViewController: UNUserNotificationCenterDelegate {

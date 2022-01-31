@@ -12,6 +12,7 @@ class verificationViewController: UIViewController {
 
     let player: Player = Player()
     let verificationCode: VerificationCode = VerificationCode()
+    var verified: Bool = false
     @IBOutlet weak var verificationCodeTextField: UITextField!
     var phoneNumber: String = ""
     var verificationID: String = ""
@@ -53,6 +54,7 @@ class verificationViewController: UIViewController {
                 self.player.addToDatabase(username: self.username, phoneNumber: self.phoneNumber)
             }
             
+            self.verified = true
             self.performSegue(withIdentifier: "mainViewController", sender: self)
         }
     }
@@ -69,4 +71,12 @@ class verificationViewController: UIViewController {
                 self.verificationID = verificationID!
             }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is ViewController {
+            let vc = segue.destination as? ViewController
+            vc?.loggedIn = self.verified
+        }
+    }
+    
 }
