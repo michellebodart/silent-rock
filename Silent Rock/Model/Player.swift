@@ -10,7 +10,7 @@ import Firebase
 
 class Player: NSObject {
     
-    func addToDatabase(username: String, phoneNumber: String, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {
+    func addToDatabase(username: String, phoneNumber: String, vc: verificationViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {
         var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
         request.httpMethod = "POST"
         
@@ -22,7 +22,7 @@ class Player: NSObject {
         let uploadDataModel = UploadData(username: username, phone: phoneNumber)
         
         guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
-            print("error trying to convert model to JSON data")
+            vc.errorMessageLabel.text = "oops, something went wrong"
             return
         }
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -32,15 +32,21 @@ class Player: NSObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             guard error == nil else {
-                print("error calling POST")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
                 return
             }
             guard let data = data else {
-                print("error, did not receive data")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
                 return
             }
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
-                print("error, HTTP request failed")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
                 return
             }
             do {
@@ -217,12 +223,57 @@ class Player: NSObject {
                 }
                 return
             }
-            do {
-//                let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
-                completion()
-            } catch {
-                print("error: ", error)
+            completion()
+        })
+        task.resume()
+    }
+    
+    func updateUsername(playerID: Int, username: String, vc: profileViewController, completion: @escaping () -> Void) {
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        request.httpMethod = "PATCH"
+        
+        struct UploadData: Codable {
+                let username: String
+        }
+        
+        let uploadDataModel = UploadData(username: username)
+        
+        guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
+            DispatchQueue.main.async {
+                vc.errorMessageLabel.text = "oops, something went wrong"
             }
+            return
+        }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = jsonData
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                DispatchQueue.main.async {
+                    if (response as? HTTPURLResponse)?.statusCode == 400 {
+                        vc.errorMessageLabel.text = "Sorry, that username is taken"
+                        // CHECK IF THIS WORKS -MB
+                    } else {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                    }
+                }
+                return
+            }
+            completion()
         })
         task.resume()
     }

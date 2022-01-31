@@ -1061,6 +1061,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Edit username">
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="editUsernameButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="FRh-NP-ntw"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="C1O-Ag-E1n">
                                 <rect key="frame" x="134.5" y="409" width="145" height="20"/>
@@ -1075,6 +1078,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="voz-Rd-zjo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fd8-rJ-I1A" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
                                         <rect key="frame" x="76" y="0.0" width="69" height="20"/>
@@ -1086,6 +1092,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Submit">
                                             <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="submitButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="8iG-Ap-1XV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1274,7 +1283,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="es7-6y-SqN"/>
-        <segue reference="bQc-8K-LML"/>
+        <segue reference="gnw-4U-HX2"/>
         <segue reference="Zmc-7I-d7K"/>
         <segue reference="hz3-qv-AwS"/>
     </inferredMetricsTieBreakers>

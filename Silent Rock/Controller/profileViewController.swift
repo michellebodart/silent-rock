@@ -28,7 +28,7 @@ class profileViewController: UIViewController {
         cancelButton.isHidden = true
         submitButton.isHidden = true
         
-        // Set username
+        // Set username, phone, and checkbox
         player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
             DispatchQueue.main.async {
                 self.usernameLabel.text = ((json as NSDictionary)["username"] as! String)
@@ -54,6 +54,40 @@ class profileViewController: UIViewController {
     }
     
     
+    @IBAction func editUsernameButtonTapped(_ sender: Any) {
+        self.usernameLabel.isHidden = true
+        self.editUsernameButton.isHidden = true
+        self.usernameTextField.isHidden = false
+        self.cancelButton.isHidden = false
+        self.submitButton.isHidden = false
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.usernameLabel.isHidden = false
+        self.editUsernameButton.isHidden = false
+        self.usernameTextField.isHidden = true
+        self.usernameTextField.text = ""
+        self.cancelButton.isHidden = true
+        self.submitButton.isHidden = true
+        self.errorMessageLabel.text = ""
+    }
+    
+    
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        player.updateUsername(playerID: self.playerID!, username: self.usernameTextField.text!, vc: self, completion: {
+            self.submitButton.isHidden = true
+            self.cancelButton.isHidden = true
+            self.usernameTextField.isHidden = true
+            self.usernameLabel.isHidden = false
+            self.editUsernameButton.isHidden = false
+            self.player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
+                DispatchQueue.main.async {
+                    self.usernameLabel.text = ((json as NSDictionary)["username"] as! String)
+                }
+            })
+        })
+    }
+    
     @IBAction func deleteAccountTapped(_ sender: Any) {
         player.deletePlayer(playerID: self.playerID!, vc: self, completion: {
             DispatchQueue.main.async {
@@ -61,6 +95,8 @@ class profileViewController: UIViewController {
             }
         })
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ViewController {

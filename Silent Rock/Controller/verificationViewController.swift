@@ -51,7 +51,7 @@ class verificationViewController: UIViewController {
             // User is signed in
             // Register user if new user
             if self.username != "" {
-                self.player.addToDatabase(username: self.username, phoneNumber: self.phoneNumber, completion: { json in
+                self.player.addToDatabase(username: self.username, phoneNumber: self.phoneNumber, vc: self, completion: { json in
                         self.playerID = (json["id"] as? Int)
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "mainViewController", sender: self)
@@ -64,7 +64,6 @@ class verificationViewController: UIViewController {
     }
     
     @IBAction func sendNewCodeTapped(_ sender: Any) {
-        print("in send new code!")
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
                     self.errorMessageLabel.text = "there was an error"
