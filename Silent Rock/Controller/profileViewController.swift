@@ -8,12 +8,12 @@
 import UIKit
 
 class profileViewController: UIViewController {
-    @IBOutlet weak var signOutButton: UIButton!
+//    @IBOutlet weak var signOutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signOutButton.contentMode = .center
-        signOutButton.imageView?.contentMode = .scaleAspectFit
+//        signOutButton.contentMode = .center
+//        signOutButton.imageView?.contentMode = .scaleAspectFit
 
         // Do any additional setup after loading the view.
     }

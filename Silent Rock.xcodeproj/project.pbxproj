@@ -16,6 +16,7 @@
 		C91D8726273C35CA00283190 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8725273C35CA00283190 /* BorderButton.swift */; };
 		C92ADF9B27A7818E002A0030 /* VerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92ADF9A27A7818E002A0030 /* VerificationCode.swift */; };
 		C92ADF9D27A79282002A0030 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92ADF9C27A79282002A0030 /* profileViewController.swift */; };
+		C963E5F127A8582700AE9DC0 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963E5F027A8582700AE9DC0 /* ImageButton.swift */; };
 		C985836327A08AC1002197FD /* verificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C985836227A08AC1002197FD /* verificationViewController.swift */; };
 		C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9957C7E279F7E750062A009 /* loginViewController.swift */; };
 		C9957C81279F7F4C0062A009 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9957C80279F7F4C0062A009 /* registerViewController.swift */; };
@@ -41,6 +42,7 @@
 		C91D8725273C35CA00283190 /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 		C92ADF9A27A7818E002A0030 /* VerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCode.swift; sourceTree = "<group>"; };
 		C92ADF9C27A79282002A0030 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
+		C963E5F027A8582700AE9DC0 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		C985836227A08AC1002197FD /* verificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verificationViewController.swift; sourceTree = "<group>"; };
 		C9957C7E279F7E750062A009 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		C9957C80279F7F4C0062A009 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				C91D8725273C35CA00283190 /* BorderButton.swift */,
+				C963E5F027A8582700AE9DC0 /* ImageButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */,
 				C91D870F273C2F6B00283190 /* AppDelegate.swift in Sources */,
 				C92ADF9B27A7818E002A0030 /* VerificationCode.swift in Sources */,
+				C963E5F127A8582700AE9DC0 /* ImageButton.swift in Sources */,
 				C9FA01A227A366FD00612E10 /* Phone.swift in Sources */,
 				C9FA01A027A31B2E00612E10 /* Player.swift in Sources */,
 				C91D8711273C2F6B00283190 /* SceneDelegate.swift in Sources */,
