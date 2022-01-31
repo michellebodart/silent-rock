@@ -169,7 +169,14 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
-                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.errorMessageLabel.text = "Failed to load account information"
+                    vc.editUsernameButton.isHidden = true
+                    vc.usernameTextField.isHidden = true
+                    vc.usernameLabel.isHidden = true
+                    vc.phoneNumberLabel.isHidden = true
+                    vc.checkboxImage.isHidden = true
+                    vc.checkboxLabel.isHidden = true
+                    vc.deleteAccountButton.isHidden = true
                 }
                 return
             }

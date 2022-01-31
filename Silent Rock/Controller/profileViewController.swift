@@ -19,6 +19,8 @@ class profileViewController: UIViewController {
     @IBOutlet weak var submitButton: BorderButton!
     @IBOutlet weak var editUsernameButton: BorderButton!
     @IBOutlet weak var checkboxImage: UIImageView!
+    @IBOutlet weak var checkboxLabel: UILabel!
+    @IBOutlet weak var deleteAccountButton: BorderButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,7 @@ class profileViewController: UIViewController {
     
     
     @IBAction func editUsernameButtonTapped(_ sender: Any) {
+        self.usernameTextField.text = ""
         self.usernameLabel.isHidden = true
         self.editUsernameButton.isHidden = true
         self.usernameTextField.isHidden = false
@@ -66,7 +69,6 @@ class profileViewController: UIViewController {
         self.usernameLabel.isHidden = false
         self.editUsernameButton.isHidden = false
         self.usernameTextField.isHidden = true
-        self.usernameTextField.text = ""
         self.cancelButton.isHidden = true
         self.submitButton.isHidden = true
         self.errorMessageLabel.text = ""
@@ -75,16 +77,14 @@ class profileViewController: UIViewController {
     
     @IBAction func submitButtonTapped(_ sender: Any) {
         player.updateUsername(playerID: self.playerID!, username: self.usernameTextField.text!, vc: self, completion: {
-            self.submitButton.isHidden = true
-            self.cancelButton.isHidden = true
-            self.usernameTextField.isHidden = true
-            self.usernameLabel.isHidden = false
-            self.editUsernameButton.isHidden = false
-            self.player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
-                DispatchQueue.main.async {
-                    self.usernameLabel.text = ((json as NSDictionary)["username"] as! String)
-                }
-            })
+            DispatchQueue.main.async {
+                self.submitButton.isHidden = true
+                self.cancelButton.isHidden = true
+                self.usernameTextField.isHidden = true
+                self.usernameLabel.isHidden = false
+                self.editUsernameButton.isHidden = false
+                self.usernameLabel.text = self.usernameTextField.text!
+            }
         })
     }
     

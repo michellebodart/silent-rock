@@ -1239,6 +1239,8 @@
                     <connections>
                         <outlet property="cancelButton" destination="qjn-YZ-Kii" id="dTO-Nx-WSN"/>
                         <outlet property="checkboxImage" destination="J6T-t0-QYg" id="Uk8-MP-HrR"/>
+                        <outlet property="checkboxLabel" destination="ZDt-9l-dYZ" id="Ym1-dr-q3L"/>
+                        <outlet property="deleteAccountButton" destination="jrb-fL-hyV" id="g06-eE-47c"/>
                         <outlet property="editUsernameButton" destination="Msa-fa-jNU" id="iQL-G6-r7T"/>
                         <outlet property="errorMessageLabel" destination="EEg-L7-CCK" id="hgp-IZ-HEi"/>
                         <outlet property="phoneNumberLabel" destination="GUj-u9-RxJ" id="Meh-ay-R4o"/>
