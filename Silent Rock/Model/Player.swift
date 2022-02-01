@@ -178,6 +178,7 @@ class Player: NSObject {
                     vc.checkboxImage.isHidden = true
                     vc.checkboxLabel.isHidden = true
                     vc.deleteAccountButton.isHidden = true
+                    vc.signOutButton.isHidden = true
                 }
                 return
             }
@@ -332,7 +333,7 @@ class Player: NSObject {
         task.resume()
     }
     
-    func getPlayerDataFromLeaderboard (vc: leaderboardViewController, completion: @escaping (_ json: Array<Any>) -> Void) {
+    func getPlayerDataForLeaderboard (vc: leaderboardViewController, completion: @escaping (_ json: Array<Any>) -> Void) {
         var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
@@ -340,21 +341,21 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
-                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.errorMessageLabel.text = "Failed to load leaderboard information"
                 }
                 return
             }
             guard let data = data else {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
-                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.errorMessageLabel.text = "Failed to load leaderboard information"
                 }
                 return
             }
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
-                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.errorMessageLabel.text = "Failed to load leaderboard information"
                 }
                 return
             }

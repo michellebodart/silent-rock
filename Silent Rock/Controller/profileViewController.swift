@@ -9,14 +9,15 @@ import UIKit
 
 class profileViewController: UIViewController {
     
-    
-    @IBOutlet weak var areYouSureStack: UIStackView!
-    let username: Username = Username()
-    let player: Player = Player()
-    @IBOutlet weak var checkboxButton: UIButton!
-    @IBOutlet weak var errorMessageLabel: UILabel!
     var playerID: Int? = nil
     var visibleOnLeaderboard: Bool = true
+    
+    let username: Username = Username()
+    let player: Player = Player()
+    
+    @IBOutlet weak var areYouSureStack: UIStackView!
+    @IBOutlet weak var checkboxButton: UIButton!
+    @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -26,7 +27,8 @@ class profileViewController: UIViewController {
     @IBOutlet weak var checkboxImage: UIImageView!
     @IBOutlet weak var checkboxLabel: UILabel!
     @IBOutlet weak var deleteAccountButton: BorderButton!
-    
+    @IBOutlet weak var signOutButton: BorderButton!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -18,7 +18,7 @@ class leaderboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        player.getPlayerDataFromLeaderboard(vc: self, completion: {json in
+        player.getPlayerDataForLeaderboard(vc: self, completion: {json in
             self.doAfterGetPlayerData(json: json)
         })
         leaderboardTableView.delegate = self
