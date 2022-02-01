@@ -13,6 +13,7 @@ class profileViewController: UIViewController {
     let player: Player = Player()
     @IBOutlet weak var errorMessageLabel: UILabel!
     var playerID: Int? = nil
+    var visibleOnLeaderboard: Bool = true
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -36,20 +37,8 @@ class profileViewController: UIViewController {
             DispatchQueue.main.async {
                 self.usernameLabel.text = ((json as NSDictionary)["username"] as! String)
                 self.phoneNumberLabel.text = ((json as NSDictionary)["phone"] as! String)
-                if ((json as NSDictionary)["visible_on_leaderboard"] as! Bool) {
-                    // checkbox checked
-                    let checkedImage:UIImage? = UIImage(named: "Checkbox-checked-1.png")
-                            
-                    // Set above UIImage object as button icon.
-                    self.checkboxImage.image = checkedImage
-
-                } else {
-                    // checkbox unchecked
-                    let uncheckedImage:UIImage? = UIImage(named: "Checkbox-unchecked-1.png")
-                            
-                    // Set above UIImage object as button icon.
-                    self.checkboxImage.image = uncheckedImage
-                }
+                self.visibleOnLeaderboard = ((json as NSDictionary)["visible_on_leaderboard"] as! Bool)
+                self.setCheckbox(checked: self.visibleOnLeaderboard)
             }
         })
         
@@ -59,6 +48,25 @@ class profileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    func setCheckbox(checked: Bool) {
+        DispatchQueue.main.async {
+            if checked {
+                // checkbox checked
+                let checkedImage:UIImage? = UIImage(named: "Checkbox-checked-1.png")
+                        
+                // Set above UIImage object as button icon.
+                self.checkboxImage.image = checkedImage
+
+            } else {
+                // checkbox unchecked
+                let uncheckedImage:UIImage? = UIImage(named: "Checkbox-unchecked-1.png")
+                        
+                // Set above UIImage object as button icon.
+                self.checkboxImage.image = uncheckedImage
+            }
+        }
+    }
     
     @IBAction func editUsernameButtonTapped(_ sender: Any) {
         self.usernameTextField.text = ""
@@ -104,6 +112,13 @@ class profileViewController: UIViewController {
             }
         })
     }
+    
+    @IBAction func checkboxTapped(_ sender: Any) {
+        player.updateShowOnLeaderboard(playerID: self.playerID!, visibleOnLeaderboard: self.visibleOnLeaderboard, vc: self, completion: {
+            self.setCheckbox(checked: self.visibleOnLeaderboard)
+        })
+    }
+    
     
     @IBAction func deleteAccountTapped(_ sender: Any) {
         player.deletePlayer(playerID: self.playerID!, vc: self, completion: {

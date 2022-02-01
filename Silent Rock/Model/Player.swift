@@ -285,4 +285,50 @@ class Player: NSObject {
         task.resume()
     }
     
+    func updateShowOnLeaderboard(playerID: Int, visibleOnLeaderboard: Bool, vc: profileViewController, completion: @escaping () -> Void) {
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        request.httpMethod = "PATCH"
+        
+        struct UploadData: Codable {
+                let visible_on_leaderboard: Bool
+        }
+        
+        let uploadDataModel = UploadData(visible_on_leaderboard: !visibleOnLeaderboard)
+        
+        guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
+            DispatchQueue.main.async {
+                vc.errorMessageLabel.text = "oops, something went wrong"
+            }
+            return
+        }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = jsonData
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
+                return
+            }
+            vc.visibleOnLeaderboard = !visibleOnLeaderboard
+            completion()
+        })
+        task.resume()
+    }
+    
 }
