@@ -333,8 +333,8 @@ class Player: NSObject {
         task.resume()
     }
     
-    func getPlayerDataForLeaderboard (vc: leaderboardViewController, completion: @escaping (_ json: Array<Any>) -> Void) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
+    func getPlayerDataForLeaderboard (vc: leaderboardViewController, sortBasis: String, completion: @escaping (_ json: Array<Any>) -> Void) {
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456&sort_basis=\(sortBasis)")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in

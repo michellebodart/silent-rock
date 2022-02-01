@@ -15,10 +15,11 @@ class leaderboardViewController: UIViewController {
     let player: Player = Player()
     var playerList = [PlayerForLB]()
     var playerID: Int? = nil
+    var season: String? = "2020-2021"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        player.getPlayerDataForLeaderboard(vc: self, completion: {json in
+        player.getPlayerDataForLeaderboard(vc: self, sortBasis: "trips", completion: {json in
             self.doAfterGetPlayerData(json: json)
         })
         leaderboardTableView.delegate = self
@@ -87,7 +88,15 @@ extension leaderboardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.playerList[indexPath.row].username
-        let numTrips: String = String(self.playerList[indexPath.row].trips.count)
+        
+        var numTrips = ""
+        
+        if self.season != nil {
+            numTrips = String(((self.playerList[indexPath.row].trips).filter { $0?.season == self.season}).count)
+        } else {
+            numTrips = String(self.playerList[indexPath.row].trips.count)
+        }
+        
         cell.detailTextLabel?.text = numTrips
         
         return cell
