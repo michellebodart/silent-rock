@@ -6,16 +6,18 @@
 //
 
 import UIKit
+import SwiftUI
 
 class leaderboardViewController: UIViewController {
 
     @IBOutlet weak var leaderboardTableView: UITableView!
     @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var sortByButton: UIButton!
     
     let player: Player = Player()
     var playerList = [PlayerForLB]()
     var playerID: Int? = nil
-    var season: String? = "2020-2021"
+    var season: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,10 @@ class leaderboardViewController: UIViewController {
         })
         leaderboardTableView.delegate = self
         leaderboardTableView.dataSource = self
-
+        
+        sortByButton.showsMenuAsPrimaryAction = true
+        sortByButton.changesSelectionAsPrimaryAction = true
+        
         // Do any additional setup after loading the view.
     }
     
@@ -88,9 +93,8 @@ extension leaderboardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.playerList[indexPath.row].username
-        
+
         var numTrips = ""
-        
         if self.season != nil {
             numTrips = String(((self.playerList[indexPath.row].trips).filter { $0?.season == self.season}).count)
         } else {
