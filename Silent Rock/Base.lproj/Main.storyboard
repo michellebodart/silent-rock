@@ -1163,6 +1163,45 @@
                                     <action selector="checkboxTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="BMX-Xx-jAn"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="gtp-fI-XY0">
+                                <rect key="frame" x="85" y="740.5" width="244" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbj-JV-HJV">
+                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgy-8D-QA0" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
+                                        <rect key="frame" x="94.5" y="0.0" width="67" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="5Ii-79-Ike"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelDeleteAccountButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="dKh-jK-GKB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oe4-KV-9l4" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
+                                        <rect key="frame" x="168.5" y="0.0" width="75.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="A3I-XF-Lsi"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Confirm">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="confirmDeleteAccountButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="WNS-ar-VOR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MDP-ga-cyv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1174,6 +1213,7 @@
                             <constraint firstItem="Msa-fa-jNU" firstAttribute="top" secondItem="hUk-Xz-j0M" secondAttribute="bottom" constant="20" id="4Y1-rZ-Yr3"/>
                             <constraint firstItem="EEg-L7-CCK" firstAttribute="top" secondItem="hIL-Cf-NRf" secondAttribute="bottom" id="4Yt-CJ-o2u"/>
                             <constraint firstItem="eMU-Xp-zcb" firstAttribute="width" secondItem="hUk-Xz-j0M" secondAttribute="width" id="8Yg-3f-qUX"/>
+                            <constraint firstItem="gtp-fI-XY0" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="Ahx-Ll-frc"/>
                             <constraint firstItem="bM8-yS-C1T" firstAttribute="leading" secondItem="ZBJ-jA-bjf" secondAttribute="leading" constant="-32" id="DoX-1i-1Eu"/>
                             <constraint firstItem="bM8-yS-C1T" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ZBJ-jA-bjf" secondAttribute="leading" constant="-50" id="Efd-wu-Ctu"/>
                             <constraint firstItem="EEg-L7-CCK" firstAttribute="leading" secondItem="MDP-ga-cyv" secondAttribute="leading" constant="20" id="FL2-ZH-OJZ"/>
@@ -1192,7 +1232,9 @@
                             <constraint firstItem="awa-lf-vw6" firstAttribute="centerY" secondItem="hIL-Cf-NRf" secondAttribute="centerY" id="Rz1-N3-oyq"/>
                             <constraint firstItem="eMU-Xp-zcb" firstAttribute="top" secondItem="hUk-Xz-j0M" secondAttribute="top" id="VEW-X5-bZg"/>
                             <constraint firstItem="MDP-ga-cyv" firstAttribute="trailing" secondItem="Uf7-OE-6zB" secondAttribute="trailing" id="W9S-Gl-Y1s"/>
+                            <constraint firstItem="gtp-fI-XY0" firstAttribute="height" secondItem="jrb-fL-hyV" secondAttribute="height" id="WK5-X8-xRU"/>
                             <constraint firstItem="hUk-Xz-j0M" firstAttribute="leading" secondItem="MDP-ga-cyv" secondAttribute="leading" constant="20" id="WY6-vF-3kt"/>
+                            <constraint firstItem="3c4-4t-wNt" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="XpP-qt-UjT"/>
                             <constraint firstItem="hIL-Cf-NRf" firstAttribute="top" secondItem="bM8-yS-C1T" secondAttribute="bottom" constant="10" id="YLI-Fb-7Dk"/>
                             <constraint firstItem="MDP-ga-cyv" firstAttribute="trailing" secondItem="hUk-Xz-j0M" secondAttribute="trailing" constant="20" id="YOK-rj-j01"/>
                             <constraint firstItem="GUj-u9-RxJ" firstAttribute="centerX" secondItem="hUk-Xz-j0M" secondAttribute="centerX" id="YeD-la-sxm"/>
@@ -1210,6 +1252,7 @@
                             <constraint firstItem="C1O-Ag-E1n" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="iYc-gC-rkT"/>
                             <constraint firstItem="GUj-u9-RxJ" firstAttribute="width" secondItem="hUk-Xz-j0M" secondAttribute="width" id="jXx-Yc-0Ji"/>
                             <constraint firstItem="gfz-j0-pFZ" firstAttribute="top" secondItem="J6T-t0-QYg" secondAttribute="top" id="ltn-TW-Ne6"/>
+                            <constraint firstItem="jrb-fL-hyV" firstAttribute="bottom" secondItem="gtp-fI-XY0" secondAttribute="bottom" id="lxP-UK-B4E"/>
                             <constraint firstItem="R4h-Lj-9J8" firstAttribute="leading" secondItem="ZBJ-jA-bjf" secondAttribute="leading" constant="20" id="m3H-bQ-e3J"/>
                             <constraint firstItem="Sac-Td-gTP" firstAttribute="height" secondItem="bM8-yS-C1T" secondAttribute="height" multiplier="0.45" id="mEN-Ot-gg1"/>
                             <constraint firstItem="awa-lf-vw6" firstAttribute="width" secondItem="hIL-Cf-NRf" secondAttribute="width" id="nPK-c7-ABD"/>
@@ -1254,6 +1297,7 @@
                     <navigationItem key="navigationItem" id="iKT-K5-jtf"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="areYouSureStack" destination="gtp-fI-XY0" id="uBZ-El-3nm"/>
                         <outlet property="cancelButton" destination="qjn-YZ-Kii" id="dTO-Nx-WSN"/>
                         <outlet property="checkboxButton" destination="gfz-j0-pFZ" id="UzU-kb-rUj"/>
                         <outlet property="checkboxImage" destination="J6T-t0-QYg" id="Uk8-MP-HrR"/>
@@ -1276,6 +1320,9 @@
         <designable name="9sp-UM-f2L">
             <size key="intrinsicContentSize" width="79" height="39"/>
         </designable>
+        <designable name="Oe4-KV-9l4">
+            <size key="intrinsicContentSize" width="75.5" height="33.5"/>
+        </designable>
         <designable name="VND-yf-Ndr">
             <size key="intrinsicContentSize" width="79" height="39"/>
         </designable>
@@ -1290,6 +1337,9 @@
         </designable>
         <designable name="je0-J3-VrD">
             <size key="intrinsicContentSize" width="85.5" height="39"/>
+        </designable>
+        <designable name="jgy-8D-QA0">
+            <size key="intrinsicContentSize" width="67" height="33.5"/>
         </designable>
         <designable name="jrb-fL-hyV">
             <size key="intrinsicContentSize" width="120" height="33.5"/>

@@ -9,6 +9,8 @@ import UIKit
 
 class profileViewController: UIViewController {
     
+    
+    @IBOutlet weak var areYouSureStack: UIStackView!
     let username: Username = Username()
     let player: Player = Player()
     @IBOutlet weak var checkboxButton: UIButton!
@@ -32,6 +34,7 @@ class profileViewController: UIViewController {
         usernameTextField.isHidden = true
         cancelButton.isHidden = true
         submitButton.isHidden = true
+        areYouSureStack.isHidden = true
         
         // Set username, phone, and checkbox
         player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
@@ -122,12 +125,28 @@ class profileViewController: UIViewController {
     
     
     @IBAction func deleteAccountTapped(_ sender: Any) {
+        self.areYouSureStack.isHidden = false
+        self.deleteAccountButton.isHidden = true
+//        player.deletePlayer(playerID: self.playerID!, vc: self, completion: {
+//            DispatchQueue.main.async {
+//                self.performSegue(withIdentifier: "loginView", sender: self)
+//            }
+//        })
+    }
+    
+    @IBAction func cancelDeleteAccountButtonTapped(_ sender: Any) {
+        self.areYouSureStack.isHidden = true
+        self.deleteAccountButton.isHidden = false
+    }
+    
+    @IBAction func confirmDeleteAccountButtonTapped(_ sender: Any) {
         player.deletePlayer(playerID: self.playerID!, vc: self, completion: {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "loginView", sender: self)
             }
         })
     }
+    
     
     
     
