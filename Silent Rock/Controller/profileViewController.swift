@@ -11,6 +11,7 @@ class profileViewController: UIViewController {
     
     let username: Username = Username()
     let player: Player = Player()
+    @IBOutlet weak var checkboxButton: UIButton!
     @IBOutlet weak var errorMessageLabel: UILabel!
     var playerID: Int? = nil
     var visibleOnLeaderboard: Bool = true

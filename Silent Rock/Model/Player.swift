@@ -170,6 +170,7 @@ class Player: NSObject {
                 print("error")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load account information"
+                    vc.checkboxButton.isHidden = true
                     vc.editUsernameButton.isHidden = true
                     vc.usernameTextField.isHidden = true
                     vc.usernameLabel.isHidden = true

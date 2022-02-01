@@ -1152,11 +1152,13 @@
                                     <constraint firstAttribute="height" constant="36" id="Lad-aG-pEe"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfz-j0-pFZ">
-                                <rect key="frame" x="212" y="599" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfz-j0-pFZ">
+                                <rect key="frame" x="20" y="505" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gfz-j0-pFZ" secondAttribute="height" id="iTQ-XO-vcv"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
                                     <action selector="checkboxTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="BMX-Xx-jAn"/>
                                 </connections>
@@ -1165,6 +1167,7 @@
                         <viewLayoutGuide key="safeArea" id="MDP-ga-cyv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gfz-j0-pFZ" firstAttribute="width" secondItem="J6T-t0-QYg" secondAttribute="width" id="0Tu-2j-6gr"/>
                             <constraint firstItem="MDP-ga-cyv" firstAttribute="trailing" secondItem="EEg-L7-CCK" secondAttribute="trailing" constant="20" id="2Yf-pT-6Nx"/>
                             <constraint firstItem="C1O-Ag-E1n" firstAttribute="top" secondItem="hUk-Xz-j0M" secondAttribute="bottom" constant="20" id="2dY-Cz-e5Q"/>
                             <constraint firstItem="awa-lf-vw6" firstAttribute="leading" secondItem="hIL-Cf-NRf" secondAttribute="leading" id="3vo-ma-Wjt"/>
@@ -1199,12 +1202,14 @@
                             <constraint firstItem="Sac-Td-gTP" firstAttribute="leading" secondItem="ZBJ-jA-bjf" secondAttribute="leading" id="bSB-xr-fXI"/>
                             <constraint firstItem="awa-lf-vw6" firstAttribute="height" secondItem="hIL-Cf-NRf" secondAttribute="height" id="dAx-Yf-fv6"/>
                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="bM8-yS-C1T" secondAttribute="bottom" constant="-10" id="dT2-34-p6u"/>
+                            <constraint firstItem="gfz-j0-pFZ" firstAttribute="centerX" secondItem="J6T-t0-QYg" secondAttribute="centerX" id="dxN-3b-1B9"/>
                             <constraint firstItem="Uf7-OE-6zB" firstAttribute="height" secondItem="R4h-Lj-9J8" secondAttribute="height" id="eub-RL-ez9"/>
                             <constraint firstItem="hUk-Xz-j0M" firstAttribute="top" secondItem="EEg-L7-CCK" secondAttribute="bottom" constant="20" id="gGp-HW-2Po"/>
                             <constraint firstItem="Sac-Td-gTP" firstAttribute="top" secondItem="jrb-fL-hyV" secondAttribute="bottom" constant="20" id="gqZ-00-ff3"/>
                             <constraint firstItem="GUj-u9-RxJ" firstAttribute="top" secondItem="Msa-fa-jNU" secondAttribute="bottom" constant="20" id="hh6-Qk-eSn"/>
                             <constraint firstItem="C1O-Ag-E1n" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="iYc-gC-rkT"/>
                             <constraint firstItem="GUj-u9-RxJ" firstAttribute="width" secondItem="hUk-Xz-j0M" secondAttribute="width" id="jXx-Yc-0Ji"/>
+                            <constraint firstItem="gfz-j0-pFZ" firstAttribute="top" secondItem="J6T-t0-QYg" secondAttribute="top" id="ltn-TW-Ne6"/>
                             <constraint firstItem="R4h-Lj-9J8" firstAttribute="leading" secondItem="ZBJ-jA-bjf" secondAttribute="leading" constant="20" id="m3H-bQ-e3J"/>
                             <constraint firstItem="Sac-Td-gTP" firstAttribute="height" secondItem="bM8-yS-C1T" secondAttribute="height" multiplier="0.45" id="mEN-Ot-gg1"/>
                             <constraint firstItem="awa-lf-vw6" firstAttribute="width" secondItem="hIL-Cf-NRf" secondAttribute="width" id="nPK-c7-ABD"/>
@@ -1250,6 +1255,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="qjn-YZ-Kii" id="dTO-Nx-WSN"/>
+                        <outlet property="checkboxButton" destination="gfz-j0-pFZ" id="UzU-kb-rUj"/>
                         <outlet property="checkboxImage" destination="J6T-t0-QYg" id="Uk8-MP-HrR"/>
                         <outlet property="checkboxLabel" destination="ZDt-9l-dYZ" id="Ym1-dr-q3L"/>
                         <outlet property="deleteAccountButton" destination="jrb-fL-hyV" id="g06-eE-47c"/>
