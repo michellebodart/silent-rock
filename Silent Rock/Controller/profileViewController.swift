@@ -127,11 +127,6 @@ class profileViewController: UIViewController {
     @IBAction func deleteAccountTapped(_ sender: Any) {
         self.areYouSureStack.isHidden = false
         self.deleteAccountButton.isHidden = true
-//        player.deletePlayer(playerID: self.playerID!, vc: self, completion: {
-//            DispatchQueue.main.async {
-//                self.performSegue(withIdentifier: "loginView", sender: self)
-//            }
-//        })
     }
     
     @IBAction func cancelDeleteAccountButtonTapped(_ sender: Any) {
@@ -154,6 +149,9 @@ class profileViewController: UIViewController {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
+        } else if segue.destination is leaderboardViewController {
+            let lvc = segue.destination as? leaderboardViewController
+            lvc?.playerID = self.playerID
         }
     }
 

@@ -631,7 +631,7 @@
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" id="0FR-R7-2b5"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="0FR-R7-2b5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1360,13 +1360,16 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" id="B5f-e6-Lo0"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="B5f-e6-Lo0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovw-iF-w8C">
                                         <rect key="frame" x="268" y="0.0" width="122" height="109.66666666666667"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="profileButtonTapped:" destination="qfT-dI-37I" eventType="touchUpInside" id="3xX-Rd-P6J"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1400,6 +1403,32 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ioB-7R-ofB">
                                 <rect key="frame" x="0.0" y="325" width="390" height="409.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="XM0-s0-0QP" detailTextLabel="xsy-T2-YwV" style="IBUITableViewCellStyleValue1" id="jsS-Lb-wAd">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jsS-Lb-wAd" id="CAj-pd-2Ax">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XM0-s0-0QP">
+                                                    <rect key="frame" x="20" y="15" width="25" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xsy-T2-YwV">
+                                                    <rect key="frame" x="337.33333333333331" y="15" width="32.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops, something went wrong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5r9-B0-Tb9">
                                 <rect key="frame" x="20" y="247" width="350" height="28"/>
@@ -1479,6 +1508,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="errorMessageLabel" destination="5r9-B0-Tb9" id="W9S-OP-S66"/>
+                        <outlet property="leaderboardTableView" destination="ioB-7R-ofB" id="5Bp-uU-cPi"/>
+                        <segue destination="58s-Nn-4xE" kind="presentation" identifier="profileView" animates="NO" id="ZtU-46-x2k"/>
+                        <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" animates="NO" id="teg-Ab-B26"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXd-lx-11Y" sceneMemberID="firstResponder"/>
@@ -1531,11 +1563,12 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="zYF-7w-ROV"/>
-        <segue reference="zhb-Ty-BYA"/>
-        <segue reference="gnw-4U-HX2"/>
-        <segue reference="Zmc-7I-d7K"/>
-        <segue reference="B5f-e6-Lo0"/>
+        <segue reference="pE8-rj-SFJ"/>
+        <segue reference="ZcJ-PY-ttx"/>
+        <segue reference="es7-6y-SqN"/>
+        <segue reference="bQc-8K-LML"/>
+        <segue reference="teg-Ab-B26"/>
+        <segue reference="8pi-xI-2oO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>

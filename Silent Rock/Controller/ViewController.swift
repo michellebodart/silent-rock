@@ -141,6 +141,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
+        } else if segue.destination is leaderboardViewController {
+            let lvc = segue.destination as? leaderboardViewController
+            lvc?.playerID = self.playerID
         }
     }
     
