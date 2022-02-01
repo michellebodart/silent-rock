@@ -27,11 +27,36 @@ class leaderboardViewController: UIViewController {
         leaderboardTableView.delegate = self
         leaderboardTableView.dataSource = self
         
-        sortByButton.showsMenuAsPrimaryAction = true
-        sortByButton.changesSelectionAsPrimaryAction = true
+        setUpSortByMenu()
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    func setUpSortByMenu() {
+        var menuItems: [UIAction] {
+            return [
+                UIAction(title: "Trips", image: nil, handler: { (_) in
+                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: "trips", completion: {json in
+                        self.doAfterGetPlayerData(json: json)
+                    })
+                }),
+                UIAction(title: "Username", image: nil, handler: { (_) in
+                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: "username", completion: {json in
+                        self.doAfterGetPlayerData(json: json)
+                    })
+                })
+            ]
+        }
+        var sortByMenu: UIMenu {
+            return UIMenu(title: "Sort by:", image: nil, identifier: nil, options: [], children: menuItems)
+        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", image: nil, primaryAction: nil, menu: sortByMenu)
+        sortByButton.showsMenuAsPrimaryAction = true
+        sortByButton.changesSelectionAsPrimaryAction = true
+        sortByButton.menu = sortByMenu
+    }
+    
     
     func doAfterGetPlayerData(json: Array<Any>) {
         self.playerList = []
@@ -112,3 +137,4 @@ extension leaderboardViewController: UITableViewDataSource {
     }
     
 }
+
