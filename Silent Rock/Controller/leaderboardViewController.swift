@@ -31,19 +31,21 @@ class leaderboardViewController: UIViewController {
         self.playerList = []
         for eachPlayer in json {
             let player = eachPlayer as! [String: Any]
-            let id = player["id"] as! Int
-            let username = player["username"] as! String
-            var trips = [Trip?]()
-            if (player["trips"] as! Array<Trip>).count > 0 {
-                for eachTrip in (player["trips"] as! Array<Any>) {
-                    let trip = eachTrip as! [String: Any]
-                    let id = trip["id"] as! Int
-                    let season = trip["season"] as! String
-                    let date = trip["date"] as! String
-                    trips.append(Trip(date: date, season: season, id: id))
+            if player["visible_on_leaderboard"] as! Bool {
+                let id = player["id"] as! Int
+                let username = player["username"] as! String
+                var trips = [Trip?]()
+                if (player["trips"] as! Array<Trip>).count > 0 {
+                    for eachTrip in (player["trips"] as! Array<Any>) {
+                        let trip = eachTrip as! [String: Any]
+                        let id = trip["id"] as! Int
+                        let season = trip["season"] as! String
+                        let date = trip["date"] as! String
+                        trips.append(Trip(date: date, season: season, id: id))
+                    }
                 }
+                self.playerList.append(PlayerForLB(username: username, id: id, trips: trips))
             }
-            self.playerList.append(PlayerForLB(username: username, id: id, trips: trips))
         }
         print(self.playerList)
         DispatchQueue.main.async {
