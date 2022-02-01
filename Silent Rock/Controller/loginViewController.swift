@@ -78,7 +78,7 @@ class loginViewController: UIViewController {
             rvc?.phoneNumber = phoneNumberTextField.text ?? ""
         } else if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
-            vc?.playerID = 22
+            vc?.playerID = 2
 //            DELETE THIS -MB
         }
     }

@@ -1320,6 +1320,9 @@
         <designable name="9sp-UM-f2L">
             <size key="intrinsicContentSize" width="79" height="39"/>
         </designable>
+        <designable name="Msa-fa-jNU">
+            <size key="intrinsicContentSize" width="115.5" height="33.5"/>
+        </designable>
         <designable name="Oe4-KV-9l4">
             <size key="intrinsicContentSize" width="75.5" height="33.5"/>
         </designable>
@@ -1355,7 +1358,7 @@
         <segue reference="zhb-Ty-BYA"/>
         <segue reference="gnw-4U-HX2"/>
         <segue reference="Zmc-7I-d7K"/>
-        <segue reference="hz3-qv-AwS"/>
+        <segue reference="gTG-EQ-TeT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>
