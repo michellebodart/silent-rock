@@ -12,14 +12,13 @@ class PlayerForLB {
     
     var username: String
     var id: Int
-    var trips: Array<Trip>
+    var trips: Array<Trip?>
     
-    init( username: String, id: Int, trips: Array<Trip>) {
+    init( username: String, id: Int, trips: Array<Trip?>) {
         self.username = username
         self.id = id
         self.trips = trips
     }
-    
 }
 
 class Trip {
