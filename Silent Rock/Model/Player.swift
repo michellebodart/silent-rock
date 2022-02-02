@@ -178,7 +178,6 @@ class Player: NSObject {
                     vc.checkboxImage.isHidden = true
                     vc.checkboxLabel.isHidden = true
                     vc.deleteAccountButton.isHidden = true
-                    vc.signOutButton.isHidden = true
                 }
                 return
             }
@@ -333,8 +332,8 @@ class Player: NSObject {
         task.resume()
     }
     
-    func getPlayerDataForLeaderboard (vc: leaderboardViewController, sortBasis: String, completion: @escaping (_ json: Array<Any>) -> Void) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456&sort_basis=\(sortBasis)")!)
+    func getPlayerDataForLeaderboard (vc: leaderboardViewController, sortBasis: String, filterBy: String, completion: @escaping (_ json: Array<Any>) -> Void) {
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456&sort_basis=\(sortBasis)&filter_criteria=\(filterBy)")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
@@ -342,6 +341,9 @@ class Player: NSObject {
                 print("error")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
+                    vc.sortFilterStackView.isHidden = true
+                    vc.usernameLabel.isHidden = true
+                    vc.tripsLabel.isHidden = true
                 }
                 return
             }
@@ -349,6 +351,9 @@ class Player: NSObject {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
+                    vc.sortFilterStackView.isHidden = true
+                    vc.usernameLabel.isHidden = true
+                    vc.tripsLabel.isHidden = true
                 }
                 return
             }
@@ -356,6 +361,9 @@ class Player: NSObject {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
+                    vc.sortFilterStackView.isHidden = true
+                    vc.usernameLabel.isHidden = true
+                    vc.tripsLabel.isHidden = true
                 }
                 return
             }

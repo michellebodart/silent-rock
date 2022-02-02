@@ -10,24 +10,30 @@ import SwiftUI
 
 class leaderboardViewController: UIViewController {
 
+    @IBOutlet weak var sortFilterStackView: UIStackView!
     @IBOutlet weak var leaderboardTableView: UITableView!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var sortByButton: UIButton!
+    @IBOutlet weak var filterByButton: UIButton!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var tripsLabel: UILabel!
     
     let player: Player = Player()
     var playerList = [PlayerForLB]()
     var playerID: Int? = nil
-    var season: String? = nil
+    var season: String = "all"
+    var sortBy: String = "trips"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        player.getPlayerDataForLeaderboard(vc: self, sortBasis: "trips", completion: {json in
+        player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: self.season, completion: {json in
             self.doAfterGetPlayerData(json: json)
         })
         leaderboardTableView.delegate = self
         leaderboardTableView.dataSource = self
         
         setUpSortByMenu()
+        setUpFilterByMenu()
         
         // Do any additional setup after loading the view.
     }
@@ -37,13 +43,15 @@ class leaderboardViewController: UIViewController {
         var menuItems: [UIAction] {
             return [
                 UIAction(title: "Trips", image: nil, handler: { (_) in
-                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: "trips", completion: {json in
+                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: "trips", filterBy: self.season, completion: {json in
                         self.doAfterGetPlayerData(json: json)
+                        self.sortBy = "trips"
                     })
                 }),
                 UIAction(title: "Username", image: nil, handler: { (_) in
-                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: "username", completion: {json in
+                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: "username", filterBy: "all", completion: {json in
                         self.doAfterGetPlayerData(json: json)
+                        self.sortBy = "username"
                     })
                 })
             ]
@@ -55,6 +63,39 @@ class leaderboardViewController: UIViewController {
         sortByButton.showsMenuAsPrimaryAction = true
         sortByButton.changesSelectionAsPrimaryAction = true
         sortByButton.menu = sortByMenu
+    }
+    
+    func setUpFilterByMenu() {
+        var menuItems: [UIAction] {
+            return [
+                // REVISIT THIS TO MAKE IT DYNAMIC -MB
+                UIAction(title: "All time", image: nil, handler: { (_) in
+                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: "all", completion: {json in
+                        self.doAfterGetPlayerData(json: json)
+                        self.season = "all"
+                    })
+                }),
+                UIAction(title: "2021-2022", image: nil, handler: { (_) in
+                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: "2021-2022", completion: {json in
+                        self.doAfterGetPlayerData(json: json)
+                        self.season = "2021-2022"
+                    })
+                }),
+                UIAction(title: "2020-2021", image: nil, handler: { (_) in
+                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: "2020-2021", completion: {json in
+                        self.doAfterGetPlayerData(json: json)
+                        self.season = "2020-2021"
+                    })
+                })
+            ]
+        }
+        var filterByMenu: UIMenu {
+            return UIMenu(title: "Filter by:", image: nil, identifier: nil, options: [], children: menuItems)
+        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", image: nil, primaryAction: nil, menu: filterByMenu)
+        filterByButton.showsMenuAsPrimaryAction = true
+        filterByButton.changesSelectionAsPrimaryAction = true
+        filterByButton.menu = filterByMenu
     }
     
     
@@ -118,16 +159,15 @@ extension leaderboardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.playerList[indexPath.row].username
-
+        
         var numTrips = ""
-        if self.season != nil {
-            numTrips = String(((self.playerList[indexPath.row].trips).filter { $0?.season == self.season}).count)
-        } else {
+        if self.season == "all" {
             numTrips = String(self.playerList[indexPath.row].trips.count)
+        } else {
+            numTrips = String((self.playerList[indexPath.row].trips.filter { $0?.season == self.season}).count)
         }
         
         cell.detailTextLabel?.text = numTrips
-        
         return cell
     }
     
