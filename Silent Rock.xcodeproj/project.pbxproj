@@ -23,6 +23,7 @@
 		C9957C8627A078380062A009 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C9957C8527A078380062A009 /* FirebaseAnalyticsSwift-Beta */; };
 		C9957C8827A078380062A009 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C9957C8727A078380062A009 /* FirebaseAuth */; };
 		C9ABC2A827AC4D1F00460B77 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABC2A727AC4D1F00460B77 /* Season.swift */; };
+		C9ABC2AA27AC544F00460B77 /* LocalNotificationSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9ABC2A927AC544F00460B77 /* LocalNotificationSound2.mp3 */; };
 		C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */; };
 		C9E316DE27A9A1DE000CA001 /* leaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */; };
 		C9E316E027A9AD9E000CA001 /* PlayerForLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E316DF27A9AD9E000CA001 /* PlayerForLB.swift */; };
@@ -50,6 +51,7 @@
 		C9957C8227A0754D0062A009 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C9957C8927A07C750062A009 /* Silent Rock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Silent Rock.entitlements"; sourceTree = "<group>"; };
 		C9ABC2A727AC4D1F00460B77 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		C9ABC2A927AC544F00460B77 /* LocalNotificationSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LocalNotificationSound2.mp3; sourceTree = "<group>"; };
 		C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LocalNotificationSound.mp3; sourceTree = "<group>"; };
 		C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardViewController.swift; sourceTree = "<group>"; };
 		C9E316DF27A9AD9E000CA001 /* PlayerForLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerForLB.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				C91D8710273C2F6B00283190 /* SceneDelegate.swift */,
 				C9F033BC274F4606000E3EF6 /* arcade.wav */,
 				C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */,
+				C9ABC2A927AC544F00460B77 /* LocalNotificationSound2.mp3 */,
 				C91D8714273C2F6B00283190 /* Main.storyboard */,
 				C91D8717273C2F6F00283190 /* Assets.xcassets */,
 				C91D8719273C2F6F00283190 /* LaunchScreen.storyboard */,
@@ -210,6 +213,7 @@
 				C91D871B273C2F6F00283190 /* LaunchScreen.storyboard in Resources */,
 				C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */,
 				C91D8718273C2F6F00283190 /* Assets.xcassets in Resources */,
+				C9ABC2AA27AC544F00460B77 /* LocalNotificationSound2.mp3 in Resources */,
 				C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */,
 				C91D8716273C2F6B00283190 /* Main.storyboard in Resources */,
 				C9957C8327A0754D0062A009 /* GoogleService-Info.plist in Resources */,
