@@ -336,9 +336,7 @@ class Player: NSObject {
                 print("error")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
-                    vc.sortFilterStackView.isHidden = true
-                    vc.usernameLabel.isHidden = true
-                    vc.tripsLabel.isHidden = true
+                    vc.refreshButton.isHidden = false
                 }
                 return
             }

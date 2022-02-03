@@ -1351,6 +1351,22 @@
                                 <rect key="frame" x="0.0" y="734.33333333333337" width="390" height="109.66666666666663"/>
                                 <color key="backgroundColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5x-uf-hZc" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
+                                <rect key="frame" x="135" y="285" width="120" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="1tf-Zk-fSi"/>
+                                    <constraint firstAttribute="height" constant="20" id="c0r-NT-e2J"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Refresh">
+                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="refreshButtonTapped:" destination="qfT-dI-37I" eventType="touchUpInside" id="Sea-kr-tu0"/>
+                                    <action selector="refreshButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="fIa-Pe-a83"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="ZlH-tp-jGF">
                                 <rect key="frame" x="20" y="734.33333333333337" width="350" height="109.66666666666663"/>
                                 <subviews>
@@ -1392,7 +1408,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="FkE-dM-OPa">
-                                <rect key="frame" x="52.333333333333343" y="275" width="285.33333333333326" height="20"/>
+                                <rect key="frame" x="56" y="275" width="278" height="20"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Ugc-Y5-BH8">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="20"/>
@@ -1403,7 +1419,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QhI-N2-TCK">
+                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QhI-N2-TCK">
                                                 <rect key="frame" x="61" y="0.0" width="64" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="64" id="zm0-ub-bYj"/>
@@ -1425,16 +1441,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-WH-kQl">
-                                        <rect key="frame" x="150" y="0.0" width="135.33333333333337" height="20"/>
+                                        <rect key="frame" x="150" y="0.0" width="128" height="20"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK5-QB-CLs">
-                                                <rect key="frame" x="0.0" y="0.0" width="60.333333333333336" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK5-QB-CLs">
+                                                <rect key="frame" x="0.0" y="0.0" width="53" height="20"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zyY-0E-bAk">
-                                                <rect key="frame" x="67.333333333333343" y="0.0" width="68" height="20"/>
+                                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zyY-0E-bAk">
+                                                <rect key="frame" x="60" y="0.0" width="68" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="68" id="MDD-zK-oUY"/>
                                                 </constraints>
@@ -1538,6 +1554,7 @@
                             <constraint firstItem="UZL-Ue-KoB" firstAttribute="height" secondItem="GEX-S5-xu6" secondAttribute="height" id="PwI-DS-cuv"/>
                             <constraint firstItem="eU8-z1-91n" firstAttribute="height" secondItem="Az4-q6-W0O" secondAttribute="height" multiplier="0.45" id="Q20-3c-GV0"/>
                             <constraint firstAttribute="trailing" secondItem="Az4-q6-W0O" secondAttribute="trailing" constant="-50" id="QeA-sy-oiu"/>
+                            <constraint firstItem="b5x-uf-hZc" firstAttribute="top" secondItem="5r9-B0-Tb9" secondAttribute="bottom" constant="10" id="STo-uz-hMe"/>
                             <constraint firstItem="Az4-q6-W0O" firstAttribute="top" secondItem="qrm-m9-TTt" secondAttribute="top" constant="-35" id="SpP-fP-bbM"/>
                             <constraint firstItem="WH6-a7-Tmu" firstAttribute="leading" secondItem="PXl-vK-kyb" secondAttribute="leading" id="V3k-g0-Pph"/>
                             <constraint firstItem="GEX-S5-xu6" firstAttribute="top" secondItem="FkE-dM-OPa" secondAttribute="bottom" constant="20" id="XDt-3T-dqg"/>
@@ -1551,6 +1568,7 @@
                             <constraint firstItem="ioB-7R-ofB" firstAttribute="leading" secondItem="qrm-m9-TTt" secondAttribute="leading" id="oU7-SK-e85"/>
                             <constraint firstItem="PXl-vK-kyb" firstAttribute="trailing" secondItem="5r9-B0-Tb9" secondAttribute="trailing" constant="20" id="qTA-C5-iRp"/>
                             <constraint firstAttribute="trailing" secondItem="Az4-q6-W0O" secondAttribute="trailing" constant="-32" id="rXS-8z-I6S"/>
+                            <constraint firstItem="b5x-uf-hZc" firstAttribute="centerX" secondItem="qrm-m9-TTt" secondAttribute="centerX" id="wPV-1i-tdc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -1589,6 +1607,7 @@
                         <outlet property="errorMessageLabel" destination="5r9-B0-Tb9" id="W9S-OP-S66"/>
                         <outlet property="filterByButton" destination="zyY-0E-bAk" id="lAf-3t-8ZP"/>
                         <outlet property="leaderboardTableView" destination="ioB-7R-ofB" id="5Bp-uU-cPi"/>
+                        <outlet property="refreshButton" destination="b5x-uf-hZc" id="UhA-2C-xLk"/>
                         <outlet property="sortByButton" destination="QhI-N2-TCK" id="YZq-YW-VuB"/>
                         <outlet property="sortFilterStackView" destination="FkE-dM-OPa" id="Pvr-wU-ENs"/>
                         <outlet property="tripsLabel" destination="UZL-Ue-KoB" id="AWI-5S-0LI"/>
@@ -1652,6 +1671,9 @@
         <designable name="awa-lf-vw6">
             <size key="intrinsicContentSize" width="76.666666666666671" height="33.333333333333336"/>
         </designable>
+        <designable name="b5x-uf-hZc">
+            <size key="intrinsicContentSize" width="72" height="33.333333333333336"/>
+        </designable>
         <designable name="d73-mT-q2H">
             <size key="intrinsicContentSize" width="89.666666666666671" height="55"/>
         </designable>
@@ -1682,8 +1704,8 @@
         <segue reference="ZtU-46-x2k"/>
         <segue reference="es7-6y-SqN"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="Zmc-7I-d7K"/>
-        <segue reference="hz3-qv-AwS"/>
+        <segue reference="teg-Ab-B26"/>
+        <segue reference="B5f-e6-Lo0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>

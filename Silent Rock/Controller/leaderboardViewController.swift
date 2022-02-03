@@ -17,6 +17,7 @@ class leaderboardViewController: UIViewController {
     @IBOutlet weak var filterByButton: UIButton!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tripsLabel: UILabel!
+    @IBOutlet weak var refreshButton: BorderButton!
     
     let player: Player = Player()
     var playerList = [PlayerForLB]()
@@ -26,16 +27,30 @@ class leaderboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // hide everything till API call works
+        self.tableIsHidden(bool: true)
+        self.refreshButton.isHidden = true
+        self.errorMessageLabel.text = ""
+        
+        // get leaderboard information and set the labels
         player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: self.season, completion: {json in
             self.doAfterGetPlayerData(json: json)
         })
+        
+        // tableview set up stuff
         leaderboardTableView.delegate = self
         leaderboardTableView.dataSource = self
         
+        // set up the sort by and filter by buttons
         setUpSortByMenu()
         setUpFilterByMenu()
         
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        self.viewDidLoad()
     }
     
     
@@ -90,7 +105,7 @@ class leaderboardViewController: UIViewController {
             ]
         }
         var filterByMenu: UIMenu {
-            return UIMenu(title: "Filter by:", image: nil, identifier: nil, options: [], children: menuItems)
+            return UIMenu(title: "Season:", image: nil, identifier: nil, options: [], children: menuItems)
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", image: nil, primaryAction: nil, menu: filterByMenu)
         filterByButton.showsMenuAsPrimaryAction = true
@@ -119,12 +134,17 @@ class leaderboardViewController: UIViewController {
                 self.playerList.append(PlayerForLB(username: username, id: id, trips: trips))
             }
         }
-        print(self.playerList)
         DispatchQueue.main.async {
             self.leaderboardTableView.reloadData()
+            self.tableIsHidden(bool: false)
         }
     }
 
+    func tableIsHidden(bool: Bool) {
+        self.sortFilterStackView.isHidden = bool
+        self.usernameLabel.isHidden = bool
+        self.tripsLabel.isHidden = bool
+    }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
         if self.playerID == nil {
