@@ -1205,6 +1205,17 @@
                                     <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" animates="NO" id="Zmc-7I-d7K"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcP-Zl-e9a" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
+                                <rect key="frame" x="135" y="285" width="120" height="20"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Refresh">
+                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="refreshButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="fs9-95-G08"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MDP-ga-cyv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1223,6 +1234,8 @@
                             <constraint firstAttribute="bottom" secondItem="Sac-Td-gTP" secondAttribute="bottom" id="Fco-B7-P3b"/>
                             <constraint firstItem="3c4-4t-wNt" firstAttribute="top" secondItem="GUj-u9-RxJ" secondAttribute="bottom" constant="20" id="Fr2-i6-oJb"/>
                             <constraint firstAttribute="bottom" secondItem="R4h-Lj-9J8" secondAttribute="bottom" id="GT6-1X-GC4"/>
+                            <constraint firstItem="PcP-Zl-e9a" firstAttribute="top" secondItem="EEg-L7-CCK" secondAttribute="bottom" constant="10" id="Hv2-5C-BaG"/>
+                            <constraint firstItem="PcP-Zl-e9a" firstAttribute="width" secondItem="awa-lf-vw6" secondAttribute="width" id="L3H-np-uz9"/>
                             <constraint firstItem="3c4-4t-wNt" firstAttribute="leading" secondItem="MDP-ga-cyv" secondAttribute="leading" constant="20" id="M2F-4h-Osu"/>
                             <constraint firstAttribute="bottom" secondItem="Uf7-OE-6zB" secondAttribute="bottom" id="MOP-j6-uOR"/>
                             <constraint firstItem="GUj-u9-RxJ" firstAttribute="height" secondItem="hUk-Xz-j0M" secondAttribute="height" id="MjC-Ai-C1P"/>
@@ -1231,6 +1244,7 @@
                             <constraint firstItem="Sac-Td-gTP" firstAttribute="trailing" secondItem="MDP-ga-cyv" secondAttribute="trailing" id="QTy-eD-TGD"/>
                             <constraint firstItem="Uf7-OE-6zB" firstAttribute="leading" secondItem="MDP-ga-cyv" secondAttribute="leading" id="Qzt-HF-pkk"/>
                             <constraint firstItem="bM8-yS-C1T" firstAttribute="top" secondItem="ZBJ-jA-bjf" secondAttribute="top" constant="-7" id="RdM-qU-zOj"/>
+                            <constraint firstItem="PcP-Zl-e9a" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="U26-fn-QEq"/>
                             <constraint firstItem="eMU-Xp-zcb" firstAttribute="top" secondItem="hUk-Xz-j0M" secondAttribute="top" id="VEW-X5-bZg"/>
                             <constraint firstItem="MDP-ga-cyv" firstAttribute="trailing" secondItem="Uf7-OE-6zB" secondAttribute="trailing" id="W9S-Gl-Y1s"/>
                             <constraint firstItem="gtp-fI-XY0" firstAttribute="height" secondItem="jrb-fL-hyV" secondAttribute="height" id="WK5-X8-xRU"/>
@@ -1241,6 +1255,7 @@
                             <constraint firstAttribute="trailing" secondItem="bM8-yS-C1T" secondAttribute="trailing" constant="-32" id="Ypn-yS-Cod"/>
                             <constraint firstItem="jrb-fL-hyV" firstAttribute="top" secondItem="awa-lf-vw6" secondAttribute="bottom" constant="10" id="Yx1-vl-pWe"/>
                             <constraint firstItem="eMU-Xp-zcb" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="a68-ru-Uxf"/>
+                            <constraint firstItem="PcP-Zl-e9a" firstAttribute="height" secondItem="awa-lf-vw6" secondAttribute="height" id="agD-5h-gH7"/>
                             <constraint firstItem="bM8-yS-C1T" firstAttribute="top" secondItem="ZBJ-jA-bjf" secondAttribute="top" constant="-35" id="b9c-xg-dN3"/>
                             <constraint firstItem="Sac-Td-gTP" firstAttribute="leading" secondItem="ZBJ-jA-bjf" secondAttribute="leading" id="bSB-xr-fXI"/>
                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="bM8-yS-C1T" secondAttribute="bottom" constant="-10" id="dT2-34-p6u"/>
@@ -1307,6 +1322,7 @@
                         <outlet property="editUsernameButton" destination="Msa-fa-jNU" id="iQL-G6-r7T"/>
                         <outlet property="errorMessageLabel" destination="EEg-L7-CCK" id="hgp-IZ-HEi"/>
                         <outlet property="phoneNumberLabel" destination="GUj-u9-RxJ" id="Meh-ay-R4o"/>
+                        <outlet property="refreshButton" destination="PcP-Zl-e9a" id="cVJ-ZF-Lfl"/>
                         <outlet property="signOutButton" destination="awa-lf-vw6" id="IRd-nU-MLc"/>
                         <outlet property="submitButton" destination="fd8-rJ-I1A" id="NvN-KK-Gsw"/>
                         <outlet property="usernameLabel" destination="hUk-Xz-j0M" id="iCk-U9-uOX"/>
@@ -1627,6 +1643,9 @@
         <designable name="Oe4-KV-9l4">
             <size key="intrinsicContentSize" width="75.333333333333329" height="33.333333333333336"/>
         </designable>
+        <designable name="PcP-Zl-e9a">
+            <size key="intrinsicContentSize" width="72" height="33.333333333333336"/>
+        </designable>
         <designable name="VND-yf-Ndr">
             <size key="intrinsicContentSize" width="78.666666666666671" height="38.666666666666664"/>
         </designable>
@@ -1663,8 +1682,8 @@
         <segue reference="ZtU-46-x2k"/>
         <segue reference="es7-6y-SqN"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="teg-Ab-B26"/>
-        <segue reference="B5f-e6-Lo0"/>
+        <segue reference="Zmc-7I-d7K"/>
+        <segue reference="hz3-qv-AwS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>

@@ -15,6 +15,7 @@ class profileViewController: UIViewController {
     let username: Username = Username()
     let player: Player = Player()
     
+    @IBOutlet weak var refreshButton: BorderButton!
     @IBOutlet weak var areYouSureStack: UIStackView!
     @IBOutlet weak var checkboxButton: UIButton!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -37,16 +38,11 @@ class profileViewController: UIViewController {
         cancelButton.isHidden = true
         submitButton.isHidden = true
         areYouSureStack.isHidden = true
+        refreshButton.isHidden = true
         
-        // Set username, phone, and checkbox
+        // Set username, phone, and checkbox if api call successful
         player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
-            DispatchQueue.main.async {
-                self.usernameLabel.text = ((json as NSDictionary)["username"] as! String)
-                self.phoneNumberLabel.text = ((json as NSDictionary)["phone"] as! String)
-                self.visibleOnLeaderboard = ((json as NSDictionary)["visible_on_leaderboard"] as! Bool)
-                self.setCheckbox(checked: self.visibleOnLeaderboard)
-            }
-            
+            self.displayPlayerData(json: json)
         })
         
         // hide everything until api call works
@@ -58,6 +54,16 @@ class profileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func displayPlayerData(json: Dictionary<String, Any>) {
+        DispatchQueue.main.async {
+            self.usernameLabel.text = ((json as NSDictionary)["username"] as! String)
+            self.phoneNumberLabel.text = ((json as NSDictionary)["phone"] as! String)
+            self.visibleOnLeaderboard = ((json as NSDictionary)["visible_on_leaderboard"] as! Bool)
+            self.setCheckbox(checked: self.visibleOnLeaderboard)
+            self.apiItemsHidden(bool: false)
+            self.errorMessageLabel.text = ""
+        }
+    }
     
     func setCheckbox(checked: Bool) {
         DispatchQueue.main.async {
@@ -100,6 +106,10 @@ class profileViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        self.viewDidLoad()
+    }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.usernameLabel.isHidden = false
@@ -158,7 +168,6 @@ class profileViewController: UIViewController {
     func apiItemsHidden(bool: Bool) -> Void {
         self.checkboxButton.isHidden = bool
         self.editUsernameButton.isHidden = bool
-        self.usernameTextField.isHidden = bool
         self.usernameLabel.isHidden = bool
         self.phoneNumberLabel.isHidden = bool
         self.checkboxImage.isHidden = bool

@@ -170,14 +170,7 @@ class Player: NSObject {
                 print("error")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load account information"
-                    vc.checkboxButton.isHidden = true
-                    vc.editUsernameButton.isHidden = true
-                    vc.usernameTextField.isHidden = true
-                    vc.usernameLabel.isHidden = true
-                    vc.phoneNumberLabel.isHidden = true
-                    vc.checkboxImage.isHidden = true
-                    vc.checkboxLabel.isHidden = true
-                    vc.deleteAccountButton.isHidden = true
+                    vc.refreshButton.isHidden = false
                 }
                 return
             }
@@ -185,6 +178,7 @@ class Player: NSObject {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.refreshButton.isHidden = false
                 }
                 return
             }
@@ -192,6 +186,7 @@ class Player: NSObject {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.refreshButton.isHidden = false
                 }
                 return
             }
