@@ -24,6 +24,9 @@
 		C9957C8827A078380062A009 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C9957C8727A078380062A009 /* FirebaseAuth */; };
 		C9ABC2A827AC4D1F00460B77 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABC2A727AC4D1F00460B77 /* Season.swift */; };
 		C9ABC2AA27AC544F00460B77 /* LocalNotificationSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9ABC2A927AC544F00460B77 /* LocalNotificationSound2.mp3 */; };
+		C9ABC2AD27AC564C00460B77 /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABC2AB27AC564C00460B77 /* StatsTableViewCell.swift */; };
+		C9ABC2AE27AC564C00460B77 /* StatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9ABC2AC27AC564C00460B77 /* StatsTableViewCell.xib */; };
+		C9ABC2B027AC5A1700460B77 /* leaderboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABC2AF27AC5A1700460B77 /* leaderboardDetailViewController.swift */; };
 		C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */; };
 		C9E316DE27A9A1DE000CA001 /* leaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */; };
 		C9E316E027A9AD9E000CA001 /* PlayerForLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E316DF27A9AD9E000CA001 /* PlayerForLB.swift */; };
@@ -52,6 +55,9 @@
 		C9957C8927A07C750062A009 /* Silent Rock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Silent Rock.entitlements"; sourceTree = "<group>"; };
 		C9ABC2A727AC4D1F00460B77 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		C9ABC2A927AC544F00460B77 /* LocalNotificationSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LocalNotificationSound2.mp3; sourceTree = "<group>"; };
+		C9ABC2AB27AC564C00460B77 /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
+		C9ABC2AC27AC564C00460B77 /* StatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsTableViewCell.xib; sourceTree = "<group>"; };
+		C9ABC2AF27AC5A1700460B77 /* leaderboardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardDetailViewController.swift; sourceTree = "<group>"; };
 		C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LocalNotificationSound.mp3; sourceTree = "<group>"; };
 		C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardViewController.swift; sourceTree = "<group>"; };
 		C9E316DF27A9AD9E000CA001 /* PlayerForLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerForLB.swift; sourceTree = "<group>"; };
@@ -115,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				C91D8725273C35CA00283190 /* BorderButton.swift */,
+				C9ABC2AB27AC564C00460B77 /* StatsTableViewCell.swift */,
+				C9ABC2AC27AC564C00460B77 /* StatsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,6 +136,7 @@
 				C9957C80279F7F4C0062A009 /* registerViewController.swift */,
 				C92ADF9C27A79282002A0030 /* profileViewController.swift */,
 				C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */,
+				C9ABC2AF27AC5A1700460B77 /* leaderboardDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -215,6 +224,7 @@
 				C91D8718273C2F6F00283190 /* Assets.xcassets in Resources */,
 				C9ABC2AA27AC544F00460B77 /* LocalNotificationSound2.mp3 in Resources */,
 				C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */,
+				C9ABC2AE27AC564C00460B77 /* StatsTableViewCell.xib in Resources */,
 				C91D8716273C2F6B00283190 /* Main.storyboard in Resources */,
 				C9957C8327A0754D0062A009 /* GoogleService-Info.plist in Resources */,
 			);
@@ -228,10 +238,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C91D8713273C2F6B00283190 /* ViewController.swift in Sources */,
+				C9ABC2AD27AC564C00460B77 /* StatsTableViewCell.swift in Sources */,
 				C9FA01A427A36A0200612E10 /* Username.swift in Sources */,
 				C92ADF9D27A79282002A0030 /* profileViewController.swift in Sources */,
 				C985836327A08AC1002197FD /* verificationViewController.swift in Sources */,
 				C9E316E027A9AD9E000CA001 /* PlayerForLB.swift in Sources */,
+				C9ABC2B027AC5A1700460B77 /* leaderboardDetailViewController.swift in Sources */,
 				C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */,
 				C91D870F273C2F6B00283190 /* AppDelegate.swift in Sources */,
 				C9ABC2A827AC4D1F00460B77 /* Season.swift in Sources */,

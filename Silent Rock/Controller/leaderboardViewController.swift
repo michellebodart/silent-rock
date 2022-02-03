@@ -174,6 +174,7 @@ extension leaderboardViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected a row")
+        self.performSegue(withIdentifier: "leaderboardDetailView", sender: self)
         // REVISIT THIS -MB
     }
 }
