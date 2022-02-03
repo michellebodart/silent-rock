@@ -46,7 +46,11 @@ class profileViewController: UIViewController {
                 self.visibleOnLeaderboard = ((json as NSDictionary)["visible_on_leaderboard"] as! Bool)
                 self.setCheckbox(checked: self.visibleOnLeaderboard)
             }
+            
         })
+        
+        // hide everything until api call works
+        apiItemsHidden(bool: true)
         
         // Hide keyboard
         self.hideKeyboardWhenTappedAround()
@@ -85,6 +89,7 @@ class profileViewController: UIViewController {
     }
     
     @IBAction func usernameTextFieldUpdated(_ sender: Any) {
+        // formats the user input to limit certain characters and limit to 20 characters
         usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", username: usernameTextField.text ?? "")
         errorMessageLabel.text = ""
         if  usernameTextField.text != "" {
@@ -107,6 +112,7 @@ class profileViewController: UIViewController {
     
     
     @IBAction func submitButtonTapped(_ sender: Any) {
+        // updates username in DB, if successful, returns to main page, otherwise displays an error message
         player.updateUsername(playerID: self.playerID!, username: self.usernameTextField.text!, vc: self, completion: {
             DispatchQueue.main.async {
                 self.submitButton.isHidden = true
@@ -120,6 +126,7 @@ class profileViewController: UIViewController {
     }
     
     @IBAction func checkboxTapped(_ sender: Any) {
+        // sends API call to update users' settings, if unsuccessful displays an error message
         player.updateShowOnLeaderboard(playerID: self.playerID!, visibleOnLeaderboard: self.visibleOnLeaderboard, vc: self, completion: {
             self.setCheckbox(checked: self.visibleOnLeaderboard)
         })
@@ -127,16 +134,19 @@ class profileViewController: UIViewController {
     
     
     @IBAction func deleteAccountTapped(_ sender: Any) {
+        // presents are you sure options
         self.areYouSureStack.isHidden = false
         self.deleteAccountButton.isHidden = true
     }
     
     @IBAction func cancelDeleteAccountButtonTapped(_ sender: Any) {
+        // returns to main page witwhout deleting account
         self.areYouSureStack.isHidden = true
         self.deleteAccountButton.isHidden = false
     }
     
     @IBAction func confirmDeleteAccountButtonTapped(_ sender: Any) {
+        // deletes account from DB, if successful, returns to sign in page, else, shows an error message
         player.deletePlayer(playerID: self.playerID!, vc: self, completion: {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "loginView", sender: self)
@@ -145,9 +155,19 @@ class profileViewController: UIViewController {
     }
     
     
-    
+    func apiItemsHidden(bool: Bool) -> Void {
+        self.checkboxButton.isHidden = bool
+        self.editUsernameButton.isHidden = bool
+        self.usernameTextField.isHidden = bool
+        self.usernameLabel.isHidden = bool
+        self.phoneNumberLabel.isHidden = bool
+        self.checkboxImage.isHidden = bool
+        self.checkboxLabel.isHidden = bool
+        self.deleteAccountButton.isHidden = bool
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // always send player ID, so the views know if the user is logged in or if we are using without account
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
