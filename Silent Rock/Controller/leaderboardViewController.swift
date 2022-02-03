@@ -28,6 +28,10 @@ class leaderboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // always start by sorting by trips, season is all time
+        self.season = "all"
+        self.sortBy = "trips"
+        
         // hide everything till API call works
         self.tableIsHidden(bool: true)
         self.refreshButton.isHidden = true
@@ -143,6 +147,7 @@ class leaderboardViewController: UIViewController {
         self.sortFilterStackView.isHidden = bool
         self.usernameLabel.isHidden = bool
         self.tripsLabel.isHidden = bool
+        self.leaderboardTableView.isHidden = bool
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {

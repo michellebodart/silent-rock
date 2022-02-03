@@ -14,7 +14,7 @@ class Season {
         let year = Int(date.prefix(4))!
         let month = Int(date.dropFirst(5).prefix(2))!
         var result = [String]()
-        let range = 1985...year-1
+        let range = 2010...year-1
         for i in range {
             let season = String(i) + "-" + String(i+1)
             result.append(season)
@@ -23,6 +23,6 @@ class Season {
             let season = String(year) + "-" + String(year+1)
             result.append(season)
         }
-        return result
+        return result.reversed()
     }
 }
