@@ -8,8 +8,15 @@
 import UIKit
 
 class leaderboardDetailViewController: UIViewController {
+    
+    var playerID: Int? = 29 // REVISIT THIS -MB
+    var tripsList = [Dictionary<String, Any>]()
+    var player: Player = Player()
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var refreshButton: BorderButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +26,21 @@ class leaderboardDetailViewController: UIViewController {
         table.dataSource = self
         table.register(StatsTableViewCell.nib(), forCellReuseIdentifier: "StatsTableViewCell")
         
+        // get trips
+        player.getTrips(playerID: self.playerID!, vc: self, completion: doAfterGetTrips(json:))
+        
+        
         // Do any additional setup after loading the view.
     }
 
+    func doAfterGetTrips(json: Dictionary<String, Any>) {
+        self.tripsList = json["trips"]! as! [Dictionary<String, Any>]
+        print(self.tripsList.count)
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
+    }
+    
 }
 
 
@@ -29,6 +48,10 @@ extension leaderboardDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected a row")
+//        let cell = tableView(table, cellForRowAt: indexPath.row) as StatsTableViewCell
+        let cell = self.table.cellForRow(at: indexPath) as! StatsTableViewCell
+        print(cell.playerId!)
+        
         // REVISIT THIS -MB
     }
 }
@@ -37,7 +60,10 @@ extension leaderboardDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "StatsTableViewCell", for: indexPath) as! StatsTableViewCell
-        cell.configure(date: "November 3, 2021", time: "8:34 am")
+        let dateTime = self.tripsList[indexPath.row]["date"] as! String
+        let date = String(dateTime.prefix(17))
+        let time = String(dateTime.dropFirst(17))
+        cell.configure(date: date, time: time, id: 1)
         return cell
     }
     
@@ -46,8 +72,7 @@ extension leaderboardDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-        // REVISIT -MB
+        return self.tripsList.count
     }
     
 }

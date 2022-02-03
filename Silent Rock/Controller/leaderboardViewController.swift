@@ -165,6 +165,9 @@ class leaderboardViewController: UIViewController {
         } else if segue.destination is profileViewController {
             let lvc = segue.destination as? profileViewController
             lvc?.playerID = self.playerID
+        } else if segue.destination is leaderboardDetailViewController {
+            let ldvc = segue.destination as? leaderboardDetailViewController
+            ldvc?.playerID = self.playerID
         }
     }
     
@@ -173,9 +176,7 @@ class leaderboardViewController: UIViewController {
 extension leaderboardViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected a row")
         self.performSegue(withIdentifier: "leaderboardDetailView", sender: self)
-        // REVISIT THIS -MB
     }
 }
 

@@ -367,4 +367,43 @@ class Player: NSObject {
         task.resume()
     }
     
+    func getTrips (playerID: Int, vc: leaderboardDetailViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void){
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        request.httpMethod = "GET"
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                print("error")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Failed to load account information"
+                    vc.refreshButton.isHidden = false
+                }
+                return
+            }
+            guard let data = data else {
+                print("error, did not receive data")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.refreshButton.isHidden = false
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                print("error, HTTP request failed")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.refreshButton.isHidden = false
+                }
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
+                completion(json)
+            } catch {
+                print("error: ", error)
+            }
+        })
+        task.resume()
+    }
+    
 }

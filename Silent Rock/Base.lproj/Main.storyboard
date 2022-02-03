@@ -1865,6 +1865,8 @@
                     <navigationItem key="navigationItem" id="IfC-Je-bGI"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="errorMessageLabel" destination="krx-3Q-XNk" id="yH4-7r-w7y"/>
+                        <outlet property="refreshButton" destination="hwK-Z5-E6O" id="4V0-Xu-gzC"/>
                         <outlet property="table" destination="Xts-EY-dab" id="bih-YU-3LE"/>
                     </connections>
                 </viewController>
