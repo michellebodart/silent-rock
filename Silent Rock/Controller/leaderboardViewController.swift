@@ -81,28 +81,27 @@ class leaderboardViewController: UIViewController {
     }
     
     func setUpFilterByMenu() {
-        var menuItems: [UIAction] {
-            return [
-                // REVISIT THIS TO MAKE IT DYNAMIC -MB
-                UIAction(title: "All time", image: nil, handler: { (_) in
-                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: "all", completion: {json in
-                        self.doAfterGetPlayerData(json: json)
-                        self.season = "all"
-                    })
-                }),
-                UIAction(title: "2021-2022", image: nil, handler: { (_) in
-                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: "2021-2022", completion: {json in
-                        self.doAfterGetPlayerData(json: json)
-                        self.season = "2021-2022"
-                    })
-                }),
-                UIAction(title: "2020-2021", image: nil, handler: { (_) in
-                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: "2020-2021", completion: {json in
-                        self.doAfterGetPlayerData(json: json)
-                        self.season = "2020-2021"
-                    })
+        
+        var result = [
+            UIAction(title: "All time", image: nil, handler: { (_) in
+                self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: "all", completion: {json in
+                    self.doAfterGetPlayerData(json: json)
+                    self.season = "all"
                 })
-            ]
+            })]
+        
+        for season in Season().getSeasons() {
+            let newSeason = UIAction(title: season, image: nil, handler: { (_) in
+                self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: season, completion: {json in
+                    self.doAfterGetPlayerData(json: json)
+                    self.season = season
+                })
+            })
+            result.append(newSeason)
+        }
+        
+        var menuItems: [UIAction] {
+            return result
         }
         var filterByMenu: UIMenu {
             return UIMenu(title: "Season:", image: nil, identifier: nil, options: [], children: menuItems)
