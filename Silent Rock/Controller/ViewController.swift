@@ -12,6 +12,7 @@ import AVFoundation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var playerID: Int? = nil
+    var playerIDs: Array<Int?> = []
     let locationManager:CLLocationManager = CLLocationManager()
 //    let state = UIApplication.shared.applicationState //not sure if I need this
     
@@ -65,6 +66,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         stopButton.isHidden = false
         warningLabel.isHidden = true
         exitButton.isHidden = true
+        errorMessageLabel.text = ""
     }
     
     func sendLocalNotification() {
@@ -124,9 +126,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if !inRegion {
                 soundAlarm()
                 inRegion = true
-                self.player.addTrip(vc: self, completion: { tripID in
-                    self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: [29]) // REVISIT
-                })
+                
+                // only add trip to DB if a user is logged in - don't let them add friends if don't have an account
+                if self.playerID != nil {
+                    self.playerIDs.append(self.playerID)
+                    self.player.addTrip(vc: self, completion: { tripID in
+                        self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: self.playerIDs) // REVISIT
+                    })
+                }
             }
         } else {
             if inRegion {

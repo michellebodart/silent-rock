@@ -445,13 +445,13 @@ class Player: NSObject {
         task.resume()
     }
     
-    func addTripToUsers(vc: ViewController, tripID: Int, playerIDs: Array<Int>) {
+    func addTripToUsers(vc: ViewController, tripID: Int, playerIDs: Array<Int?>) {
         var request = URLRequest(url: URL(string: "http://localhost:5000/players_trips/?API_KEY=123456")!)
         request.httpMethod = "POST"
         
         struct UploadData: Codable {
             let trip_id: Int
-            let player_ids: Array<Int>
+            let player_ids: Array<Int?>
         }
         
         let uploadDataModel = UploadData(trip_id: tripID, player_ids: playerIDs)
