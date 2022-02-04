@@ -15,6 +15,7 @@ class profileViewController: UIViewController {
     let username: Username = Username()
     let player: Player = Player()
     
+    @IBOutlet weak var viewMyTripsButton: BorderButton!
     @IBOutlet weak var refreshButton: BorderButton!
     @IBOutlet weak var areYouSureStack: UIStackView!
     @IBOutlet weak var checkboxButton: UIButton!
@@ -173,6 +174,7 @@ class profileViewController: UIViewController {
         self.checkboxImage.isHidden = bool
         self.checkboxLabel.isHidden = bool
         self.deleteAccountButton.isHidden = bool
+        self.viewMyTripsButton.isHidden = bool
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

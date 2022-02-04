@@ -1342,6 +1342,7 @@
                         <outlet property="submitButton" destination="fd8-rJ-I1A" id="NvN-KK-Gsw"/>
                         <outlet property="usernameLabel" destination="hUk-Xz-j0M" id="iCk-U9-uOX"/>
                         <outlet property="usernameTextField" destination="eMU-Xp-zcb" id="BPW-5J-dWy"/>
+                        <outlet property="viewMyTripsButton" destination="rHl-Xh-wiO" id="FUD-Sd-bcX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KM-d0-Gsn" sceneMemberID="firstResponder"/>
@@ -1774,7 +1775,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsj-Pq-4Vi">
-                                <rect key="frame" x="20" y="257" width="35" height="35"/>
+                                <rect key="frame" x="10" y="247" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="4TM-ak-lRB"/>
                                     <constraint firstAttribute="width" constant="35" id="fvj-65-r00"/>
@@ -1799,7 +1800,7 @@
                             <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="xCf-FN-BPO" secondAttribute="trailing" constant="20" id="55m-eW-eZR"/>
                             <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="KFi-pr-1wX" secondAttribute="trailing" id="5RH-kA-yge"/>
                             <constraint firstItem="krx-3Q-XNk" firstAttribute="leading" secondItem="IiZ-KG-AJq" secondAttribute="leading" constant="20" id="7Ds-13-2Ot"/>
-                            <constraint firstItem="Dsj-Pq-4Vi" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" constant="20" id="Ad0-g0-1hU"/>
+                            <constraint firstItem="Dsj-Pq-4Vi" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" constant="10" id="Ad0-g0-1hU"/>
                             <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="krx-3Q-XNk" secondAttribute="trailing" constant="20" id="Afl-rK-eH4"/>
                             <constraint firstItem="xCf-FN-BPO" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" constant="20" id="CAH-UI-jtn"/>
                             <constraint firstItem="UMq-vj-PUj" firstAttribute="trailing" secondItem="xfd-hD-AEG" secondAttribute="trailing" id="E9f-On-9Fc"/>
@@ -1817,7 +1818,7 @@
                             <constraint firstItem="KFi-pr-1wX" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" id="W3b-XS-beS"/>
                             <constraint firstItem="hwK-Z5-E6O" firstAttribute="top" secondItem="krx-3Q-XNk" secondAttribute="bottom" constant="10" id="XEB-h9-2Ii"/>
                             <constraint firstItem="dUt-Em-8KU" firstAttribute="centerX" secondItem="IiZ-KG-AJq" secondAttribute="centerX" id="ZuR-YT-dhx"/>
-                            <constraint firstItem="Dsj-Pq-4Vi" firstAttribute="top" secondItem="afX-v8-95c" secondAttribute="bottom" constant="20" id="ab4-Q2-hza"/>
+                            <constraint firstItem="Dsj-Pq-4Vi" firstAttribute="top" secondItem="afX-v8-95c" secondAttribute="bottom" constant="10" id="ab4-Q2-hza"/>
                             <constraint firstItem="UMq-vj-PUj" firstAttribute="top" secondItem="Xts-EY-dab" secondAttribute="bottom" id="aoI-8F-PMP"/>
                             <constraint firstItem="afX-v8-95c" firstAttribute="leading" relation="lessThanOrEqual" secondItem="IiZ-KG-AJq" secondAttribute="leading" constant="-50" id="cao-84-fxy"/>
                             <constraint firstItem="xCf-FN-BPO" firstAttribute="top" secondItem="dUt-Em-8KU" secondAttribute="bottom" constant="15" id="d2U-4G-uA5"/>
@@ -1936,12 +1937,12 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="88h-Ss-BBh"/>
-        <segue reference="EDk-md-nvz"/>
+        <segue reference="zYF-7w-ROV"/>
         <segue reference="NQo-CT-hxa"/>
         <segue reference="es7-6y-SqN"/>
         <segue reference="bQc-8K-LML"/>
         <segue reference="Zmc-7I-d7K"/>
-        <segue reference="a4Z-Cv-EXS"/>
+        <segue reference="hz3-qv-AwS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>
