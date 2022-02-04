@@ -16,6 +16,7 @@ class leaderboardDetailViewController: UIViewController {
     var player: Player = Player()
     var detailPlayerUsername: String = ""
     var season: String = "all"
+    var returnTo: String? = nil
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -97,6 +98,15 @@ class leaderboardDetailViewController: UIViewController {
         self.viewDidLoad()
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        if self.returnTo == "leaderboard" {
+            self.performSegue(withIdentifier: "leaderboardView", sender: self)
+        } else if self.returnTo == "profile" {
+            self.performSegue(withIdentifier: "profileView", sender: self)
+        }
+    }
+    
+    
     @IBAction func profileButtonTapped(_ sender: Any) {
         if self.detailPlayerID != nil {
             self.performSegue(withIdentifier: "profileView", sender: self)
@@ -111,10 +121,14 @@ class leaderboardDetailViewController: UIViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
         } else if segue.destination is profileViewController {
-            let lvc = segue.destination as? profileViewController
+            let pvc = segue.destination as? profileViewController
+            pvc?.playerID = self.playerID
+        } else if segue.destination is leaderboardViewController {
+            let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
         }
     }
+    
     
 }
 

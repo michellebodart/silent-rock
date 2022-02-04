@@ -183,6 +183,12 @@ class profileViewController: UIViewController {
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
+        } else if segue.destination is leaderboardDetailViewController {
+            let ldvc = segue.destination as? leaderboardDetailViewController
+            ldvc?.detailPlayerID = self.playerID
+            ldvc?.playerID = self.playerID
+            ldvc?.detailPlayerUsername = self.usernameLabel.text ?? ""
+            ldvc?.returnTo = "profile"
         }
     }
 

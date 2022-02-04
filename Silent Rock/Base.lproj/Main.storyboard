@@ -1216,6 +1216,17 @@
                                     <action selector="refreshButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="fs9-95-G08"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHl-Xh-wiO" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
+                                <rect key="frame" x="135" y="634.33333333333337" width="120" height="20"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="View my trips">
+                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="rIf-SB-vQ7" kind="presentation" identifier="leaderboardDetailView" animates="NO" id="88h-Ss-BBh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MDP-ga-cyv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1223,7 +1234,10 @@
                             <constraint firstItem="gfz-j0-pFZ" firstAttribute="width" secondItem="J6T-t0-QYg" secondAttribute="width" id="0Tu-2j-6gr"/>
                             <constraint firstItem="MDP-ga-cyv" firstAttribute="trailing" secondItem="EEg-L7-CCK" secondAttribute="trailing" constant="20" id="2Yf-pT-6Nx"/>
                             <constraint firstItem="C1O-Ag-E1n" firstAttribute="top" secondItem="hUk-Xz-j0M" secondAttribute="bottom" constant="20" id="2dY-Cz-e5Q"/>
+                            <constraint firstItem="awa-lf-vw6" firstAttribute="top" secondItem="rHl-Xh-wiO" secondAttribute="bottom" constant="10" id="2u6-5e-PcM"/>
+                            <constraint firstItem="rHl-Xh-wiO" firstAttribute="width" secondItem="awa-lf-vw6" secondAttribute="width" id="39q-Pr-k7d"/>
                             <constraint firstItem="Msa-fa-jNU" firstAttribute="top" secondItem="hUk-Xz-j0M" secondAttribute="bottom" constant="20" id="4Y1-rZ-Yr3"/>
+                            <constraint firstItem="awa-lf-vw6" firstAttribute="height" secondItem="rHl-Xh-wiO" secondAttribute="height" id="8Kq-YB-ow9"/>
                             <constraint firstItem="eMU-Xp-zcb" firstAttribute="width" secondItem="hUk-Xz-j0M" secondAttribute="width" id="8Yg-3f-qUX"/>
                             <constraint firstItem="awa-lf-vw6" firstAttribute="width" secondItem="jrb-fL-hyV" secondAttribute="width" id="9G9-nK-W13"/>
                             <constraint firstItem="gtp-fI-XY0" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="Ahx-Ll-frc"/>
@@ -1249,6 +1263,7 @@
                             <constraint firstItem="MDP-ga-cyv" firstAttribute="trailing" secondItem="Uf7-OE-6zB" secondAttribute="trailing" id="W9S-Gl-Y1s"/>
                             <constraint firstItem="gtp-fI-XY0" firstAttribute="height" secondItem="jrb-fL-hyV" secondAttribute="height" id="WK5-X8-xRU"/>
                             <constraint firstItem="hUk-Xz-j0M" firstAttribute="leading" secondItem="MDP-ga-cyv" secondAttribute="leading" constant="20" id="WY6-vF-3kt"/>
+                            <constraint firstItem="rHl-Xh-wiO" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="Wb6-xA-RxR"/>
                             <constraint firstItem="3c4-4t-wNt" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="XpP-qt-UjT"/>
                             <constraint firstItem="MDP-ga-cyv" firstAttribute="trailing" secondItem="hUk-Xz-j0M" secondAttribute="trailing" constant="20" id="YOK-rj-j01"/>
                             <constraint firstItem="GUj-u9-RxJ" firstAttribute="centerX" secondItem="hUk-Xz-j0M" secondAttribute="centerX" id="YeD-la-sxm"/>
@@ -1758,8 +1773,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="afX-v8-95c">
-                                <rect key="frame" x="-32" y="-5" width="454" height="244"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsj-Pq-4Vi">
+                                <rect key="frame" x="20" y="257" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="4TM-ak-lRB"/>
+                                    <constraint firstAttribute="width" constant="35" id="fvj-65-r00"/>
+                                </constraints>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="rIf-SB-vQ7" eventType="touchUpInside" id="fAW-A7-rV0"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="afX-v8-95c">
+                                <rect key="frame" x="-32" y="-7" width="454" height="244"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="afX-v8-95c" secondAttribute="height" multiplier="426:229" id="nkp-DY-3h3"/>
                                 </constraints>
@@ -1771,6 +1799,7 @@
                             <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="xCf-FN-BPO" secondAttribute="trailing" constant="20" id="55m-eW-eZR"/>
                             <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="KFi-pr-1wX" secondAttribute="trailing" id="5RH-kA-yge"/>
                             <constraint firstItem="krx-3Q-XNk" firstAttribute="leading" secondItem="IiZ-KG-AJq" secondAttribute="leading" constant="20" id="7Ds-13-2Ot"/>
+                            <constraint firstItem="Dsj-Pq-4Vi" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" constant="20" id="Ad0-g0-1hU"/>
                             <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="krx-3Q-XNk" secondAttribute="trailing" constant="20" id="Afl-rK-eH4"/>
                             <constraint firstItem="xCf-FN-BPO" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" constant="20" id="CAH-UI-jtn"/>
                             <constraint firstItem="UMq-vj-PUj" firstAttribute="trailing" secondItem="xfd-hD-AEG" secondAttribute="trailing" id="E9f-On-9Fc"/>
@@ -1788,6 +1817,7 @@
                             <constraint firstItem="KFi-pr-1wX" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" id="W3b-XS-beS"/>
                             <constraint firstItem="hwK-Z5-E6O" firstAttribute="top" secondItem="krx-3Q-XNk" secondAttribute="bottom" constant="10" id="XEB-h9-2Ii"/>
                             <constraint firstItem="dUt-Em-8KU" firstAttribute="centerX" secondItem="IiZ-KG-AJq" secondAttribute="centerX" id="ZuR-YT-dhx"/>
+                            <constraint firstItem="Dsj-Pq-4Vi" firstAttribute="top" secondItem="afX-v8-95c" secondAttribute="bottom" constant="20" id="ab4-Q2-hza"/>
                             <constraint firstItem="UMq-vj-PUj" firstAttribute="top" secondItem="Xts-EY-dab" secondAttribute="bottom" id="aoI-8F-PMP"/>
                             <constraint firstItem="afX-v8-95c" firstAttribute="leading" relation="lessThanOrEqual" secondItem="IiZ-KG-AJq" secondAttribute="leading" constant="-50" id="cao-84-fxy"/>
                             <constraint firstItem="xCf-FN-BPO" firstAttribute="top" secondItem="dUt-Em-8KU" secondAttribute="bottom" constant="15" id="d2U-4G-uA5"/>
@@ -1897,20 +1927,25 @@
         <designable name="qjn-YZ-Kii">
             <size key="intrinsicContentSize" width="67" height="33.333333333333336"/>
         </designable>
+        <designable name="rHl-Xh-wiO">
+            <size key="intrinsicContentSize" width="109.66666666666667" height="33.333333333333336"/>
+        </designable>
         <designable name="u0b-e4-8ha">
             <size key="intrinsicContentSize" width="244.33333333333334" height="38.666666666666664"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
+        <segue reference="88h-Ss-BBh"/>
         <segue reference="EDk-md-nvz"/>
         <segue reference="NQo-CT-hxa"/>
         <segue reference="es7-6y-SqN"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="0k9-YR-AmX"/>
+        <segue reference="Zmc-7I-d7K"/>
         <segue reference="a4Z-Cv-EXS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="home" width="512" height="512"/>
         <image name="leaderboard" width="512" height="512"/>
         <image name="profile" width="512" height="512"/>

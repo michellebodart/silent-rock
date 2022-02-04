@@ -173,6 +173,7 @@ class leaderboardViewController: UIViewController {
             ldvc?.detailPlayerID = self.detailPlayerID
             ldvc?.playerID = self.playerID
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
+            ldvc?.returnTo = "leaderboard"
         }
     }
     
