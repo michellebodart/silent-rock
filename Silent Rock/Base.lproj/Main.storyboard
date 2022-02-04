@@ -1676,6 +1676,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="122" height="109.66666666666667"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <segue destination="qfT-dI-37I" kind="presentation" identifier="leaderboardView" animates="NO" id="EDk-md-nvz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da0-fR-qPz">
                                         <rect key="frame" x="134" y="0.0" width="122" height="109.66666666666667"/>
@@ -1695,8 +1698,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="dUt-Em-8KU">
-                                <rect key="frame" x="122" y="275" width="146" height="32"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dUt-Em-8KU">
+                                <rect key="frame" x="129.66666666666666" y="275" width="130.99999999999997" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FR-h1-BwN">
                                         <rect key="frame" x="0.0" y="0.0" width="53" height="32"/>
@@ -1705,7 +1708,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qFT-Ho-IJf">
-                                        <rect key="frame" x="78" y="0.0" width="68" height="32"/>
+                                        <rect key="frame" x="63" y="0.0" width="68" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="68" id="J6X-jo-0dv"/>
                                         </constraints>
@@ -1899,7 +1902,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="zYF-7w-ROV"/>
+        <segue reference="EDk-md-nvz"/>
         <segue reference="NQo-CT-hxa"/>
         <segue reference="es7-6y-SqN"/>
         <segue reference="bQc-8K-LML"/>
