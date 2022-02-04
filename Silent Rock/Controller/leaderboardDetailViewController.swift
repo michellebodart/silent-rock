@@ -9,13 +9,17 @@ import UIKit
 
 class leaderboardDetailViewController: UIViewController {
     
-    var anyPlayerID: Int? = 29 // REVISIT THIS -MB
+    var detailPlayerID: Int? = nil
+    var playerID: Int? = nil
     var tripsList = [Dictionary<String, Any>]()
     var player: Player = Player()
+    var detailPlayerUsername: String = ""
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var refreshButton: BorderButton!
+    @IBOutlet weak var filterByStackView: UIStackView!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -25,24 +29,40 @@ class leaderboardDetailViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.register(StatsTableViewCell.nib(), forCellReuseIdentifier: "StatsTableViewCell")
+        usernameLabel.text = detailPlayerUsername
         
         // get trips
-        player.getTrips(playerID: self.anyPlayerID!, vc: self, completion: doAfterGetTrips(json:))
+        player.getTrips(playerID: self.detailPlayerID!, vc: self, completion: doAfterGetTrips(json:))
         
+        // hide everything till api call loads
+        apiStuffHidden(bool: true)
+        refreshButton.isHidden = true
+        errorMessageLabel.text = ""
         
         // Do any additional setup after loading the view.
     }
 
+    func apiStuffHidden(bool: Bool) {
+        self.table.isHidden = bool
+        self.filterByStackView.isHidden = bool
+    }
+    
     func doAfterGetTrips(json: Dictionary<String, Any>) {
         self.tripsList = json["trips"]! as! [Dictionary<String, Any>]
         print(self.tripsList.count)
         DispatchQueue.main.async {
             self.table.reloadData()
+            self.apiStuffHidden(bool: false)
         }
     }
     
+    
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        self.viewDidLoad()
+    }
+    
     @IBAction func profileButtonTapped(_ sender: Any) {
-        if self.anyPlayerID != nil {
+        if self.detailPlayerID != nil {
             self.performSegue(withIdentifier: "profileView", sender: self)
         } else {
             self.performSegue(withIdentifier: "loginView", sender: self)
@@ -53,10 +73,10 @@ class leaderboardDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
-            vc?.playerID = self.anyPlayerID
+            vc?.playerID = self.playerID
         } else if segue.destination is profileViewController {
             let lvc = segue.destination as? profileViewController
-            lvc?.playerID = self.anyPlayerID
+            lvc?.playerID = self.playerID
         }
     }
     
@@ -66,11 +86,8 @@ class leaderboardDetailViewController: UIViewController {
 extension leaderboardDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected a row")
-//        let cell = tableView(table, cellForRowAt: indexPath.row) as StatsTableViewCell
         let cell = self.table.cellForRow(at: indexPath) as! StatsTableViewCell
         
-        // REVISIT THIS -MB
     }
 }
 

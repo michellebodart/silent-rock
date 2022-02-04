@@ -24,7 +24,8 @@ class leaderboardViewController: UIViewController {
     var playerID: Int? = nil
     var season: String = "all"
     var sortBy: String = "trips"
-    var anyPlayerID: Int? = nil
+    var detailPlayerID: Int? = nil
+    var detailPlayerUsername: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,7 +170,9 @@ class leaderboardViewController: UIViewController {
             lvc?.playerID = self.playerID
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
-            ldvc?.anyPlayerID = self.anyPlayerID
+            ldvc?.detailPlayerID = self.detailPlayerID
+            ldvc?.playerID = self.playerID
+            ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
         }
     }
     
@@ -179,7 +182,10 @@ extension leaderboardViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! LeaderboardTableViewCell
-        self.anyPlayerID = cell.playerID
+        self.detailPlayerID = cell.playerID
+//        print(cell.usernameLabel.text!)
+        self.detailPlayerUsername = cell.usernameLabel.text!
+//        print(self.detailPlayerUsername)
         self.performSegue(withIdentifier: "leaderboardDetailView", sender: self)
     }
 }

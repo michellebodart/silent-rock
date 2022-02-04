@@ -375,7 +375,7 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
-                    vc.errorMessageLabel.text = "Failed to load account information"
+                    vc.errorMessageLabel.text = "Failed to load trips"
                     vc.refreshButton.isHidden = false
                 }
                 return
