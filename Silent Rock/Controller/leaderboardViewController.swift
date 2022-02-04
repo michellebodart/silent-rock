@@ -24,6 +24,7 @@ class leaderboardViewController: UIViewController {
     var playerID: Int? = nil
     var season: String = "all"
     var sortBy: String = "trips"
+    var anyPlayerID: Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,7 +169,7 @@ class leaderboardViewController: UIViewController {
             lvc?.playerID = self.playerID
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
-            ldvc?.playerID = self.playerID
+            ldvc?.anyPlayerID = self.anyPlayerID
         }
     }
     
@@ -177,6 +178,8 @@ class leaderboardViewController: UIViewController {
 extension leaderboardViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! LeaderboardTableViewCell
+        self.anyPlayerID = cell.playerID
         self.performSegue(withIdentifier: "leaderboardDetailView", sender: self)
     }
 }
@@ -184,9 +187,7 @@ extension leaderboardViewController: UITableViewDelegate {
 extension leaderboardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        cell.textLabel?.text = self.playerList[indexPath.row].username
-        
+
         var numTrips = 0
         if self.season == "all" {
             numTrips = self.playerList[indexPath.row].trips.count
@@ -196,12 +197,10 @@ extension leaderboardViewController: UITableViewDataSource {
         
         let username = self.playerList[indexPath.row].username
         let id = self.playerList[indexPath.row].id
-        
-//        cell.detailTextLabel?.text = numTrips
+
         
         let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "LeaderboardTableViewCell", for: indexPath) as! LeaderboardTableViewCell
         cell.configure(id: id, username: username, trips: numTrips)
-//        cell.configure(date: username, time: String(numTrips), id: id)
         
         return cell
     }

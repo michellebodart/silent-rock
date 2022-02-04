@@ -13,17 +13,15 @@ class StatsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
-    var playerID: Int? = nil
+
     
     static func nib() -> UINib {
         return UINib(nibName: "StatsTableViewCell", bundle: nil)
     }
     
-    public func configure(date: String, time: String, id: Int) {
+    public func configure(date: String, time: String) {
         dateLabel.text = date
         timeLabel.text = time
-        playerID = id
     }
     
 
@@ -33,7 +31,7 @@ class StatsTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        super.setSelected(false, animated: animated)
 
         // Configure the view for the selected state
     }

@@ -9,7 +9,7 @@ import UIKit
 
 class leaderboardDetailViewController: UIViewController {
     
-    var playerID: Int? = 29 // REVISIT THIS -MB
+    var anyPlayerID: Int? = 29 // REVISIT THIS -MB
     var tripsList = [Dictionary<String, Any>]()
     var player: Player = Player()
 
@@ -27,7 +27,7 @@ class leaderboardDetailViewController: UIViewController {
         table.register(StatsTableViewCell.nib(), forCellReuseIdentifier: "StatsTableViewCell")
         
         // get trips
-        player.getTrips(playerID: self.playerID!, vc: self, completion: doAfterGetTrips(json:))
+        player.getTrips(playerID: self.anyPlayerID!, vc: self, completion: doAfterGetTrips(json:))
         
         
         // Do any additional setup after loading the view.
@@ -42,7 +42,7 @@ class leaderboardDetailViewController: UIViewController {
     }
     
     @IBAction func profileButtonTapped(_ sender: Any) {
-        if self.playerID != nil {
+        if self.anyPlayerID != nil {
             self.performSegue(withIdentifier: "profileView", sender: self)
         } else {
             self.performSegue(withIdentifier: "loginView", sender: self)
@@ -53,10 +53,10 @@ class leaderboardDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
-            vc?.playerID = self.playerID
+            vc?.playerID = self.anyPlayerID
         } else if segue.destination is profileViewController {
             let lvc = segue.destination as? profileViewController
-            lvc?.playerID = self.playerID
+            lvc?.playerID = self.anyPlayerID
         }
     }
     
@@ -69,7 +69,6 @@ extension leaderboardDetailViewController: UITableViewDelegate {
         print("selected a row")
 //        let cell = tableView(table, cellForRowAt: indexPath.row) as StatsTableViewCell
         let cell = self.table.cellForRow(at: indexPath) as! StatsTableViewCell
-        print(cell.playerID!)
         
         // REVISIT THIS -MB
     }
@@ -82,7 +81,7 @@ extension leaderboardDetailViewController: UITableViewDataSource {
         let dateTime = self.tripsList[indexPath.row]["date"] as! String
         let date = String(dateTime.prefix(17))
         let time = String(dateTime.dropFirst(17))
-        cell.configure(date: date, time: time, id: 1)
+        cell.configure(date: date, time: time)
         return cell
     }
     
