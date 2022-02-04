@@ -27,6 +27,8 @@
 		C9ABC2AD27AC564C00460B77 /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABC2AB27AC564C00460B77 /* StatsTableViewCell.swift */; };
 		C9ABC2AE27AC564C00460B77 /* StatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9ABC2AC27AC564C00460B77 /* StatsTableViewCell.xib */; };
 		C9ABC2B027AC5A1700460B77 /* leaderboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABC2AF27AC5A1700460B77 /* leaderboardDetailViewController.swift */; };
+		C9ABC2B327AD854000460B77 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9ABC2B127AD853F00460B77 /* LeaderboardTableViewCell.swift */; };
+		C9ABC2B427AD854000460B77 /* LeaderboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9ABC2B227AD853F00460B77 /* LeaderboardTableViewCell.xib */; };
 		C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */; };
 		C9E316DE27A9A1DE000CA001 /* leaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */; };
 		C9E316E027A9AD9E000CA001 /* PlayerForLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E316DF27A9AD9E000CA001 /* PlayerForLB.swift */; };
@@ -58,6 +60,8 @@
 		C9ABC2AB27AC564C00460B77 /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		C9ABC2AC27AC564C00460B77 /* StatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsTableViewCell.xib; sourceTree = "<group>"; };
 		C9ABC2AF27AC5A1700460B77 /* leaderboardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardDetailViewController.swift; sourceTree = "<group>"; };
+		C9ABC2B127AD853F00460B77 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
+		C9ABC2B227AD853F00460B77 /* LeaderboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardTableViewCell.xib; sourceTree = "<group>"; };
 		C9BD514C278F9091000D83DD /* LocalNotificationSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LocalNotificationSound.mp3; sourceTree = "<group>"; };
 		C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardViewController.swift; sourceTree = "<group>"; };
 		C9E316DF27A9AD9E000CA001 /* PlayerForLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerForLB.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				C91D8725273C35CA00283190 /* BorderButton.swift */,
 				C9ABC2AB27AC564C00460B77 /* StatsTableViewCell.swift */,
 				C9ABC2AC27AC564C00460B77 /* StatsTableViewCell.xib */,
+				C9ABC2B127AD853F00460B77 /* LeaderboardTableViewCell.swift */,
+				C9ABC2B227AD853F00460B77 /* LeaderboardTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C91D871B273C2F6F00283190 /* LaunchScreen.storyboard in Resources */,
+				C9ABC2B427AD854000460B77 /* LeaderboardTableViewCell.xib in Resources */,
 				C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */,
 				C91D8718273C2F6F00283190 /* Assets.xcassets in Resources */,
 				C9ABC2AA27AC544F00460B77 /* LocalNotificationSound2.mp3 in Resources */,
@@ -246,6 +253,7 @@
 				C9ABC2B027AC5A1700460B77 /* leaderboardDetailViewController.swift in Sources */,
 				C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */,
 				C91D870F273C2F6B00283190 /* AppDelegate.swift in Sources */,
+				C9ABC2B327AD854000460B77 /* LeaderboardTableViewCell.swift in Sources */,
 				C9ABC2A827AC4D1F00460B77 /* Season.swift in Sources */,
 				C92ADF9B27A7818E002A0030 /* VerificationCode.swift in Sources */,
 				C9FA01A227A366FD00612E10 /* Phone.swift in Sources */,

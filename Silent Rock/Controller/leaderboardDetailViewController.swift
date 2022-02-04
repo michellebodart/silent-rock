@@ -41,6 +41,25 @@ class leaderboardDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func profileButtonTapped(_ sender: Any) {
+        if self.playerID != nil {
+            self.performSegue(withIdentifier: "profileView", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "loginView", sender: self)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is ViewController {
+            let vc = segue.destination as? ViewController
+            vc?.playerID = self.playerID
+        } else if segue.destination is profileViewController {
+            let lvc = segue.destination as? profileViewController
+            lvc?.playerID = self.playerID
+        }
+    }
+    
 }
 
 
@@ -50,7 +69,7 @@ extension leaderboardDetailViewController: UITableViewDelegate {
         print("selected a row")
 //        let cell = tableView(table, cellForRowAt: indexPath.row) as StatsTableViewCell
         let cell = self.table.cellForRow(at: indexPath) as! StatsTableViewCell
-        print(cell.playerId!)
+        print(cell.playerID!)
         
         // REVISIT THIS -MB
     }

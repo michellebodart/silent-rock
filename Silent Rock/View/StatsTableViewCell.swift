@@ -14,17 +14,7 @@ class StatsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    var playerId: Int? = nil
-    
-    
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, id: Int) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        self.id = id
-//    }
-    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    var playerID: Int? = nil
     
     static func nib() -> UINib {
         return UINib(nibName: "StatsTableViewCell", bundle: nil)
@@ -33,7 +23,7 @@ class StatsTableViewCell: UITableViewCell {
     public func configure(date: String, time: String, id: Int) {
         dateLabel.text = date
         timeLabel.text = time
-        playerId = id
+        playerID = id
     }
     
 

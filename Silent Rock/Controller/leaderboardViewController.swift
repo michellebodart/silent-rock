@@ -45,6 +45,7 @@ class leaderboardViewController: UIViewController {
         // tableview set up stuff
         leaderboardTableView.delegate = self
         leaderboardTableView.dataSource = self
+        leaderboardTableView.register(LeaderboardTableViewCell.nib(), forCellReuseIdentifier: "LeaderboardTableViewCell")
         
         // set up the sort by and filter by buttons
         setUpSortByMenu()
@@ -183,17 +184,25 @@ extension leaderboardViewController: UITableViewDelegate {
 extension leaderboardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.playerList[indexPath.row].username
+//        let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//        cell.textLabel?.text = self.playerList[indexPath.row].username
         
-        var numTrips = ""
+        var numTrips = 0
         if self.season == "all" {
-            numTrips = String(self.playerList[indexPath.row].trips.count)
+            numTrips = self.playerList[indexPath.row].trips.count
         } else {
-            numTrips = String((self.playerList[indexPath.row].trips.filter { $0?.season == self.season}).count)
+            numTrips = (self.playerList[indexPath.row].trips.filter { $0?.season == self.season}).count
         }
         
-        cell.detailTextLabel?.text = numTrips
+        let username = self.playerList[indexPath.row].username
+        let id = self.playerList[indexPath.row].id
+        
+//        cell.detailTextLabel?.text = numTrips
+        
+        let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "LeaderboardTableViewCell", for: indexPath) as! LeaderboardTableViewCell
+        cell.configure(id: id, username: username, trips: numTrips)
+//        cell.configure(date: username, time: String(numTrips), id: id)
+        
         return cell
     }
     
