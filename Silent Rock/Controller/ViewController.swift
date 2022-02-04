@@ -13,9 +13,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var playerID: Int? = nil
     let locationManager:CLLocationManager = CLLocationManager()
-    let state = UIApplication.shared.applicationState
+//    let state = UIApplication.shared.applicationState //not sure if I need this
     
-    var player: AVAudioPlayer?
+    @IBOutlet weak var errorMessageLabel: UILabel!
+    
+//    var player: AVAudioPlayer? // not sure if I need this
+    let player: Player = Player()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         startButton.isEnabled = true
         warningLabel.isHidden = true
         exitButton.isHidden = true
+        errorMessageLabel.text = ""
         
         // set up location manager
         locationManager.delegate = self
@@ -120,6 +124,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if !inRegion {
                 soundAlarm()
                 inRegion = true
+                self.player.addTrip(vc: self, completion: { tripID in
+                    self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: [29]) // REVISIT
+                })
             }
         } else {
             if inRegion {

@@ -405,5 +405,87 @@ class Player: NSObject {
         })
         task.resume()
     }
+ 
+    // for posting trips
+    func addTrip(vc: ViewController, completion: @escaping (_ tripID: Int) -> Void) {
+        var request = URLRequest(url: URL(string: "http://localhost:5000/trips/?API_KEY=123456")!)
+        request.httpMethod = "POST"
+
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not add trip to database"
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not add trip to database"
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not add trip to database"
+                }
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
+                let tripID = json["trip_id"] as! Int
+                completion(tripID)
+            } catch {
+                print(error)
+            }
+        })
+        task.resume()
+    }
+    
+    func addTripToUsers(vc: ViewController, tripID: Int, playerIDs: Array<Int>) {
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players_trips/?API_KEY=123456")!)
+        request.httpMethod = "POST"
+        
+        struct UploadData: Codable {
+            let trip_id: Int
+            let player_ids: Array<Int>
+        }
+        
+        let uploadDataModel = UploadData(trip_id: tripID, player_ids: playerIDs)
+        
+        guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
+            vc.errorMessageLabel.text = "Could not add trip to user(s)"
+            return
+        }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = jsonData
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not add trip to user(s)"
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not add trip to user(s)"
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not add trip to user(s)"
+                }
+                return
+            }
+        })
+        task.resume()
+    }
     
 }
