@@ -25,7 +25,6 @@ class leaderboardDetailViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var filterByButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,7 +47,12 @@ class leaderboardDetailViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
+    // Disable screen rotation
+    override var shouldAutorotate: Bool {
+            return false
+        }
+    
     func setUpFilterByMenu() {
         
         var result = [

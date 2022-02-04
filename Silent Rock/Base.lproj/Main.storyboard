@@ -1042,7 +1042,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUk-Xz-j0M">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUk-Xz-j0M">
                                 <rect key="frame" x="20" y="285" width="350" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="tDR-7H-R6K"/>
@@ -1051,7 +1051,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1 (503) 707-9796" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUj-u9-RxJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUj-u9-RxJ">
                                 <rect key="frame" x="20" y="381" width="350" height="36"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="26"/>
                                 <nil key="textColor"/>
@@ -1951,11 +1951,11 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="88h-Ss-BBh"/>
-        <segue reference="pE8-rj-SFJ"/>
+        <segue reference="zYF-7w-ROV"/>
         <segue reference="ZcJ-PY-ttx"/>
         <segue reference="es7-6y-SqN"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="bas-GN-Um6"/>
+        <segue reference="Zmc-7I-d7K"/>
         <segue reference="hz3-qv-AwS"/>
     </inferredMetricsTieBreakers>
     <resources>

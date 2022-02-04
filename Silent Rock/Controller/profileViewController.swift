@@ -55,6 +55,11 @@ class profileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // Disable screen rotation
+    override var shouldAutorotate: Bool {
+            return false
+        }
+    
     func displayPlayerData(json: Dictionary<String, Any>) {
         DispatchQueue.main.async {
             self.usernameLabel.text = ((json as NSDictionary)["username"] as! String)

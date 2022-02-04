@@ -26,6 +26,11 @@ class verificationViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
+    
+    // Disable screen rotation
+    override var shouldAutorotate: Bool {
+            return false
+        }
 
     @IBAction func verificationCodeTextFieldUpdated(_ sender: Any) {
         verificationCodeTextField.text = verificationCode.format(with: "XXXXXX", code: verificationCodeTextField.text ?? "")

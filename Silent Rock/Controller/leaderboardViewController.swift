@@ -56,6 +56,11 @@ class leaderboardViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // Disable screen rotation
+    override var shouldAutorotate: Bool {
+            return false
+        }
+    
     @IBAction func refreshButtonTapped(_ sender: Any) {
         self.viewDidLoad()
     }

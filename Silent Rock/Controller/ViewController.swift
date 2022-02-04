@@ -49,6 +49,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    // Disable screen rotation
+    override var shouldAutorotate: Bool {
+            return false
+        }
+    
     func soundAlarm() {
         if stopButton.isEnabled {
             backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)

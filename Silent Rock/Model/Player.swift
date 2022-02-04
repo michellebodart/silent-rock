@@ -10,8 +10,10 @@ import Firebase
 
 class Player: NSObject {
     
+    var API_KEY: String = ProcessInfo.processInfo.environment["API_KEY"]!
+    
     func addToDatabase(username: String, phoneNumber: String, vc: verificationViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "POST"
         
         struct UploadData: Codable {
@@ -90,7 +92,7 @@ class Player: NSObject {
     }
     
     func checkPlayerDataFromLogin (phoneNumber: String, vc: loginViewController, completion: @escaping (_ phoneNumber: String, _ json: Array<Any>) -> Void) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
@@ -126,7 +128,7 @@ class Player: NSObject {
     }
     
     func checkPlayerDataFromRegister (phoneNumber: String, username: String, vc: registerViewController, completion: @escaping (_ phoneNumber: String, _ username: String, _ json: Array<Any>) -> Void){
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
@@ -162,7 +164,7 @@ class Player: NSObject {
     }
     
     func getPhoneUsername (playerID: Int, vc: profileViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void){
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
@@ -201,7 +203,7 @@ class Player: NSObject {
     }
     
     func deletePlayer (playerID: Int, vc: profileViewController, completion: @escaping () -> Void){
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "DELETE"
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
@@ -232,7 +234,7 @@ class Player: NSObject {
     }
     
     func updateUsername(playerID: Int, username: String, vc: profileViewController, completion: @escaping () -> Void) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "PATCH"
         
         struct UploadData: Codable {
@@ -282,7 +284,7 @@ class Player: NSObject {
     }
     
     func updateShowOnLeaderboard(playerID: Int, visibleOnLeaderboard: Bool, vc: profileViewController, completion: @escaping () -> Void) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "PATCH"
         
         struct UploadData: Codable {
@@ -328,7 +330,7 @@ class Player: NSObject {
     }
     
     func getPlayerDataForLeaderboard (vc: leaderboardViewController, sortBasis: String, filterBy: String, completion: @escaping (_ json: Array<Any>) -> Void) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=123456&sort_basis=\(sortBasis)&filter_criteria=\(filterBy)")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/?API_KEY=\(API_KEY)&sort_basis=\(sortBasis)&filter_criteria=\(filterBy)")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
@@ -368,7 +370,7 @@ class Player: NSObject {
     }
     
     func getTrips (playerID: Int, vc: leaderboardDetailViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void){
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
@@ -408,7 +410,7 @@ class Player: NSObject {
  
     // for posting trips
     func addTrip(vc: ViewController, completion: @escaping (_ tripID: Int) -> Void) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/trips/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/trips/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "POST"
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -446,7 +448,7 @@ class Player: NSObject {
     }
     
     func addTripToUsers(vc: ViewController, tripID: Int, playerIDs: Array<Int?>) {
-        var request = URLRequest(url: URL(string: "http://localhost:5000/players_trips/?API_KEY=123456")!)
+        var request = URLRequest(url: URL(string: "http://localhost:5000/players_trips/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "POST"
         
         struct UploadData: Codable {
