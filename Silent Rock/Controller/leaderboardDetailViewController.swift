@@ -12,6 +12,7 @@ class leaderboardDetailViewController: UIViewController {
     var detailPlayerID: Int? = nil
     var playerID: Int? = nil
     var tripsList = [Dictionary<String, Any>]()
+    var filteredTripsList = [Dictionary<String, Any>]()
     var player: Player = Player()
     var detailPlayerUsername: String = ""
     var season: String = "all"
@@ -52,12 +53,14 @@ class leaderboardDetailViewController: UIViewController {
         var result = [
             UIAction(title: "All time", image: nil, handler: { (_) in
                 self.season = "all"
+                self.filteredTripsList = self.tripsList
                 self.table.reloadData()
             })]
         
         for season in Season().getSeasons() {
             let newSeason = UIAction(title: season, image: nil, handler: { (_) in
                 self.season = season
+                self.filteredTripsList = self.tripsList.filter { $0["season"] as! String == self.season}
                 self.table.reloadData()
             })
             result.append(newSeason)
@@ -82,7 +85,7 @@ class leaderboardDetailViewController: UIViewController {
     
     func doAfterGetTrips(json: Dictionary<String, Any>) {
         self.tripsList = json["trips"]! as! [Dictionary<String, Any>]
-        print(self.tripsList.count)
+        self.filteredTripsList = self.tripsList
         DispatchQueue.main.async {
             self.table.reloadData()
             self.apiStuffHidden(bool: false)
@@ -128,7 +131,7 @@ extension leaderboardDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "StatsTableViewCell", for: indexPath) as! StatsTableViewCell
-        let dateTime = (self.tripsList[indexPath.row]["date"] as! String).split(separator: "!")
+        let dateTime = (self.filteredTripsList[indexPath.row]["date"] as! String).split(separator: "!")
         let date = String(dateTime[0])
         let time = String(dateTime[1])
         cell.configure(date: date, time: time)
@@ -140,11 +143,12 @@ extension leaderboardDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.season == "all" {
-            return self.tripsList.count
-        } else {
-            return (self.tripsList.filter { $0["season"] as! String == self.season }).count
-        }
+//        if self.season == "all" {
+//            return self.tripsList.count
+//        } else {
+//            return (self.tripsList.filter { $0["season"] as! String == self.season }).count
+//        }
+        return self.filteredTripsList.count
     }
     
 }
