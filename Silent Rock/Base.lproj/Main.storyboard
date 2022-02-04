@@ -1636,12 +1636,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="afX-v8-95c">
-                                <rect key="frame" x="-32" y="-7" width="454" height="244"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="afX-v8-95c" secondAttribute="height" multiplier="426:229" id="nkp-DY-3h3"/>
-                                </constraints>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UMq-vj-PUj">
                                 <rect key="frame" x="0.0" y="734.33333333333337" width="390" height="109.66666666666663"/>
                                 <color key="backgroundColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1761,6 +1755,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="silent_rock_2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="afX-v8-95c">
+                                <rect key="frame" x="-32" y="-5" width="454" height="244"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="afX-v8-95c" secondAttribute="height" multiplier="426:229" id="nkp-DY-3h3"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xfd-hD-AEG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1834,6 +1834,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="errorMessageLabel" destination="krx-3Q-XNk" id="yH4-7r-w7y"/>
+                        <outlet property="filterByButton" destination="qFT-Ho-IJf" id="urA-ca-YBy"/>
                         <outlet property="filterByStackView" destination="dUt-Em-8KU" id="rOO-Nr-bxf"/>
                         <outlet property="refreshButton" destination="hwK-Z5-E6O" id="4V0-Xu-gzC"/>
                         <outlet property="table" destination="Xts-EY-dab" id="bih-YU-3LE"/>
