@@ -324,7 +324,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="TtP-o7-0Pl">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+1 (XXX) XXX-XXXX" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="TtP-o7-0Pl">
                                 <rect key="frame" x="60" y="297" width="270" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="Username"/>
                                 <constraints>
@@ -604,7 +604,7 @@
                                 <color key="textColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="d8p-sc-Pp8">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+1 (XXX) XXX-XXXX" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="d8p-sc-Pp8">
                                 <rect key="frame" x="60" y="413" width="270" height="40"/>
                                 <accessibility key="accessibilityConfiguration" label="Username"/>
                                 <constraints>
@@ -1953,10 +1953,10 @@
         <segue reference="88h-Ss-BBh"/>
         <segue reference="zYF-7w-ROV"/>
         <segue reference="ZcJ-PY-ttx"/>
-        <segue reference="es7-6y-SqN"/>
+        <segue reference="zhb-Ty-BYA"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="Zmc-7I-d7K"/>
-        <segue reference="hz3-qv-AwS"/>
+        <segue reference="oZu-LY-NIg"/>
+        <segue reference="0FR-R7-2b5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>

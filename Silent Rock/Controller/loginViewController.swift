@@ -21,6 +21,7 @@ class loginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        phoneNumberTextField.text = "+1"
         signInButton.isEnabled = false
         
         self.hideKeyboardWhenTappedAround()
