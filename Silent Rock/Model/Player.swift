@@ -500,21 +500,21 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
-                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.errorMessageLabel.text = "Failed to load other users"
                 }
                 return
             }
             guard let data = data else {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
-                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.errorMessageLabel.text = "Failed to load other users"
                 }
                 return
             }
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
-                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.errorMessageLabel.text = "Failed to load other users"
                 }
                 return
             }
