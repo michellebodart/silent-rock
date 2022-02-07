@@ -95,10 +95,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.playerUsernamesIDs.append(playerData)
                 }
                 let tableHeight: CGFloat
-                if self.playerUsernamesIDs.count > 4 {
+                if self.playerUsernamesIDs.count > 5 {
                     tableHeight = 150
                 } else {
-                    tableHeight = CGFloat(45 * self.playerUsernamesIDs.count)
+                    tableHeight = CGFloat(30 * self.playerUsernamesIDs.count)
                 }
                 
                 DispatchQueue.main.async {
@@ -119,6 +119,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
             startButton.isHidden = true
             stopButton.isHidden = true
+            addFriendsButton.isHidden = true
             warningLabel.isHidden = false
             exitButton.isHidden = false
             sendLocalNotification()
@@ -129,6 +130,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         backgroundColor.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 0)
         startButton.isHidden = false
         stopButton.isHidden = false
+        addFriendsButton.isHidden = false
         warningLabel.isHidden = true
         exitButton.isHidden = true
         errorMessageLabel.text = ""
@@ -225,13 +227,17 @@ extension ViewController: UNUserNotificationCenterDelegate {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let imageView = (addFriendsTable.cellForRow(at: indexPath) as! addFriendsTableViewCell).checkImageView!
         let id = (addFriendsTable.cellForRow(at: indexPath) as! addFriendsTableViewCell).playerID
         if let index = self.addedPlayerIDs.firstIndex(of: id) {
             // remove the friend
             self.addedPlayerIDs.remove(at: index)
+            imageView.image = nil
         } else {
             // add the friend
             self.addedPlayerIDs.append(id)
+            let checkedImage:UIImage? = UIImage(systemName: "checkmark")
+            imageView.image = checkedImage
         }
         print("added players:", self.addedPlayerIDs)
     }
@@ -248,6 +254,10 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.playerUsernamesIDs.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30
     }
     
 }
