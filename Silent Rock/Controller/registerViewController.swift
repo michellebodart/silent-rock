@@ -47,7 +47,7 @@ class registerViewController: UIViewController {
         } else {
             phoneNumberErrorMessage.text = ""
         }
-        if (phoneNumberIsValid && usernameTextField.text != "") {
+        if (phoneNumberIsValid && (usernameTextField.text ?? "").count > 5) {
             signUpButton.isEnabled = true
         } else {
             signUpButton.isEnabled = false
@@ -57,7 +57,7 @@ class registerViewController: UIViewController {
     @IBAction func usernameTextFieldUpdated(_ sender: Any) {
         usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", username: usernameTextField.text ?? "")
         usernameErrorMessage.text = ""
-        if ((phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")) && usernameTextField.text != "") {
+        if ((phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")) && (usernameTextField.text ?? "").count > 5) {
             signUpButton.isEnabled = true
         } else {
             signUpButton.isEnabled = false

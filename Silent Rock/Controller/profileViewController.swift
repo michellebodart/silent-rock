@@ -104,7 +104,7 @@ class profileViewController: UIViewController {
         // formats the user input to limit certain characters and limit to 20 characters
         usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", username: usernameTextField.text ?? "")
         errorMessageLabel.text = ""
-        if  usernameTextField.text != "" {
+        if  (usernameTextField.text ?? "").count > 5 {
             submitButton.isEnabled = true
         } else {
             submitButton.isEnabled = false
