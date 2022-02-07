@@ -62,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         addFriendsTable.isHidden = true
         addFriendsTable.delegate = self
         addFriendsTable.dataSource = self
-        addFriendsTable.register(UITableViewCell.self, forCellReuseIdentifier: "addFriendsCell")
+        addFriendsTable.register(addFriendsTableViewCell.nib(), forCellReuseIdentifier: addFriendsTableViewCell.identifier)
     }
     
     // hide table when tapped around
@@ -198,13 +198,15 @@ extension ViewController: UNUserNotificationCenterDelegate {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected cell")
+        let id = (addFriendsTable.cellForRow(at: indexPath) as! addFriendsTableViewCell).playerID
+        print(id)
     }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = addFriendsTable.dequeueReusableCell(withIdentifier: "addFriendsCell", for: indexPath)
-        cell.textLabel?.text = "friend 1"
+        let cell = addFriendsTable.dequeueReusableCell(withIdentifier: "addFriendsTableViewCell", for: indexPath) as! addFriendsTableViewCell
+        cell.configure(id: 1, username: "Friend45")
         return cell
     }
     
