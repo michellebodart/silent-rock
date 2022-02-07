@@ -11,6 +11,7 @@ class profileViewController: UIViewController {
     
     var playerID: Int? = nil
     var visibleOnLeaderboard: Bool = true
+    var addedPlayerIDs: Array<Int?> = []
     
     let username: Username = Username()
     let player: Player = Player()
@@ -187,15 +188,18 @@ class profileViewController: UIViewController {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
+            vc?.addedPlayerIDs = self.addedPlayerIDs
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
+            lvc?.addedPlayerIDs = self.addedPlayerIDs
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.playerID
             ldvc?.playerID = self.playerID
             ldvc?.detailPlayerUsername = self.usernameLabel.text ?? ""
             ldvc?.returnTo = "profile"
+            ldvc?.addedPlayerIDs = self.addedPlayerIDs
         }
     }
 

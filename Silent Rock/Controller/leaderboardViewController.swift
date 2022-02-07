@@ -26,6 +26,7 @@ class leaderboardViewController: UIViewController {
     var sortBy: String = "trips"
     var detailPlayerID: Int? = nil
     var detailPlayerUsername: String? = nil
+    var addedPlayerIDs: Array<Int?> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,15 +171,18 @@ class leaderboardViewController: UIViewController {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
+            vc?.addedPlayerIDs = self.addedPlayerIDs
         } else if segue.destination is profileViewController {
             let lvc = segue.destination as? profileViewController
             lvc?.playerID = self.playerID
+            lvc?.addedPlayerIDs = self.addedPlayerIDs
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.detailPlayerID
             ldvc?.playerID = self.playerID
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
             ldvc?.returnTo = "leaderboard"
+            ldvc?.addedPlayerIDs = self.addedPlayerIDs
         }
     }
     

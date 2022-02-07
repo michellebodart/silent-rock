@@ -17,6 +17,7 @@ class leaderboardDetailViewController: UIViewController {
     var detailPlayerUsername: String = ""
     var season: String = "all"
     var returnTo: String? = nil
+    var addedPlayerIDs: Array<Int?> = []
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -124,12 +125,15 @@ class leaderboardDetailViewController: UIViewController {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
+            vc?.addedPlayerIDs = self.addedPlayerIDs
         } else if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
+            pvc?.addedPlayerIDs = self.addedPlayerIDs
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
+            lvc?.addedPlayerIDs = self.addedPlayerIDs
         }
     }
     

@@ -82,12 +82,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // opens and closes the table view and loads player data
     @IBAction func addFriendsButtonTapped(_ sender: Any) {
         if self.playerUsernamesIDs.count == 0 {
-//            ([] as! Array<Dictionary<String, Any>>) {
             player.getAllPlayers(vc: self, completion: { json in
                 for eachPlayer in json {
                     // add player to player list
                     let username = eachPlayer["username"] as! String
                     let id = eachPlayer["id"] as! Int
+                    if id == self.playerID {
+                        continue
+                    }
                     let playerData = [
                         "id": id,
                         "username": username
@@ -120,6 +122,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             startButton.isHidden = true
             stopButton.isHidden = true
             addFriendsButton.isHidden = true
+            addFriendsTable.isHidden = true
             warningLabel.isHidden = false
             exitButton.isHidden = false
             sendLocalNotification()
@@ -171,8 +174,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let targetLon:Double = -121.830166
     let span:Double = 0.005
     
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let lat: Double = locValue.latitude
@@ -187,7 +188,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if self.playerID != nil {
                     self.addedPlayerIDs.append(self.playerID)
                     self.player.addTrip(vc: self, completion: { tripID in
-                        self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs) // REVISIT
+                        self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs)
                     })
                 }
             }
@@ -211,9 +212,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
+            pvc?.addedPlayerIDs = self.addedPlayerIDs
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
+            lvc?.addedPlayerIDs = self.addedPlayerIDs
         }
     }
     
@@ -248,6 +251,14 @@ extension ViewController: UITableViewDataSource {
         let cell = addFriendsTable.dequeueReusableCell(withIdentifier: "addFriendsTableViewCell", for: indexPath) as! addFriendsTableViewCell
         let username = self.playerUsernamesIDs[indexPath.row]["username"] as! String
         let id = self.playerUsernamesIDs[indexPath.row]["id"] as! Int
+        if self.addedPlayerIDs.contains(id) {
+            // set image as checked
+            let checkedImage:UIImage? = UIImage(systemName: "checkmark")
+            cell.checkImageView.image = checkedImage
+        } else {
+            // set image as unchecked
+            cell.checkImageView.image = nil
+        }
         cell.configure(id: id, username: username)
         return cell
     }
