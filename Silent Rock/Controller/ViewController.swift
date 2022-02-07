@@ -13,6 +13,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var playerID: Int? = nil
     var playerIDs: Array<Int?> = []
+    var playerUsernames: Array<String> = []
     let locationManager:CLLocationManager = CLLocationManager()
     var inRegion:Bool = false
     let player: Player = Player()
@@ -78,11 +79,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             return false
         }
     
-    // opens and closes the table view
+    // opens and closes the table view and loads player data
     @IBAction func addFriendsButtonTapped(_ sender: Any) {
-        //        update this later!
-        addFriendsTable.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        addFriendsTable.isHidden = !addFriendsTable.isHidden
+        if self.playerUsernames == [] {
+            player.getAllPlayers(vc: self, completion: { json in
+                for eachPlayer in json {
+                    // add player to player list
+                    let username = eachPlayer["username"] as! String
+                    self.playerUsernames.append(username)
+                }
+                let tableHeight: CGFloat
+                if self.playerUsernames.count > 4 {
+                    tableHeight = 150
+                } else {
+                    tableHeight = CGFloat(45 * self.playerUsernames.count)
+                }
+                
+                DispatchQueue.main.async {
+                    self.addFriendsTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true // revisit this
+                    self.addFriendsTable.isHidden = !self.addFriendsTable.isHidden
+                    self.addFriendsTable.reloadData()
+                }
+            })
+        } else {
+            self.addFriendsTable.isHidden = !self.addFriendsTable.isHidden
+        }
     }
     
     
@@ -206,12 +227,13 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = addFriendsTable.dequeueReusableCell(withIdentifier: "addFriendsTableViewCell", for: indexPath) as! addFriendsTableViewCell
-        cell.configure(id: 1, username: "Friend45")
+        let username = self.playerUsernames[indexPath.row]
+        cell.configure(id: 1, username: username)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.playerUsernames.count
     }
     
 }
