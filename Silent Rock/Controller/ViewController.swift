@@ -53,9 +53,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         // set up table view
         if self.playerID == nil {
-            
             addFriendsButton.setTitle("Sign in to add friends", for: .normal)
             addFriendsButton.isEnabled = false
+            addFriendsButton.setTitleColor(UIColor.gray, for: .normal)
         } else {
             addFriendsButton.setTitle("Add friends", for: .normal)
         }
@@ -63,10 +63,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         addFriendsTable.delegate = self
         addFriendsTable.dataSource = self
         addFriendsTable.register(UITableViewCell.self, forCellReuseIdentifier: "addFriendsCell")
-        addFriendsTable.layer.cornerRadius = 20
-        addFriendsTable.layer.borderColor = #colorLiteral(red: 0.6715279011, green: 0.6715279011, blue: 0.6715279011, alpha: 1)
-        addFriendsTable.layer.borderWidth = 1
-        
     }
     
     // hide table when tapped around
@@ -84,6 +80,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // opens and closes the table view
     @IBAction func addFriendsButtonTapped(_ sender: Any) {
+        //        update this later!
+        addFriendsTable.heightAnchor.constraint(equalToConstant: 60).isActive = true
         addFriendsTable.isHidden = !addFriendsTable.isHidden
     }
     
@@ -213,4 +211,5 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
 }

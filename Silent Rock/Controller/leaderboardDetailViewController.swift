@@ -161,11 +161,6 @@ extension leaderboardDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if self.season == "all" {
-//            return self.tripsList.count
-//        } else {
-//            return (self.tripsList.filter { $0["season"] as! String == self.season }).count
-//        }
         return self.filteredTripsList.count
     }
     
