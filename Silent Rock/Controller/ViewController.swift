@@ -12,7 +12,7 @@ import AVFoundation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var playerID: Int? = nil
-    var playerIDs: Array<Int?> = []
+    var addedPlayerIDs: Array<Int?> = []
     var playerUsernamesIDs: Array<Dictionary<String, Any>> = []
     let locationManager:CLLocationManager = CLLocationManager()
     var inRegion:Bool = false
@@ -183,9 +183,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 
                 // only add trip to DB if a user is logged in - don't let them add friends if don't have an account
                 if self.playerID != nil {
-                    self.playerIDs.append(self.playerID)
+                    self.addedPlayerIDs.append(self.playerID)
                     self.player.addTrip(vc: self, completion: { tripID in
-                        self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: self.playerIDs) // REVISIT
+                        self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs) // REVISIT
                     })
                 }
             }
@@ -225,9 +225,15 @@ extension ViewController: UNUserNotificationCenterDelegate {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected cell")
         let id = (addFriendsTable.cellForRow(at: indexPath) as! addFriendsTableViewCell).playerID
-        print(id)
+        if let index = self.addedPlayerIDs.firstIndex(of: id) {
+            // remove the friend
+            self.addedPlayerIDs.remove(at: index)
+        } else {
+            // add the friend
+            self.addedPlayerIDs.append(id)
+        }
+        print("added players:", self.addedPlayerIDs)
     }
 }
 
