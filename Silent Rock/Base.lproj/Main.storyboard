@@ -164,6 +164,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bej-zu-0rN" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
+                                <rect key="frame" x="50" y="517" width="290" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Add friends">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFriendsButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="13R-gb-p8M"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5bz-ZJ-66P">
+                                <rect key="frame" x="75" y="580" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addFriendsCell" textLabel="7t7-4E-XCB" detailTextLabel="BOZ-d0-9Ya" style="IBUITableViewCellStyleValue1" id="b4T-HM-ab4">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="240" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b4T-HM-ab4" id="YWh-RJ-Azb">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7t7-4E-XCB">
+                                                    <rect key="frame" x="16" y="15" width="25" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BOZ-d0-9Ya">
+                                                    <rect key="frame" x="191.33333333333334" y="15" width="32.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2oS-Mh-ldg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -175,6 +216,7 @@
                             <constraint firstItem="vMg-aS-PUa" firstAttribute="trailing" secondItem="wRi-jm-g75" secondAttribute="trailing" id="7Ho-c0-D3E"/>
                             <constraint firstItem="4oz-um-nLQ" firstAttribute="height" secondItem="YZr-UH-3mm" secondAttribute="height" multiplier="0.45" id="7aJ-UM-fCz"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="centerX" secondItem="FAq-C9-K61" secondAttribute="centerX" id="7oY-8c-l3B"/>
+                            <constraint firstItem="Bej-zu-0rN" firstAttribute="width" secondItem="d73-mT-q2H" secondAttribute="width" id="BQA-ES-S1u"/>
                             <constraint firstItem="guF-7a-8Wa" firstAttribute="leading" secondItem="2oS-Mh-ldg" secondAttribute="leading" id="Bv0-4e-I6k"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="width" secondItem="YZr-UH-3mm" secondAttribute="height" multiplier="426:229" id="HNJ-pv-6Df"/>
                             <constraint firstAttribute="bottom" secondItem="YZr-UH-3mm" secondAttribute="bottom" constant="-7" id="InY-f5-glz"/>
@@ -187,6 +229,8 @@
                             <constraint firstItem="FAq-C9-K61" firstAttribute="bottom" secondItem="uRf-0M-zgZ" secondAttribute="top" constant="-30" id="XfB-J4-yah"/>
                             <constraint firstItem="vMg-aS-PUa" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" id="YOK-In-aM5"/>
                             <constraint firstItem="guF-7a-8Wa" firstAttribute="height" secondItem="NAu-v7-Mfz" secondAttribute="height" id="Z7E-k2-2Km"/>
+                            <constraint firstItem="YZr-UH-3mm" firstAttribute="top" secondItem="Bej-zu-0rN" secondAttribute="bottom" constant="35" id="aRe-Dw-Lix"/>
+                            <constraint firstItem="Bej-zu-0rN" firstAttribute="height" secondItem="d73-mT-q2H" secondAttribute="height" id="bym-MY-d6a"/>
                             <constraint firstItem="2oS-Mh-ldg" firstAttribute="trailing" secondItem="Bbf-xs-2cw" secondAttribute="trailing" constant="20" id="cU7-vb-zxt"/>
                             <constraint firstAttribute="trailing" secondItem="5TY-t9-9nM" secondAttribute="trailing" constant="10" id="cY4-zk-lT7"/>
                             <constraint firstItem="2oS-Mh-ldg" firstAttribute="trailing" secondItem="2QO-eG-JMJ" secondAttribute="trailing" constant="50" id="dBV-uW-lSd"/>
@@ -205,6 +249,7 @@
                             <constraint firstAttribute="trailing" secondItem="FAq-C9-K61" secondAttribute="trailing" constant="-32" id="sj6-x0-K8f"/>
                             <constraint firstItem="NAu-v7-Mfz" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" constant="20" id="vWf-u0-nad"/>
                             <constraint firstItem="uRf-0M-zgZ" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" constant="30" id="vgU-B7-hzs"/>
+                            <constraint firstItem="Bej-zu-0rN" firstAttribute="centerX" secondItem="wRi-jm-g75" secondAttribute="centerX" id="x3i-Y4-0BS"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="leading" relation="lessThanOrEqual" secondItem="wRi-jm-g75" secondAttribute="leading" constant="-50" id="xYF-f6-6D5"/>
                             <constraint firstItem="5TY-t9-9nM" firstAttribute="centerY" secondItem="wRi-jm-g75" secondAttribute="centerY" id="xil-dA-bGc"/>
                             <constraint firstItem="4oz-um-nLQ" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" id="yPu-qX-Cgs"/>
@@ -264,6 +309,8 @@
                     <navigationItem key="navigationItem" id="hTT-KX-qpW"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="addFriendsButton" destination="Bej-zu-0rN" id="bcz-nI-mAc"/>
+                        <outlet property="addFriendsTable" destination="5bz-ZJ-66P" id="JXZ-Oe-FK2"/>
                         <outlet property="backgroundColor" destination="vMg-aS-PUa" id="XgV-eI-5HT"/>
                         <outlet property="errorMessageLabel" destination="Bbf-xs-2cw" id="Lz0-F0-a9D"/>
                         <outlet property="exitButton" destination="uRf-0M-zgZ" id="Yeu-k0-H0b"/>
@@ -276,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3428.985507246377" y="838.39285714285711"/>
+            <point key="canvasLocation" x="3427.6923076923076" y="838.15165876777246"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="rwS-GF-6sn">
@@ -1950,13 +1997,13 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="88h-Ss-BBh"/>
-        <segue reference="zYF-7w-ROV"/>
+        <segue reference="uin-Gk-M47"/>
+        <segue reference="pE8-rj-SFJ"/>
         <segue reference="ZcJ-PY-ttx"/>
         <segue reference="zhb-Ty-BYA"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="oZu-LY-NIg"/>
-        <segue reference="0FR-R7-2b5"/>
+        <segue reference="bas-GN-Um6"/>
+        <segue reference="B5f-e6-Lo0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>

@@ -184,14 +184,14 @@ class leaderboardViewController: UIViewController {
     
 }
 
+
+// Setting up table view
 extension leaderboardViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! LeaderboardTableViewCell
         self.detailPlayerID = cell.playerID
-//        print(cell.usernameLabel.text!)
         self.detailPlayerUsername = cell.usernameLabel.text!
-//        print(self.detailPlayerUsername)
         self.performSegue(withIdentifier: "leaderboardDetailView", sender: self)
     }
 }

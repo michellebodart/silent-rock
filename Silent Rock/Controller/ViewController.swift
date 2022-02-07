@@ -14,12 +14,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var playerID: Int? = nil
     var playerIDs: Array<Int?> = []
     let locationManager:CLLocationManager = CLLocationManager()
-//    let state = UIApplication.shared.applicationState //not sure if I need this
+    var inRegion:Bool = false
+    let player: Player = Player()
     
     @IBOutlet weak var errorMessageLabel: UILabel!
-    
-//    var player: AVAudioPlayer? // not sure if I need this
-    let player: Player = Player()
+    @IBOutlet weak var addFriendsButton: UIButton!
+    @IBOutlet weak var addFriendsTable: UITableView!
+    @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var backgroundColor: UIImageView!
+    @IBOutlet weak var startButton: BorderButton!
+    @IBOutlet weak var stopButton: BorderButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +49,44 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print(error.localizedDescription)
             }
         }
-        
         UNUserNotificationCenter.current().delegate = self
         
+        // set up table view
+        if self.playerID == nil {
+            
+            addFriendsButton.setTitle("Sign in to add friends", for: .normal)
+            addFriendsButton.isEnabled = false
+        } else {
+            addFriendsButton.setTitle("Add friends", for: .normal)
+        }
+        addFriendsTable.isHidden = true
+        addFriendsTable.delegate = self
+        addFriendsTable.dataSource = self
+        addFriendsTable.register(UITableViewCell.self, forCellReuseIdentifier: "addFriendsCell")
+        addFriendsTable.layer.cornerRadius = 20
+        addFriendsTable.layer.borderColor = #colorLiteral(red: 0.6715279011, green: 0.6715279011, blue: 0.6715279011, alpha: 1)
+        addFriendsTable.layer.borderWidth = 1
+        
+    }
+    
+    // hide table when tapped around
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch? = touches.first
+        if touch?.view != addFriendsTable {
+            addFriendsTable.isHidden = true
+        }
     }
     
     // Disable screen rotation
     override var shouldAutorotate: Bool {
             return false
         }
+    
+    // opens and closes the table view
+    @IBAction func addFriendsButtonTapped(_ sender: Any) {
+        addFriendsTable.isHidden = !addFriendsTable.isHidden
+    }
+    
     
     func soundAlarm() {
         if stopButton.isEnabled {
@@ -90,13 +124,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         alarmOff()
     }
     
-    @IBOutlet weak var exitButton: UIButton!
-    @IBOutlet weak var warningLabel: UILabel!
-    @IBOutlet weak var backgroundColor: UIImageView!
-    @IBOutlet weak var startButton: BorderButton!
-    @IBOutlet weak var stopButton: BorderButton!
-    
-    
     @IBAction func startButtonPressed(_ sender: Any) {
         stopButton.isEnabled = true
         startButton.isEnabled = false
@@ -109,11 +136,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
     }
     
-    var inRegion:Bool = false
-//    For testing near my house
-//    let targetLat:Double = 47.623549
-//    let targetLon:Double = -122.326578
-//    let span:Double = 0.0002
+
     
 //    Acutal silent rock coordinates
     let targetLat:Double = 45.306558
@@ -174,3 +197,20 @@ extension ViewController: UNUserNotificationCenterDelegate {
     }
 }
 
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected cell")
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = addFriendsTable.dequeueReusableCell(withIdentifier: "addFriendsCell", for: indexPath)
+        cell.textLabel?.text = "friend 1"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+}
