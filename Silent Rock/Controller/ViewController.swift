@@ -14,15 +14,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var playerID: Int? = nil
     var addedPlayerIDs: Array<Int?> = []
     var playerUsernamesIDs: Array<Dictionary<String, Any>> = []
-    let locationManager:CLLocationManager = CLLocationManager()
+    var locationManager: CLLocationManager = CLLocationManager()
     var inRegion: Bool = false
     let player: Player = Player()
     var tracking: Bool = false
     
     //    Acutal silent rock coordinates
-    let targetLat:Double = 45.306558
-    let targetLon:Double = -121.830166
-    let span:Double = 0.005
+//    let targetLat:Double = 45.306558
+//    let targetLon:Double = -121.830166
+//    let span:Double = 0.005
+    
+//    For testing near my house
+    let targetLat:Double = 47.654151
+    let targetLon:Double = -122.348564
+    let span:Double = 0.0002
+    
     
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var addFriendsButton: UIButton!
@@ -69,6 +75,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.allowsBackgroundLocationUpdates = true //for alarm
         self.locationManager.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
+        
         
         // Set up local notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
@@ -147,7 +154,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func soundAlarm() {
         if self.tracking {
             DispatchQueue.main.async {
-                print("in sound alarm")
+//                print("in sound alarm")
                 self.backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
                 self.startButton.isHidden = true
                 self.stopButton.isHidden = true
@@ -155,14 +162,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.addFriendsTable.isHidden = true
                 self.warningLabel.isHidden = false
                 self.exitButton.isHidden = false
+                self.sendLocalNotification()
             }
-            print("in sound alarm")
         }
     }
     
     func alarmOff() {
         DispatchQueue.main.async {
-            print("in alarm off")
+//            print("in alarm off")
             self.backgroundColor.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 0)
             self.startButton.isHidden = false
             self.stopButton.isHidden = false
@@ -218,12 +225,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let lat: Double = locValue.latitude
         let lon: Double = locValue.longitude
-        print("in region?:", self.inRegion)
-        print("tracking?:", self.tracking)
+//        print("in region?:", self.inRegion)
+//        print("tracking?:", self.tracking)
         // Creating didEnterRegion basically
         if (self.targetLat - self.span < lat && lat < self.targetLat + self.span) && (self.targetLon - self.span < lon && lon < self.targetLon + self.span) {
             if !self.inRegion {
-                print("entered region")
+//                print("entered region")
                 self.soundAlarm()
                 self.inRegion = true
                 
@@ -237,7 +244,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         } else {
             if self.inRegion {
-                print("exited region")
+//                print("exited region")
                 self.alarmOff()
                 self.inRegion = false
             }
@@ -288,7 +295,7 @@ extension ViewController: UITableViewDelegate {
             let checkedImage:UIImage? = UIImage(systemName: "checkmark")
             imageView.image = checkedImage
         }
-        print("added players:", self.addedPlayerIDs)
+//        print("added players:", self.addedPlayerIDs)
     }
 }
 
