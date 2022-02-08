@@ -10,7 +10,8 @@ import Firebase
 
 class Player: NSObject {
     
-    var API_KEY: String = ProcessInfo.processInfo.environment["API_KEY"]!
+//    var API_KEY: String = ProcessInfo.processInfo.environment["API_KEY"]!
+    var API_KEY: String = "123456"
     let DB_URL: String = "http://localhost:5000"
     
     func addToDatabase(username: String, phoneNumber: String, vc: verificationViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {

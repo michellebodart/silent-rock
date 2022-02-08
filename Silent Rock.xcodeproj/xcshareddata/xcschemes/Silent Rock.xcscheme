@@ -54,7 +54,7 @@
          <EnvironmentVariable
             key = "API_KEY"
             value = "123456"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>
