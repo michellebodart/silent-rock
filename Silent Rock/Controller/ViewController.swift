@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager:CLLocationManager = CLLocationManager()
     var inRegion:Bool = false
     let player: Player = Player()
+    var tracking: Bool = false
     
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var addFriendsButton: UIButton!
@@ -31,8 +32,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         // enable the right buttons
-        stopButton.isEnabled = false
-        startButton.isEnabled = true
+        // if tracking, stop is enabled, if not, start is enabled
+        if self.tracking {
+            stopButton.isEnabled = true
+            startButton.isEnabled = false
+        } else {
+            stopButton.isEnabled = false
+            startButton.isEnabled = true
+        }
+        
         warningLabel.isHidden = true
         exitButton.isHidden = true
         errorMessageLabel.text = ""
@@ -159,12 +167,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func startButtonPressed(_ sender: Any) {
         stopButton.isEnabled = true
         startButton.isEnabled = false
+        self.tracking = true
         locationManager.startUpdatingLocation()
     }
     
     @IBAction func stopButtonPressed(_ sender: Any) {
         stopButton.isEnabled = false
         startButton.isEnabled = true
+        self.tracking = false
         locationManager.stopUpdatingLocation()
     }
     
@@ -214,10 +224,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
             pvc?.addedPlayerIDs = self.addedPlayerIDs
+            pvc?.tracking = self.tracking
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
             lvc?.addedPlayerIDs = self.addedPlayerIDs
+            lvc?.tracking = self.tracking
         }
     }
     

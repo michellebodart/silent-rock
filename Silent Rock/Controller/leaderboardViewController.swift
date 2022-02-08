@@ -10,15 +10,6 @@ import SwiftUI
 
 class leaderboardViewController: UIViewController {
 
-    @IBOutlet weak var sortFilterStackView: UIStackView!
-    @IBOutlet weak var leaderboardTableView: UITableView!
-    @IBOutlet weak var errorMessageLabel: UILabel!
-    @IBOutlet weak var sortByButton: UIButton!
-    @IBOutlet weak var filterByButton: UIButton!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var tripsLabel: UILabel!
-    @IBOutlet weak var refreshButton: BorderButton!
-    
     let player: Player = Player()
     var playerList = [PlayerForLB]()
     var playerID: Int? = nil
@@ -27,6 +18,16 @@ class leaderboardViewController: UIViewController {
     var detailPlayerID: Int? = nil
     var detailPlayerUsername: String? = nil
     var addedPlayerIDs: Array<Int?> = []
+    var tracking: Bool = false
+    
+    @IBOutlet weak var sortFilterStackView: UIStackView!
+    @IBOutlet weak var leaderboardTableView: UITableView!
+    @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var sortByButton: UIButton!
+    @IBOutlet weak var filterByButton: UIButton!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var tripsLabel: UILabel!
+    @IBOutlet weak var refreshButton: BorderButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,10 +173,12 @@ class leaderboardViewController: UIViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
             vc?.addedPlayerIDs = self.addedPlayerIDs
+            vc?.tracking = self.tracking
         } else if segue.destination is profileViewController {
             let lvc = segue.destination as? profileViewController
             lvc?.playerID = self.playerID
             lvc?.addedPlayerIDs = self.addedPlayerIDs
+            lvc?.tracking = self.tracking
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.detailPlayerID
@@ -183,6 +186,7 @@ class leaderboardViewController: UIViewController {
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
             ldvc?.returnTo = "leaderboard"
             ldvc?.addedPlayerIDs = self.addedPlayerIDs
+            ldvc?.tracking = self.tracking
         }
     }
     
