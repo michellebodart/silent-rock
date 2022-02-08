@@ -47,6 +47,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // if tracking, stop is enabled, if not, start is enabled
         self.setInRegion()
         if self.tracking {
+            // resetting the location manager fixes a bug
+            self.locationManager.stopUpdatingLocation()
+            self.locationManager.startUpdatingLocation()
             self.stopButton.isEnabled = true
             self.startButton.isEnabled = false
             if self.inRegion {
