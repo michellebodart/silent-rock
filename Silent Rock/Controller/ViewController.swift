@@ -107,6 +107,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.errorMessageLabel.text = ""
                     self.addFriendsTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true // revisit this
                     self.addFriendsTable.isHidden = !self.addFriendsTable.isHidden
+                    self.playerUsernamesIDs.sort { ($0["username"] as! String).lowercased() < ($1["username"] as! String).lowercased()}
                     self.addFriendsTable.reloadData()
                 }
             })

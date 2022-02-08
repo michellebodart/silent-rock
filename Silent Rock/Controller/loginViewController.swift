@@ -60,7 +60,7 @@ class loginViewController: UIViewController {
             let phone = (player as! NSDictionary)["phone"]
             if phoneNumber == (phone! as! String) {
                 phoneUsed = true
-                self.playerID = (player as! NSDictionary)["id"] as! Int
+                self.playerID = ((player as! NSDictionary)["id"] as! Int)
             }
         }
         if !phoneUsed {

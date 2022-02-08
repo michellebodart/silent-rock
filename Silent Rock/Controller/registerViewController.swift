@@ -40,7 +40,7 @@ class registerViewController: UIViewController {
     @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
         phoneNumberTextField.text = phone.format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
         
-        var phoneNumberIsValid = phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? ""
+        let phoneNumberIsValid = phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? ""
         )
         if !phoneNumberIsValid {
             phoneNumberErrorMessage.text = "Please enter a valid phone number"

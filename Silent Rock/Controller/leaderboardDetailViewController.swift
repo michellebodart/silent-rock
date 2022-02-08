@@ -144,8 +144,7 @@ class leaderboardDetailViewController: UIViewController {
 extension leaderboardDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = self.table.cellForRow(at: indexPath) as! StatsTableViewCell
-        
+        print("selected a cell!")
     }
 }
 
