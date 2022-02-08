@@ -225,12 +225,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let lat: Double = locValue.latitude
         let lon: Double = locValue.longitude
-//        print("in region?:", self.inRegion)
-//        print("tracking?:", self.tracking)
         // Creating didEnterRegion basically
         if (self.targetLat - self.span < lat && lat < self.targetLat + self.span) && (self.targetLon - self.span < lon && lon < self.targetLon + self.span) {
             if !self.inRegion {
-//                print("entered region")
                 self.soundAlarm()
                 self.inRegion = true
                 
@@ -244,7 +241,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         } else {
             if self.inRegion {
-//                print("exited region")
                 self.alarmOff()
                 self.inRegion = false
             }
@@ -295,7 +291,6 @@ extension ViewController: UITableViewDelegate {
             let checkedImage:UIImage? = UIImage(systemName: "checkmark")
             imageView.image = checkedImage
         }
-//        print("added players:", self.addedPlayerIDs)
     }
 }
 
