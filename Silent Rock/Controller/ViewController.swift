@@ -15,9 +15,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var addedPlayerIDs: Array<Int?> = []
     var playerUsernamesIDs: Array<Dictionary<String, Any>> = []
     let locationManager:CLLocationManager = CLLocationManager()
-    var inRegion:Bool = false
+    var inRegion: Bool = false
     let player: Player = Player()
     var tracking: Bool = false
+    
+    //    Acutal silent rock coordinates
+    let targetLat:Double = 45.306558
+    let targetLon:Double = -121.830166
+    let span:Double = 0.005
     
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var addFriendsButton: UIButton!
@@ -31,25 +36,39 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // check if in region, if in region, make screen red etc
         // enable the right buttons
         // if tracking, stop is enabled, if not, start is enabled
+        self.setInRegion()
         if self.tracking {
-            stopButton.isEnabled = true
-            startButton.isEnabled = false
+            self.stopButton.isEnabled = true
+            self.startButton.isEnabled = false
+            if self.inRegion {
+                self.backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
+                self.startButton.isHidden = true
+                self.stopButton.isHidden = true
+                self.addFriendsButton.isHidden = true
+                self.addFriendsTable.isHidden = true
+                self.warningLabel.isHidden = false
+                self.exitButton.isHidden = false
+            } else {
+                self.warningLabel.isHidden = true
+                self.exitButton.isHidden = true
+                self.errorMessageLabel.text = ""
+            }
         } else {
-            stopButton.isEnabled = false
-            startButton.isEnabled = true
+            self.stopButton.isEnabled = false
+            self.startButton.isEnabled = true
+            self.warningLabel.isHidden = true
+            self.exitButton.isHidden = true
+            self.errorMessageLabel.text = ""
         }
         
-        warningLabel.isHidden = true
-        exitButton.isHidden = true
-        errorMessageLabel.text = ""
-        
         // set up location manager
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        locationManager.allowsBackgroundLocationUpdates = true //for alarm
-        locationManager.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
+        self.locationManager.delegate = self
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.allowsBackgroundLocationUpdates = true //for alarm
+        self.locationManager.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
         
         // Set up local notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
@@ -62,23 +81,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         // set up table view
         if self.playerID == nil {
-            addFriendsButton.setTitle("Sign in to add friends", for: .normal)
-            addFriendsButton.isEnabled = false
-            addFriendsButton.setTitleColor(UIColor.gray, for: .normal)
+            self.addFriendsButton.setTitle("Sign in to add friends", for: .normal)
+            self.addFriendsButton.isEnabled = false
+            self.addFriendsButton.setTitleColor(UIColor.gray, for: .normal)
         } else {
-            addFriendsButton.setTitle("Add friends", for: .normal)
+            self.addFriendsButton.setTitle("Add friends", for: .normal)
         }
-        addFriendsTable.isHidden = true
-        addFriendsTable.delegate = self
-        addFriendsTable.dataSource = self
-        addFriendsTable.register(addFriendsTableViewCell.nib(), forCellReuseIdentifier: addFriendsTableViewCell.identifier)
+        self.addFriendsTable.isHidden = true
+        self.addFriendsTable.delegate = self
+        self.addFriendsTable.dataSource = self
+        self.addFriendsTable.register(addFriendsTableViewCell.nib(), forCellReuseIdentifier: addFriendsTableViewCell.identifier)
     }
     
     // hide table when tapped around
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch? = touches.first
-        if touch?.view != addFriendsTable {
-            addFriendsTable.isHidden = true
+        if touch?.view != self.addFriendsTable {
+            self.addFriendsTable.isHidden = true
         }
     }
     
@@ -90,7 +109,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // opens and closes the table view and loads player data
     @IBAction func addFriendsButtonTapped(_ sender: Any) {
         if self.playerUsernamesIDs.count == 0 {
-            player.getAllPlayers(vc: self, completion: { json in
+            self.player.getAllPlayers(vc: self, completion: { json in
                 for eachPlayer in json {
                     // add player to player list
                     let username = eachPlayer["username"] as! String
@@ -113,7 +132,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 
                 DispatchQueue.main.async {
                     self.errorMessageLabel.text = ""
-                    self.addFriendsTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true // revisit this
+                    self.addFriendsTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
                     self.addFriendsTable.isHidden = !self.addFriendsTable.isHidden
                     self.playerUsernamesIDs.sort { ($0["username"] as! String).lowercased() < ($1["username"] as! String).lowercased()}
                     self.addFriendsTable.reloadData()
@@ -126,26 +145,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func soundAlarm() {
-        if stopButton.isEnabled {
-            backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
-            startButton.isHidden = true
-            stopButton.isHidden = true
-            addFriendsButton.isHidden = true
-            addFriendsTable.isHidden = true
-            warningLabel.isHidden = false
-            exitButton.isHidden = false
-            sendLocalNotification()
+        if self.tracking {
+            DispatchQueue.main.async {
+                print("in sound alarm")
+                self.backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
+                self.startButton.isHidden = true
+                self.stopButton.isHidden = true
+                self.addFriendsButton.isHidden = true
+                self.addFriendsTable.isHidden = true
+                self.warningLabel.isHidden = false
+                self.exitButton.isHidden = false
+            }
+            print("in sound alarm")
         }
     }
     
     func alarmOff() {
-        backgroundColor.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 0)
-        startButton.isHidden = false
-        stopButton.isHidden = false
-        addFriendsButton.isHidden = false
-        warningLabel.isHidden = true
-        exitButton.isHidden = true
-        errorMessageLabel.text = ""
+        DispatchQueue.main.async {
+            print("in alarm off")
+            self.backgroundColor.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 0)
+            self.startButton.isHidden = false
+            self.stopButton.isHidden = false
+            self.addFriendsButton.isHidden = false
+            self.warningLabel.isHidden = true
+            self.exitButton.isHidden = true
+            self.errorMessageLabel.text = ""
+        }
     }
     
     func sendLocalNotification() {
@@ -161,39 +186,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func exitButtonPressed(_ sender: Any) {
-        alarmOff()
+        self.alarmOff()
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {
-        stopButton.isEnabled = true
-        startButton.isEnabled = false
+        self.stopButton.isEnabled = true
+        self.startButton.isEnabled = false
         self.tracking = true
-        locationManager.startUpdatingLocation()
+        self.locationManager.startUpdatingLocation()
     }
     
     @IBAction func stopButtonPressed(_ sender: Any) {
-        stopButton.isEnabled = false
-        startButton.isEnabled = true
+        self.stopButton.isEnabled = false
+        self.startButton.isEnabled = true
         self.tracking = false
-        locationManager.stopUpdatingLocation()
+        self.locationManager.stopUpdatingLocation()
     }
     
-
-    
-//    Acutal silent rock coordinates
-    let targetLat:Double = 45.306558
-    let targetLon:Double = -121.830166
-    let span:Double = 0.005
+    func setInRegion() {
+        guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+        let lat: Double = locValue.latitude
+        let lon: Double = locValue.longitude
+        if (self.targetLat - self.span < lat && lat < self.targetLat + self.span) && (self.targetLon - self.span < lon && lon < self.targetLon + self.span) {
+            self.inRegion = true
+        } else {
+            self.inRegion = false
+        }
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let lat: Double = locValue.latitude
         let lon: Double = locValue.longitude
+        print("in region?:", self.inRegion)
+        print("tracking?:", self.tracking)
         // Creating didEnterRegion basically
-        if (targetLat - span < lat && lat < targetLat + span) && (targetLon - span < lon && lon < targetLon + span) {
-            if !inRegion {
-                soundAlarm()
-                inRegion = true
+        if (self.targetLat - self.span < lat && lat < self.targetLat + self.span) && (self.targetLon - self.span < lon && lon < self.targetLon + self.span) {
+            if !self.inRegion {
+                print("entered region")
+                self.soundAlarm()
+                self.inRegion = true
                 
                 // only add trip to DB if a user is logged in - don't let them add friends if don't have an account
                 if self.playerID != nil {
@@ -204,9 +236,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         } else {
-            if inRegion {
-                alarmOff()
-                inRegion = false
+            if self.inRegion {
+                print("exited region")
+                self.alarmOff()
+                self.inRegion = false
             }
         }
     }
