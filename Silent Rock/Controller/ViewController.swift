@@ -11,6 +11,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var playerID: Int? = nil
+    var playerUsername: String? = nil
     var addedPlayerIDs: Array<Int?> = []
     var playerUsernamesIDs: Array<Dictionary<String, Any>> = []
     var locationManager: CLLocationManager? = CLLocationManager()
@@ -34,6 +35,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("username!!!:", self.playerUsername) // DELTET this -MB
         
         self.setInRegion() // might not need this
         self.errorMessageLabel.text = ""
@@ -163,7 +166,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if self.playerID != nil {
                     self.player.addTrip(vc: self, completion: { tripID in
                         self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: [self.playerID], completion: { tripID in
-                            self.player.addPendingTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs, tripOwnerID: self.playerID!)
+                            self.player.addPendingTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs, tripOwnerUsername: "username")
                         })
                     })
                 }
@@ -188,11 +191,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
+            pvc?.playerUsername = self.playerUsername
             pvc?.addedPlayerIDs = self.addedPlayerIDs
             pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
+            lvc?.playerUsername = self.playerUsername
             lvc?.addedPlayerIDs = self.addedPlayerIDs
             lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }

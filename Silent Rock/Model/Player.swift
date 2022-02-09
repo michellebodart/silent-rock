@@ -495,17 +495,17 @@ class Player: NSObject {
     }
     
     // add pending trip to users
-    func addPendingTripToUsers(vc: ViewController, tripID: Int, playerIDs: Array<Int?>, tripOwnerID: Int) {
+    func addPendingTripToUsers(vc: ViewController, tripID: Int, playerIDs: Array<Int?>, tripOwnerUsername: String) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/pending_players_trips/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "POST"
 
         struct UploadData: Codable {
             let trip_id: Int
             let player_ids: Array<Int?>
-            let trip_owner_id: Int
+            let trip_owner_username: String
         }
 
-        let uploadDataModel = UploadData(trip_id: tripID, player_ids: playerIDs, trip_owner_id: tripOwnerID)
+        let uploadDataModel = UploadData(trip_id: tripID, player_ids: playerIDs, trip_owner_username: tripOwnerUsername)
 
         guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
             vc.errorMessageLabel.text = "Could not add trip to user(s)"

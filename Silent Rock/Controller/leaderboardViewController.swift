@@ -13,6 +13,7 @@ class leaderboardViewController: UIViewController {
     let player: Player = Player()
     var playerList = [PlayerForLB]()
     var playerID: Int? = nil
+    var playerUsername: String? = nil
     var season: String = "all"
     var sortBy: String = "trips"
     var detailPlayerID: Int? = nil
@@ -172,17 +173,20 @@ class leaderboardViewController: UIViewController {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
+            vc?.playerUsername = self.playerUsername
             vc?.addedPlayerIDs = self.addedPlayerIDs
             vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is profileViewController {
             let lvc = segue.destination as? profileViewController
             lvc?.playerID = self.playerID
+            lvc?.playerUsername = self.playerUsername
             lvc?.addedPlayerIDs = self.addedPlayerIDs
             lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.detailPlayerID
             ldvc?.playerID = self.playerID
+            ldvc?.playerUsername = self.playerUsername
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
             ldvc?.returnTo = "leaderboard"
             ldvc?.addedPlayerIDs = self.addedPlayerIDs

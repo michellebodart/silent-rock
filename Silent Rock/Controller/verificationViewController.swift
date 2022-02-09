@@ -11,12 +11,13 @@ import Firebase
 class verificationViewController: UIViewController {
 
     var playerID: Int? = nil
+    var playerUsername: String? = nil
+    var newPlayer: Bool = false
     let player: Player = Player()
     let verificationCode: VerificationCode = VerificationCode()
     @IBOutlet weak var verificationCodeTextField: UITextField!
     var phoneNumber: String = ""
     var verificationID: String = ""
-    var username: String = ""
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var signInButton: BorderButton!
     
@@ -55,9 +56,10 @@ class verificationViewController: UIViewController {
             }
             // User is signed in
             // Register user if new user
-            if self.username != "" {
-                self.player.addToDatabase(username: self.username, phoneNumber: self.phoneNumber, vc: self, completion: { json in
-                        self.playerID = (json["id"] as? Int)
+//            if self.playerUsername != "" {
+            if self.newPlayer {
+                self.player.addToDatabase(username: self.playerUsername!, phoneNumber: self.phoneNumber, vc: self, completion: { json in
+                    self.playerID = (json["id"] as? Int)
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "mainViewController", sender: self)
                     }
@@ -84,6 +86,7 @@ class verificationViewController: UIViewController {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
+            vc?.playerUsername = self.playerUsername
         }
     }
     

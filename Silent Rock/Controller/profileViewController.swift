@@ -10,6 +10,7 @@ import UIKit
 class profileViewController: UIViewController {
     
     var playerID: Int? = nil
+    var playerUsername: String? = nil
     var visibleOnLeaderboard: Bool = true
     var addedPlayerIDs: Array<Int?> = []
     var alreadyStartedUpdatingLocation: Bool = false
@@ -226,17 +227,20 @@ class profileViewController: UIViewController {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
+            vc?.playerUsername = self.playerUsername
             vc?.addedPlayerIDs = self.addedPlayerIDs
             vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
+            lvc?.playerUsername = self.playerUsername
             lvc?.addedPlayerIDs = self.addedPlayerIDs
             lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.playerID
             ldvc?.playerID = self.playerID
+            ldvc?.playerUsername = self.playerUsername
             ldvc?.detailPlayerUsername = self.usernameLabel.text ?? ""
             ldvc?.returnTo = "profile"
             ldvc?.addedPlayerIDs = self.addedPlayerIDs

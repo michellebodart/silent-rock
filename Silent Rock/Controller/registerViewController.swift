@@ -112,7 +112,8 @@ class registerViewController: UIViewController {
             let vvc = segue.destination as? verificationViewController
             vvc?.phoneNumber = phoneNumberTextField.text ?? ""
             vvc?.verificationID = self.verificationID
-            vvc?.username = usernameTextField.text ?? ""
+            vvc?.playerUsername = usernameTextField.text ?? ""
+            vvc?.newPlayer = true
         }
     }
 }

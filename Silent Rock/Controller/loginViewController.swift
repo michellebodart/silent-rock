@@ -14,6 +14,7 @@ class loginViewController: UIViewController {
     let player: Player = Player()
     var verificationID: String = ""
     var playerID: Int? = nil
+    var playerUsername: String? = nil
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var signInButton: BorderButton!
@@ -61,6 +62,7 @@ class loginViewController: UIViewController {
             if phoneNumber == (phone! as! String) {
                 phoneUsed = true
                 self.playerID = ((player as! NSDictionary)["id"] as! Int)
+                self.playerUsername = ((player as! NSDictionary)["username"] as! String)
             }
         }
         if !phoneUsed {
@@ -79,12 +81,14 @@ class loginViewController: UIViewController {
             vvc?.phoneNumber = phoneNumberTextField.text ?? ""
             vvc?.verificationID = self.verificationID
             vvc?.playerID = self.playerID
+            vvc?.playerUsername = self.playerUsername
         } else if segue.destination is registerViewController {
             let rvc = segue.destination as? registerViewController
             rvc?.phoneNumber = phoneNumberTextField.text ?? ""
         } else if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = 29
+            vc?.playerUsername = "mbodart"
 //            DELETE THIS -MB
         }
     }
