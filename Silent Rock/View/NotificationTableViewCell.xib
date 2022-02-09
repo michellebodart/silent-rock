@@ -68,7 +68,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="acceptButton" destination="2eV-0q-6oV" id="x1S-gG-AMl"/>
                 <outlet property="notificationLabel" destination="GWa-kj-OiP" id="YWZ-dI-fmC"/>
+                <outlet property="rejectButton" destination="lah-Gl-s37" id="KCU-WX-OZK"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="62.946428571428569"/>
         </tableViewCell>

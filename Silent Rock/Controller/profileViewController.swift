@@ -85,6 +85,11 @@ class profileViewController: UIViewController {
             self.phoneNumberLabel.text = ((json as NSDictionary)["phone"] as! String)
             self.visibleOnLeaderboard = ((json as NSDictionary)["visible_on_leaderboard"] as! Bool)
             self.pendingTrips = ((json as NSDictionary)["pending_trips"] as! Array<Dictionary<String, Any>>)
+            if self.pendingTrips.count == 0 {
+                self.notificationButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            } else {
+                self.notificationButton.tintColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+            }
             self.setCheckbox(checked: self.visibleOnLeaderboard)
             self.apiItemsHidden(bool: false)
             self.errorMessageLabel.text = ""
@@ -253,13 +258,16 @@ extension profileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = notificationTable.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
         if self.pendingTrips.count == 0 {
-            // no new notifications
+            // no notifications
+            cell.configure(username: "no new notifications", date: "")
+            cell.acceptButton.isHidden = true
+            cell.rejectButton.isHidden = true
         } else {
-            let cell = notificationTable.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
             cell.configure(username: "Mbodart", date: "November 2, 2021 3:53PM PST")
-            return cell
         }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

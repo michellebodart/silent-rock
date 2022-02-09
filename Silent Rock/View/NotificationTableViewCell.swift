@@ -12,6 +12,8 @@ class NotificationTableViewCell: UITableViewCell {
     static let identifier = "NotificationTableViewCell"
     
     @IBOutlet weak var notificationLabel: UILabel!
+    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var rejectButton: UIButton!
     
     @IBAction func acceptButtonTapped(_ sender: Any) {
         print("tapped accept")
