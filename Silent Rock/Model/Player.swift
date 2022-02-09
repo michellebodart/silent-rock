@@ -418,6 +418,7 @@ class Player: NSObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
+        
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             guard error == nil else {
@@ -441,6 +442,7 @@ class Player: NSObject {
             do {
                 let json = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, Any>
                 let tripID = json["trip_id"] as! Int
+                print("in add trip", "trip id:", tripID)
                 completion(tripID)
             } catch {
                 print(error)
@@ -499,7 +501,7 @@ class Player: NSObject {
         var request = URLRequest(url: URL(string: "\(DB_URL)/pending_players_trips/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "POST"
 
-        print("in add pending trip")
+        print("in add pending trip", "trip id:", tripID, "player ids:", playerIDs)
         
         struct UploadData: Codable {
             let trip_id: Int
