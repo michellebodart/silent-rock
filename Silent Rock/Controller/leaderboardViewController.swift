@@ -18,7 +18,6 @@ class leaderboardViewController: UIViewController {
     var detailPlayerID: Int? = nil
     var detailPlayerUsername: String? = nil
     var addedPlayerIDs: Array<Int?> = []
-    var tracking: Bool = false
     var alreadyStartedUpdatingLocation: Bool = false
     
     @IBOutlet weak var sortFilterStackView: UIStackView!
@@ -174,13 +173,11 @@ class leaderboardViewController: UIViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
             vc?.addedPlayerIDs = self.addedPlayerIDs
-            vc?.tracking = self.tracking
             vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is profileViewController {
             let lvc = segue.destination as? profileViewController
             lvc?.playerID = self.playerID
             lvc?.addedPlayerIDs = self.addedPlayerIDs
-            lvc?.tracking = self.tracking
             lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
@@ -189,7 +186,6 @@ class leaderboardViewController: UIViewController {
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
             ldvc?.returnTo = "leaderboard"
             ldvc?.addedPlayerIDs = self.addedPlayerIDs
-            ldvc?.tracking = self.tracking
             ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }

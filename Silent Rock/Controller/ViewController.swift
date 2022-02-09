@@ -14,10 +14,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var addedPlayerIDs: Array<Int?> = []
     var playerUsernamesIDs: Array<Dictionary<String, Any>> = []
     var locationManager: CLLocationManager? = CLLocationManager()
-    var appDelegate: AppDelegate = AppDelegate()
     var inRegion: Bool = false
     let player: Player = Player()
-    var tracking: Bool = true
     var alreadyStartedUpdatingLocation: Bool = false
     
     //    Acutal silent rock coordinates
@@ -33,49 +31,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var addFriendsButton: UIButton!
     @IBOutlet weak var addFriendsTable: UITableView!
-    @IBOutlet weak var exitButton: UIButton!
-    @IBOutlet weak var warningLabel: UILabel!
-    @IBOutlet weak var backgroundColor: UIImageView!
-    @IBOutlet weak var startButton: BorderButton!
-    @IBOutlet weak var stopButton: BorderButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load!")
         
-        // check if in region, if in region, make screen red etc
-        // enable the right buttons
-        // if tracking, stop is enabled, if not, start is enabled
-        self.setInRegion()
-        if self.tracking {
-            // resetting the location manager fixes a bug but introduces a new worse bug
-//            self.locationManager!.stopUpdatingLocation()
-//            self.locationManager!.startUpdatingLocation()
-            self.stopButton.isEnabled = true
-            self.startButton.isEnabled = false
-            if self.inRegion {
-                self.backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
-                self.startButton.isHidden = true
-                self.stopButton.isHidden = true
-                self.addFriendsButton.isHidden = true
-                self.addFriendsTable.isHidden = true
-                self.warningLabel.isHidden = false
-                self.exitButton.isHidden = false
-            } else {
-                self.warningLabel.isHidden = true
-                self.exitButton.isHidden = true
-                self.errorMessageLabel.text = ""
-            }
-        } else {
-            self.stopButton.isEnabled = false
-            self.startButton.isEnabled = true
-            self.warningLabel.isHidden = true
-            self.exitButton.isHidden = true
-            self.errorMessageLabel.text = ""
-        }
+        self.setInRegion() // might not need this
+        self.errorMessageLabel.text = ""
         
         // set up location manager
-        self.locationManager = nil
+        self.locationManager = nil // might be able to delete this
         self.locationManager = CLLocationManager()
         self.locationManager!.delegate = self
         self.locationManager!.requestAlwaysAuthorization()
@@ -84,10 +48,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if !self.alreadyStartedUpdatingLocation {
             self.locationManager!.startUpdatingLocation()
-            print("starting to update location")
             self.alreadyStartedUpdatingLocation = true
         }
-        
         
         // Set up local notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
@@ -98,7 +60,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         UNUserNotificationCenter.current().delegate = self
         
-        // set up table view
+        // set up add friends table view
         if self.playerID == nil {
             self.addFriendsButton.setTitle("Sign in to add friends", for: .normal)
             self.addFriendsButton.isEnabled = false
@@ -159,34 +121,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             })
         } else {
             self.addFriendsTable.isHidden = !self.addFriendsTable.isHidden
-        }
-    }
-    
-    
-    func soundAlarm() {
-        if self.tracking {
-            DispatchQueue.main.async {
-                self.backgroundColor.backgroundColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
-                self.startButton.isHidden = true
-                self.stopButton.isHidden = true
-                self.addFriendsButton.isHidden = true
-                self.addFriendsTable.isHidden = true
-                self.warningLabel.isHidden = false
-                self.exitButton.isHidden = false
-                self.sendLocalNotification()
-            }
-        }
-    }
-    
-    func alarmOff() {
-        DispatchQueue.main.async {
-            self.backgroundColor.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 0)
-            self.startButton.isHidden = false
-            self.stopButton.isHidden = false
-            self.addFriendsButton.isHidden = false
-            self.warningLabel.isHidden = true
-            self.exitButton.isHidden = true
-            self.errorMessageLabel.text = ""
+            print(self.addedPlayerIDs)
         }
     }
     
@@ -200,24 +135,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let request = UNNotificationRequest(identifier: "Silent rock notification", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
-    }
-    
-    @IBAction func exitButtonPressed(_ sender: Any) {
-        self.alarmOff()
-    }
-    
-    @IBAction func startButtonPressed(_ sender: Any) {
-        self.stopButton.isEnabled = true
-        self.startButton.isEnabled = false
-        self.tracking = true
-//        self.locationManager!.startUpdatingLocation()
-    }
-    
-    @IBAction func stopButtonPressed(_ sender: Any) {
-        self.stopButton.isEnabled = false
-        self.startButton.isEnabled = true
-        self.tracking = false
-//        self.locationManager!.stopUpdatingLocation()
     }
     
     func setInRegion() {
@@ -238,12 +155,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Creating didEnterRegion basically
         if (self.targetLat - self.span < lat && lat < self.targetLat + self.span) && (self.targetLon - self.span < lon && lon < self.targetLon + self.span) {
             if !self.inRegion {
-                self.soundAlarm()
+                // Entered region
+                self.sendLocalNotification()
                 self.inRegion = true
 
                 // only add trip to DB if a user is logged in - don't let them add friends if don't have an account
                 if self.playerID != nil {
-                    print("about to add trip")
                     self.player.addTrip(vc: self, completion: { tripID in
                         self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: [self.playerID], completion: { tripID in
                             self.player.addPendingTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs, tripOwnerID: self.playerID!)
@@ -253,7 +170,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         } else {
             if self.inRegion {
-                self.alarmOff()
+                // Exited region
                 self.inRegion = false
             }
         }
@@ -272,13 +189,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
             pvc?.addedPlayerIDs = self.addedPlayerIDs
-            pvc?.tracking = self.tracking
             pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
             lvc?.addedPlayerIDs = self.addedPlayerIDs
-            lvc?.tracking = self.tracking
             lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }
