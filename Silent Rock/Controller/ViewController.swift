@@ -166,7 +166,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if self.playerID != nil {
                     self.player.addTrip(vc: self, completion: { tripID in
                         self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: [self.playerID], completion: { tripID in
-                            self.player.addPendingTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs, tripOwnerUsername: "username")
+                            self.player.addPendingTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs, tripOwnerUsername: self.playerUsername!)
                         })
                     })
                 }

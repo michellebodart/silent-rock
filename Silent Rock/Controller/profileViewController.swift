@@ -274,7 +274,8 @@ extension profileViewController: UITableViewDataSource {
             let dateTime = (trip["date"] as! String).split(separator: "!")
             let date = String(dateTime[0])
             let time = String(dateTime[1])
-            let notificationText = "username added you to their \(time) trip on \(date)"
+            let username = trip["trip_owner_username"] as! String
+            let notificationText = "\(username) added you to their \(time) trip on \(date)"
             cell.configure(notificationText: notificationText)
         }
         return cell
