@@ -1204,7 +1204,7 @@
                                     <constraint firstAttribute="height" constant="45" id="Taa-Ug-0BL"/>
                                     <constraint firstAttribute="width" secondItem="7h8-Ug-4Fp" secondAttribute="height" id="aJB-Ra-9Kr"/>
                                 </constraints>
-                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" imagePadding="-6">
                                     <imageReference key="image" image="bell" catalog="system" symbolScale="large"/>
@@ -1962,7 +1962,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="88h-Ss-BBh"/>
         <segue reference="zYF-7w-ROV"/>
-        <segue reference="NQo-CT-hxa"/>
+        <segue reference="ZtU-46-x2k"/>
         <segue reference="zhb-Ty-BYA"/>
         <segue reference="bQc-8K-LML"/>
         <segue reference="Zmc-7I-d7K"/>

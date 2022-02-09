@@ -14,6 +14,7 @@ class profileViewController: UIViewController {
     var addedPlayerIDs: Array<Int?> = []
     var alreadyStartedUpdatingLocation: Bool = false
     var pendingTrips: Array<Dictionary<String, Any>> = []
+    var notificationCellHeight: Int = 70
     
     let username: Username = Username()
     let player: Player = Player()
@@ -88,7 +89,7 @@ class profileViewController: UIViewController {
             if self.pendingTrips.count == 0 {
                 self.notificationButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             } else {
-                self.notificationButton.tintColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+                self.notificationButton.tintColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
             }
             self.setCheckbox(checked: self.visibleOnLeaderboard)
             self.apiItemsHidden(bool: false)
@@ -120,9 +121,9 @@ class profileViewController: UIViewController {
         print(self.pendingTrips)
         let tableHeight: CGFloat
         if self.pendingTrips.count < 1 {
-            tableHeight = 60
+            tableHeight = CGFloat(45)
         } else {
-            tableHeight = CGFloat(min(self.pendingTrips.count * 60, 3*60))
+            tableHeight = CGFloat(min(self.pendingTrips.count * self.notificationCellHeight, 3*60))
         }
         self.notificationTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
         self.notificationTable.reloadData()
@@ -261,16 +262,25 @@ extension profileViewController: UITableViewDataSource {
         let cell = notificationTable.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
         if self.pendingTrips.count == 0 {
             // no notifications
-            cell.configure(username: "no new notifications", date: "")
+            cell.configure(notificationText: "No new notifications")
             cell.acceptButton.isHidden = true
             cell.rejectButton.isHidden = true
         } else {
-            cell.configure(username: "Mbodart", date: "November 2, 2021 3:53PM PST")
+            let trip = self.pendingTrips[indexPath.row]
+            let dateTime = (trip["date"] as! String).split(separator: "!")
+            let date = String(dateTime[0])
+            let time = String(dateTime[1])
+            let notificationText = "username added you to their \(time) trip on \(date)"
+            cell.configure(notificationText: notificationText)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        if self.pendingTrips.count == 0 {
+            return 45
+        } else {
+            return CGFloat(self.notificationCellHeight)
+        }
     }
 }

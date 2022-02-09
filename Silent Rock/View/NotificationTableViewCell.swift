@@ -27,8 +27,8 @@ class NotificationTableViewCell: UITableViewCell {
         return UINib(nibName: "NotificationTableViewCell", bundle: nil)
     }
     
-    public func configure(username: String, date: String) {
-        self.notificationLabel.text = username + " added you to their " + date + " trip"
+    public func configure(notificationText: String) {
+        self.notificationLabel.text = notificationText
     }
     
     override func awakeFromNib() {
