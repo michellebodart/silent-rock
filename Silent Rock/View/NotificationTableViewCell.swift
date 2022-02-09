@@ -23,11 +23,15 @@ class NotificationTableViewCell: UITableViewCell {
     @IBAction func acceptButtonTapped(_ sender: Any) {
         print("tapped accept")
         player.acceptRejectPendingTrip(vc: self.vc!, tripID: self.tripID!, playerIDs: [self.playerID], accept: true)
+        vc?.pendingTrips = (vc?.pendingTrips.filter { ($0["id"] as! Int) != self.tripID})!
+        vc?.notificationTable.reloadData()
     }
     
     @IBAction func rejectButtonTapped(_ sender: Any) {
         print("tapped reject")
         player.acceptRejectPendingTrip(vc: self.vc!, tripID: self.tripID!, playerIDs: [self.playerID], accept: false)
+        vc?.pendingTrips = (vc?.pendingTrips.filter { ($0["id"] as! Int) != self.tripID})!
+        vc?.notificationTable.reloadData()
     }
     
     static func nib() -> UINib {
