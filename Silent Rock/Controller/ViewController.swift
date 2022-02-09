@@ -233,12 +233,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if !self.inRegion {
                 self.soundAlarm()
                 self.inRegion = true
-                
+
                 // only add trip to DB if a user is logged in - don't let them add friends if don't have an account
                 if self.playerID != nil {
-                    self.addedPlayerIDs.append(self.playerID)
+                    print("about to add trip")
                     self.player.addTrip(vc: self, completion: { tripID in
-                        self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs)
+                        self.player.addTripToUsers(vc: self, tripID: tripID, playerIDs: [self.playerID], completion: { tripID in
+                            self.player.addPendingTripToUsers(vc: self, tripID: tripID, playerIDs: self.addedPlayerIDs, tripOwnerID: self.playerID!)
+                        })
                     })
                 }
             }
