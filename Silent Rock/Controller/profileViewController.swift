@@ -32,9 +32,16 @@ class profileViewController: UIViewController {
     @IBOutlet weak var checkboxLabel: UILabel!
     @IBOutlet weak var deleteAccountButton: BorderButton!
     @IBOutlet weak var signOutButton: BorderButton!
+    @IBOutlet weak var notificationButton: UIButton!
+    @IBOutlet weak var notificationTable: UITableView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up notification table
+        self.notificationTable.dataSource = self
+        self.notificationTable.delegate = self
+        self.notificationTable.register(NotificationTableViewCell.nib(), forCellReuseIdentifier: NotificationTableViewCell.identifier)
         
         // Hide update username buttons
         usernameTextField.isHidden = true
@@ -90,6 +97,10 @@ class profileViewController: UIViewController {
                 self.checkboxImage.image = uncheckedImage
             }
         }
+    }
+    
+    @IBAction func notificationButtonTapped(_ sender: Any) {
+        print("notification button tapped!")
     }
     
     @IBAction func editUsernameButtonTapped(_ sender: Any) {
@@ -207,4 +218,23 @@ class profileViewController: UIViewController {
         }
     }
 
+}
+
+// Setting up notification table
+extension profileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected a notification")
+    }
+}
+
+extension profileViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = notificationTable.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
+        cell.configure(username: "Mbodart", date: "November 2, 2021")
+        return cell
+    }
 }

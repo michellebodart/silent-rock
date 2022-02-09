@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="NotificationTableViewCell" customModule="Silent_Rock" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-kj-OiP">
+                        <rect key="frame" x="10" y="0.0" width="212" height="44"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lah-Gl-s37">
+                        <rect key="frame" x="276" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="lah-Gl-s37" secondAttribute="height" multiplier="1:1" id="6UH-sh-Al5"/>
+                        </constraints>
+                        <color key="tintColor" red="0.56202244758605957" green="0.087739713490009308" blue="0.19751715660095215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="x.circle" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="27"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="rejectButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="meV-zs-wZ7"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-0q-6oV">
+                        <rect key="frame" x="232" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="2eV-0q-6oV" secondAttribute="height" multiplier="1:1" id="1M2-uy-Nz1"/>
+                            <constraint firstAttribute="width" constant="44" id="kyn-9s-Ixz"/>
+                        </constraints>
+                        <color key="tintColor" red="0.20684530540000001" green="0.83969046849999995" blue="0.4707128324" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="27"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="acceptButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KGX-9k-EPJ"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lah-Gl-s37" firstAttribute="leading" secondItem="2eV-0q-6oV" secondAttribute="trailing" id="B9Q-cL-2lE"/>
+                    <constraint firstItem="2eV-0q-6oV" firstAttribute="leading" secondItem="GWa-kj-OiP" secondAttribute="trailing" constant="10" id="DgR-MH-NhQ"/>
+                    <constraint firstItem="2eV-0q-6oV" firstAttribute="width" secondItem="2eV-0q-6oV" secondAttribute="height" multiplier="1:1" id="EYd-ni-eY1"/>
+                    <constraint firstAttribute="bottom" secondItem="GWa-kj-OiP" secondAttribute="bottom" id="S3A-WI-Xg4"/>
+                    <constraint firstAttribute="trailing" secondItem="lah-Gl-s37" secondAttribute="trailing" id="hYZ-KI-UwS"/>
+                    <constraint firstItem="GWa-kj-OiP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kzs-2a-SPp"/>
+                    <constraint firstAttribute="bottom" secondItem="lah-Gl-s37" secondAttribute="bottom" id="ppe-wh-Xyv"/>
+                    <constraint firstItem="GWa-kj-OiP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vaa-6q-Dzj"/>
+                    <constraint firstItem="lah-Gl-s37" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wY4-Ff-kXf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="notificationLabel" destination="GWa-kj-OiP" id="YWZ-dI-fmC"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="62.946428571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="x.circle" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

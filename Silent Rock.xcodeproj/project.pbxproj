@@ -19,6 +19,8 @@
 		C937292427B1AEFA00A8265D /* BorderTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C937292327B1AEFA00A8265D /* BorderTable.swift */; };
 		C937292727B1C83E00A8265D /* addFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C937292527B1C83E00A8265D /* addFriendsTableViewCell.swift */; };
 		C937292827B1C83E00A8265D /* addFriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C937292627B1C83E00A8265D /* addFriendsTableViewCell.xib */; };
+		C937292B27B4373F00A8265D /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C937292927B4373D00A8265D /* NotificationTableViewCell.swift */; };
+		C937292C27B4373F00A8265D /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C937292A27B4373D00A8265D /* NotificationTableViewCell.xib */; };
 		C985836327A08AC1002197FD /* verificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C985836227A08AC1002197FD /* verificationViewController.swift */; };
 		C9957C7F279F7E750062A009 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9957C7E279F7E750062A009 /* loginViewController.swift */; };
 		C9957C81279F7F4C0062A009 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9957C80279F7F4C0062A009 /* registerViewController.swift */; };
@@ -56,6 +58,8 @@
 		C937292327B1AEFA00A8265D /* BorderTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTable.swift; sourceTree = "<group>"; };
 		C937292527B1C83E00A8265D /* addFriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		C937292627B1C83E00A8265D /* addFriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addFriendsTableViewCell.xib; sourceTree = "<group>"; };
+		C937292927B4373D00A8265D /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		C937292A27B4373D00A8265D /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		C985836227A08AC1002197FD /* verificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verificationViewController.swift; sourceTree = "<group>"; };
 		C9957C7E279F7E750062A009 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		C9957C80279F7F4C0062A009 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				C937292327B1AEFA00A8265D /* BorderTable.swift */,
 				C937292527B1C83E00A8265D /* addFriendsTableViewCell.swift */,
 				C937292627B1C83E00A8265D /* addFriendsTableViewCell.xib */,
+				C937292927B4373D00A8265D /* NotificationTableViewCell.swift */,
+				C937292A27B4373D00A8265D /* NotificationTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 				C91D871B273C2F6F00283190 /* LaunchScreen.storyboard in Resources */,
 				C9ABC2B427AD854000460B77 /* LeaderboardTableViewCell.xib in Resources */,
 				C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */,
+				C937292C27B4373F00A8265D /* NotificationTableViewCell.xib in Resources */,
 				C91D8718273C2F6F00283190 /* Assets.xcassets in Resources */,
 				C9ABC2AA27AC544F00460B77 /* LocalNotificationSound2.mp3 in Resources */,
 				C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */,
@@ -254,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C937292B27B4373F00A8265D /* NotificationTableViewCell.swift in Sources */,
 				C91D8713273C2F6B00283190 /* ViewController.swift in Sources */,
 				C9ABC2AD27AC564C00460B77 /* StatsTableViewCell.swift in Sources */,
 				C9FA01A427A36A0200612E10 /* Username.swift in Sources */,
