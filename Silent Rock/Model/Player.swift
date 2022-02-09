@@ -499,6 +499,8 @@ class Player: NSObject {
         var request = URLRequest(url: URL(string: "\(DB_URL)/pending_players_trips/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "POST"
 
+        print("in add pending trip")
+        
         struct UploadData: Codable {
             let trip_id: Int
             let player_ids: Array<Int?>
@@ -538,6 +540,52 @@ class Player: NSObject {
         })
         task.resume()
     }
+    
+    // accept or reject pending trip
+    func acceptRejectPendingTrip(vc: profileViewController, tripID: Int, playerIDs: Array<Int?>, accept: Bool) {
+        var request = URLRequest(url: URL(string: "\(DB_URL)/pending_players_trips/?API_KEY=\(API_KEY)")!)
+        request.httpMethod = "DELETE"
+
+        struct UploadData: Codable {
+            let trip_id: Int
+            let player_ids: Array<Int?>
+            let accept: Bool
+        }
+
+        let uploadDataModel = UploadData(trip_id: tripID, player_ids: playerIDs, accept: accept)
+
+        guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
+            vc.errorMessageLabel.text = "Could not accept or reject trip"
+            return
+        }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = jsonData
+
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not accept or reject trip"
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not accept or reject trip"
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Could not accept or reject trip"
+                }
+                return
+            }
+        })
+        task.resume()
+    }
+    
     
     // getting player names to add to trip
     func getAllPlayers (vc: ViewController, completion: @escaping (_ json: Array<Dictionary<String, Any>>) -> Void) {

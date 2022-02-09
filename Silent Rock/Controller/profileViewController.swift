@@ -266,7 +266,7 @@ extension profileViewController: UITableViewDataSource {
         let cell = notificationTable.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
         if self.pendingTrips.count == 0 {
             // no notifications
-            cell.configure(notificationText: "No new notifications")
+            cell.configure(notificationText: "No new notifications", tripID: nil, playerID: nil, vc: self)
             cell.acceptButton.isHidden = true
             cell.rejectButton.isHidden = true
         } else {
@@ -276,7 +276,9 @@ extension profileViewController: UITableViewDataSource {
             let time = String(dateTime[1])
             let username = trip["trip_owner_username"] as! String
             let notificationText = "\(username) added you to their \(time) trip on \(date)"
-            cell.configure(notificationText: notificationText)
+            let tripID = trip["id"] as! Int
+            let playerID = self.playerID!
+            cell.configure(notificationText: notificationText, tripID: tripID, playerID: playerID, vc: self)
         }
         return cell
     }
