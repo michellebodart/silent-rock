@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-kj-OiP">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-kj-OiP">
                         <rect key="frame" x="10" y="0.0" width="212" height="44"/>
                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                         <nil key="textColor"/>
@@ -27,7 +27,7 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="lah-Gl-s37" secondAttribute="height" multiplier="1:1" id="6UH-sh-Al5"/>
                         </constraints>
-                        <color key="tintColor" red="0.56202244758605957" green="0.087739713490009308" blue="0.19751715660095215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="x.circle" catalog="system">
                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="27"/>
@@ -36,7 +36,7 @@
                             <action selector="rejectButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="meV-zs-wZ7"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-0q-6oV">
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-0q-6oV">
                         <rect key="frame" x="232" y="0.0" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="2eV-0q-6oV" secondAttribute="height" multiplier="1:1" id="1M2-uy-Nz1"/>
@@ -53,12 +53,14 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="2eV-0q-6oV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2Ti-0j-YZf"/>
                     <constraint firstItem="lah-Gl-s37" firstAttribute="leading" secondItem="2eV-0q-6oV" secondAttribute="trailing" id="B9Q-cL-2lE"/>
                     <constraint firstItem="2eV-0q-6oV" firstAttribute="leading" secondItem="GWa-kj-OiP" secondAttribute="trailing" constant="10" id="DgR-MH-NhQ"/>
                     <constraint firstItem="2eV-0q-6oV" firstAttribute="width" secondItem="2eV-0q-6oV" secondAttribute="height" multiplier="1:1" id="EYd-ni-eY1"/>
                     <constraint firstAttribute="bottom" secondItem="GWa-kj-OiP" secondAttribute="bottom" id="S3A-WI-Xg4"/>
                     <constraint firstAttribute="trailing" secondItem="lah-Gl-s37" secondAttribute="trailing" id="hYZ-KI-UwS"/>
                     <constraint firstItem="GWa-kj-OiP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kzs-2a-SPp"/>
+                    <constraint firstItem="lah-Gl-s37" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="odV-EL-dLt"/>
                     <constraint firstAttribute="bottom" secondItem="lah-Gl-s37" secondAttribute="bottom" id="ppe-wh-Xyv"/>
                     <constraint firstItem="GWa-kj-OiP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vaa-6q-Dzj"/>
                     <constraint firstItem="lah-Gl-s37" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wY4-Ff-kXf"/>

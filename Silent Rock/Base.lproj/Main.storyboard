@@ -1214,16 +1214,18 @@
                                     <action selector="notificationButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="aT6-aV-aRU"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4EP-U0-cSH" customClass="BorderTable" customModule="Silent_Rock" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4EP-U0-cSH" customClass="BorderTable" customModule="Silent_Rock" customModuleProvider="target">
                                 <rect key="frame" x="28" y="109" width="307" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="307" id="uEy-AF-azP"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotificationTableViewCell" id="S0Y-tf-khe">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="307" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="307" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S0Y-tf-khe" id="T0t-7v-pJD">
-                                            <rect key="frame" x="0.0" y="0.0" width="307" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1239,6 +1241,8 @@
                             <constraint firstItem="awa-lf-vw6" firstAttribute="top" secondItem="rHl-Xh-wiO" secondAttribute="bottom" constant="10" id="2u6-5e-PcM"/>
                             <constraint firstItem="rHl-Xh-wiO" firstAttribute="width" secondItem="awa-lf-vw6" secondAttribute="width" id="39q-Pr-k7d"/>
                             <constraint firstItem="Msa-fa-jNU" firstAttribute="top" secondItem="hUk-Xz-j0M" secondAttribute="bottom" constant="20" id="4Y1-rZ-Yr3"/>
+                            <constraint firstItem="7h8-Ug-4Fp" firstAttribute="top" secondItem="4EP-U0-cSH" secondAttribute="bottom" id="4cQ-AY-wiC"/>
+                            <constraint firstItem="7h8-Ug-4Fp" firstAttribute="leading" secondItem="4EP-U0-cSH" secondAttribute="trailing" id="5tQ-E6-7ga"/>
                             <constraint firstItem="awa-lf-vw6" firstAttribute="height" secondItem="rHl-Xh-wiO" secondAttribute="height" id="8Kq-YB-ow9"/>
                             <constraint firstItem="eMU-Xp-zcb" firstAttribute="width" secondItem="hUk-Xz-j0M" secondAttribute="width" id="8Yg-3f-qUX"/>
                             <constraint firstItem="awa-lf-vw6" firstAttribute="width" secondItem="jrb-fL-hyV" secondAttribute="width" id="9G9-nK-W13"/>

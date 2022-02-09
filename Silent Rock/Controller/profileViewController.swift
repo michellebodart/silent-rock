@@ -13,6 +13,7 @@ class profileViewController: UIViewController {
     var visibleOnLeaderboard: Bool = true
     var addedPlayerIDs: Array<Int?> = []
     var alreadyStartedUpdatingLocation: Bool = false
+    var pendingTrips: Array<Dictionary<String, Any>> = []
     
     let username: Username = Username()
     let player: Player = Player()
@@ -42,6 +43,7 @@ class profileViewController: UIViewController {
         self.notificationTable.dataSource = self
         self.notificationTable.delegate = self
         self.notificationTable.register(NotificationTableViewCell.nib(), forCellReuseIdentifier: NotificationTableViewCell.identifier)
+        self.notificationTable.isHidden = true
         
         // Hide update username buttons
         usernameTextField.isHidden = true
@@ -52,7 +54,7 @@ class profileViewController: UIViewController {
         
         // Set username, phone, and checkbox if api call successful
         player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
-            self.displayPlayerData(json: json)
+            self.parsePlayerData(json: json)
         })
         
         // hide everything until api call works
@@ -69,11 +71,20 @@ class profileViewController: UIViewController {
             return false
         }
     
-    func displayPlayerData(json: Dictionary<String, Any>) {
+    // Hide notifications when tapped around
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch? = touches.first
+        if touch?.view != self.notificationTable {
+            self.notificationTable.isHidden = true
+        }
+    }
+    
+    func parsePlayerData(json: Dictionary<String, Any>) {
         DispatchQueue.main.async {
             self.usernameLabel.text = ((json as NSDictionary)["username"] as! String)
             self.phoneNumberLabel.text = ((json as NSDictionary)["phone"] as! String)
             self.visibleOnLeaderboard = ((json as NSDictionary)["visible_on_leaderboard"] as! Bool)
+            self.pendingTrips = ((json as NSDictionary)["pending_trips"] as! Array<Dictionary<String, Any>>)
             self.setCheckbox(checked: self.visibleOnLeaderboard)
             self.apiItemsHidden(bool: false)
             self.errorMessageLabel.text = ""
@@ -100,7 +111,16 @@ class profileViewController: UIViewController {
     }
     
     @IBAction func notificationButtonTapped(_ sender: Any) {
-        print("notification button tapped!")
+        self.notificationTable.isHidden = !self.notificationTable.isHidden
+        print(self.pendingTrips)
+        let tableHeight: CGFloat
+        if self.pendingTrips.count < 1 {
+            tableHeight = 60
+        } else {
+            tableHeight = CGFloat(min(self.pendingTrips.count * 60, 3*60))
+        }
+        self.notificationTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
+        self.notificationTable.reloadData()
     }
     
     @IBAction func editUsernameButtonTapped(_ sender: Any) {
@@ -229,12 +249,20 @@ extension profileViewController: UITableViewDelegate {
 
 extension profileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return max(self.pendingTrips.count, 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = notificationTable.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
-        cell.configure(username: "Mbodart", date: "November 2, 2021")
-        return cell
+        if self.pendingTrips.count == 0 {
+            // no new notifications
+        } else {
+            let cell = notificationTable.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
+            cell.configure(username: "Mbodart", date: "November 2, 2021 3:53PM PST")
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
