@@ -13,6 +13,7 @@ class profileViewController: UIViewController {
     var visibleOnLeaderboard: Bool = true
     var addedPlayerIDs: Array<Int?> = []
     var tracking: Bool = false
+    var alreadyStartedUpdatingLocation: Bool = false
     
     let username: Username = Username()
     let player: Player = Player()
@@ -191,11 +192,13 @@ class profileViewController: UIViewController {
             vc?.playerID = self.playerID
             vc?.addedPlayerIDs = self.addedPlayerIDs
             vc?.tracking = self.tracking
+            vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
             lvc?.addedPlayerIDs = self.addedPlayerIDs
             lvc?.tracking = self.tracking
+            lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.playerID
@@ -204,6 +207,7 @@ class profileViewController: UIViewController {
             ldvc?.returnTo = "profile"
             ldvc?.addedPlayerIDs = self.addedPlayerIDs
             ldvc?.tracking = self.tracking
+            ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }
 

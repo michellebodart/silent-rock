@@ -19,6 +19,7 @@ class leaderboardDetailViewController: UIViewController {
     var returnTo: String? = nil
     var addedPlayerIDs: Array<Int?> = []
     var tracking: Bool = false
+    var alreadyStartedUpdatingLocation: Bool = false
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -128,16 +129,19 @@ class leaderboardDetailViewController: UIViewController {
             vc?.playerID = self.playerID
             vc?.addedPlayerIDs = self.addedPlayerIDs
             vc?.tracking = self.tracking
+            vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
             pvc?.addedPlayerIDs = self.addedPlayerIDs
             pvc?.tracking = self.tracking
+            pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
             lvc?.addedPlayerIDs = self.addedPlayerIDs
             lvc?.tracking = self.tracking
+            lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }
     
