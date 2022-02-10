@@ -247,6 +247,10 @@ extension ViewController: UITableViewDataSource {
             cell.checkImageView.image = nil
         }
         cell.configure(id: id, username: username)
+        if self.alreadyStartedUpdatingLocation {
+            cell.usernameLabel.textColor = UIColor.gray
+            cell.checkImageView.tintColor = UIColor.gray
+        }
         return cell
     }
     
