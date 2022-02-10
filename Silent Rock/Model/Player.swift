@@ -11,8 +11,13 @@ import Firebase
 class Player: NSObject {
     
 //    var API_KEY: String = ProcessInfo.processInfo.environment["API_KEY"]!
+    // for home testing
     var API_KEY: String = "123456"
     let DB_URL: String = "http://localhost:5000"
+    
+    // for deployed
+//    var API_KEY: String = "michelleteresarenee"
+//    let DB_URL: String = "https://silent-rock-backend.herokuapp.com/"
     
     func addToDatabase(username: String, phoneNumber: String, vc: verificationViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/?API_KEY=\(API_KEY)")!)
