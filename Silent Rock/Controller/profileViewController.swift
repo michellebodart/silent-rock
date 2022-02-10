@@ -15,7 +15,7 @@ class profileViewController: UIViewController {
     var addedPlayerIDs: Array<Int?> = []
     var alreadyStartedUpdatingLocation: Bool = false
     var pendingTrips: Array<Dictionary<String, Any>> = []
-    var notificationCellHeight: Int = 70
+    var notificationCellHeight: Int = 90
     
     let username: Username = Username()
     let player: Player = Player()

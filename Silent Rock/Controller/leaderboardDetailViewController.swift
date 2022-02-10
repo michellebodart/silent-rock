@@ -27,6 +27,7 @@ class leaderboardDetailViewController: UIViewController {
     @IBOutlet weak var filterByStackView: UIStackView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var filterByButton: UIButton!
+    @IBOutlet weak var totalTripsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,7 @@ class leaderboardDetailViewController: UIViewController {
             UIAction(title: "All time", image: nil, handler: { (_) in
                 self.season = "all"
                 self.filteredTripsList = self.tripsList
+                self.totalTripsLabel.text = String(self.filteredTripsList.count)
                 self.table.reloadData()
             })]
         
@@ -69,6 +71,7 @@ class leaderboardDetailViewController: UIViewController {
             let newSeason = UIAction(title: season, image: nil, handler: { (_) in
                 self.season = season
                 self.filteredTripsList = self.tripsList.filter { $0["season"] as! String == self.season}
+                self.totalTripsLabel.text = String(self.filteredTripsList.count)
                 self.table.reloadData()
             })
             result.append(newSeason)
@@ -96,6 +99,7 @@ class leaderboardDetailViewController: UIViewController {
         self.filteredTripsList = self.tripsList
         DispatchQueue.main.async {
             self.table.reloadData()
+            self.totalTripsLabel.text = String(self.filteredTripsList.count)
             self.apiStuffHidden(bool: false)
         }
     }
