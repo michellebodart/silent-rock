@@ -54,9 +54,12 @@ class profileViewController: UIViewController {
         areYouSureStack.isHidden = true
         refreshButton.isHidden = true
         
-        // Set username, phone, and checkbox if api call successful
+        // Set username, phone, notifications, and checkbox if api call successful
         player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
             self.parsePlayerData(json: json)
+            DispatchQueue.main.async {
+                self.notificationTable.reloadData()
+            }
         })
         
         // hide everything until api call works
@@ -122,10 +125,11 @@ class profileViewController: UIViewController {
         print(self.pendingTrips)
         let tableHeight: CGFloat
         if self.pendingTrips.count < 1 {
-            tableHeight = CGFloat(45)
+            tableHeight = CGFloat(self.notificationCellHeight)
         } else {
             tableHeight = CGFloat(min(self.pendingTrips.count * self.notificationCellHeight, 3*60))
         }
+        self.notificationTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = false
         self.notificationTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
         self.notificationTable.reloadData()
     }
@@ -184,7 +188,9 @@ class profileViewController: UIViewController {
     @IBAction func checkboxTapped(_ sender: Any) {
         // sends API call to update users' settings, if unsuccessful displays an error message
         player.updateShowOnLeaderboard(playerID: self.playerID!, visibleOnLeaderboard: self.visibleOnLeaderboard, vc: self, completion: {
-            self.setCheckbox(checked: self.visibleOnLeaderboard)
+            DispatchQueue.main.async {
+                self.setCheckbox(checked: self.visibleOnLeaderboard)
+            }
         })
     }
     
@@ -279,15 +285,13 @@ extension profileViewController: UITableViewDataSource {
             let tripID = trip["id"] as! Int
             let playerID = self.playerID!
             cell.configure(notificationText: notificationText, tripID: tripID, playerID: playerID, vc: self)
+            cell.acceptButton.isHidden = false
+            cell.rejectButton.isHidden = false
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.pendingTrips.count == 0 {
-            return 45
-        } else {
-            return CGFloat(self.notificationCellHeight)
-        }
+        return CGFloat(self.notificationCellHeight)
     }
 }

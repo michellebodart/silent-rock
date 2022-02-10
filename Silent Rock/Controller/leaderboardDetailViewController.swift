@@ -111,6 +111,7 @@ class leaderboardDetailViewController: UIViewController {
     
     func doAfterGetTrips(json: Dictionary<String, Any>) {
         self.tripsList = json["trips"]! as! [Dictionary<String, Any>]
+        self.tripsList.sort { ($0["id"] as! Int) > ($1["id"] as! Int)}
         self.filteredTripsList = self.tripsList
         DispatchQueue.main.async {
             self.table.reloadData()
