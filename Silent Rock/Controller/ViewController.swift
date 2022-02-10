@@ -51,7 +51,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if !self.alreadyStartedUpdatingLocation {
             self.locationManager!.startUpdatingLocation()
-            self.alreadyStartedUpdatingLocation = true
+//            self.alreadyStartedUpdatingLocation = true
         }
         
         // Set up local notifications
@@ -195,13 +195,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             pvc?.playerID = self.playerID
             pvc?.playerUsername = self.playerUsername
             pvc?.addedPlayerIDs = self.addedPlayerIDs
-            pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
+//            pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
+            pvc?.alreadyStartedUpdatingLocation = true
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
             lvc?.playerUsername = self.playerUsername
             lvc?.addedPlayerIDs = self.addedPlayerIDs
-            lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
+//            lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
+            lvc?.alreadyStartedUpdatingLocation = true
         }
     }
     
@@ -215,6 +217,7 @@ extension ViewController: UNUserNotificationCenterDelegate {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.alreadyStartedUpdatingLocation { return }
         let imageView = (addFriendsTable.cellForRow(at: indexPath) as! addFriendsTableViewCell).checkImageView!
         let id = (addFriendsTable.cellForRow(at: indexPath) as! addFriendsTableViewCell).playerID
         if let index = self.addedPlayerIDs.firstIndex(of: id) {

@@ -67,6 +67,8 @@ class registerViewController: UIViewController {
     
     @IBAction func signUpTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text, let username = usernameTextField.text {
+            phoneNumberTextField.isEnabled = false
+            usernameTextField.isEnabled = false
             player.checkPlayerDataFromRegister(phoneNumber: phoneNumber, username: username, vc: self, completion: { phoneNumber, username, json in
                 self.signUpOrError(phoneNumber: phoneNumber, username: username, json: json)
             })
@@ -89,6 +91,8 @@ class registerViewController: UIViewController {
         if phoneUsed || usernameUsed {
             DispatchQueue.main.async {
                 self.signUpButton.isEnabled = false
+                self.phoneNumberTextField.isEnabled = true
+                self.usernameTextField.isEnabled = true
                 if phoneUsed {
                     self.phoneNumberErrorMessage.text = "The phone number you entered is already registered with an account"
                     self.phoneNumberTextField.text = ""

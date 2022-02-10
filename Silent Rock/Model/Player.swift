@@ -90,6 +90,8 @@ class Player: NSObject {
                 if let error = error {
                     vc.phoneNumberErrorMessage.text = "The phone number you entered is not valid"
                     vc.phoneNumberTextField.text = ""
+                    vc.phoneNumberTextField.isEnabled = true
+                    vc.usernameTextField.isEnabled = true
                     return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
@@ -143,6 +145,8 @@ class Player: NSObject {
                 print("error")
                 DispatchQueue.main.async {
                     vc.usernameErrorMessage.text = "Oops, something went wrong"
+                    vc.phoneNumberTextField.isEnabled = true
+                    vc.usernameTextField.isEnabled = true
                 }
                 return
             }
@@ -150,6 +154,8 @@ class Player: NSObject {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
                     vc.usernameErrorMessage.text = "Oops, something went wrong"
+                    vc.phoneNumberTextField.isEnabled = true
+                    vc.usernameTextField.isEnabled = true
                 }
                 return
             }
@@ -157,6 +163,8 @@ class Player: NSObject {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
                     vc.usernameErrorMessage.text = "Oops, something went wrong"
+                    vc.phoneNumberTextField.isEnabled = true
+                    vc.usernameTextField.isEnabled = true
                 }
                 return
             }
