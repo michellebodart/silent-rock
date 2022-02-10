@@ -20,12 +20,16 @@ class leaderboardDetailViewController: UIViewController {
     var returnTo: String? = nil
     var addedPlayerIDs: Array<Int?> = []
     var alreadyStartedUpdatingLocation: Bool = false
+    
+    //for pull to refresh
+    private let refreshControl = UIRefreshControl()
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var refreshButton: BorderButton!
     @IBOutlet weak var filterByStackView: UIStackView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var totalTripsStackView: UIStackView!
     @IBOutlet weak var filterByButton: UIButton!
     @IBOutlet weak var totalTripsLabel: UILabel!
     
@@ -37,6 +41,11 @@ class leaderboardDetailViewController: UIViewController {
         table.dataSource = self
         table.register(StatsTableViewCell.nib(), forCellReuseIdentifier: "StatsTableViewCell")
         usernameLabel.text = detailPlayerUsername
+        // set up refresh control
+        table.refreshControl = refreshControl
+        refreshControl.tintColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
+        // configure refresh control
+        refreshControl.addTarget(self, action: #selector(refreshTable(_:)), for: .valueChanged)
         
         // get trips
         player.getTrips(playerID: self.detailPlayerID!, vc: self, completion: doAfterGetTrips(json:))
@@ -56,6 +65,12 @@ class leaderboardDetailViewController: UIViewController {
     override var shouldAutorotate: Bool {
             return false
         }
+    
+    // Set up pull down to refresh
+    @objc private func refreshTable(_ sender: Any) {
+        player.getTrips(playerID: self.detailPlayerID!, vc: self, completion: doAfterGetTrips(json:))
+        self.refreshControl.endRefreshing()
+    }
     
     func setUpFilterByMenu() {
         

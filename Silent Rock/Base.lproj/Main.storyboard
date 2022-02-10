@@ -1932,6 +1932,7 @@
                         <outlet property="refreshButton" destination="hwK-Z5-E6O" id="4V0-Xu-gzC"/>
                         <outlet property="table" destination="Xts-EY-dab" id="bih-YU-3LE"/>
                         <outlet property="totalTripsLabel" destination="Jgw-qB-tG5" id="zJq-Ku-UTz"/>
+                        <outlet property="totalTripsStackView" destination="vf8-d2-IjP" id="Wwb-xA-n5y"/>
                         <outlet property="usernameLabel" destination="xCf-FN-BPO" id="7ZS-bG-Hxo"/>
                         <segue destination="58s-Nn-4xE" kind="presentation" identifier="profileView" animates="NO" id="NQo-CT-hxa"/>
                         <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" id="0k9-YR-AmX"/>
@@ -1993,13 +1994,13 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="88h-Ss-BBh"/>
-        <segue reference="zYF-7w-ROV"/>
-        <segue reference="ZcJ-PY-ttx"/>
+        <segue reference="uin-Gk-M47"/>
+        <segue reference="EDk-md-nvz"/>
+        <segue reference="NQo-CT-hxa"/>
         <segue reference="zhb-Ty-BYA"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="Zmc-7I-d7K"/>
-        <segue reference="hz3-qv-AwS"/>
+        <segue reference="0k9-YR-AmX"/>
+        <segue reference="a4Z-Cv-EXS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>

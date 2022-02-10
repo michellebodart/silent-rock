@@ -21,6 +21,9 @@ class leaderboardViewController: UIViewController {
     var addedPlayerIDs: Array<Int?> = []
     var alreadyStartedUpdatingLocation: Bool = false
     
+    // pull to refresh
+    private let refreshControl = UIRefreshControl()
+    
     @IBOutlet weak var sortFilterStackView: UIStackView!
     @IBOutlet weak var leaderboardTableView: UITableView!
     @IBOutlet weak var errorMessageLabel: UILabel!
@@ -51,12 +54,25 @@ class leaderboardViewController: UIViewController {
         leaderboardTableView.delegate = self
         leaderboardTableView.dataSource = self
         leaderboardTableView.register(LeaderboardTableViewCell.nib(), forCellReuseIdentifier: "LeaderboardTableViewCell")
+        // pull down to refresh
+        leaderboardTableView.refreshControl = refreshControl
+        //configure refresh control
+        refreshControl.addTarget(self, action: #selector(refreshTable(_:)), for: .valueChanged)
+        refreshControl.tintColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
         
         // set up the sort by and filter by buttons
         setUpSortByMenu()
         setUpFilterByMenu()
         
         // Do any additional setup after loading the view.
+    }
+    
+    //set up pull to refresh
+    @objc private func refreshTable(_ sender: Any) {
+        player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: self.season, completion: {json in
+            self.doAfterGetPlayerData(json: json)
+        })
+        self.refreshControl.endRefreshing()
     }
     
     // Disable screen rotation

@@ -386,6 +386,9 @@ class Player: NSObject {
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load trips"
                     vc.refreshButton.isHidden = false
+                    vc.table.isHidden = true
+                    vc.filterByStackView.isHidden = true
+                    vc.totalTripsStackView.isHidden = true
                 }
                 return
             }
@@ -394,6 +397,9 @@ class Player: NSObject {
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.refreshButton.isHidden = false
+                    vc.table.isHidden = true
+                    vc.filterByStackView.isHidden = true
+                    vc.totalTripsStackView.isHidden = true
                 }
                 return
             }
@@ -402,6 +408,9 @@ class Player: NSObject {
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.refreshButton.isHidden = false
+                    vc.table.isHidden = true
+                    vc.filterByStackView.isHidden = true
+                    vc.totalTripsStackView.isHidden = true
                 }
                 return
             }
