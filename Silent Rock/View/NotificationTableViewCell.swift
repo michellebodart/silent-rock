@@ -24,14 +24,31 @@ class NotificationTableViewCell: UITableViewCell {
         print("tapped accept")
         player.acceptRejectPendingTrip(vc: self.vc!, tripID: self.tripID!, playerIDs: [self.playerID], accept: true)
         vc?.pendingTrips = (vc?.pendingTrips.filter { ($0["id"] as! Int) != self.tripID})!
-        vc?.notificationTable.reloadData()
+        self.resizeTable(vc: self.vc!)
+//        vc?.notificationTable.reloadData()
     }
     
     @IBAction func rejectButtonTapped(_ sender: Any) {
         print("tapped reject")
         player.acceptRejectPendingTrip(vc: self.vc!, tripID: self.tripID!, playerIDs: [self.playerID], accept: false)
         vc?.pendingTrips = (vc?.pendingTrips.filter { ($0["id"] as! Int) != self.tripID})!
-        vc?.notificationTable.reloadData()
+        
+        self.resizeTable(vc: self.vc!)
+    }
+    
+    func resizeTable(vc: profileViewController) {
+        // resize the table
+        let tableHeight: CGFloat
+        if vc.pendingTrips.count < 1 {
+            tableHeight = CGFloat(vc.notificationCellHeight)
+            vc.notificationButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        } else {
+            tableHeight = CGFloat(min(vc.pendingTrips.count * vc.notificationCellHeight, 3*60))
+        }
+        vc.notificationTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = false
+        vc.notificationTable.heightAnchor.constraint(equalToConstant: tableHeight).isActive = true
+        vc.notificationTable.reloadData()
+        
     }
     
     static func nib() -> UINib {
