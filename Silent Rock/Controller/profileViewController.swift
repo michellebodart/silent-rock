@@ -37,6 +37,11 @@ class profileViewController: UIViewController {
     @IBOutlet weak var signOutButton: BorderButton!
     @IBOutlet weak var notificationButton: UIButton!
     @IBOutlet weak var notificationTable: UITableView!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var cancelSubmitPhoneStackView: UIStackView!
+    @IBOutlet weak var submitPhoneButton: UIButton!
+    @IBOutlet weak var cancelPhoneButton: UIButton!
+    @IBOutlet weak var editPhoneButton: UIButton!
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +56,15 @@ class profileViewController: UIViewController {
         usernameTextField.isHidden = true
         cancelButton.isHidden = true
         submitButton.isHidden = true
+        
+        // Hide delete/are you sure button and refrehs button
         areYouSureStack.isHidden = true
         refreshButton.isHidden = true
+        
+        // Hide update phone buttons
+        phoneNumberTextField.isHidden = true
+        cancelSubmitPhoneStackView.isHidden = true
+        
         
         // Set username, phone, notifications, and checkbox if api call successful
         player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
@@ -144,6 +156,15 @@ class profileViewController: UIViewController {
         self.submitButton.isHidden = false
     }
     
+    @IBAction func editPhoneButtonTapped(_ sender: Any) {
+        self.phoneNumberTextField.text = ""
+        self.submitPhoneButton.isEnabled = false
+        self.phoneNumberLabel.isHidden = true
+        self.editPhoneButton.isHidden = true
+        self.phoneNumberTextField.isHidden = false
+        self.cancelSubmitPhoneStackView.isHidden = false
+    }
+    
     @IBAction func usernameTextFieldUpdated(_ sender: Any) {
         // formats the user input to limit certain characters and limit to 20 characters
         usernameTextField.text = username.format(with: "XXXXXXXXXXXXXXXXXXXX", username: usernameTextField.text ?? "")
@@ -168,6 +189,14 @@ class profileViewController: UIViewController {
         self.cancelButton.isHidden = true
         self.submitButton.isHidden = true
         self.errorMessageLabel.text = ""
+    }
+    
+    @IBAction func cancelPhoneButtonTapped(_ sender: Any) {
+        self.phoneNumberLabel.isHidden = false
+        self.editPhoneButton.isHidden = false
+        self.phoneNumberTextField.isHidden = true
+        self.errorMessageLabel.text = ""
+        self.cancelSubmitPhoneStackView.isHidden = true
     }
     
     
