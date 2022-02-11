@@ -112,7 +112,11 @@ class leaderboardDetailViewController: UIViewController {
     func doAfterGetTrips(json: Dictionary<String, Any>) {
         self.tripsList = json["trips"]! as! [Dictionary<String, Any>]
         self.tripsList.sort { ($0["id"] as! Int) > ($1["id"] as! Int)}
-        self.filteredTripsList = self.tripsList
+        if self.season == "all" {
+            self.filteredTripsList = self.tripsList
+        } else {
+            self.filteredTripsList = self.tripsList.filter { $0["season"] as! String == self.season}
+        }
         DispatchQueue.main.async {
             self.table.reloadData()
             self.totalTripsLabel.text = String(self.filteredTripsList.count)
