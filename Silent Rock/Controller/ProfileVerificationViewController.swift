@@ -70,14 +70,15 @@ class ProfileVerificationViewController: UIViewController {
     }
     
     @IBAction func sendNewCodeTapped(_ sender: Any) {
-            PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    self.errorMessageLabel.text = "there was an error"
-                    return
-                }
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
-                self.verificationID = verificationID!
+        self.errorMessageLabel.text = ""
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+            if let error = error {
+                self.errorMessageLabel.text = "there was an error"
+                return
             }
+            UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
+            self.verificationID = verificationID!
+        }
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {

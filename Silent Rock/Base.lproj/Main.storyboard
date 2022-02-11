@@ -1072,10 +1072,10 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEg-L7-CCK">
-                                <rect key="frame" x="70" y="257" width="250" height="28"/>
+                                <rect key="frame" x="70" y="247" width="250" height="48"/>
                                 <color key="tintColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="qWG-eZ-x0Q"/>
+                                    <constraint firstAttribute="height" constant="48" id="qWG-eZ-x0Q"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                 <color key="textColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1340,7 +1340,7 @@
                             <constraint firstAttribute="bottom" secondItem="Sac-Td-gTP" secondAttribute="bottom" id="Fco-B7-P3b"/>
                             <constraint firstAttribute="bottom" secondItem="R4h-Lj-9J8" secondAttribute="bottom" id="GT6-1X-GC4"/>
                             <constraint firstItem="Gg3-AV-PBn" firstAttribute="height" secondItem="Msa-fa-jNU" secondAttribute="height" id="HSh-BA-KfI"/>
-                            <constraint firstItem="PcP-Zl-e9a" firstAttribute="top" secondItem="EEg-L7-CCK" secondAttribute="bottom" constant="20" id="Hv2-5C-BaG"/>
+                            <constraint firstItem="PcP-Zl-e9a" firstAttribute="top" secondItem="EEg-L7-CCK" secondAttribute="bottom" constant="10" id="Hv2-5C-BaG"/>
                             <constraint firstItem="m2B-m4-dLC" firstAttribute="top" secondItem="Gg3-AV-PBn" secondAttribute="top" id="Joh-Ow-9OD"/>
                             <constraint firstItem="PcP-Zl-e9a" firstAttribute="width" secondItem="awa-lf-vw6" secondAttribute="width" id="L3H-np-uz9"/>
                             <constraint firstItem="3c4-4t-wNt" firstAttribute="leading" secondItem="MDP-ga-cyv" secondAttribute="leading" constant="20" id="M2F-4h-Osu"/>
@@ -1373,7 +1373,7 @@
                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="bM8-yS-C1T" secondAttribute="bottom" constant="-10" id="dT2-34-p6u"/>
                             <constraint firstItem="gfz-j0-pFZ" firstAttribute="centerX" secondItem="J6T-t0-QYg" secondAttribute="centerX" id="dxN-3b-1B9"/>
                             <constraint firstItem="Uf7-OE-6zB" firstAttribute="height" secondItem="R4h-Lj-9J8" secondAttribute="height" id="eub-RL-ez9"/>
-                            <constraint firstItem="hUk-Xz-j0M" firstAttribute="top" secondItem="EEg-L7-CCK" secondAttribute="bottom" constant="20" id="gGp-HW-2Po"/>
+                            <constraint firstItem="hUk-Xz-j0M" firstAttribute="top" secondItem="EEg-L7-CCK" secondAttribute="bottom" constant="10" id="gGp-HW-2Po"/>
                             <constraint firstItem="Sac-Td-gTP" firstAttribute="top" secondItem="jrb-fL-hyV" secondAttribute="bottom" constant="20" id="gqZ-00-ff3"/>
                             <constraint firstItem="GUj-u9-RxJ" firstAttribute="top" secondItem="Msa-fa-jNU" secondAttribute="bottom" constant="20" id="hh6-Qk-eSn"/>
                             <constraint firstItem="C1O-Ag-E1n" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="iYc-gC-rkT"/>
@@ -1388,7 +1388,7 @@
                             <constraint firstItem="Msa-fa-jNU" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="oxD-WO-8Fs"/>
                             <constraint firstItem="awa-lf-vw6" firstAttribute="centerX" secondItem="ZBJ-jA-bjf" secondAttribute="centerX" id="q3S-rC-7ma"/>
                             <constraint firstAttribute="trailing" secondItem="bM8-yS-C1T" secondAttribute="trailing" constant="-50" id="qNg-Ib-DxV"/>
-                            <constraint firstItem="EEg-L7-CCK" firstAttribute="top" secondItem="bM8-yS-C1T" secondAttribute="bottom" constant="20" id="sAO-6e-lfR"/>
+                            <constraint firstItem="EEg-L7-CCK" firstAttribute="top" secondItem="bM8-yS-C1T" secondAttribute="bottom" constant="10" id="sAO-6e-lfR"/>
                             <constraint firstItem="eMU-Xp-zcb" firstAttribute="height" secondItem="hUk-Xz-j0M" secondAttribute="height" id="usJ-sZ-NhW"/>
                             <constraint firstAttribute="trailing" secondItem="3c4-4t-wNt" secondAttribute="trailing" constant="20" id="yiU-3c-IDX"/>
                             <constraint firstAttribute="trailing" secondItem="R4h-Lj-9J8" secondAttribute="trailing" constant="20" id="yt8-de-vC2"/>
@@ -2102,7 +2102,7 @@
                                 <rect key="frame" x="60" y="357" width="270" height="40"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign in">
+                                <buttonConfiguration key="configuration" style="plain" title="Update phone number">
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -2275,17 +2275,18 @@
             <size key="intrinsicContentSize" width="244.33333333333334" height="38.666666666666664"/>
         </designable>
         <designable name="yB1-mS-bKD">
-            <size key="intrinsicContentSize" width="78.666666666666671" height="38.666666666666664"/>
+            <size key="intrinsicContentSize" width="209.66666666666666" height="38.666666666666664"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
+        <segue reference="Naq-uM-REm"/>
         <segue reference="88h-Ss-BBh"/>
-        <segue reference="EDk-md-nvz"/>
+        <segue reference="zYF-7w-ROV"/>
         <segue reference="JgX-Lr-BVi"/>
         <segue reference="zhb-Ty-BYA"/>
         <segue reference="gnw-4U-HX2"/>
-        <segue reference="0k9-YR-AmX"/>
-        <segue reference="a4Z-Cv-EXS"/>
+        <segue reference="Zmc-7I-d7K"/>
+        <segue reference="hz3-qv-AwS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>

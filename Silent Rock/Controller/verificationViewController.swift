@@ -74,15 +74,16 @@ class verificationViewController: UIViewController {
     }
     
     @IBAction func sendNewCodeTapped(_ sender: Any) {
-            PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    self.errorMessageLabel.text = "there was an error"
+        self.errorMessageLabel.text = ""
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+            if let error = error {
+                self.errorMessageLabel.text = "there was an error"
 //                    at this point we have already verified the phone number
-                    return
-                }
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
-                self.verificationID = verificationID!
+                return
             }
+            UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
+            self.verificationID = verificationID!
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
