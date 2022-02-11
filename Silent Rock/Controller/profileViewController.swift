@@ -19,6 +19,7 @@ class profileViewController: UIViewController {
     
     let username: Username = Username()
     let player: Player = Player()
+    let phone: Phone = Phone()
     
     @IBOutlet weak var viewMyTripsButton: BorderButton!
     @IBOutlet weak var refreshButton: BorderButton!
@@ -174,6 +175,19 @@ class profileViewController: UIViewController {
         } else {
             submitButton.isEnabled = false
             
+        }
+    }
+    
+    @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
+        phoneNumberTextField.text = phone.format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
+
+        let phoneNumberIsValid = phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")
+        if !phoneNumberIsValid {
+            errorMessageLabel.text = "Please enter a valid phone number"
+            submitPhoneButton.isEnabled = false
+        } else {
+            errorMessageLabel.text = ""
+            submitPhoneButton.isEnabled = true
         }
     }
     

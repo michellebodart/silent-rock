@@ -1262,6 +1262,9 @@
                                 <rect key="frame" x="20" y="401" width="350" height="36"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="26"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" textContentType="tel"/>
+                                <connections>
+                                    <action selector="phoneNumberTextFieldUpdated:" destination="58s-Nn-4xE" eventType="editingChanged" id="pSb-co-CAw"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gg3-AV-PBn" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
                                 <rect key="frame" x="135" y="457" width="120" height="20"/>
@@ -1304,9 +1307,6 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Submit">
                                             <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                         </buttonConfiguration>
-                                        <connections>
-                                            <action selector="submitButtonTapped:" destination="58s-Nn-4xE" eventType="touchUpInside" id="LrJ-6K-wVD"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
