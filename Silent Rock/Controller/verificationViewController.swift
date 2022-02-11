@@ -46,7 +46,7 @@ class verificationViewController: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
         
-        print("verification id!!", self.verificationID)
+//        print("verification id!!", self.verificationID)
         
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {

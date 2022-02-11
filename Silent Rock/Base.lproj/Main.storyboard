@@ -2205,7 +2205,7 @@
                         <outlet property="errorMessageLabel" destination="UJP-VY-TJf" id="MfY-Do-m2Z"/>
                         <outlet property="signInButton" destination="yB1-mS-bKD" id="dnM-3z-23J"/>
                         <outlet property="verificationCodeTextField" destination="9Gt-d9-7b9" id="fWA-a7-DFk"/>
-                        <segue destination="58s-Nn-4xE" kind="presentation" identifier="profileView" id="JgX-Lr-BVi"/>
+                        <segue destination="58s-Nn-4xE" kind="presentation" identifier="profileView" animates="NO" id="JgX-Lr-BVi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCA-9S-gy4" sceneMemberID="firstResponder"/>

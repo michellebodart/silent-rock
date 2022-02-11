@@ -17,7 +17,7 @@ class ProfileVerificationViewController: UIViewController {
     let player: Player = Player()
     let verificationCode: VerificationCode = VerificationCode()
     var phoneNumber: String = ""
-    var verificationID: String = ""
+    var verificationID: String = "shouldnt see this"
     
     
     @IBOutlet weak var verificationCodeTextField: UITextField!
@@ -28,6 +28,7 @@ class ProfileVerificationViewController: UIViewController {
         super.viewDidLoad()
         signInButton.isEnabled = false
         self.hideKeyboardWhenTappedAround()
+        print("verificationID: ", self.verificationID)
         // Do any additional setup after loading the view.
     }
     
@@ -49,7 +50,7 @@ class ProfileVerificationViewController: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
         
-        print("verification id!!", self.verificationID)
+//        print("verification id!!", self.verificationID)
         
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {

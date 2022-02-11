@@ -259,7 +259,6 @@ class profileViewController: UIViewController {
                 self.phoneNumberTextField.text = ""
             }
         } else {
-            print("made it to verify")
             self.player.verifyFromProfile(phoneNumber: phoneNumber, vc: self)
         }
     }
@@ -332,6 +331,7 @@ class profileViewController: UIViewController {
             ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is ProfileVerificationViewController {
             let pvvc = segue.destination as? ProfileVerificationViewController
+            pvvc?.verificationID = self.verificationID
             pvvc?.playerID = self.playerID
             pvvc?.playerUsername = self.playerUsername
             pvvc?.addedPlayerIDs = self.addedPlayerIDs
