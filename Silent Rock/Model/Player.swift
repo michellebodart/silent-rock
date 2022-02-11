@@ -114,7 +114,7 @@ class Player: NSObject {
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
                 vc.verificationID = verificationID!
-                print("register verification id:", vc.verificationID, "end")
+                vc.phoneNumber = phoneNumber
                 vc.performSegue(withIdentifier: "profileVerificationView", sender: vc)
             }
     }
@@ -406,6 +406,52 @@ class Player: NSObject {
                 return
             }
             vc.visibleOnLeaderboard = !visibleOnLeaderboard
+            completion()
+        })
+        task.resume()
+    }
+    
+    // Update phone number in DB
+    func updatePhone(playerID: Int, phone: String, vc: ProfileVerificationViewController, completion: @escaping () -> Void) {
+        var request = URLRequest(url: URL(string: "\(DB_URL)/players/\(playerID)/?API_KEY=\(API_KEY)")!)
+        request.httpMethod = "PATCH"
+        
+        struct UploadData: Codable {
+                let phone: String
+        }
+        
+        let uploadDataModel = UploadData(phone: phone)
+        
+        guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
+            DispatchQueue.main.async {
+                vc.errorMessageLabel.text = "oops, something went wrong"
+            }
+            return
+        }
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = jsonData
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                }
+                return
+            }
             completion()
         })
         task.resume()

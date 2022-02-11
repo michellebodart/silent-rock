@@ -17,7 +17,7 @@ class ProfileVerificationViewController: UIViewController {
     let player: Player = Player()
     let verificationCode: VerificationCode = VerificationCode()
     var phoneNumber: String = ""
-    var verificationID: String = "shouldnt see this"
+    var verificationID: String = ""
     
     
     @IBOutlet weak var verificationCodeTextField: UITextField!
@@ -28,7 +28,6 @@ class ProfileVerificationViewController: UIViewController {
         super.viewDidLoad()
         signInButton.isEnabled = false
         self.hideKeyboardWhenTappedAround()
-        print("verificationID: ", self.verificationID)
         // Do any additional setup after loading the view.
     }
     
@@ -62,8 +61,11 @@ class ProfileVerificationViewController: UIViewController {
               return
             }
             // User is signed in
-            print("perform segue!")
-            self.performSegue(withIdentifier: "profileView", sender: self)
+            self.player.updatePhone(playerID: self.playerID!, phone: self.phoneNumber, vc: self, completion: {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "profileView", sender: self)
+                }
+            })
         }
     }
     

@@ -17,6 +17,7 @@ class profileViewController: UIViewController {
     var pendingTrips: Array<Dictionary<String, Any>> = []
     var notificationCellHeight: Int = 90
     var verificationID: String = ""
+    var phoneNumber: String = ""
     
     let username: Username = Username()
     let player: Player = Player()
@@ -336,6 +337,7 @@ class profileViewController: UIViewController {
             pvvc?.playerUsername = self.playerUsername
             pvvc?.addedPlayerIDs = self.addedPlayerIDs
             pvvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
+            pvvc?.phoneNumber = self.phoneNumber
         }
     }
 
