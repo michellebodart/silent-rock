@@ -260,6 +260,7 @@ class profileViewController: UIViewController {
             }
         } else {
             print("made it to verify")
+            self.player.verifyFromProfile(phoneNumber: phoneNumber, vc: self)
         }
     }
     
@@ -329,9 +330,12 @@ class profileViewController: UIViewController {
             ldvc?.returnTo = "profile"
             ldvc?.addedPlayerIDs = self.addedPlayerIDs
             ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
-        } else if segue.destination is verificationViewController {
-            let vvc = segue.destination as? verificationViewController
-            vvc?.verificationID = self.verificationID
+        } else if segue.destination is ProfileVerificationViewController {
+            let pvvc = segue.destination as? ProfileVerificationViewController
+            pvvc?.playerID = self.playerID
+            pvvc?.playerUsername = self.playerUsername
+            pvvc?.addedPlayerIDs = self.addedPlayerIDs
+            pvvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }
 

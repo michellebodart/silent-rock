@@ -193,11 +193,11 @@ class leaderboardViewController: UIViewController {
             vc?.addedPlayerIDs = self.addedPlayerIDs
             vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is profileViewController {
-            let lvc = segue.destination as? profileViewController
-            lvc?.playerID = self.playerID
-            lvc?.playerUsername = self.playerUsername
-            lvc?.addedPlayerIDs = self.addedPlayerIDs
-            lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
+            let pvc = segue.destination as? profileViewController
+            pvc?.playerID = self.playerID
+            pvc?.playerUsername = self.playerUsername
+            pvc?.addedPlayerIDs = self.addedPlayerIDs
+            pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.detailPlayerID

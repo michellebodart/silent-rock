@@ -1,23 +1,26 @@
 //
-//  verificationViewController.swift
+//  ProfileVerificationViewController.swift
 //  Silent Rock
 //
-//  Created by Michelle Bodart on 1/25/22.
+//  Created by Michelle Bodart on 2/11/22.
 //
 
 import UIKit
 import Firebase
 
-class verificationViewController: UIViewController {
+class ProfileVerificationViewController: UIViewController {
 
     var playerID: Int? = nil
     var playerUsername: String? = nil
-    var newPlayer: Bool = false
+    var addedPlayerIDs: Array<Int?> = []
+    var alreadyStartedUpdatingLocation: Bool = false
     let player: Player = Player()
     let verificationCode: VerificationCode = VerificationCode()
-    @IBOutlet weak var verificationCodeTextField: UITextField!
     var phoneNumber: String = ""
     var verificationID: String = ""
+    
+    
+    @IBOutlet weak var verificationCodeTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var signInButton: BorderButton!
     
@@ -58,18 +61,8 @@ class verificationViewController: UIViewController {
               return
             }
             // User is signed in
-            // Register user if new user
-//            if self.playerUsername != "" {
-            if self.newPlayer {
-                self.player.addToDatabase(username: self.playerUsername!, phoneNumber: self.phoneNumber, vc: self, completion: { json in
-                    self.playerID = (json["id"] as? Int)
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "mainViewController", sender: self)
-                    }
-                })
-            } else {
-                self.performSegue(withIdentifier: "mainViewController", sender: self)
-            }
+            print("perform segue!")
+            self.performSegue(withIdentifier: "profileView", sender: self)
         }
     }
     
@@ -77,7 +70,6 @@ class verificationViewController: UIViewController {
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
                     self.errorMessageLabel.text = "there was an error"
-//                    at this point we have already verified the phone number
                     return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
@@ -85,12 +77,19 @@ class verificationViewController: UIViewController {
             }
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "profileView", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is ViewController {
-            let vc = segue.destination as? ViewController
-            vc?.playerID = self.playerID
-            vc?.playerUsername = self.playerUsername
+        if segue.destination is profileViewController {
+            let pvc = segue.destination as? profileViewController
+            pvc?.playerID = self.playerID
+            pvc?.playerUsername = self.playerUsername
+            pvc?.addedPlayerIDs = self.addedPlayerIDs
+            pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }
     
 }
+

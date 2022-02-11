@@ -112,7 +112,7 @@ class Player: NSObject {
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
                 vc.verificationID = verificationID!
-                vc.performSegue(withIdentifier: "verificationViewController", sender: vc)
+                vc.performSegue(withIdentifier: "profileVerificationView", sender: vc)
             }
     }
     

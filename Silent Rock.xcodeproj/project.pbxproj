@@ -38,6 +38,7 @@
 		C9E316DE27A9A1DE000CA001 /* leaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */; };
 		C9E316E027A9AD9E000CA001 /* PlayerForLB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E316DF27A9AD9E000CA001 /* PlayerForLB.swift */; };
 		C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9F033BC274F4606000E3EF6 /* arcade.wav */; };
+		C9F921A527B713C80071DC2D /* ProfileVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F921A427B713C80071DC2D /* ProfileVerificationViewController.swift */; };
 		C9FA01A027A31B2E00612E10 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FA019F27A31B2E00612E10 /* Player.swift */; };
 		C9FA01A227A366FD00612E10 /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FA01A127A366FD00612E10 /* Phone.swift */; };
 		C9FA01A427A36A0200612E10 /* Username.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FA01A327A36A0200612E10 /* Username.swift */; };
@@ -76,6 +77,7 @@
 		C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardViewController.swift; sourceTree = "<group>"; };
 		C9E316DF27A9AD9E000CA001 /* PlayerForLB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerForLB.swift; sourceTree = "<group>"; };
 		C9F033BC274F4606000E3EF6 /* arcade.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arcade.wav; sourceTree = "<group>"; };
+		C9F921A427B713C80071DC2D /* ProfileVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVerificationViewController.swift; sourceTree = "<group>"; };
 		C9FA019F27A31B2E00612E10 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C9FA01A127A366FD00612E10 /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		C9FA01A327A36A0200612E10 /* Username.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Username.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				C92ADF9C27A79282002A0030 /* profileViewController.swift */,
 				C9E316DD27A9A1DE000CA001 /* leaderboardViewController.swift */,
 				C9ABC2AF27AC5A1700460B77 /* leaderboardDetailViewController.swift */,
+				C9F921A427B713C80071DC2D /* ProfileVerificationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				C937292B27B4373F00A8265D /* NotificationTableViewCell.swift in Sources */,
 				C91D8713273C2F6B00283190 /* ViewController.swift in Sources */,
 				C9ABC2AD27AC564C00460B77 /* StatsTableViewCell.swift in Sources */,
+				C9F921A527B713C80071DC2D /* ProfileVerificationViewController.swift in Sources */,
 				C9FA01A427A36A0200612E10 /* Username.swift in Sources */,
 				C92ADF9D27A79282002A0030 /* profileViewController.swift in Sources */,
 				C985836327A08AC1002197FD /* verificationViewController.swift in Sources */,
