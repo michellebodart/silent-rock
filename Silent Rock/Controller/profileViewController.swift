@@ -215,6 +215,8 @@ class profileViewController: UIViewController {
     
     
     @IBAction func submitButtonTapped(_ sender: Any) {
+        // disable submit phone button
+        self.submitPhoneButton.isEnabled = false
         // updates username in DB, if successful, returns to main page, otherwise displays an error message
         player.updateUsername(playerID: self.playerID!, username: self.usernameTextField.text!, vc: self, completion: {
             DispatchQueue.main.async {
@@ -224,6 +226,7 @@ class profileViewController: UIViewController {
                 self.usernameLabel.isHidden = false
                 self.editUsernameButton.isHidden = false
                 self.usernameLabel.text = self.usernameTextField.text!
+                self.submitPhoneButton.isEnabled = true
             }
         })
     }

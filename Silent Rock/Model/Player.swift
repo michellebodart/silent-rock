@@ -261,6 +261,7 @@ class Player: NSObject {
         guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
             DispatchQueue.main.async {
                 vc.errorMessageLabel.text = "oops, something went wrong"
+                vc.submitPhoneButton.isEnabled = true
             }
             return
         }
@@ -273,12 +274,14 @@ class Player: NSObject {
             guard error == nil else {
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "oops, something went wrong"
+                    vc.submitPhoneButton.isEnabled = true
                 }
                 return
             }
             guard let data = data else {
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "oops, something went wrong"
+                    vc.submitPhoneButton.isEnabled = true
                 }
                 return
             }
@@ -290,6 +293,7 @@ class Player: NSObject {
                     } else {
                     vc.errorMessageLabel.text = "oops, something went wrong"
                     }
+                    vc.submitPhoneButton.isEnabled = true
                 }
                 return
             }
