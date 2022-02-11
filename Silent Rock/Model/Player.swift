@@ -100,6 +100,22 @@ class Player: NSObject {
             }
     }
     
+    // for a user updating their phone number
+    func verifyFromProfile(phoneNumber: String, vc: profileViewController) {
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+                if let error = error {
+                    vc.errorMessageLabel.text = "The phone number you entered is not valid"
+                    vc.phoneNumberTextField.text = ""
+                    vc.submitButton.isEnabled = true
+                    return
+                }
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
+                vc.verificationID = verificationID!
+                vc.performSegue(withIdentifier: "verificationViewController", sender: vc)
+            }
+    }
+    
     func checkPlayerDataFromLogin (phoneNumber: String, vc: loginViewController, completion: @escaping (_ phoneNumber: String, _ json: Array<Any>) -> Void) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "GET"
@@ -178,6 +194,47 @@ class Player: NSObject {
         task.resume()
     }
     
+    // Checks if a player's phone is taken
+    func checkPlayerDataFromProfile (phoneNumber: String, vc: profileViewController, completion: @escaping (_ phoneNumber: String,_  json: Array<Any>) -> Void){
+        var request = URLRequest(url: URL(string: "\(DB_URL)/players/?API_KEY=\(API_KEY)")!)
+        request.httpMethod = "GET"
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            guard error == nil else {
+                print("error")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.submitButton.isEnabled = true
+                }
+                return
+            }
+            guard let data = data else {
+                print("error, did not receive data")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.submitButton.isEnabled = true
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                print("error, HTTP request failed")
+                DispatchQueue.main.async {
+                    vc.errorMessageLabel.text = "oops, something went wrong"
+                    vc.submitButton.isEnabled = true
+                }
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data) as! Array<Any>
+                completion(phoneNumber, json)
+            } catch {
+                print("error: ", error)
+            }
+        })
+        task.resume()
+    }
+    
+    // Get data to display for profile view
     func getPhoneUsername (playerID: Int, vc: profileViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void){
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "GET"
@@ -217,6 +274,7 @@ class Player: NSObject {
         task.resume()
     }
     
+    // For deleting a player from profile view controller
     func deletePlayer (playerID: Int, vc: profileViewController, completion: @escaping () -> Void){
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "DELETE"
@@ -248,6 +306,7 @@ class Player: NSObject {
         task.resume()
     }
     
+    // Check if username is taken before updating it
     func updateUsername(playerID: Int, username: String, vc: profileViewController, completion: @escaping () -> Void) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "PATCH"
@@ -302,6 +361,7 @@ class Player: NSObject {
         task.resume()
     }
     
+    // update player settings to show or hide from leaderboard
     func updateShowOnLeaderboard(playerID: Int, visibleOnLeaderboard: Bool, vc: profileViewController, completion: @escaping () -> Void) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "PATCH"
@@ -348,6 +408,7 @@ class Player: NSObject {
         task.resume()
     }
     
+    // Get trips data for leaderboard
     func getPlayerDataForLeaderboard (vc: leaderboardViewController, sortBasis: String, filterBy: String, completion: @escaping (_ json: Array<Any>) -> Void) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/?API_KEY=\(API_KEY)&sort_basis=\(sortBasis)&filter_criteria=\(filterBy)")!)
         request.httpMethod = "GET"
@@ -388,6 +449,7 @@ class Player: NSObject {
         task.resume()
     }
     
+    // Get trips of a specific user to show on the leaderboard detail view
     func getTrips (playerID: Int, vc: leaderboardDetailViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void){
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/\(playerID)/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "GET"

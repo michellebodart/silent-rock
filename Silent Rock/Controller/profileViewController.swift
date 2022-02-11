@@ -16,6 +16,7 @@ class profileViewController: UIViewController {
     var alreadyStartedUpdatingLocation: Bool = false
     var pendingTrips: Array<Dictionary<String, Any>> = []
     var notificationCellHeight: Int = 90
+    var verificationID: String = ""
     
     let username: Username = Username()
     let player: Player = Player()
@@ -180,7 +181,7 @@ class profileViewController: UIViewController {
     
     @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
         phoneNumberTextField.text = phone.format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
-
+        errorMessageLabel.text = ""
         let phoneNumberIsValid = phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")
         if !phoneNumberIsValid {
             errorMessageLabel.text = "Please enter a valid phone number"
@@ -229,6 +230,37 @@ class profileViewController: UIViewController {
                 self.submitPhoneButton.isEnabled = true
             }
         })
+    }
+    
+    @IBAction func submitPhoneButtonTapped(_ sender: Any) {
+        // disable submit phone button
+        self.submitButton.isEnabled = false
+        
+        // check if phone is used
+        let phone = self.phoneNumberTextField.text ?? ""
+        self.player.checkPlayerDataFromProfile(phoneNumber: phone, vc: self, completion: { phoneNumber, json in
+            self.checkIfPhoneTaken(phoneNumber: phoneNumber, json: json)
+        })
+    }
+    
+    func checkIfPhoneTaken(phoneNumber: String, json: Array<Any>) {
+        var phoneUsed: Bool = false
+        for player in json {
+            let phone = (player as! NSDictionary)["phone"]
+            if phoneNumber == (phone! as! String) {
+                phoneUsed = true
+            }
+        }
+        if phoneUsed {
+            DispatchQueue.main.async {
+                self.submitButton.isEnabled = true
+                self.errorMessageLabel.text = "Sorry, that phone number is taken"
+                self.submitPhoneButton.isEnabled = false
+                self.phoneNumberTextField.text = ""
+            }
+        } else {
+            print("made it to verify")
+        }
     }
     
     @IBAction func checkboxTapped(_ sender: Any) {
@@ -297,6 +329,9 @@ class profileViewController: UIViewController {
             ldvc?.returnTo = "profile"
             ldvc?.addedPlayerIDs = self.addedPlayerIDs
             ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
+        } else if segue.destination is verificationViewController {
+            let vvc = segue.destination as? verificationViewController
+            vvc?.verificationID = self.verificationID
         }
     }
 
