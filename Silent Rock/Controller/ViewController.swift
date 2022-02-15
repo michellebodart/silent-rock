@@ -28,15 +28,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let targetLat:Double = 47.654151
     let targetLon:Double = -122.348564
     let span:Double = 0.0002
-    
+//
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var addFriendsButton: UIButton!
     @IBOutlet weak var addFriendsTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("username!!!:", self.playerUsername) // DELTET this -MB
         
         self.setInRegion() // might not need this
         self.errorMessageLabel.text = ""
