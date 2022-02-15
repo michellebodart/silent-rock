@@ -99,14 +99,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var inRegion:Bool = false
 //    For testing near my house
-//    let targetLat:Double = 47.623549
-//    let targetLon:Double = -122.326578
-//    let span:Double = 0.0002
+    let targetLat:Double = 47.654158
+    let targetLon:Double = -122.348596
+    let span:Double = 0.0002
     
 //    Acutal silent rock coordinates
-    let targetLat:Double = 45.306558
-    let targetLon:Double = -121.830166
-    let span:Double = 0.005
+//    let targetLat:Double = 45.306558
+//    let targetLon:Double = -121.830166
+//    let span:Double = 0.005
     
     
     
