@@ -16,7 +16,7 @@ class Player: NSObject {
 //    let DB_URL: String = "http://localhost:5000"
     
     // for deployed
-    var API_KEY: String = ""
+    var API_KEY: String = "s"
     let DB_URL: String = "https://silent-rock-backend.herokuapp.com/"
     
     func addToDatabase(username: String, phoneNumber: String, vc: verificationViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {
