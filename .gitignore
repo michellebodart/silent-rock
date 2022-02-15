@@ -1,4 +1,5 @@
 testFile.txt
 GoogleService-Info.plist
 Silent Rock.xcodeproj/project.pbxproj
+**/ios/Runner/testPropertyList.plist
 Silent Rock/testPropertyList.plist
