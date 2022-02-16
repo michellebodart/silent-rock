@@ -1,6 +1,8 @@
 # silent-rock
 Silent Rock app - to notify users when approaching silent rock.
 
+<img src="https://user-images.githubusercontent.com/71563911/154183063-fb1e0631-28eb-4975-a055-a9718c6fdf59.jpeg" width="250" height="541"> <img src="https://user-images.githubusercontent.com/71563911/154183077-7936a62d-9789-4c56-9387-b9cb97ddee7f.jpeg" width="250" height="541"> <img src="https://user-images.githubusercontent.com/71563911/154183122-2a5c84de-3440-4936-a350-999a47a5a72f.jpeg" width="250" height="541">
+
 # Capstone Concept - Michelle Bodart
 
 ## Team members
