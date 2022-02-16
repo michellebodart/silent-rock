@@ -3,7 +3,9 @@ Silent Rock app - to notify users when approaching silent rock.
 
 # Capstone Concept - Michelle Bodart
 
-## Team members none
+## Team members
+
+None
 
 ## Problem Statement #1
 
@@ -15,31 +17,33 @@ If, like me, you ALWAYS forget where Silent Rock is on the dark early morning dr
 
 Additionally, you will be able to track the number of times you and your passengers pass Silent Rock and compete on a global leaderboard of other Silent Rock app users.
 
-## MVP Feature Set
+## Feature Set
 
-1.  Approaching Silent Rock warning
-    - Press start and enable location services. The app will sound an alarm when you near silent rock
-    - Even if your phone is locked or the app is closed it will still function
-2.  Global leaderboard
-    - Create a username to begin tracking your stats! The global leaderboard will show all users and the number of times they have passed Silent Rock
-3.  Add friends to your trip
-    - Add friends by their username to your trip once you start tracking, so their stats will be updated if your phone passes Silent Rock
-
-### Potential Additional Features
-
-1.  Silencing any music playing in addition to sounding an alarm when you pass Silent Rock
-2.  Turning on the microphone and recording any sound you make while in the vicinity of Silent Rock, and somehow displaying this on the leaderboard to publicly shame you and discourage you from making sound
-3.  Deployment to the App store
-4.  Allow users to select options for what they want to happen when nearing Silent Rock, ie just a warning versus a warning and silencing the phone
-5.  User profile/login including a photo to show up on the leaderboard
-6.  Some type of data validation for adding users to someone's trip, ie sending an invite that the other users have to accept. Kind of like Strava or Ikonpass.
-7.  Being able to customize the alarm that sounds, as well as how early a user is notified
+1. Approaching Silent Rock warning
+    - Sign in/sign up with a phone number and sms sent verification code, or use without an account
+    - Enable location services and notifications when prompted for full functionality
+    - Once signed in or using without an account, the app automatically begins tracking your location
+    - When you get within ~500 feet of Silent Rock, the phone sends you a local notification alerting you
+    - Your number of trips is updated on the global leaderboard
+2. Add friends to your trip
+    - If signed in, you can add friends to your trip on the homepage via their usernames
+    - Once you pass Silent Rock, notifications are sent to all added friends, where they can accept or reject the trip
+3. Global leaderboard
+    - The global leaderboard ranks all users by the number of trips they've made
+    - Sort and filter the leaderboard by username and ski season
+    - Tap any user to view details on their past trips
+4. User profile
+    - Update your phone or username from the profile page
+    - Select whether or not you want your stats to be visible on the global leaderboard
+    - View the details of your trips whether or not you are visible on the leaderboard
+    - Option to delete your account
 
 ## Draft Technology Choices
 
 - Swift
 - Xcode
 - Python/flask/heroku for management of the leaderboard
+- Google firebase for phone authentication
 
 ## Additional content, diagrams, wireframes, user flows, etc.
 - wireframe: https://drive.google.com/file/d/1sz6eJ1DoMS5-F3OjlLjK8MsFUz2RBbhG/view?usp=sharing
@@ -47,6 +51,11 @@ Additionally, you will be able to track the number of times you and your passeng
 
 ## Developer contact info
 - michelle.bodart@gmail.com
+
+## Deployment
+- Currently only available for iPhone
+- Pending App Store approval
+- Contact michelle.bodart@gmail.com for access/beta testing
 
 ## Privacy Policy
 
