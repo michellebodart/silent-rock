@@ -139,9 +139,10 @@ class leaderboardDetailViewController: UIViewController {
     
     
     @IBAction func profileButtonTapped(_ sender: Any) {
-        if self.detailPlayerID != nil {
+        if self.playerID != nil {
             self.performSegue(withIdentifier: "profileView", sender: self)
         } else {
+            print("performing loginview segue")
             self.performSegue(withIdentifier: "loginView", sender: self)
         }
     }

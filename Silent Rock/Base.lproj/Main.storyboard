@@ -1902,7 +1902,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="vf8-d2-IjP">
-                                <rect key="frame" x="145" y="362" width="100" height="25"/>
+                                <rect key="frame" x="129" y="362" width="132" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total trips: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dM2-gf-KbE">
                                         <rect key="frame" x="0.0" y="0.0" width="81" height="25"/>
@@ -1913,8 +1913,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgw-qB-tG5">
-                                        <rect key="frame" x="82" y="0.0" width="18" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgw-qB-tG5">
+                                        <rect key="frame" x="82" y="0.0" width="50" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="Hah-Hj-rP0"/>
                                         </constraints>
@@ -2051,18 +2051,18 @@
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <mask key="constraints">
-                                        <exclude reference="jbN-r7-k0K"/>
                                         <include reference="84m-qh-vav"/>
                                         <include reference="PsS-Dh-0fA"/>
                                         <include reference="ghg-MQ-qxt"/>
+                                        <exclude reference="jbN-r7-k0K"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
                                     <mask key="constraints">
-                                        <exclude reference="jbN-r7-k0K"/>
                                         <include reference="84m-qh-vav"/>
                                         <include reference="PsS-Dh-0fA"/>
                                         <include reference="ghg-MQ-qxt"/>
+                                        <exclude reference="jbN-r7-k0K"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -2279,14 +2279,13 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Naq-uM-REm"/>
         <segue reference="88h-Ss-BBh"/>
-        <segue reference="zYF-7w-ROV"/>
-        <segue reference="JgX-Lr-BVi"/>
+        <segue reference="EDk-md-nvz"/>
+        <segue reference="NQo-CT-hxa"/>
         <segue reference="zhb-Ty-BYA"/>
         <segue reference="gnw-4U-HX2"/>
-        <segue reference="Zmc-7I-d7K"/>
-        <segue reference="hz3-qv-AwS"/>
+        <segue reference="0k9-YR-AmX"/>
+        <segue reference="a4Z-Cv-EXS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>
