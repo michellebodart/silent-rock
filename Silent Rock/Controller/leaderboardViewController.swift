@@ -242,6 +242,21 @@ extension leaderboardViewController: UITableViewDataSource {
         let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "LeaderboardTableViewCell", for: indexPath) as! LeaderboardTableViewCell
         cell.configure(id: id, username: username, trips: numTrips)
         
+        // add medal colors
+        if self.sortBy == "trips" {
+            // only add medals if it's sorted by trips
+            if indexPath.row == 0 {
+                cell.backgroundColor = #colorLiteral(red: 0.831372549, green: 0.6862745098, blue: 0.2156862745, alpha: 0.65)
+            } else if indexPath.row == 1 {
+                cell.backgroundColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 0.65)
+            } else if indexPath.row == 2 {
+                cell.backgroundColor = #colorLiteral(red: 0.662745098, green: 0.4431372549, blue: 0.2588235294, alpha: 0.65)
+            } else {
+                cell.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0)
+            }
+        } else {
+            cell.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0)
+        }
         return cell
     }
     
