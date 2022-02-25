@@ -44,9 +44,10 @@ class verificationViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: Any) {
-        let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
         
-//        print("verification id!!", self.verificationID)
+        self.errorMessageLabel.text = "loading..."
+        
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
         
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
@@ -59,7 +60,6 @@ class verificationViewController: UIViewController {
             }
             // User is signed in
             // Register user if new user
-//            if self.playerUsername != "" {
             if self.newPlayer {
                 self.player.addToDatabase(username: self.playerUsername!, phoneNumber: self.phoneNumber, vc: self, completion: { json in
                     self.playerID = (json["id"] as? Int)

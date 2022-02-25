@@ -221,6 +221,8 @@ class profileViewController: UIViewController {
     
     
     @IBAction func submitButtonTapped(_ sender: Any) {
+        
+        self.errorMessageLabel.text = "loading..."
         // disable submit phone button
         self.submitPhoneButton.isEnabled = false
         // updates username in DB, if successful, returns to main page, otherwise displays an error message
@@ -233,12 +235,15 @@ class profileViewController: UIViewController {
                 self.editUsernameButton.isHidden = false
                 self.usernameLabel.text = self.usernameTextField.text!
                 self.submitPhoneButton.isEnabled = true
+                self.errorMessageLabel.text = ""
             }
         })
     }
     
     @IBAction func submitPhoneButtonTapped(_ sender: Any) {
-        // disable submit phone button
+        self.errorMessageLabel.text = "loading..."
+        
+        // disable submit username button
         self.submitButton.isEnabled = false
         
         // check if phone is used
@@ -264,6 +269,9 @@ class profileViewController: UIViewController {
                 self.phoneNumberTextField.text = ""
             }
         } else {
+            DispatchQueue.main.async {
+                self.errorMessageLabel.text = ""
+            }
             self.player.verifyFromProfile(phoneNumber: phoneNumber, vc: self)
         }
     }
