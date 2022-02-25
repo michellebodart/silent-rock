@@ -49,6 +49,9 @@ class profileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Say that it's loading
+        self.errorMessageLabel.text = "loading..."
+        
         // Set up notification table
         self.notificationTable.dataSource = self
         self.notificationTable.delegate = self
@@ -74,6 +77,7 @@ class profileViewController: UIViewController {
             self.parsePlayerData(json: json)
             DispatchQueue.main.async {
                 self.notificationTable.reloadData()
+                self.errorMessageLabel.text = ""
             }
         })
         
@@ -300,11 +304,13 @@ class profileViewController: UIViewController {
         self.checkboxButton.isHidden = bool
         self.editUsernameButton.isHidden = bool
         self.usernameLabel.isHidden = bool
+        self.editPhoneButton.isHidden = bool
         self.phoneNumberLabel.isHidden = bool
         self.checkboxImage.isHidden = bool
         self.checkboxLabel.isHidden = bool
         self.deleteAccountButton.isHidden = bool
         self.viewMyTripsButton.isHidden = bool
+        self.notificationButton.isHidden = bool
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

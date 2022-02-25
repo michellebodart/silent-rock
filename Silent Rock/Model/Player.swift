@@ -90,6 +90,7 @@ class Player: NSObject {
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
                     vc.phoneNumberErrorMessage.text = "The phone number you entered is not valid"
+                    vc.usernameErrorMessage.text = ""
                     vc.phoneNumberTextField.text = ""
                     vc.phoneNumberTextField.isEnabled = true
                     vc.usernameTextField.isEnabled = true

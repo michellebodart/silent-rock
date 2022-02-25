@@ -49,6 +49,7 @@ class loginViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text {
+            self.errorMessageLabel.text = "loading..."
             player.checkPlayerDataFromLogin(phoneNumber: phoneNumber, vc: self, completion: { phoneNumber, json in
                 self.signInOrError(phoneNumber: phoneNumber, json: json)
             })
