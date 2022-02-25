@@ -20,14 +20,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var alreadyStartedUpdatingLocation: Bool = false
     
     //    Acutal silent rock coordinates
-//    let targetLat:Double = 45.306558
-//    let targetLon:Double = -121.830166
-//    let span:Double = 0.005
+    let targetLat:Double = 45.306558
+    let targetLon:Double = -121.830166
+    let span:Double = 0.005
     
 //    For testing near my house
-    let targetLat:Double = 47.654151
-    let targetLon:Double = -122.348564
-    let span:Double = 0.0002
+//    let targetLat:Double = 47.654151
+//    let targetLon:Double = -122.348564
+//    let span:Double = 0.0002
 //
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var addFriendsButton: UIButton!
