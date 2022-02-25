@@ -47,9 +47,10 @@ class ProfileVerificationViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: Any) {
-        let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
+        self.errorMessageLabel.text = "loading..."
         
-//        print("verification id!!", self.verificationID)
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
+
         
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
