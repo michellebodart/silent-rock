@@ -477,6 +477,7 @@ class Player: NSObject {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
+                    vc.refreshButton.isHidden = false
                     vc.tableIsHidden(bool: true)
                 }
                 return
@@ -485,6 +486,7 @@ class Player: NSObject {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
+                    vc.refreshButton.isHidden = false
                     vc.tableIsHidden(bool: true)
                 }
                 return

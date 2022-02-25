@@ -43,7 +43,7 @@ class leaderboardViewController: UIViewController {
         // hide everything till API call works
         self.tableIsHidden(bool: true)
         self.refreshButton.isHidden = true
-        self.errorMessageLabel.text = ""
+        self.errorMessageLabel.text = "loading..."
         
         // get leaderboard information and set the labels
         player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: self.season, completion: {json in
@@ -167,6 +167,8 @@ class leaderboardViewController: UIViewController {
         DispatchQueue.main.async {
             self.leaderboardTableView.reloadData()
             self.tableIsHidden(bool: false)
+            self.errorMessageLabel.text = ""
+            self.refreshButton.isHidden = true
         }
     }
 
