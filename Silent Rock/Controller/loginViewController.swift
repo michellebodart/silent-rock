@@ -22,7 +22,6 @@ class loginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        phoneNumberTextField.text = "+1 (XXX) XXX-XXXX"
         signInButton.isEnabled = false
         
         self.hideKeyboardWhenTappedAround()
@@ -34,11 +33,7 @@ class loginViewController: UIViewController {
         }
     
     @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
-//        if self.phoneNumberTextField.text == "+1 (XXX) XXX-XXXX" {
-//            self.phoneNumberTextField.position(from: self.phoneNumberTextField.beginningOfDocument, offset: 2)
-//            let newPosition = self.phoneNumberTextField.beginningOfDocument
-//            self.phoneNumberTextField.selectedTextRange = self.phoneNumberTextField.textRange(from: newPosition, to: newPosition)
-//        }
+
         phoneNumberTextField.text = phone.format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
 
         let phoneNumberIsValid = phone.isPhoneValid(phoneNumber: phoneNumberTextField.text ?? "")
