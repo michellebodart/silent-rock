@@ -51,9 +51,9 @@ class leaderboardDetailViewController: UIViewController {
         player.getTrips(playerID: self.detailPlayerID!, vc: self, completion: doAfterGetTrips(json:))
         
         // hide everything till api call loads
+        self.errorMessageLabel.text = "loading..."
         apiStuffHidden(bool: true)
         refreshButton.isHidden = true
-        errorMessageLabel.text = ""
         
         // set up filter by button
         self.setUpFilterByMenu()
@@ -120,7 +120,9 @@ class leaderboardDetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.table.reloadData()
             self.totalTripsLabel.text = String(self.filteredTripsList.count)
+            self.totalTripsStackView.isHidden = false
             self.apiStuffHidden(bool: false)
+            self.errorMessageLabel.text = ""
         }
     }
     

@@ -1643,7 +1643,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5r9-B0-Tb9">
-                                <rect key="frame" x="70" y="257" width="250" height="28"/>
+                                <rect key="frame" x="20" y="257" width="350" height="28"/>
                                 <color key="tintColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="YWU-f5-AoC"/>
@@ -1695,9 +1695,9 @@
                             <constraint firstItem="WH6-a7-Tmu" firstAttribute="height" secondItem="ZlH-tp-jGF" secondAttribute="height" id="cOe-sL-nCX"/>
                             <constraint firstAttribute="bottom" secondItem="eU8-z1-91n" secondAttribute="bottom" id="gig-CR-saf"/>
                             <constraint firstItem="Az4-q6-W0O" firstAttribute="leading" secondItem="qrm-m9-TTt" secondAttribute="leading" constant="-32" id="ijK-WD-bHE"/>
-                            <constraint firstItem="5r9-B0-Tb9" firstAttribute="leading" secondItem="qrm-m9-TTt" secondAttribute="leading" constant="70" id="jOc-Fw-yG6"/>
+                            <constraint firstItem="5r9-B0-Tb9" firstAttribute="leading" secondItem="qrm-m9-TTt" secondAttribute="leading" constant="20" id="jOc-Fw-yG6"/>
                             <constraint firstItem="ioB-7R-ofB" firstAttribute="leading" secondItem="qrm-m9-TTt" secondAttribute="leading" id="oU7-SK-e85"/>
-                            <constraint firstItem="PXl-vK-kyb" firstAttribute="trailing" secondItem="5r9-B0-Tb9" secondAttribute="trailing" constant="70" id="qTA-C5-iRp"/>
+                            <constraint firstItem="PXl-vK-kyb" firstAttribute="trailing" secondItem="5r9-B0-Tb9" secondAttribute="trailing" constant="20" id="qTA-C5-iRp"/>
                             <constraint firstAttribute="trailing" secondItem="Az4-q6-W0O" secondAttribute="trailing" constant="-32" id="rXS-8z-I6S"/>
                             <constraint firstItem="b5x-uf-hZc" firstAttribute="centerX" secondItem="qrm-m9-TTt" secondAttribute="centerX" id="wPV-1i-tdc"/>
                         </constraints>
@@ -1863,8 +1863,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krx-3Q-XNk">
-                                <rect key="frame" x="20" y="257" width="350" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krx-3Q-XNk">
+                                <rect key="frame" x="50" y="257" width="290" height="28"/>
                                 <color key="tintColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="WoZ-jp-Gbl"/>
@@ -1933,9 +1933,9 @@
                         <constraints>
                             <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="xCf-FN-BPO" secondAttribute="trailing" constant="20" id="55m-eW-eZR"/>
                             <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="KFi-pr-1wX" secondAttribute="trailing" id="5RH-kA-yge"/>
-                            <constraint firstItem="krx-3Q-XNk" firstAttribute="leading" secondItem="IiZ-KG-AJq" secondAttribute="leading" constant="20" id="7Ds-13-2Ot"/>
+                            <constraint firstItem="krx-3Q-XNk" firstAttribute="leading" secondItem="IiZ-KG-AJq" secondAttribute="leading" constant="50" id="7Ds-13-2Ot"/>
                             <constraint firstItem="Dsj-Pq-4Vi" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" constant="10" id="Ad0-g0-1hU"/>
-                            <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="krx-3Q-XNk" secondAttribute="trailing" constant="20" id="Afl-rK-eH4"/>
+                            <constraint firstItem="xfd-hD-AEG" firstAttribute="trailing" secondItem="krx-3Q-XNk" secondAttribute="trailing" constant="50" id="Afl-rK-eH4"/>
                             <constraint firstItem="xCf-FN-BPO" firstAttribute="leading" secondItem="xfd-hD-AEG" secondAttribute="leading" constant="20" id="CAH-UI-jtn"/>
                             <constraint firstItem="UMq-vj-PUj" firstAttribute="trailing" secondItem="xfd-hD-AEG" secondAttribute="trailing" id="E9f-On-9Fc"/>
                             <constraint firstAttribute="bottom" secondItem="Lgt-0H-gl3" secondAttribute="bottom" id="EMb-Df-gxd"/>
@@ -2279,13 +2279,13 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="88h-Ss-BBh"/>
+        <segue reference="uin-Gk-M47"/>
         <segue reference="EDk-md-nvz"/>
-        <segue reference="NQo-CT-hxa"/>
+        <segue reference="ZtU-46-x2k"/>
         <segue reference="es7-6y-SqN"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="0k9-YR-AmX"/>
-        <segue reference="0pN-Oc-g1N"/>
+        <segue reference="teg-Ab-B26"/>
+        <segue reference="B5f-e6-Lo0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>
