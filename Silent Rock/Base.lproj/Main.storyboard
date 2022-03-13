@@ -10,7 +10,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="OHC-Pn-cKE">
+            <objects>
+                <tabBarController id="Wtl-wv-roF" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lea-N9-9k7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aHK-Qn-4vt"/>
+                        <segue destination="58s-Nn-4xE" kind="relationship" relationship="viewControllers" id="ZYm-q6-vwN"/>
+                        <segue destination="qfT-dI-37I" kind="relationship" relationship="viewControllers" id="hjU-05-Kr1"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrm-Yd-BLZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4135" y="840"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="Silent_Rock" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,9 +100,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="122" height="109.66666666666667"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <segue destination="qfT-dI-37I" kind="presentation" identifier="leaderboardView" animates="NO" id="pE8-rj-SFJ"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWW-g5-Wam">
                                         <rect key="frame" x="134" y="0.0" width="122" height="109.66666666666667"/>
@@ -231,19 +247,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="CBY-JN-9be"/>
                     <navigationItem key="navigationItem" id="hTT-KX-qpW"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addFriendsButton" destination="Bej-zu-0rN" id="bcz-nI-mAc"/>
                         <outlet property="addFriendsTable" destination="5bz-ZJ-66P" id="JXZ-Oe-FK2"/>
                         <outlet property="errorMessageLabel" destination="Bbf-xs-2cw" id="Lz0-F0-a9D"/>
-                        <segue destination="58s-Nn-4xE" kind="presentation" identifier="profileView" animates="NO" id="ZcJ-PY-ttx"/>
-                        <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" id="bas-GN-Um6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3427.6923076923076" y="838.15165876777246"/>
+            <point key="canvasLocation" x="4166" y="1597"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="rwS-GF-6sn">
@@ -371,7 +386,7 @@
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="0pN-Oc-g1N"/>
+                                    <action selector="useWithoutAccountTapped:" destination="mjF-yl-qZT" eventType="touchUpInside" id="qW8-38-7gi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -461,6 +476,7 @@
                         <outlet property="phoneNumberTextField" destination="TtP-o7-0Pl" id="NjI-s9-B29"/>
                         <outlet property="signInButton" destination="VND-yf-Ndr" id="hgf-FX-E4G"/>
                         <segue destination="MU7-mY-LaO" kind="presentation" identifier="verificationViewController" animates="NO" id="es7-6y-SqN"/>
+                        <segue destination="Wtl-wv-roF" kind="presentation" identifier="TabBarController" animates="NO" modalPresentationStyle="fullScreen" id="aPb-sJ-VCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6x-Aq-0M5" sceneMemberID="firstResponder"/>
@@ -613,7 +629,7 @@
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="0FR-R7-2b5"/>
+                                    <action selector="useWithoutAccountTapped:" destination="qaZ-5G-l31" eventType="touchUpInside" id="zQ9-La-dzp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -711,6 +727,7 @@
                         <outlet property="usernameErrorMessage" destination="W37-B8-LPH" id="KtZ-15-QvF"/>
                         <outlet property="usernameTextField" destination="y9l-Jk-1OJ" id="DTR-r0-Uqt"/>
                         <segue destination="MU7-mY-LaO" kind="presentation" identifier="verificationViewController" animates="NO" id="zhb-Ty-BYA"/>
+                        <segue destination="Wtl-wv-roF" kind="presentation" identifier="TabBarController" animates="NO" modalPresentationStyle="fullScreen" id="ure-ZA-EcH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WD0-w2-JXq" sceneMemberID="firstResponder"/>
@@ -850,7 +867,7 @@
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="8pi-xI-2oO"/>
+                                    <action selector="useWithoutAccountTapped:" destination="MU7-mY-LaO" eventType="touchUpInside" id="BbT-rN-HBJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -944,14 +961,14 @@
                         <outlet property="errorMessageLabel" destination="thZ-2T-h15" id="UoB-RQ-7G0"/>
                         <outlet property="signInButton" destination="9sp-UM-f2L" id="ONW-iG-PED"/>
                         <outlet property="verificationCodeTextField" destination="tcs-zV-Sdi" id="Ih2-xi-oBs"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="gTG-EQ-TeT"/>
+                        <segue destination="Wtl-wv-roF" kind="presentation" identifier="TabBarController" animates="NO" modalPresentationStyle="fullScreen" id="lYA-2V-VKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zlz-zA-fYf" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4135.3846153846152" y="122.27488151658767"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Item-->
         <scene sceneID="raN-PQ-yqt">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="58s-Nn-4xE" customClass="profileViewController" customModule="Silent_Rock" sceneMemberID="viewController">
@@ -990,17 +1007,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="122" height="109.66666666666667"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <segue destination="qfT-dI-37I" kind="presentation" identifier="leaderboardView" animates="NO" id="zYF-7w-ROV"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCx-ko-cpe">
                                         <rect key="frame" x="134" y="0.0" width="122" height="109.66666666666667"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="hz3-qv-AwS"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHz-zV-vZq">
                                         <rect key="frame" x="268" y="0.0" width="122" height="109.66666666666667"/>
@@ -1425,6 +1436,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="UA7-Yf-5KL"/>
                     <navigationItem key="navigationItem" id="iKT-K5-jtf"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -1455,9 +1467,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KM-d0-Gsn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4211" y="838"/>
+            <point key="canvasLocation" x="3260" y="1597"/>
         </scene>
-        <!--Leaderboard View Controller-->
+        <!--Item-->
         <scene sceneID="GCd-64-9Wb">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="qfT-dI-37I" customClass="leaderboardViewController" customModule="Silent_Rock" customModuleProvider="target" sceneMemberID="viewController">
@@ -1516,9 +1528,6 @@
                                         <rect key="frame" x="134" y="0.0" width="122" height="109.66666666666667"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="B5f-e6-Lo0"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovw-iF-w8C">
                                         <rect key="frame" x="268" y="0.0" width="122" height="109.66666666666667"/>
@@ -1732,6 +1741,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="sYg-r5-ogb"/>
                     <navigationItem key="navigationItem" id="mM4-FD-i1M"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -1743,14 +1753,12 @@
                         <outlet property="sortFilterStackView" destination="FkE-dM-OPa" id="Pvr-wU-ENs"/>
                         <outlet property="tripsLabel" destination="UZL-Ue-KoB" id="AWI-5S-0LI"/>
                         <outlet property="usernameLabel" destination="GEX-S5-xu6" id="rjG-st-eCe"/>
-                        <segue destination="58s-Nn-4xE" kind="presentation" identifier="profileView" animates="NO" id="ZtU-46-x2k"/>
-                        <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" id="teg-Ab-B26"/>
                         <segue destination="rIf-SB-vQ7" kind="presentation" identifier="leaderboardDetailView" animates="NO" id="uin-Gk-M47"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXd-lx-11Y" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5116.9230769230771" y="836.72985781990519"/>
+            <point key="canvasLocation" x="5046" y="1597"/>
         </scene>
         <!--Leaderboard Detail View Controller-->
         <scene sceneID="cwm-dT-NvT">
@@ -1808,9 +1816,6 @@
                                         <rect key="frame" x="134" y="0.0" width="122" height="109.66666666666667"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="mainViewController" animates="NO" id="a4Z-Cv-EXS"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHT-lt-aQt">
                                         <rect key="frame" x="268" y="0.0" width="122" height="109.66666666666667"/>
@@ -2013,12 +2018,11 @@
                         <outlet property="totalTripsStackView" destination="vf8-d2-IjP" id="Wwb-xA-n5y"/>
                         <outlet property="usernameLabel" destination="xCf-FN-BPO" id="7ZS-bG-Hxo"/>
                         <segue destination="58s-Nn-4xE" kind="presentation" identifier="profileView" animates="NO" id="NQo-CT-hxa"/>
-                        <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" id="0k9-YR-AmX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCb-Wo-Ghf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3427.6923076923076" y="1551.8957345971564"/>
+            <point key="canvasLocation" x="5802" y="1600"/>
         </scene>
         <!--Profile Verification View Controller-->
         <scene sceneID="T2Q-cb-a74">
@@ -2210,7 +2214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCA-9S-gy4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4626" y="1552"/>
+            <point key="canvasLocation" x="2469" y="1597"/>
         </scene>
     </scenes>
     <designables>
@@ -2280,12 +2284,12 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="uin-Gk-M47"/>
-        <segue reference="EDk-md-nvz"/>
-        <segue reference="ZtU-46-x2k"/>
+        <segue reference="hjU-05-Kr1"/>
+        <segue reference="ZYm-q6-vwN"/>
         <segue reference="es7-6y-SqN"/>
         <segue reference="bQc-8K-LML"/>
-        <segue reference="teg-Ab-B26"/>
-        <segue reference="B5f-e6-Lo0"/>
+        <segue reference="oZu-LY-NIg"/>
+        <segue reference="ure-ZA-EcH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>

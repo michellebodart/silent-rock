@@ -112,6 +112,10 @@ class registerViewController: UIViewController {
         }
     }
     
+    @IBAction func useWithoutAccountTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "TabBarController", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is verificationViewController {
             let vvc = segue.destination as? verificationViewController

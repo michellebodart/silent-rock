@@ -64,11 +64,11 @@ class verificationViewController: UIViewController {
                 self.player.addToDatabase(username: self.playerUsername!, phoneNumber: self.phoneNumber, vc: self, completion: { json in
                     self.playerID = (json["id"] as? Int)
                     DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "mainViewController", sender: self)
+                        self.performSegue(withIdentifier: "TabBarController", sender: self)
                     }
                 })
             } else {
-                self.performSegue(withIdentifier: "mainViewController", sender: self)
+                self.performSegue(withIdentifier: "TabBarController", sender: self)
             }
         }
     }
@@ -86,8 +86,12 @@ class verificationViewController: UIViewController {
         }
     }
     
+    @IBAction func useWithoutAccountTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "TabBarController", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is ViewController {
+        if segue.destination is UITabBarController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
             vc?.playerUsername = self.playerUsername

@@ -76,6 +76,10 @@ class loginViewController: UIViewController {
         }
     }
     
+    @IBAction func useWithoutAccountTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "TabBarController", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is verificationViewController {
             let vvc = segue.destination as? verificationViewController
@@ -86,11 +90,6 @@ class loginViewController: UIViewController {
         } else if segue.destination is registerViewController {
             let rvc = segue.destination as? registerViewController
             rvc?.phoneNumber = phoneNumberTextField.text ?? ""
-        } else if segue.destination is ViewController {
-            let vc = segue.destination as? ViewController
-//            vc?.playerID = 29
-//            vc?.playerUsername = "mbodart"
-//            DELETE THIS -MB
         }
     }
 }

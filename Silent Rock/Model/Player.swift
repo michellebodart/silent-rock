@@ -80,7 +80,6 @@ class Player: NSObject {
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
                 vc.verificationID = verificationID!
-//                print("register verification id:", vc.verificationID, "end")
                 vc.performSegue(withIdentifier: "verificationViewController", sender: vc)
             }
     }
