@@ -91,10 +91,15 @@ class verificationViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is UITabBarController {
-            let vc = segue.destination as? ViewController
-            vc?.playerID = self.playerID
-            vc?.playerUsername = self.playerUsername
+        if segue.destination is TabBarController {
+//            let vc = segue.destination as? ViewController
+            let tbc = segue.destination as? TabBarController
+            tbc?.playerID = self.playerID
+            tbc?.playerUsername = self.playerUsername
+//            (vc?.tabBarController as? TabBarController)!.playerID = self.playerID
+//            (vc?.tabBarController as? TabBarController)!.playerUsername = self.playerUsername
+//            vc?.playerID = self.playerID
+//            vc?.playerUsername = self.playerUsername
         }
     }
     

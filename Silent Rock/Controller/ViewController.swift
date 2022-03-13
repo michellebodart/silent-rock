@@ -49,7 +49,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if !self.alreadyStartedUpdatingLocation {
             self.locationManager!.startUpdatingLocation()
-//            self.alreadyStartedUpdatingLocation = true
         }
         
         // Set up local notifications
@@ -73,6 +72,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.addFriendsTable.delegate = self
         self.addFriendsTable.dataSource = self
         self.addFriendsTable.register(addFriendsTableViewCell.nib(), forCellReuseIdentifier: addFriendsTableViewCell.identifier)
+        
+        // set up variables that won't change
+        self.playerID = (self.tabBarController! as! TabBarController).playerID
+        self.playerUsername = (self.tabBarController! as! TabBarController).playerUsername
+        print("player id and username!!: ", self.playerID, ", ", self.playerUsername)
     }
     
     // hide table when tapped around

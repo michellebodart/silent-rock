@@ -13,7 +13,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="OHC-Pn-cKE">
             <objects>
-                <tabBarController id="Wtl-wv-roF" sceneMemberID="viewController">
+                <tabBarController id="Wtl-wv-roF" customClass="TabBarController" customModule="Silent_Rock" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lea-N9-9k7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
