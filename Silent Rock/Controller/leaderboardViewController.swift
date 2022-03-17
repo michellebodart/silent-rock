@@ -190,13 +190,9 @@ class leaderboardViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
-            vc?.playerID = self.playerID
-            vc?.playerUsername = self.playerUsername
             vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
-            pvc?.playerID = self.playerID
-            pvc?.playerUsername = self.playerUsername
             pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController

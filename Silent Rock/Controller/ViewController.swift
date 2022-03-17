@@ -194,13 +194,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
-            pvc?.playerID = self.playerID
-            pvc?.playerUsername = self.playerUsername
             pvc?.alreadyStartedUpdatingLocation = true
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
-            lvc?.playerID = self.playerID
-            lvc?.playerUsername = self.playerUsername
             lvc?.alreadyStartedUpdatingLocation = true
         }
     }

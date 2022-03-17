@@ -332,13 +332,13 @@ class profileViewController: UIViewController {
         // always send player ID, so the views know if the user is logged in or if we are using without account
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
-            vc?.playerID = self.playerID
-            vc?.playerUsername = self.playerUsername
+//            vc?.playerID = self.playerID
+//            vc?.playerUsername = self.playerUsername
             vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
-            lvc?.playerID = self.playerID
-            lvc?.playerUsername = self.playerUsername
+//            lvc?.playerID = self.playerID
+//            lvc?.playerUsername = self.playerUsername
             lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
