@@ -36,6 +36,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set up variables that won't change from tab bar controller
+        self.playerID = (self.tabBarController! as! TabBarController).playerID
+        self.playerUsername = (self.tabBarController! as! TabBarController).playerUsername
+        
         self.setInRegion() // might not need this
         self.errorMessageLabel.text = ""
         
@@ -73,10 +77,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.addFriendsTable.dataSource = self
         self.addFriendsTable.register(addFriendsTableViewCell.nib(), forCellReuseIdentifier: addFriendsTableViewCell.identifier)
         
-        // set up variables that won't change
-        self.playerID = (self.tabBarController! as! TabBarController).playerID
-        self.playerUsername = (self.tabBarController! as! TabBarController).playerUsername
-        print("player id and username!!: ", self.playerID, ", ", self.playerUsername)
     }
     
     // hide table when tapped around
@@ -196,15 +196,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
             pvc?.playerUsername = self.playerUsername
-            pvc?.addedPlayerIDs = self.addedPlayerIDs
-//            pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
             pvc?.alreadyStartedUpdatingLocation = true
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
             lvc?.playerUsername = self.playerUsername
-            lvc?.addedPlayerIDs = self.addedPlayerIDs
-//            lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
             lvc?.alreadyStartedUpdatingLocation = true
         }
     }
@@ -219,7 +215,6 @@ extension ViewController: UNUserNotificationCenterDelegate {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.alreadyStartedUpdatingLocation { return }
         let imageView = (addFriendsTable.cellForRow(at: indexPath) as! addFriendsTableViewCell).checkImageView!
         let id = (addFriendsTable.cellForRow(at: indexPath) as! addFriendsTableViewCell).playerID
         if let index = self.addedPlayerIDs.firstIndex(of: id) {
@@ -249,10 +244,6 @@ extension ViewController: UITableViewDataSource {
             cell.checkImageView.image = nil
         }
         cell.configure(id: id, username: username)
-        if self.alreadyStartedUpdatingLocation {
-            cell.usernameLabel.textColor = UIColor.gray
-            cell.checkImageView.tintColor = UIColor.gray
-        }
         return cell
     }
     

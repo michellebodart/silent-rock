@@ -192,13 +192,11 @@ class leaderboardViewController: UIViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
             vc?.playerUsername = self.playerUsername
-            vc?.addedPlayerIDs = self.addedPlayerIDs
             vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
             pvc?.playerID = self.playerID
             pvc?.playerUsername = self.playerUsername
-            pvc?.addedPlayerIDs = self.addedPlayerIDs
             pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
@@ -207,7 +205,6 @@ class leaderboardViewController: UIViewController {
             ldvc?.playerUsername = self.playerUsername
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
             ldvc?.returnTo = "leaderboard"
-            ldvc?.addedPlayerIDs = self.addedPlayerIDs
             ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }

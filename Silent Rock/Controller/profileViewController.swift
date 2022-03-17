@@ -49,6 +49,10 @@ class profileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set up variables that won't change from tab bar controller
+        self.playerID = (self.tabBarController! as! TabBarController).playerID
+        self.playerUsername = (self.tabBarController! as! TabBarController).playerUsername
+        
         // Say that it's loading
         self.errorMessageLabel.text = "loading..."
         
@@ -63,7 +67,7 @@ class profileViewController: UIViewController {
         cancelButton.isHidden = true
         submitButton.isHidden = true
         
-        // Hide delete/are you sure button and refrehs button
+        // Hide delete/are you sure button and refresh button
         areYouSureStack.isHidden = true
         refreshButton.isHidden = true
         
@@ -71,15 +75,18 @@ class profileViewController: UIViewController {
         phoneNumberTextField.isHidden = true
         cancelSubmitPhoneStackView.isHidden = true
         
-        
-        // Set username, phone, notifications, and checkbox if api call successful
-        player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
-            self.parsePlayerData(json: json)
-            DispatchQueue.main.async {
-                self.notificationTable.reloadData()
-                self.errorMessageLabel.text = ""
-            }
-        })
+        // Set username, phone, notifications, and checkbox if api call successful and logged in
+        if self.playerID != nil {
+            player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
+                self.parsePlayerData(json: json)
+                DispatchQueue.main.async {
+                    self.notificationTable.reloadData()
+                    self.errorMessageLabel.text = ""
+                }
+            })
+        } else {
+            self.errorMessageLabel.text = "sign in?"
+        }
         
         // hide everything until api call works
         apiItemsHidden(bool: true)
@@ -327,13 +334,11 @@ class profileViewController: UIViewController {
             let vc = segue.destination as? ViewController
             vc?.playerID = self.playerID
             vc?.playerUsername = self.playerUsername
-            vc?.addedPlayerIDs = self.addedPlayerIDs
             vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
             lvc?.playerID = self.playerID
             lvc?.playerUsername = self.playerUsername
-            lvc?.addedPlayerIDs = self.addedPlayerIDs
             lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
@@ -342,7 +347,6 @@ class profileViewController: UIViewController {
             ldvc?.playerUsername = self.playerUsername
             ldvc?.detailPlayerUsername = self.usernameLabel.text ?? ""
             ldvc?.returnTo = "profile"
-            ldvc?.addedPlayerIDs = self.addedPlayerIDs
             ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is ProfileVerificationViewController {
             let pvvc = segue.destination as? ProfileVerificationViewController
