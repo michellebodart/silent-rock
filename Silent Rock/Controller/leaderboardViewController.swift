@@ -12,14 +12,12 @@ class leaderboardViewController: UIViewController {
 
     let player: Player = Player()
     var playerList = [PlayerForLB]()
-    var playerID: Int? = nil
+//    var playerID: Int? = nil
     var playerUsername: String? = nil
     var season: String = "all"
     var sortBy: String = "trips"
     var detailPlayerID: Int? = nil
     var detailPlayerUsername: String? = nil
-    var addedPlayerIDs: Array<Int?> = []
-    var alreadyStartedUpdatingLocation: Bool = false
     
     // pull to refresh
     private let refreshControl = UIRefreshControl()
@@ -179,29 +177,24 @@ class leaderboardViewController: UIViewController {
         self.leaderboardTableView.isHidden = bool
     }
     
-    @IBAction func profileButtonTapped(_ sender: Any) {
-        if self.playerID == nil {
-            self.performSegue(withIdentifier: "loginView", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "profileView", sender: self)
-        }
-    }
+//    @IBAction func profileButtonTapped(_ sender: Any) {
+//        if self.playerID == nil {
+//            self.performSegue(withIdentifier: "loginView", sender: self)
+//        } else {
+//            self.performSegue(withIdentifier: "profileView", sender: self)
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
-            vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
-            pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.detailPlayerID
-            ldvc?.playerID = self.playerID
-            ldvc?.playerUsername = self.playerUsername
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
             ldvc?.returnTo = "leaderboard"
-            ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }
     

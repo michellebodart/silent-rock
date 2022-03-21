@@ -9,15 +9,12 @@ import UIKit
 
 class profileViewController: UIViewController {
     
-    var playerID: Int? = nil
-    var playerUsername: String? = nil
     var visibleOnLeaderboard: Bool = true
-    var addedPlayerIDs: Array<Int?> = []
-    var alreadyStartedUpdatingLocation: Bool = false
     var pendingTrips: Array<Dictionary<String, Any>> = []
     var notificationCellHeight: Int = 90
     var verificationID: String = ""
     var phoneNumber: String = ""
+    var playerID: Int? = nil
     
     let username: Username = Username()
     let player: Player = Player()
@@ -51,7 +48,6 @@ class profileViewController: UIViewController {
         
         // set up variables that won't change from tab bar controller
         self.playerID = (self.tabBarController! as! TabBarController).playerID
-        self.playerUsername = (self.tabBarController! as! TabBarController).playerUsername
         
         // Say that it's loading
         self.errorMessageLabel.text = "loading..."
@@ -332,29 +328,16 @@ class profileViewController: UIViewController {
         // always send player ID, so the views know if the user is logged in or if we are using without account
         if segue.destination is ViewController {
             let vc = segue.destination as? ViewController
-//            vc?.playerID = self.playerID
-//            vc?.playerUsername = self.playerUsername
-            vc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
-//            lvc?.playerID = self.playerID
-//            lvc?.playerUsername = self.playerUsername
-            lvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.playerID
-            ldvc?.playerID = self.playerID
-            ldvc?.playerUsername = self.playerUsername
             ldvc?.detailPlayerUsername = self.usernameLabel.text ?? ""
             ldvc?.returnTo = "profile"
-            ldvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         } else if segue.destination is ProfileVerificationViewController {
             let pvvc = segue.destination as? ProfileVerificationViewController
             pvvc?.verificationID = self.verificationID
-            pvvc?.playerID = self.playerID
-            pvvc?.playerUsername = self.playerUsername
-            pvvc?.addedPlayerIDs = self.addedPlayerIDs
-            pvvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
             pvvc?.phoneNumber = self.phoneNumber
         }
     }

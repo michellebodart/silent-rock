@@ -17,7 +17,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager? = CLLocationManager()
     var inRegion: Bool = false
     let player: Player = Player()
-    var alreadyStartedUpdatingLocation: Bool = false
     
     //    Acutal silent rock coordinates
     let targetLat:Double = 45.306558
@@ -44,16 +43,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.errorMessageLabel.text = ""
         
         // set up location manager
-        self.locationManager = nil // might be able to delete this
         self.locationManager = CLLocationManager()
         self.locationManager!.delegate = self
         self.locationManager!.requestAlwaysAuthorization()
         self.locationManager!.allowsBackgroundLocationUpdates = true //for alarm
         self.locationManager!.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
         
-        if !self.alreadyStartedUpdatingLocation {
-            self.locationManager!.startUpdatingLocation()
-        }
+        self.locationManager!.startUpdatingLocation()
         
         // Set up local notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
@@ -194,10 +190,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
-            pvc?.alreadyStartedUpdatingLocation = true
         } else if segue.destination is leaderboardViewController {
             let lvc = segue.destination as? leaderboardViewController
-            lvc?.alreadyStartedUpdatingLocation = true
         }
     }
     

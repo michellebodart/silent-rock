@@ -12,8 +12,6 @@ class ProfileVerificationViewController: UIViewController {
 
     var playerID: Int? = nil
     var playerUsername: String? = nil
-    var addedPlayerIDs: Array<Int?> = []
-    var alreadyStartedUpdatingLocation: Bool = false
     let player: Player = Player()
     let verificationCode: VerificationCode = VerificationCode()
     var phoneNumber: String = ""
@@ -89,10 +87,6 @@ class ProfileVerificationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is profileViewController {
             let pvc = segue.destination as? profileViewController
-            pvc?.playerID = self.playerID
-            pvc?.playerUsername = self.playerUsername
-            pvc?.addedPlayerIDs = self.addedPlayerIDs
-            pvc?.alreadyStartedUpdatingLocation = self.alreadyStartedUpdatingLocation
         }
     }
     
