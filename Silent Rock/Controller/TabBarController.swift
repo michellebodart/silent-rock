@@ -14,6 +14,13 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserDefaults().integer(forKey: "PlayerID") == 0 {
+            playerID = nil
+        } else {
+            playerID = UserDefaults().integer(forKey: "PlayerID")
+        }
+        playerUsername = UserDefaults().string(forKey: "PlayerUsername")
 
         // Do any additional setup after loading the view.
     }

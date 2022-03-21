@@ -288,6 +288,15 @@ class profileViewController: UIViewController {
         })
     }
     
+    @IBAction func signOutTapped(_ sender: Any) {
+        UserDefaults().removeObject(forKey: "PlayerID")
+        UserDefaults().removeObject(forKey: "PlayerUsername")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginViewController)
+//        self.performSegue(withIdentifier: "loginView", sender: self)
+    }
+    
     
     @IBAction func deleteAccountTapped(_ sender: Any) {
         // presents are you sure options

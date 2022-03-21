@@ -39,6 +39,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.playerID = (self.tabBarController! as! TabBarController).playerID
         self.playerUsername = (self.tabBarController! as! TabBarController).playerUsername
         
+        // bug fixing
+        print("player id: ", self.playerID)
+        print("player username: ", self.playerUsername)
+        
         self.setInRegion() // might not need this
         self.errorMessageLabel.text = ""
         

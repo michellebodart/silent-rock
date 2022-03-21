@@ -64,11 +64,21 @@ class verificationViewController: UIViewController {
                 self.player.addToDatabase(username: self.playerUsername!, phoneNumber: self.phoneNumber, vc: self, completion: { json in
                     self.playerID = (json["id"] as? Int)
                     DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "TabBarController", sender: self)
+//                        self.performSegue(withIdentifier: "TabBarController", sender: self)
+                        UserDefaults().set(self.playerID, forKey: "PlayerID")
+                        UserDefaults().set(self.playerUsername, forKey: "PlayerUsername")
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+                        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
                     }
                 })
             } else {
-                self.performSegue(withIdentifier: "TabBarController", sender: self)
+//                self.performSegue(withIdentifier: "TabBarController", sender: self)
+                UserDefaults().set(self.playerID, forKey: "PlayerID")
+                UserDefaults().set(self.playerUsername, forKey: "PlayerUsername")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
             }
         }
     }
