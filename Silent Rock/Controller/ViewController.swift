@@ -29,6 +29,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //    let span:Double = 0.0002
 //
     @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var startButton: BorderButton!
+    @IBOutlet weak var stopButton: BorderButton!
     @IBOutlet weak var addFriendsButton: UIButton!
     @IBOutlet weak var addFriendsTable: UITableView!
     
@@ -38,10 +40,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // set up variables that won't change from tab bar controller
         self.playerID = (self.tabBarController! as! TabBarController).playerID
         self.playerUsername = (self.tabBarController! as! TabBarController).playerUsername
-        
-        // bug fixing
-        print("player id: ", self.playerID)
-        print("player username: ", self.playerUsername)
         
         self.setInRegion() // might not need this
         self.errorMessageLabel.text = ""
@@ -53,7 +51,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager!.allowsBackgroundLocationUpdates = true //for alarm
         self.locationManager!.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
         
-        self.locationManager!.startUpdatingLocation()
+        // disable the right buttons
+        self.startButton.isEnabled = true
+        self.stopButton.isEnabled = false
         
         // Set up local notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
@@ -91,6 +91,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override var shouldAutorotate: Bool {
             return false
         }
+    
+    @IBAction func startButtonTapped(_ sender: Any) {
+        self.locationManager!.startUpdatingLocation()
+        self.startButton.isEnabled = false
+        self.stopButton.isEnabled = true
+    }
+    
+    @IBAction func stopButtonTapped(_ sender: Any) {
+        self.locationManager!.stopUpdatingLocation()
+        self.startButton.isEnabled = true
+        self.stopButton.isEnabled = false
+    }
     
     // opens and closes the table view and loads player data
     @IBAction func addFriendsButtonTapped(_ sender: Any) {
@@ -179,23 +191,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if self.inRegion {
                 // Exited region
                 self.inRegion = false
+                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             }
-        }
-    }
-    
-    @IBAction func profileButtonTapped(_ sender: Any) {
-        if self.playerID == nil {
-            self.performSegue(withIdentifier: "loginView", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "profileView", sender: self)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is profileViewController {
-            let pvc = segue.destination as? profileViewController
-        } else if segue.destination is leaderboardViewController {
-            let lvc = segue.destination as? leaderboardViewController
         }
     }
     

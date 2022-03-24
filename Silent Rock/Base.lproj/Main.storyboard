@@ -92,7 +92,7 @@
                                 <rect key="frame" x="0.0" y="237" width="390" height="287"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bej-zu-0rN" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
-                                <rect key="frame" x="50" y="459" width="290" height="30"/>
+                                <rect key="frame" x="50" y="469" width="290" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="K0h-JO-pHw"/>
@@ -106,7 +106,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5bz-ZJ-66P" customClass="BorderTable" customModule="Silent_Rock" customModuleProvider="target">
-                                <rect key="frame" x="50" y="489" width="290" height="128"/>
+                                <rect key="frame" x="50" y="499" width="290" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="fpp-ga-tEm"/>
@@ -133,6 +133,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="START">
                                             <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="22"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ux0-Ex-tOB"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3p0-no-FDq" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="105" width="290" height="45"/>
@@ -142,6 +145,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="STOP">
                                             <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="22"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="stopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iO4-ma-47m"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -166,7 +172,7 @@
                             <constraint firstAttribute="trailing" secondItem="FAq-C9-K61" secondAttribute="trailing" constant="-50" id="NLc-fR-mvD"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="top" secondItem="78L-Ws-1mi" secondAttribute="bottom" id="V72-EP-mBk"/>
                             <constraint firstItem="EBM-w5-1eY" firstAttribute="width" secondItem="Bej-zu-0rN" secondAttribute="width" id="Vvc-VN-hmW"/>
-                            <constraint firstItem="YZr-UH-3mm" firstAttribute="top" secondItem="Bej-zu-0rN" secondAttribute="bottom" constant="35" id="aRe-Dw-Lix"/>
+                            <constraint firstItem="YZr-UH-3mm" firstAttribute="top" secondItem="Bej-zu-0rN" secondAttribute="bottom" constant="25" id="aRe-Dw-Lix"/>
                             <constraint firstItem="2oS-Mh-ldg" firstAttribute="trailing" secondItem="Bbf-xs-2cw" secondAttribute="trailing" constant="20" id="cU7-vb-zxt"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" constant="-32" id="df3-A2-BGq"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" constant="-7" id="e1x-EO-3Bd"/>
@@ -235,6 +241,8 @@
                         <outlet property="addFriendsButton" destination="Bej-zu-0rN" id="bcz-nI-mAc"/>
                         <outlet property="addFriendsTable" destination="5bz-ZJ-66P" id="JXZ-Oe-FK2"/>
                         <outlet property="errorMessageLabel" destination="Bbf-xs-2cw" id="Lz0-F0-a9D"/>
+                        <outlet property="startButton" destination="Rtq-0E-abt" id="Jt0-2m-cPc"/>
+                        <outlet property="stopButton" destination="3p0-no-FDq" id="1Nx-Gj-ysw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
