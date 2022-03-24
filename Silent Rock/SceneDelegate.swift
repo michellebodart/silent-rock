@@ -26,12 +26,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         // if user is logged in
-        if let username = UserDefaults().string(forKey: "playerUsername") {
+        print("player username!!!", UserDefaults().string(forKey: "PlayerUsername"))
+        if let username = UserDefaults().string(forKey: "PlayerUsername") {
+            print("in username exists")
             let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBarController")
             window?.rootViewController = mainTabBarController
         } else {
+            print("in not logged in")
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
             window?.rootViewController = loginViewController
         }

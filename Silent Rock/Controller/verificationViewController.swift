@@ -64,23 +64,21 @@ class verificationViewController: UIViewController {
                 self.player.addToDatabase(username: self.playerUsername!, phoneNumber: self.phoneNumber, vc: self, completion: { json in
                     self.playerID = (json["id"] as? Int)
                     DispatchQueue.main.async {
-//                        self.performSegue(withIdentifier: "TabBarController", sender: self)
-                        UserDefaults().set(self.playerID, forKey: "PlayerID")
-                        UserDefaults().set(self.playerUsername, forKey: "PlayerUsername")
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-                        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+                        self.goToMainTabBar()
                     }
                 })
             } else {
-//                self.performSegue(withIdentifier: "TabBarController", sender: self)
-                UserDefaults().set(self.playerID, forKey: "PlayerID")
-                UserDefaults().set(self.playerUsername, forKey: "PlayerUsername")
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+                self.goToMainTabBar()
             }
         }
+    }
+    
+    func goToMainTabBar() {
+        UserDefaults().set(self.playerID, forKey: "PlayerID")
+        UserDefaults().set(self.playerUsername, forKey: "PlayerUsername")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
     }
     
     @IBAction func sendNewCodeTapped(_ sender: Any) {
@@ -97,7 +95,10 @@ class verificationViewController: UIViewController {
     }
     
     @IBAction func useWithoutAccountTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "TabBarController", sender: self)
+//        self.performSegue(withIdentifier: "TabBarController", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

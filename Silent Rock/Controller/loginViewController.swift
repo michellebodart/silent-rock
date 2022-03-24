@@ -77,7 +77,10 @@ class loginViewController: UIViewController {
     }
     
     @IBAction func useWithoutAccountTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "TabBarController", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+//        self.performSegue(withIdentifier: "TabBarController", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
