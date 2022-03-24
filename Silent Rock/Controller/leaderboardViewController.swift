@@ -12,7 +12,6 @@ class leaderboardViewController: UIViewController {
 
     let player: Player = Player()
     var playerList = [PlayerForLB]()
-//    var playerID: Int? = nil
     var playerUsername: String? = nil
     var season: String = "all"
     var sortBy: String = "trips"
@@ -110,7 +109,6 @@ class leaderboardViewController: UIViewController {
     }
     
     func setUpFilterByMenu() {
-        
         var result = [
             UIAction(title: "All time", image: nil, handler: { (_) in
                 self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: "all", completion: {json in
@@ -177,27 +175,14 @@ class leaderboardViewController: UIViewController {
         self.leaderboardTableView.isHidden = bool
     }
     
-//    @IBAction func profileButtonTapped(_ sender: Any) {
-//        if self.playerID == nil {
-//            self.performSegue(withIdentifier: "loginView", sender: self)
-//        } else {
-//            self.performSegue(withIdentifier: "profileView", sender: self)
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is ViewController {
-            let vc = segue.destination as? ViewController
-        } else if segue.destination is profileViewController {
-            let pvc = segue.destination as? profileViewController
-        } else if segue.destination is leaderboardDetailViewController {
+        if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.detailPlayerID
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
             ldvc?.returnTo = "leaderboard"
         }
     }
-    
 }
 
 

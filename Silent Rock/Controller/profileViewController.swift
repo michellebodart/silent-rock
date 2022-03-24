@@ -294,7 +294,6 @@ class profileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginViewController)
-//        self.performSegue(withIdentifier: "loginView", sender: self)
     }
     
     
@@ -335,11 +334,7 @@ class profileViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // always send player ID, so the views know if the user is logged in or if we are using without account
-        if segue.destination is ViewController {
-            let vc = segue.destination as? ViewController
-        } else if segue.destination is leaderboardViewController {
-            let lvc = segue.destination as? leaderboardViewController
-        } else if segue.destination is leaderboardDetailViewController {
+        if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.playerID
             ldvc?.detailPlayerUsername = self.usernameLabel.text ?? ""
