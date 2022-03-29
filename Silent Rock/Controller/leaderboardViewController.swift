@@ -61,8 +61,12 @@ class leaderboardViewController: UIViewController {
         setUpSortByMenu()
         setUpFilterByMenu()
         
+        // get rid of the navigation bar menu
+        self.navigationItem.rightBarButtonItem = nil
+        
         // Do any additional setup after loading the view.
     }
+
     
     //set up pull to refresh
     @objc private func refreshTable(_ sender: Any) {
@@ -102,7 +106,7 @@ class leaderboardViewController: UIViewController {
         var sortByMenu: UIMenu {
             return UIMenu(title: "Sort by:", image: nil, identifier: nil, options: [], children: menuItems)
         }
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", image: nil, primaryAction: nil, menu: sortByMenu)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SortByMenu", image: nil, primaryAction: nil, menu: sortByMenu)
         sortByButton.showsMenuAsPrimaryAction = true
         sortByButton.changesSelectionAsPrimaryAction = true
         sortByButton.menu = sortByMenu
@@ -133,7 +137,7 @@ class leaderboardViewController: UIViewController {
         var filterByMenu: UIMenu {
             return UIMenu(title: "Season:", image: nil, identifier: nil, options: [], children: menuItems)
         }
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", image: nil, primaryAction: nil, menu: filterByMenu)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "FilterByMenu", image: nil, primaryAction: nil, menu: filterByMenu)
         filterByButton.showsMenuAsPrimaryAction = true
         filterByButton.changesSelectionAsPrimaryAction = true
         filterByButton.menu = filterByMenu
@@ -180,7 +184,7 @@ class leaderboardViewController: UIViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.detailPlayerID
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
-            ldvc?.returnTo = "leaderboard"
+//            ldvc?.returnTo = "leaderboard"
         }
     }
 }

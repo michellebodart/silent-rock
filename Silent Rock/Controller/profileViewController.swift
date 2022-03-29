@@ -338,7 +338,7 @@ class profileViewController: UIViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.playerID
             ldvc?.detailPlayerUsername = self.usernameLabel.text ?? ""
-            ldvc?.returnTo = "profile"
+//            ldvc?.returnTo = "profile"
         } else if segue.destination is ProfileVerificationViewController {
             let pvvc = segue.destination as? ProfileVerificationViewController
             pvvc?.verificationID = self.verificationID

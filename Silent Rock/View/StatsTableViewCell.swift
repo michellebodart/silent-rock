@@ -31,6 +31,7 @@ class StatsTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        //setting it to look not selected
         super.setSelected(false, animated: animated)
 
         // Configure the view for the selected state

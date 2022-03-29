@@ -10,14 +10,11 @@ import UIKit
 class leaderboardDetailViewController: UIViewController {
     
     var detailPlayerID: Int? = nil
-//    var playerID: Int? = nil
-//    var playerUsername: String? = nil
     var tripsList = [Dictionary<String, Any>]()
     var filteredTripsList = [Dictionary<String, Any>]()
     var player: Player = Player()
     var detailPlayerUsername: String = ""
     var season: String = "all"
-    var returnTo: String? = nil
     
     //for pull to refresh
     private let refreshControl = UIRefreshControl()
@@ -55,6 +52,9 @@ class leaderboardDetailViewController: UIViewController {
         
         // set up filter by button
         self.setUpFilterByMenu()
+        
+        // get rid of the navigation bar menu
+        self.navigationItem.rightBarButtonItem = nil
         
         // Do any additional setup after loading the view.
     }
@@ -128,36 +128,6 @@ class leaderboardDetailViewController: UIViewController {
     @IBAction func refreshButtonTapped(_ sender: Any) {
         self.viewDidLoad()
     }
-    
-    @IBAction func backButtonTapped(_ sender: Any) {
-        if self.returnTo == "leaderboard" {
-            self.performSegue(withIdentifier: "leaderboardView", sender: self)
-        } else if self.returnTo == "profile" {
-            self.performSegue(withIdentifier: "profileView", sender: self)
-        }
-    }
-    
-    
-//    @IBAction func profileButtonTapped(_ sender: Any) {
-//        if self.playerID != nil {
-//            self.performSegue(withIdentifier: "profileView", sender: self)
-//        } else {
-//            print("performing loginview segue")
-//            self.performSegue(withIdentifier: "loginView", sender: self)
-//        }
-//    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is ViewController {
-            let vc = segue.destination as? ViewController
-        } else if segue.destination is profileViewController {
-            let pvc = segue.destination as? profileViewController
-        } else if segue.destination is leaderboardViewController {
-            let lvc = segue.destination as? leaderboardViewController
-        }
-    }
-    
     
 }
 
