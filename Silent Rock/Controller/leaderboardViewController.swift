@@ -30,6 +30,11 @@ class leaderboardViewController: UIViewController {
     @IBOutlet weak var tripsLabel: UILabel!
     @IBOutlet weak var refreshButton: BorderButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("In view will appear!")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

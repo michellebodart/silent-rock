@@ -288,6 +288,10 @@ class profileViewController: UIViewController {
         })
     }
     
+    @IBAction func viewTripsTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "leaderboardDetailView", sender: self)
+    }
+    
     @IBAction func signOutTapped(_ sender: Any) {
         UserDefaults().removeObject(forKey: "PlayerID")
         UserDefaults().removeObject(forKey: "PlayerUsername")
