@@ -49,13 +49,15 @@ class profileViewController: UIViewController {
         // Hide update phone buttons
         phoneNumberTextField.isHidden = true
         cancelSubmitPhoneStackView.isHidden = true
-        
-        phoneNumberLabel.isHidden = false
-        editPhoneButton.isHidden = false
 //        errorMessageLabel.text = ""
         
         // refresh notifications
         if self.playerID != nil {
+            
+            // if signed in, show phone number label
+            phoneNumberLabel.isHidden = false
+            editPhoneButton.isHidden = false
+            
             player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
                 self.reloadNotificationsAndPhone(json: json)
                 DispatchQueue.main.async {
@@ -383,6 +385,11 @@ class profileViewController: UIViewController {
             pvvc?.phoneNumber = self.phoneNumber
             pvvc?.playerID = self.playerID
         }
+        
+        // Customize the back button
+        let backItem = UIBarButtonItem()
+        backItem.title = "Profile"
+        navigationItem.backBarButtonItem = backItem
     }
 
 }

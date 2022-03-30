@@ -53,7 +53,7 @@ class leaderboardDetailViewController: UIViewController {
         // set up filter by button
         self.setUpFilterByMenu()
         
-        // get rid of the navigation bar menu
+        // customize navigation bar
         self.navigationItem.rightBarButtonItem = nil
         
         // Do any additional setup after loading the view.

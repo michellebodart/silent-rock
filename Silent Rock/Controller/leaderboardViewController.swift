@@ -32,7 +32,16 @@ class leaderboardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("In view will appear!")
+        
+        // hide everything till API call works
+        self.tableIsHidden(bool: true)
+        self.refreshButton.isHidden = true
+        self.errorMessageLabel.text = "loading..."
+        
+        // get leaderboard information and set the labels
+        player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: self.season, completion: {json in
+            self.doAfterGetPlayerData(json: json)
+        })
     }
     
     override func viewDidLoad() {
@@ -189,7 +198,11 @@ class leaderboardViewController: UIViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.detailPlayerID
             ldvc?.detailPlayerUsername = self.detailPlayerUsername ?? ""
-//            ldvc?.returnTo = "leaderboard"
+            
+            // Customize the back button
+            let backItem = UIBarButtonItem()
+            backItem.title = "Leaderboard"
+            navigationItem.backBarButtonItem = backItem
         }
     }
 }
