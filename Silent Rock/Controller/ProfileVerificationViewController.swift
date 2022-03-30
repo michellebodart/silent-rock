@@ -11,7 +11,6 @@ import Firebase
 class ProfileVerificationViewController: UIViewController {
 
     var playerID: Int? = nil
-    var playerUsername: String? = nil
     let player: Player = Player()
     let verificationCode: VerificationCode = VerificationCode()
     var phoneNumber: String = ""
@@ -62,7 +61,7 @@ class ProfileVerificationViewController: UIViewController {
             // User is signed in
             self.player.updatePhone(playerID: self.playerID!, phone: self.phoneNumber, vc: self, completion: {
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "profileView", sender: self)
+                    self.navigationController?.popViewController(animated: true)
                 }
             })
         }
@@ -77,16 +76,6 @@ class ProfileVerificationViewController: UIViewController {
             }
             UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
             self.verificationID = verificationID!
-        }
-    }
-    
-    @IBAction func backButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "profileView", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is profileViewController {
-            let pvc = segue.destination as? profileViewController
         }
     }
     

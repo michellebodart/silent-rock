@@ -43,6 +43,30 @@ class profileViewController: UIViewController {
     @IBOutlet weak var cancelPhoneButton: UIButton!
     @IBOutlet weak var editPhoneButton: UIButton!
    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        // Hide update phone buttons
+        phoneNumberTextField.isHidden = true
+        cancelSubmitPhoneStackView.isHidden = true
+        
+        phoneNumberLabel.isHidden = false
+        editPhoneButton.isHidden = false
+//        errorMessageLabel.text = ""
+        
+        // refresh notifications
+        if self.playerID != nil {
+            player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
+                self.reloadNotificationsAndPhone(json: json)
+                DispatchQueue.main.async {
+                    self.notificationTable.reloadData()
+                    self.errorMessageLabel.text = ""
+                }
+            })
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -120,6 +144,18 @@ class profileViewController: UIViewController {
             self.setCheckbox(checked: self.visibleOnLeaderboard)
             self.apiItemsHidden(bool: false)
             self.errorMessageLabel.text = ""
+        }
+    }
+    
+    func reloadNotificationsAndPhone(json: Dictionary<String, Any>) {
+        DispatchQueue.main.async {
+            self.phoneNumberLabel.text = ((json as NSDictionary)["phone"] as! String)
+            self.pendingTrips = ((json as NSDictionary)["pending_trips"] as! Array<Dictionary<String, Any>>)
+            if self.pendingTrips.count == 0 {
+                self.notificationButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            } else {
+                self.notificationButton.tintColor = #colorLiteral(red: 0.7536441684, green: 0.07891514152, blue: 0.2141970098, alpha: 1)
+            }
         }
     }
     
@@ -337,16 +373,15 @@ class profileViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // always send player ID, so the views know if the user is logged in or if we are using without account
         if segue.destination is leaderboardDetailViewController {
             let ldvc = segue.destination as? leaderboardDetailViewController
             ldvc?.detailPlayerID = self.playerID
             ldvc?.detailPlayerUsername = self.usernameLabel.text ?? ""
-//            ldvc?.returnTo = "profile"
         } else if segue.destination is ProfileVerificationViewController {
             let pvvc = segue.destination as? ProfileVerificationViewController
             pvvc?.verificationID = self.verificationID
             pvvc?.phoneNumber = self.phoneNumber
+            pvvc?.playerID = self.playerID
         }
     }
 

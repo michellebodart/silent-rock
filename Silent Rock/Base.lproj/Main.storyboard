@@ -2207,32 +2207,32 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="9xS-MK-J1Q"/>
                                 <exclude reference="Nl1-hX-0Hy"/>
                                 <exclude reference="QIt-Ka-9GD"/>
                                 <exclude reference="jnQ-JY-7EC"/>
-                                <exclude reference="9xS-MK-J1Q"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
                                 <exclude reference="9wc-30-370"/>
-                                <include reference="Nl1-hX-0Hy"/>
-                                <include reference="QIt-Ka-9GD"/>
-                                <include reference="jnQ-JY-7EC"/>
-                                <exclude reference="Vdb-0Q-Bel"/>
                                 <include reference="9xS-MK-J1Q"/>
+                                <include reference="Nl1-hX-0Hy"/>
                                 <exclude reference="OfA-f8-az8"/>
+                                <include reference="QIt-Ka-9GD"/>
+                                <exclude reference="Vdb-0Q-Bel"/>
+                                <include reference="jnQ-JY-7EC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="constraints">
                                 <exclude reference="9wc-30-370"/>
-                                <include reference="Nl1-hX-0Hy"/>
-                                <include reference="QIt-Ka-9GD"/>
-                                <include reference="jnQ-JY-7EC"/>
-                                <exclude reference="Vdb-0Q-Bel"/>
                                 <include reference="9xS-MK-J1Q"/>
+                                <include reference="Nl1-hX-0Hy"/>
                                 <exclude reference="OfA-f8-az8"/>
+                                <include reference="QIt-Ka-9GD"/>
+                                <exclude reference="Vdb-0Q-Bel"/>
+                                <include reference="jnQ-JY-7EC"/>
                             </mask>
                         </variation>
                     </view>
