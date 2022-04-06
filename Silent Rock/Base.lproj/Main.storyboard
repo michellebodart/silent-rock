@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mjF-yl-qZT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0DX-pD-FoN">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -10,6 +10,28 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--LoginView-->
+        <scene sceneID="q9F-hN-TTJ">
+            <objects>
+                <navigationController title="LoginView" id="0DX-pD-FoN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QV6-PB-Ymr">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.56202244758605957" green="0.087739713490009308" blue="0.19751715660095215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mjF-yl-qZT" kind="relationship" relationship="rootViewController" id="diw-rp-sRp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r29-ZH-YKI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2637" y="122"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OHC-Pn-cKE">
             <objects>
@@ -338,7 +360,7 @@
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="qaZ-5G-l31" kind="presentation" identifier="registerView" animates="NO" id="bQc-8K-LML"/>
+                                    <segue destination="qaZ-5G-l31" kind="show" identifier="RegisterViewController" animates="NO" id="aNR-c8-Ei8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VND-yf-Ndr" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
@@ -460,17 +482,16 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="i2P-lt-ljw"/>
                     <connections>
                         <outlet property="errorMessageLabel" destination="OhH-d3-CUu" id="uKu-IN-QX4"/>
                         <outlet property="phoneNumberTextField" destination="TtP-o7-0Pl" id="NjI-s9-B29"/>
                         <outlet property="signInButton" destination="VND-yf-Ndr" id="hgf-FX-E4G"/>
-                        <segue destination="MU7-mY-LaO" kind="presentation" identifier="verificationViewController" animates="NO" id="es7-6y-SqN"/>
-                        <segue destination="Wtl-wv-roF" kind="presentation" identifier="TabBarController" animates="NO" modalPresentationStyle="fullScreen" id="aPb-sJ-VCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6x-Aq-0M5" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3430.7692307692305" y="122.98578199052132"/>
+            <point key="canvasLocation" x="3432" y="123"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="fZs-H0-2fX">
@@ -566,7 +587,7 @@
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" animates="NO" id="oZu-LY-NIg"/>
+                                    <action selector="signInTapped:" destination="qaZ-5G-l31" eventType="touchUpInside" id="Ezv-2h-UQY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrL-gm-er0">
@@ -709,14 +730,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="2jq-yU-vis"/>
                     <connections>
                         <outlet property="phoneNumberErrorMessage" destination="GrL-gm-er0" id="LAA-Fu-T1Y"/>
                         <outlet property="phoneNumberTextField" destination="d8p-sc-Pp8" id="Lho-1r-YVm"/>
                         <outlet property="signUpButton" destination="je0-J3-VrD" id="fpY-pp-Gsg"/>
                         <outlet property="usernameErrorMessage" destination="W37-B8-LPH" id="KtZ-15-QvF"/>
                         <outlet property="usernameTextField" destination="y9l-Jk-1OJ" id="DTR-r0-Uqt"/>
-                        <segue destination="MU7-mY-LaO" kind="presentation" identifier="verificationViewController" animates="NO" id="zhb-Ty-BYA"/>
-                        <segue destination="Wtl-wv-roF" kind="presentation" identifier="TabBarController" animates="NO" modalPresentationStyle="fullScreen" id="ure-ZA-EcH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WD0-w2-JXq" sceneMemberID="firstResponder"/>
@@ -779,16 +799,37 @@
                                 <color key="textColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUH-Tz-oMV">
-                                <rect key="frame" x="20" y="557" width="128" height="30"/>
-                                <color key="tintColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2Y-mg-Dhz">
+                                <rect key="frame" x="60" y="556.33333333333337" width="270" height="30.666666666666629"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUH-Tz-oMV">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="30.666666666666668"/>
+                                        <color key="tintColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="6Is-9X-g82"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBD-jd-KCq">
+                                        <rect key="frame" x="130" y="0.0" width="140" height="30.666666666666668"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="02g-BY-xLA"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Use without account">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="useWithoutAccountTapped:" destination="MU7-mY-LaO" eventType="touchUpInside" id="BbT-rN-HBJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="lD1-Lj-7tT"/>
-                                    <constraint firstAttribute="width" constant="128" id="ygO-qL-dr8"/>
+                                    <constraint firstAttribute="width" constant="270" id="rAt-T3-eNu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0b-e4-8ha" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
                                 <rect key="frame" x="60" y="417" width="270" height="40"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -811,20 +852,6 @@
                                     <action selector="verificationCodeTextFieldUpdated:" destination="MU7-mY-LaO" eventType="editingChanged" id="pjg-ym-cWE"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPr-A2-tcc">
-                                <rect key="frame" x="148" y="556.33333333333337" width="65" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="8JW-UD-wD8"/>
-                                </constraints>
-                                <color key="tintColor" red="0.75364416840000004" green="0.078915141519999996" blue="0.2141970098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign up">
-                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="qaZ-5G-l31" kind="presentation" identifier="registerView" animates="NO" id="gnw-4U-HX2"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sp-UM-f2L" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
                                 <rect key="frame" x="60" y="357" width="270" height="40"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -836,67 +863,36 @@
                                     <action selector="signInTapped:" destination="MU7-mY-LaO" eventType="touchUpInside" id="QYO-vK-jTd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOe-CY-b4h">
-                                <rect key="frame" x="213" y="557" width="12" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="12" id="I7z-Ev-Vkd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBD-jd-KCq">
-                                <rect key="frame" x="225" y="557" width="136" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="136" id="GOH-5c-7iP"/>
-                                </constraints>
-                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Use without account">
-                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="useWithoutAccountTapped:" destination="MU7-mY-LaO" eventType="touchUpInside" id="BbT-rN-HBJ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FVw-gw-nKx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EBD-jd-KCq" firstAttribute="leading" secondItem="kOe-CY-b4h" secondAttribute="trailing" id="20x-bc-t44"/>
-                            <constraint firstItem="kOe-CY-b4h" firstAttribute="centerY" secondItem="UUH-Tz-oMV" secondAttribute="centerY" id="2tk-PB-0BB"/>
                             <constraint firstItem="1Or-xK-9wT" firstAttribute="top" secondItem="YbZ-aT-VhB" secondAttribute="top" constant="-35" id="6sJ-Op-hsQ"/>
                             <constraint firstAttribute="bottom" secondItem="qAp-4E-tgC" secondAttribute="bottom" constant="-46" id="6zd-P8-mQW"/>
                             <constraint firstItem="thZ-2T-h15" firstAttribute="leading" secondItem="FVw-gw-nKx" secondAttribute="leading" constant="20" id="89Q-xI-Q77"/>
                             <constraint firstItem="u0b-e4-8ha" firstAttribute="width" secondItem="9sp-UM-f2L" secondAttribute="width" id="BYb-KW-V2x"/>
                             <constraint firstItem="thZ-2T-h15" firstAttribute="trailing" secondItem="FVw-gw-nKx" secondAttribute="trailing" constant="-20" id="DDw-Yu-83a"/>
                             <constraint firstItem="qAp-4E-tgC" firstAttribute="centerX" secondItem="1Or-xK-9wT" secondAttribute="centerX" id="KH3-xs-8Sg"/>
+                            <constraint firstItem="qAp-4E-tgC" firstAttribute="top" secondItem="z2Y-mg-Dhz" secondAttribute="bottom" constant="20" id="Kim-r4-7jc"/>
                             <constraint firstAttribute="trailing" secondItem="1Or-xK-9wT" secondAttribute="trailing" constant="-32" id="KyC-tK-qWD"/>
-                            <constraint firstItem="UUH-Tz-oMV" firstAttribute="leading" secondItem="YbZ-aT-VhB" secondAttribute="leading" constant="20" id="MfI-8U-wiH"/>
                             <constraint firstItem="9sp-UM-f2L" firstAttribute="top" secondItem="tcs-zV-Sdi" secondAttribute="bottom" constant="20" id="Mrz-ex-kRO"/>
                             <constraint firstItem="u0b-e4-8ha" firstAttribute="centerX" secondItem="9sp-UM-f2L" secondAttribute="centerX" id="NNB-bz-6B5"/>
                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="1Or-xK-9wT" secondAttribute="bottom" constant="-10" id="Ooe-BN-s9G"/>
                             <constraint firstItem="1Or-xK-9wT" firstAttribute="leading" secondItem="YbZ-aT-VhB" secondAttribute="leading" constant="-32" id="PHc-NL-pfp"/>
-                            <constraint firstItem="HPr-A2-tcc" firstAttribute="centerY" secondItem="UUH-Tz-oMV" secondAttribute="centerY" id="QW6-Os-v2N"/>
                             <constraint firstItem="tcs-zV-Sdi" firstAttribute="top" secondItem="1Or-xK-9wT" secondAttribute="bottom" constant="60" id="RXo-uH-dAO"/>
-                            <constraint firstItem="kOe-CY-b4h" firstAttribute="leading" secondItem="HPr-A2-tcc" secondAttribute="trailing" id="RhD-Hr-60K"/>
                             <constraint firstAttribute="trailing" secondItem="1Or-xK-9wT" secondAttribute="trailing" constant="-50" id="SMZ-QL-shc"/>
+                            <constraint firstItem="z2Y-mg-Dhz" firstAttribute="centerX" secondItem="YbZ-aT-VhB" secondAttribute="centerX" id="Sue-t6-ueT"/>
                             <constraint firstItem="u0b-e4-8ha" firstAttribute="height" secondItem="9sp-UM-f2L" secondAttribute="height" id="SxL-2J-ssZ"/>
-                            <constraint firstItem="kOe-CY-b4h" firstAttribute="height" secondItem="UUH-Tz-oMV" secondAttribute="height" id="XM2-Av-WLf"/>
-                            <constraint firstItem="EBD-jd-KCq" firstAttribute="centerY" secondItem="UUH-Tz-oMV" secondAttribute="centerY" id="ZPc-aq-uu8"/>
                             <constraint firstItem="u0b-e4-8ha" firstAttribute="top" secondItem="9sp-UM-f2L" secondAttribute="bottom" constant="20" id="ZYb-QI-AJO"/>
                             <constraint firstItem="1Or-xK-9wT" firstAttribute="leading" relation="lessThanOrEqual" secondItem="YbZ-aT-VhB" secondAttribute="leading" constant="-50" id="aeZ-H7-RqA"/>
                             <constraint firstItem="9sp-UM-f2L" firstAttribute="centerX" secondItem="tcs-zV-Sdi" secondAttribute="centerX" id="bKP-gF-dRR"/>
                             <constraint firstItem="qAp-4E-tgC" firstAttribute="leading" secondItem="YbZ-aT-VhB" secondAttribute="leading" id="bhK-8d-eXP"/>
                             <constraint firstItem="9sp-UM-f2L" firstAttribute="height" secondItem="tcs-zV-Sdi" secondAttribute="height" id="dco-Es-1sO"/>
-                            <constraint firstItem="EBD-jd-KCq" firstAttribute="height" secondItem="UUH-Tz-oMV" secondAttribute="height" id="haC-p1-65S"/>
                             <constraint firstItem="thZ-2T-h15" firstAttribute="top" secondItem="1Or-xK-9wT" secondAttribute="bottom" constant="8" symbolic="YES" id="icl-VD-7GX"/>
                             <constraint firstItem="FVw-gw-nKx" firstAttribute="trailing" secondItem="tcs-zV-Sdi" secondAttribute="trailing" constant="60" id="jQF-X9-D2R"/>
                             <constraint firstItem="tcs-zV-Sdi" firstAttribute="leading" secondItem="FVw-gw-nKx" secondAttribute="leading" constant="60" id="mxE-cn-yLB"/>
-                            <constraint firstItem="qAp-4E-tgC" firstAttribute="top" secondItem="UUH-Tz-oMV" secondAttribute="bottom" constant="20" id="nJC-GO-auc"/>
                             <constraint firstItem="qAp-4E-tgC" firstAttribute="width" secondItem="1Or-xK-9wT" secondAttribute="width" id="pGe-nf-SAW"/>
                             <constraint firstAttribute="bottom" secondItem="qAp-4E-tgC" secondAttribute="bottom" constant="-7" id="pLc-W6-ZVi"/>
-                            <constraint firstItem="HPr-A2-tcc" firstAttribute="leading" secondItem="UUH-Tz-oMV" secondAttribute="trailing" id="tNQ-3V-6xy"/>
                             <constraint firstItem="thZ-2T-h15" firstAttribute="top" secondItem="1Or-xK-9wT" secondAttribute="bottom" constant="8" symbolic="YES" id="ud9-SK-PbR"/>
                             <constraint firstItem="1Or-xK-9wT" firstAttribute="top" secondItem="YbZ-aT-VhB" secondAttribute="top" constant="-7" id="vGW-gt-7le"/>
                             <constraint firstItem="9sp-UM-f2L" firstAttribute="width" secondItem="tcs-zV-Sdi" secondAttribute="width" id="wHW-ID-ku0"/>
@@ -946,16 +942,16 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="drn-jq-2IC"/>
                     <connections>
                         <outlet property="errorMessageLabel" destination="thZ-2T-h15" id="UoB-RQ-7G0"/>
                         <outlet property="signInButton" destination="9sp-UM-f2L" id="ONW-iG-PED"/>
                         <outlet property="verificationCodeTextField" destination="tcs-zV-Sdi" id="Ih2-xi-oBs"/>
-                        <segue destination="Wtl-wv-roF" kind="presentation" identifier="TabBarController" animates="NO" modalPresentationStyle="fullScreen" id="lYA-2V-VKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zlz-zA-fYf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4135.3846153846152" y="122.27488151658767"/>
+            <point key="canvasLocation" x="4165" y="122"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="raN-PQ-yqt">
@@ -1402,7 +1398,6 @@
                         <outlet property="usernameTextField" destination="eMU-Xp-zcb" id="BPW-5J-dWy"/>
                         <outlet property="viewMyTripsButton" destination="rHl-Xh-wiO" id="FUD-Sd-bcX"/>
                         <segue destination="aZ3-Ur-cmN" kind="show" identifier="profileVerificationView" animates="NO" id="Naq-uM-REm"/>
-                        <segue destination="mjF-yl-qZT" kind="presentation" identifier="loginView" animates="NO" id="eXg-th-wVa"/>
                         <segue destination="zmb-Aj-lSi" kind="show" identifier="leaderboardDetailView" id="vnI-lm-mWy"/>
                     </connections>
                 </viewController>
@@ -2328,12 +2323,6 @@
             <size key="intrinsicContentSize" width="209.66666666666666" height="38.666666666666664"/>
         </designable>
     </designables>
-    <inferredMetricsTieBreakers>
-        <segue reference="es7-6y-SqN"/>
-        <segue reference="bQc-8K-LML"/>
-        <segue reference="eXg-th-wVa"/>
-        <segue reference="aPb-sJ-VCO"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>
         <image name="SRMap" width="616" height="760"/>

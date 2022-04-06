@@ -25,6 +25,9 @@ class loginViewController: UIViewController {
         signInButton.isEnabled = false
         
         self.hideKeyboardWhenTappedAround()
+        
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.hidesBackButton = false
     }
     
     // Disable screen rotation
@@ -80,7 +83,6 @@ class loginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainTabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
-//        self.performSegue(withIdentifier: "TabBarController", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
