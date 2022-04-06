@@ -334,8 +334,8 @@ class profileViewController: UIViewController {
         UserDefaults().removeObject(forKey: "PlayerID")
         UserDefaults().removeObject(forKey: "PlayerUsername")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginViewController)
+        let loginNavigationController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationController")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginNavigationController)
     }
     
     

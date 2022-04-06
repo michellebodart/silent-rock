@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0DX-pD-FoN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0DX-pD-FoN">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,7 +13,7 @@
         <!--LoginView-->
         <scene sceneID="q9F-hN-TTJ">
             <objects>
-                <navigationController title="LoginView" id="0DX-pD-FoN" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationController" title="LoginView" id="0DX-pD-FoN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QV6-PB-Ymr">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -25,12 +25,12 @@
                         <navigationBarAppearance key="standardAppearance"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="mjF-yl-qZT" kind="relationship" relationship="rootViewController" id="diw-rp-sRp"/>
+                        <segue destination="mjF-yl-qZT" kind="relationship" relationship="rootViewController" id="Tey-zo-dmO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r29-ZH-YKI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2637" y="122"/>
+            <point key="canvasLocation" x="2615" y="122"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OHC-Pn-cKE">
@@ -487,6 +487,7 @@
                         <outlet property="errorMessageLabel" destination="OhH-d3-CUu" id="uKu-IN-QX4"/>
                         <outlet property="phoneNumberTextField" destination="TtP-o7-0Pl" id="NjI-s9-B29"/>
                         <outlet property="signInButton" destination="VND-yf-Ndr" id="hgf-FX-E4G"/>
+                        <segue destination="MU7-mY-LaO" kind="show" identifier="verificationViewController" animates="NO" id="2Uh-be-bvM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6x-Aq-0M5" sceneMemberID="firstResponder"/>
