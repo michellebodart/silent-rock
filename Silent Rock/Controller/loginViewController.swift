@@ -19,15 +19,20 @@ class loginViewController: UIViewController {
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var signInButton: BorderButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        signInButton.isEnabled = false
+        phoneNumberTextField.text = ""
+        errorMessageLabel.text = ""
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         signInButton.isEnabled = false
         
         self.hideKeyboardWhenTappedAround()
-        
-        navigationItem.leftItemsSupplementBackButton = true
-        navigationItem.hidesBackButton = false
     }
     
     // Disable screen rotation
@@ -95,6 +100,7 @@ class loginViewController: UIViewController {
         } else if segue.destination is registerViewController {
             let rvc = segue.destination as? registerViewController
             rvc?.phoneNumber = phoneNumberTextField.text ?? ""
+            navigationItem.backBarButtonItem = nil
         }
     }
 }

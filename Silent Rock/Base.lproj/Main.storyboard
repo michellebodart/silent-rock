@@ -360,7 +360,7 @@
                                     <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="qaZ-5G-l31" kind="show" identifier="RegisterViewController" animates="NO" id="aNR-c8-Ei8"/>
+                                    <segue destination="qaZ-5G-l31" kind="show" identifier="RegisterViewController" id="aNR-c8-Ei8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VND-yf-Ndr" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
@@ -738,6 +738,7 @@
                         <outlet property="signUpButton" destination="je0-J3-VrD" id="fpY-pp-Gsg"/>
                         <outlet property="usernameErrorMessage" destination="W37-B8-LPH" id="KtZ-15-QvF"/>
                         <outlet property="usernameTextField" destination="y9l-Jk-1OJ" id="DTR-r0-Uqt"/>
+                        <segue destination="MU7-mY-LaO" kind="show" identifier="verificationViewController" animates="NO" id="3l9-DQ-dBc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WD0-w2-JXq" sceneMemberID="firstResponder"/>
@@ -2324,6 +2325,9 @@
             <size key="intrinsicContentSize" width="209.66666666666666" height="38.666666666666664"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="3l9-DQ-dBc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Checkbox-checked-1" width="512" height="512"/>
         <image name="SRMap" width="616" height="760"/>

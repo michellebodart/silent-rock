@@ -45,28 +45,7 @@ class profileViewController: UIViewController {
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
-        // Hide update phone buttons
-        phoneNumberTextField.isHidden = true
-        cancelSubmitPhoneStackView.isHidden = true
-//        errorMessageLabel.text = ""
-        
-        // refresh notifications
-        if self.playerID != nil {
-            
-            // if signed in, show phone number label
-            phoneNumberLabel.isHidden = false
-            editPhoneButton.isHidden = false
-            
-            player.getPhoneUsername(playerID: self.playerID!, vc: self, completion: {json in
-                self.reloadNotificationsAndPhone(json: json)
-                DispatchQueue.main.async {
-                    self.notificationTable.reloadData()
-                    self.errorMessageLabel.text = ""
-                }
-            })
-        }
-        
+        viewDidLoad()        
     }
     
     override func viewDidLoad() {
@@ -96,6 +75,11 @@ class profileViewController: UIViewController {
         // Hide update phone buttons
         phoneNumberTextField.isHidden = true
         cancelSubmitPhoneStackView.isHidden = true
+        phoneNumberLabel.isHidden = true
+        editPhoneButton.isHidden = true
+        
+        // hide everything until api call works
+        apiItemsHidden(bool: true)
         
         // Set username, phone, notifications, and checkbox if api call successful and logged in
         if self.playerID != nil {
@@ -109,9 +93,6 @@ class profileViewController: UIViewController {
         } else {
             self.errorMessageLabel.text = "sign in?"
         }
-        
-        // hide everything until api call works
-        apiItemsHidden(bool: true)
         
         // Hide keyboard
         self.hideKeyboardWhenTappedAround()

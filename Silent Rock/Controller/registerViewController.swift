@@ -23,6 +23,13 @@ class registerViewController: UIViewController {
     @IBOutlet weak var usernameErrorMessage: UILabel!
     @IBOutlet weak var signUpButton: BorderButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        phoneNumberTextField.isEnabled = true
+        usernameTextField.isEnabled = true
+        usernameErrorMessage.text = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
