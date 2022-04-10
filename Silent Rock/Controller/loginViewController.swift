@@ -100,7 +100,7 @@ class loginViewController: UIViewController {
         } else if segue.destination is registerViewController {
             let rvc = segue.destination as? registerViewController
             rvc?.phoneNumber = phoneNumberTextField.text ?? ""
-            navigationItem.backBarButtonItem = nil
+            rvc?.navigationItem.setHidesBackButton(true, animated: true)
         }
     }
 }
