@@ -45,8 +45,8 @@
                         <color key="selectedImageTintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aHK-Qn-4vt"/>
                         <segue destination="LPB-Xg-pEX" kind="relationship" relationship="viewControllers" id="yeq-9F-4NU"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aHK-Qn-4vt"/>
                         <segue destination="h8o-5f-Ydz" kind="relationship" relationship="viewControllers" id="rDC-JR-fBS"/>
                     </connections>
                 </tabBarController>
@@ -1673,7 +1673,7 @@
             <objects>
                 <navigationController id="LPB-Xg-pEX" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="leaderboardSmall" selectedImage="leaderboardSmall" id="hDb-JV-Ydn">
-                        <inset key="imageInsets" minX="0.0" minY="15" maxX="0.0" maxY="-10"/>
+                        <inset key="imageInsets" minX="0.0" minY="15" maxX="0.0" maxY="-15"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7mr-EP-9qv">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>

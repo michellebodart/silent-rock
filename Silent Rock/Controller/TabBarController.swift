@@ -21,7 +21,8 @@ class TabBarController: UITabBarController {
             playerID = UserDefaults().integer(forKey: "PlayerID")
         }
         playerUsername = UserDefaults().string(forKey: "PlayerUsername")
-
+        
+        self.selectedIndex = 1
         // Do any additional setup after loading the view.
     }
 }
