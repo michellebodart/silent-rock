@@ -256,7 +256,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="homeSmall" selectedImage="homeSmall" id="CBY-JN-9be"/>
+                    <tabBarItem key="tabBarItem" title="" image="homeSmall" selectedImage="homeSmall" id="CBY-JN-9be">
+                        <inset key="imageInsets" minX="0.0" minY="15" maxX="0.0" maxY="-15"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="hTT-KX-qpW"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -856,11 +858,10 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sp-UM-f2L" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
                                 <rect key="frame" x="60" y="357" width="270" height="40"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign in">
-                                    <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Sign in"/>
                                 <connections>
                                     <action selector="signInTapped:" destination="MU7-mY-LaO" eventType="touchUpInside" id="QYO-vK-jTd"/>
                                 </connections>
@@ -1410,7 +1411,9 @@
         <scene sceneID="pUj-Cd-x90">
             <objects>
                 <navigationController id="h8o-5f-Ydz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="profileSmall" selectedImage="profileSmall" id="4BH-Wm-jB9"/>
+                    <tabBarItem key="tabBarItem" title="" image="profileSmall" selectedImage="profileSmall" id="4BH-Wm-jB9">
+                        <inset key="imageInsets" minX="0.0" minY="15" maxX="0.0" maxY="-15"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ffg-ZM-kl9">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1669,7 +1672,9 @@
         <scene sceneID="ZpE-nz-ROQ">
             <objects>
                 <navigationController id="LPB-Xg-pEX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="leaderboardSmall" selectedImage="leaderboardSmall" id="hDb-JV-Ydn"/>
+                    <tabBarItem key="tabBarItem" title="" image="leaderboardSmall" selectedImage="leaderboardSmall" id="hDb-JV-Ydn">
+                        <inset key="imageInsets" minX="0.0" minY="15" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7mr-EP-9qv">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2261,7 +2266,7 @@
             <size key="intrinsicContentSize" width="72" height="33.333333333333336"/>
         </designable>
         <designable name="9sp-UM-f2L">
-            <size key="intrinsicContentSize" width="78.666666666666671" height="38.666666666666664"/>
+            <size key="intrinsicContentSize" width="55" height="37"/>
         </designable>
         <designable name="Bej-zu-0rN">
             <size key="intrinsicContentSize" width="96" height="37"/>

@@ -25,6 +25,9 @@ class verificationViewController: UIViewController {
         super.viewDidLoad()
         signInButton.isEnabled = false
         self.hideKeyboardWhenTappedAround()
+        if self.newPlayer {
+            self.signInButton.setTitle("Sign up", for: .normal)
+        }
         // Do any additional setup after loading the view.
     }
     
