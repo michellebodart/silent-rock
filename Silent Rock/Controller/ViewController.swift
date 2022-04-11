@@ -87,11 +87,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    // Disable screen rotation
-    override var shouldAutorotate: Bool {
-            return false
-        }
-    
     @IBAction func startButtonTapped(_ sender: Any) {
         self.locationManager!.startUpdatingLocation()
         self.startButton.isEnabled = false

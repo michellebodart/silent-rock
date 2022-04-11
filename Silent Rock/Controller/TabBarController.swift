@@ -22,7 +22,9 @@ class TabBarController: UITabBarController {
         }
         playerUsername = UserDefaults().string(forKey: "PlayerUsername")
         
+        // set the tracking page as initial VC
         self.selectedIndex = 1
+
         // Do any additional setup after loading the view.
     }
 }

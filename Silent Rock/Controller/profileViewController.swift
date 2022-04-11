@@ -101,11 +101,6 @@ class profileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    // Disable screen rotation
-    override var shouldAutorotate: Bool {
-            return false
-        }
-    
     // Hide notifications when tapped around
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch: UITouch? = touches.first

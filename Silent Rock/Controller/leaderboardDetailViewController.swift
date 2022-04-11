@@ -59,11 +59,6 @@ class leaderboardDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    // Disable screen rotation
-    override var shouldAutorotate: Bool {
-            return false
-        }
-    
     // Set up pull down to refresh
     @objc private func refreshTable(_ sender: Any) {
         player.getTrips(playerID: self.detailPlayerID!, vc: self, completion: doAfterGetTrips(json:))

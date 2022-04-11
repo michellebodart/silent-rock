@@ -39,11 +39,6 @@ class registerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    // Disable screen rotation
-    override var shouldAutorotate: Bool {
-            return false
-        }
-    
     @IBAction func phoneNumberTextFieldUpdated(_ sender: Any) {
         phoneNumberTextField.text = phone.format(with: "+X (XXX) XXX-XXXX", phone: phoneNumberTextField.text ?? "")
         
