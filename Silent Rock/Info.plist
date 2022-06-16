@@ -4,6 +4,8 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the &quot;start&quot; button until you press the &quot;stop&quot; button or the app is closed.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the &quot;start&quot; button until you press the &quot;stop&quot; button or the app is closed.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the &quot;start&quot; button until you press the &quot;stop&quot; button or the app is closed.</string>
 	<key>UIApplicationSceneManifest</key>

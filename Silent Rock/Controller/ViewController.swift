@@ -7,17 +7,19 @@
 
 import UIKit
 import CoreLocation
-import AVFoundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager:CLLocationManager = CLLocationManager()
-    let state = UIApplication.shared.applicationState
-    
-    var player: AVAudioPlayer?
+    var inRegion:Bool = false
+    let targetLat:Double = 45.306558
+    let targetLon:Double = -121.830166
+    let span:Double = 0.005
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setInRegion()
         
         // enable the right buttons
         stopButton.isEnabled = false
@@ -38,9 +40,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print(error.localizedDescription)
             }
         }
-        
         UNUserNotificationCenter.current().delegate = self
-        
     }
     
     func soundAlarm() {
@@ -67,8 +67,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         content.title = "APPROACHING SILENT ROCK"
         content.subtitle = "SHHHHHH"
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "LocalNotificationSound.mp3"))
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false) //Maybe update this to a location based trigger?
-        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.5, repeats: false)
         let request = UNNotificationRequest(identifier: "Silent rock notification", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request)
@@ -97,19 +96,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
     }
     
-    var inRegion:Bool = false
-//    For testing near my house
-    let targetLat:Double = 47.654158
-    let targetLon:Double = -122.348596
-    let span:Double = 0.0002
-    
-//    Acutal silent rock coordinates
-//    let targetLat:Double = 45.306558
-//    let targetLon:Double = -121.830166
-//    let span:Double = 0.005
-    
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         let lat: Double = locValue.latitude
@@ -124,7 +110,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if inRegion {
                 alarmOff()
                 inRegion = false
+                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             }
+        }
+    }
+    
+    func setInRegion() {
+        guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+        let lat: Double = locValue.latitude
+        let lon: Double = locValue.longitude
+        if (targetLat - span < lat && lat < targetLat + span) && (targetLon - span < lon && lon < targetLon + span) {
+            inRegion = true
+        } else {
+            inRegion = false
         }
     }
 }
