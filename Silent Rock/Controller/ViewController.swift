@@ -16,6 +16,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let targetLon:Double = -121.830166
     let span:Double = 0.005
     
+    
+    @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var backgroundColor: UIImageView!
+    @IBOutlet weak var startButton: BorderButton!
+    @IBOutlet weak var stopButton: BorderButton!
+    @IBOutlet weak var mapImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +58,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             stopButton.isHidden = true
             warningLabel.isHidden = false
             exitButton.isHidden = false
+            mapImageView.isHidden = true
             sendLocalNotification()
         }
     }
@@ -60,6 +69,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         stopButton.isHidden = false
         warningLabel.isHidden = true
         exitButton.isHidden = true
+        mapImageView.isHidden = false
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
     }
     
     func sendLocalNotification() {
@@ -76,13 +87,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func exitButtonPressed(_ sender: Any) {
         alarmOff()
     }
-    
-    @IBOutlet weak var exitButton: UIButton!
-    @IBOutlet weak var warningLabel: UILabel!
-    @IBOutlet weak var backgroundColor: UIImageView!
-    @IBOutlet weak var startButton: BorderButton!
-    @IBOutlet weak var stopButton: BorderButton!
-    
     
     @IBAction func startButtonPressed(_ sender: Any) {
         stopButton.isEnabled = true
@@ -110,7 +114,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if inRegion {
                 alarmOff()
                 inRegion = false
-                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             }
         }
     }

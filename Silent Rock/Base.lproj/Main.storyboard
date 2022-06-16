@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -57,8 +57,11 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="2QO-eG-JMJ">
-                                <rect key="frame" x="50" y="328.66666666666669" width="275" height="155"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SRMap" translatesAutoresizingMaskIntoConstraints="NO" id="bnL-M8-HSu">
+                                <rect key="frame" x="0.0" y="229" width="375" height="354"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="98" translatesAutoresizingMaskIntoConstraints="NO" id="2QO-eG-JMJ">
+                                <rect key="frame" x="50" y="302" width="275" height="208"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d73-mT-q2H" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="55"/>
@@ -73,7 +76,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCu-HO-tEq" customClass="BorderButton" customModule="Silent_Rock" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="100" width="275" height="55"/>
+                                        <rect key="frame" x="0.0" y="153" width="275" height="55"/>
                                         <color key="backgroundColor" red="1" green="0.28647291180000001" blue="0.2240761506" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
@@ -117,14 +120,17 @@
                             <constraint firstItem="2QO-eG-JMJ" firstAttribute="leading" secondItem="2oS-Mh-ldg" secondAttribute="leading" constant="50" id="3wQ-2S-dpa"/>
                             <constraint firstItem="vMg-aS-PUa" firstAttribute="trailing" secondItem="wRi-jm-g75" secondAttribute="trailing" id="7Ho-c0-D3E"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="centerX" secondItem="FAq-C9-K61" secondAttribute="centerX" id="7oY-8c-l3B"/>
+                            <constraint firstItem="YZr-UH-3mm" firstAttribute="top" secondItem="bnL-M8-HSu" secondAttribute="bottom" id="GM4-ST-jfk"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="width" secondItem="YZr-UH-3mm" secondAttribute="height" multiplier="426:229" id="HNJ-pv-6Df"/>
                             <constraint firstAttribute="bottom" secondItem="YZr-UH-3mm" secondAttribute="bottom" constant="-7" id="InY-f5-glz"/>
                             <constraint firstItem="5TY-t9-9nM" firstAttribute="leading" secondItem="2oS-Mh-ldg" secondAttribute="leading" constant="10" id="Jqa-Mt-gm9"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="width" secondItem="FAq-C9-K61" secondAttribute="width" id="JvU-uU-IyZ"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" id="LAz-7I-LzC"/>
+                            <constraint firstItem="2oS-Mh-ldg" firstAttribute="trailing" secondItem="bnL-M8-HSu" secondAttribute="trailing" id="M8X-mu-BqX"/>
                             <constraint firstAttribute="trailing" secondItem="FAq-C9-K61" secondAttribute="trailing" constant="-50" id="NLc-fR-mvD"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="bottom" secondItem="uRf-0M-zgZ" secondAttribute="top" constant="-30" id="XfB-J4-yah"/>
                             <constraint firstItem="vMg-aS-PUa" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" id="YOK-In-aM5"/>
+                            <constraint firstItem="bnL-M8-HSu" firstAttribute="leading" secondItem="2oS-Mh-ldg" secondAttribute="leading" id="ZIi-mA-5fS"/>
                             <constraint firstAttribute="trailing" secondItem="5TY-t9-9nM" secondAttribute="trailing" constant="10" id="cY4-zk-lT7"/>
                             <constraint firstItem="2oS-Mh-ldg" firstAttribute="trailing" secondItem="2QO-eG-JMJ" secondAttribute="trailing" constant="50" id="dBV-uW-lSd"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" constant="-32" id="df3-A2-BGq"/>
@@ -135,6 +141,7 @@
                             <constraint firstItem="2QO-eG-JMJ" firstAttribute="centerY" secondItem="wRi-jm-g75" secondAttribute="centerY" id="ntn-mb-qhi"/>
                             <constraint firstAttribute="bottom" secondItem="YZr-UH-3mm" secondAttribute="bottom" constant="-46" id="pc5-lm-GFC"/>
                             <constraint firstAttribute="trailing" secondItem="FAq-C9-K61" secondAttribute="trailing" constant="-32" id="sj6-x0-K8f"/>
+                            <constraint firstItem="bnL-M8-HSu" firstAttribute="top" secondItem="FAq-C9-K61" secondAttribute="bottom" id="sze-Ii-vcf"/>
                             <constraint firstItem="uRf-0M-zgZ" firstAttribute="top" secondItem="wRi-jm-g75" secondAttribute="top" constant="30" id="vgU-B7-hzs"/>
                             <constraint firstItem="FAq-C9-K61" firstAttribute="leading" relation="lessThanOrEqual" secondItem="wRi-jm-g75" secondAttribute="leading" constant="-50" id="xYF-f6-6D5"/>
                             <constraint firstItem="5TY-t9-9nM" firstAttribute="centerY" secondItem="wRi-jm-g75" secondAttribute="centerY" id="xil-dA-bGc"/>
@@ -194,6 +201,7 @@
                     <connections>
                         <outlet property="backgroundColor" destination="vMg-aS-PUa" id="XgV-eI-5HT"/>
                         <outlet property="exitButton" destination="uRf-0M-zgZ" id="Yeu-k0-H0b"/>
+                        <outlet property="mapImageView" destination="bnL-M8-HSu" id="mXe-IM-3fx"/>
                         <outlet property="startButton" destination="d73-mT-q2H" id="98G-ti-aYL"/>
                         <outlet property="stopButton" destination="gCu-HO-tEq" id="xlc-xW-XXX"/>
                         <outlet property="warningLabel" destination="5TY-t9-9nM" id="XvQ-re-JNX"/>
@@ -201,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
+            <point key="canvasLocation" x="136.80000000000001" y="124.13793103448276"/>
         </scene>
     </scenes>
     <designables>
@@ -213,6 +221,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="SRMap" width="205.33332824707031" height="253.33332824707031"/>
         <image name="silent_rock_2-removebg-preview" width="650" height="384"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
