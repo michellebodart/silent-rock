@@ -240,22 +240,27 @@ class profileViewController: UIViewController {
     
     @IBAction func submitButtonTapped(_ sender: Any) {
         
-        self.errorMessageLabel.text = "loading..."
-        // disable submit phone button
-        self.submitPhoneButton.isEnabled = false
-        // updates username in DB, if successful, returns to main page, otherwise displays an error message
-        player.updateUsername(playerID: self.playerID!, username: self.usernameTextField.text!, vc: self, completion: {
-            DispatchQueue.main.async {
-                self.submitButton.isHidden = true
-                self.cancelButton.isHidden = true
-                self.usernameTextField.isHidden = true
-                self.usernameLabel.isHidden = false
-                self.editUsernameButton.isHidden = false
-                self.usernameLabel.text = self.usernameTextField.text!
-                self.submitPhoneButton.isEnabled = true
-                self.errorMessageLabel.text = ""
-            }
-        })
+        if self.username.isAppropriate(username: self.usernameTextField.text!) {
+            self.errorMessageLabel.text = "loading..."
+            // disable submit phone button
+            self.submitPhoneButton.isEnabled = false
+            // updates username in DB, if successful, returns to main page, otherwise displays an error message
+            player.updateUsername(playerID: self.playerID!, username: self.usernameTextField.text!, vc: self, completion: {
+                DispatchQueue.main.async {
+                    self.submitButton.isHidden = true
+                    self.cancelButton.isHidden = true
+                    self.usernameTextField.isHidden = true
+                    self.usernameLabel.isHidden = false
+                    self.editUsernameButton.isHidden = false
+                    self.usernameLabel.text = self.usernameTextField.text!
+                    self.submitPhoneButton.isEnabled = true
+                    self.errorMessageLabel.text = ""
+                }
+            })
+        } else {
+            self.errorMessageLabel.text = "please choose a different username"
+        }
+        
     }
     
     @IBAction func submitPhoneButtonTapped(_ sender: Any) {

@@ -28,4 +28,17 @@ class Username: NSObject {
         }
         return result
     }
+    
+    func isAppropriate(username: String) -> Bool {
+        guard let fileUrl = Bundle.main.url(forResource: "bannedWords", withExtension: "txt") else { return false }
+        guard let content =  try? String(contentsOf: fileUrl, encoding: .utf8)
+            else { return false }
+        let bannedWords = content.split(separator: "\n")
+        for word in bannedWords {
+            if (username.lowercased().contains(word)) {
+                return false
+            }
+        }
+        return true
+    }
 }

@@ -69,12 +69,16 @@ class registerViewController: UIViewController {
     
     @IBAction func signUpTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text, let username = usernameTextField.text {
-            phoneNumberTextField.isEnabled = false
-            usernameTextField.isEnabled = false
-            usernameErrorMessage.text = "loading..."
-            player.checkPlayerDataFromRegister(phoneNumber: phoneNumber, username: username, vc: self, completion: { phoneNumber, username, json in
-                self.signUpOrError(phoneNumber: phoneNumber, username: username, json: json)
-            })
+            if self.username.isAppropriate(username: username) {
+                phoneNumberTextField.isEnabled = false
+                usernameTextField.isEnabled = false
+                usernameErrorMessage.text = "loading..."
+                player.checkPlayerDataFromRegister(phoneNumber: phoneNumber, username: username, vc: self, completion: { phoneNumber, username, json in
+                    self.signUpOrError(phoneNumber: phoneNumber, username: username, json: json)
+                })
+            } else {
+                self.usernameErrorMessage.text = "please choose a different username"
+            }
         }
     }
     
