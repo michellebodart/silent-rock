@@ -35,6 +35,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var stopButton: BorderButton!
     @IBOutlet weak var addFriendsButton: UIButton!
     @IBOutlet weak var addFriendsTable: UITableView!
+    @IBOutlet weak var monitoringProximityStack: UIStackView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,17 +47,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         self.setInRegion() // might not need this
         self.errorMessageLabel.text = ""
+        self.activityIndicator.startAnimating()
         
         // set up location manager
         self.locationManager = CLLocationManager()
         self.locationManager!.delegate = self
         self.locationManager!.requestAlwaysAuthorization()
         self.locationManager!.allowsBackgroundLocationUpdates = true //for alarm
-        self.locationManager!.distanceFilter = 5 // filters out updates till it's traveled x meters. Set to 5 for testing purposes
+        self.locationManager!.distanceFilter = 20 // filters out updates till it's traveled x meters
         
         // disable the right buttons
-        self.startButton.isEnabled = true
-        self.stopButton.isEnabled = false
+        self.startButton.isHidden = false
+        self.stopButton.isHidden = true
+        self.monitoringProximityStack.isHidden = true
         
         // Set up local notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
@@ -91,14 +95,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func startButtonTapped(_ sender: Any) {
         self.locationManager!.startUpdatingLocation()
-        self.startButton.isEnabled = false
-        self.stopButton.isEnabled = true
+        self.startButton.isHidden = true
+        self.stopButton.isHidden = false
+        self.monitoringProximityStack.isHidden = false
     }
     
     @IBAction func stopButtonTapped(_ sender: Any) {
         self.locationManager!.stopUpdatingLocation()
-        self.startButton.isEnabled = true
-        self.stopButton.isEnabled = false
+        self.startButton.isHidden = false
+        self.stopButton.isHidden = true
+        self.monitoringProximityStack.isHidden = true
+        
     }
     
     // opens and closes the table view and loads player data
