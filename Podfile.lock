@@ -1,0 +1,16 @@
+PODS:
+  - SoundModeManager (1.0.1)
+
+DEPENDENCIES:
+  - SoundModeManager
+
+SPEC REPOS:
+  trunk:
+    - SoundModeManager
+
+SPEC CHECKSUMS:
+  SoundModeManager: 4489501611eae679e69d7a3ab7fccbcba53db9fe
+
+PODFILE CHECKSUM: b7e5096efae34397bb677d3965cb9c93bf2bc096
+
+COCOAPODS: 1.11.3

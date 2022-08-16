@@ -58,6 +58,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        if let username = UserDefaults().string(forKey: "PlayerUsername") {
+            let vc = self.window?.rootViewController! as! TabBarController
+            vc.viewDidAppear(true)
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

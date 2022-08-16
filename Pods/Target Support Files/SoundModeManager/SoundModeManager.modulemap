@@ -1,0 +1,6 @@
+framework module SoundModeManager {
+  umbrella header "SoundModeManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

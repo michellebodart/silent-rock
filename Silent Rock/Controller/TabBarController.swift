@@ -27,4 +27,10 @@ class TabBarController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        let mainVc = self.viewControllers![1] as! ViewController
+        mainVc.alertIfNeeded()
+    }
 }

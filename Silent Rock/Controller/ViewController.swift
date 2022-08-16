@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import SoundModeManager
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -15,6 +16,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var addedPlayerIDs: Array<Int?> = []
     var playerUsernamesIDs: Array<Dictionary<String, Any>> = []
     var locationManager: CLLocationManager? = CLLocationManager()
+    let soundModeManager: SoundModeManager = SoundModeManager()
     var inRegion: Bool = false
     let player: Player = Player()
     
@@ -191,6 +193,71 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func alertIfNeeded() {
+        if CLLocationManager.locationServicesEnabled() {
+            switch(locationManager!.authorizationStatus) {
+            case .notDetermined, .restricted, .denied, .authorizedWhenInUse:
+                self.locationPermissionAlert()
+                break
+            case .authorizedAlways:
+                break
+            @unknown default:
+                fatalError()
+            }
+        } else {
+            self.locationPermissionAlert()
+        }
+        
+        self.unsilencePhoneReminderIfNeeded()
+    }
+    
+    func locationPermissionAlert() {
+        // Create a new alert
+        let dialogMessage = UIAlertController(title: "\"Always\" location permission required to monitor proximity to Silent Rock", message: "Please update in settings", preferredStyle: .alert)
+
+        // Create settings button with action handler
+        let settings = UIAlertAction(title: "Settings", style: .default, handler: { (action) -> Void in
+            self.openDeviceLocationSettings()
+        })
+        // Create Dismiss button with action handlder
+        let dismiss = UIAlertAction(title: "Dismiss", style: .cancel) { (action) -> Void in
+            self.unsilencePhoneReminderIfNeeded()
+        }
+        //Add OK and Cancel button to an Alert object
+        dialogMessage.addAction(settings)
+        dialogMessage.addAction(dismiss)
+
+        // Present alert to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func openDeviceLocationSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+          return
+        }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+          UIApplication.shared.open(settingsUrl, completionHandler: { (success) in print(success)})
+        }
+    }
+    
+    func unsilencePhoneReminderIfNeeded() {
+        
+        print("checking for silencing")
+
+        self.soundModeManager.updateCurrentMode{ mode in
+            if mode == .silent {
+                // Create a new alert
+                let dialogMessage = UIAlertController(title: "Reminder to un-silence your phone", message: "Silent Rock notification alert won't play outloud if your phone is on silent", preferredStyle: .alert)
+                // Create OK button with action handlder
+                let OK = UIAlertAction(title: "Got it", style: .cancel) { (action) -> Void in }
+                //Add OK and Cancel button to an Alert object
+                dialogMessage.addAction(OK)
+
+                // Present alert to user
+                self.present(dialogMessage, animated: true, completion: nil)
+            }
+        }
+    }
 }
 
 extension ViewController: UNUserNotificationCenterDelegate {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB06132F67A516A21558DEB /* Pods_Silent_Rock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999867BDA14D5C59642FCD7F /* Pods_Silent_Rock.framework */; };
 		C91D870F273C2F6B00283190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D870E273C2F6B00283190 /* AppDelegate.swift */; };
 		C91D8711273C2F6B00283190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8710273C2F6B00283190 /* SceneDelegate.swift */; };
 		C91D8713273C2F6B00283190 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8712273C2F6B00283190 /* ViewController.swift */; };
@@ -14,6 +15,7 @@
 		C91D8718273C2F6F00283190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91D8717273C2F6F00283190 /* Assets.xcassets */; };
 		C91D871B273C2F6F00283190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91D8719273C2F6F00283190 /* LaunchScreen.storyboard */; };
 		C91D8726273C35CA00283190 /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D8725273C35CA00283190 /* BorderButton.swift */; };
+		C91F07A028AC2C710028FE4F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C91F079F28AC2C700028FE4F /* GoogleService-Info.plist */; };
 		C92ADF9B27A7818E002A0030 /* VerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92ADF9A27A7818E002A0030 /* VerificationCode.swift */; };
 		C92ADF9D27A79282002A0030 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92ADF9C27A79282002A0030 /* profileViewController.swift */; };
 		C937292427B1AEFA00A8265D /* BorderTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C937292327B1AEFA00A8265D /* BorderTable.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35C1DA65F07F96F2F6FE174C /* Pods-Silent Rock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silent Rock.release.xcconfig"; path = "Target Support Files/Pods-Silent Rock/Pods-Silent Rock.release.xcconfig"; sourceTree = "<group>"; };
+		999867BDA14D5C59642FCD7F /* Pods_Silent_Rock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Silent_Rock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91D870B273C2F6B00283190 /* Silent Rock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Silent Rock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91D870E273C2F6B00283190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C91D8710273C2F6B00283190 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,7 @@
 		C91D871A273C2F6F00283190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C91D871C273C2F6F00283190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C91D8725273C35CA00283190 /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
+		C91F079F28AC2C700028FE4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C92ADF9A27A7818E002A0030 /* VerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCode.swift; sourceTree = "<group>"; };
 		C92ADF9C27A79282002A0030 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		C937292327B1AEFA00A8265D /* BorderTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderTable.swift; sourceTree = "<group>"; };
@@ -83,6 +88,7 @@
 		C9FA019F27A31B2E00612E10 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C9FA01A127A366FD00612E10 /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		C9FA01A327A36A0200612E10 /* Username.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Username.swift; sourceTree = "<group>"; };
+		D00ABC693533075B2D94844D /* Pods-Silent Rock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Silent Rock.debug.xcconfig"; path = "Target Support Files/Pods-Silent Rock/Pods-Silent Rock.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,17 +98,38 @@
 			files = (
 				C9957C8627A078380062A009 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				C9957C8827A078380062A009 /* FirebaseAuth in Frameworks */,
+				2FB06132F67A516A21558DEB /* Pods_Silent_Rock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7025BD67D29B0F607560E1CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D00ABC693533075B2D94844D /* Pods-Silent Rock.debug.xcconfig */,
+				35C1DA65F07F96F2F6FE174C /* Pods-Silent Rock.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A519B1411AE6EA64EBE8842C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				999867BDA14D5C59642FCD7F /* Pods_Silent_Rock.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C91D8702273C2F6B00283190 = {
 			isa = PBXGroup;
 			children = (
 				C91D870D273C2F6B00283190 /* Silent Rock */,
 				C91D870C273C2F6B00283190 /* Products */,
+				7025BD67D29B0F607560E1CE /* Pods */,
+				A519B1411AE6EA64EBE8842C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +144,7 @@
 		C91D870D273C2F6B00283190 /* Silent Rock */ = {
 			isa = PBXGroup;
 			children = (
+				C91F079F28AC2C700028FE4F /* GoogleService-Info.plist */,
 				C9957C8927A07C750062A009 /* Silent Rock.entitlements */,
 				C91D8724273C35A300283190 /* Model */,
 				C91D8723273C359A00283190 /* Controller */,
@@ -188,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C91D871F273C2F6F00283190 /* Build configuration list for PBXNativeTarget "Silent Rock" */;
 			buildPhases = (
+				731B6BEE2C99E2A0EC4C0F35 /* [CP] Check Pods Manifest.lock */,
 				C91D8707273C2F6B00283190 /* Sources */,
 				C91D8708273C2F6B00283190 /* Frameworks */,
 				C91D8709273C2F6B00283190 /* Resources */,
+				7CB65857738B44B8E3994988 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,6 +281,7 @@
 				C9BD514D278F9092000D83DD /* LocalNotificationSound.mp3 in Resources */,
 				C937292C27B4373F00A8265D /* NotificationTableViewCell.xib in Resources */,
 				C91D8718273C2F6F00283190 /* Assets.xcassets in Resources */,
+				C91F07A028AC2C710028FE4F /* GoogleService-Info.plist in Resources */,
 				C9ABC2AA27AC544F00460B77 /* LocalNotificationSound2.mp3 in Resources */,
 				C9F033BD274F4606000E3EF6 /* arcade.wav in Resources */,
 				C9ABC2AE27AC564C00460B77 /* StatsTableViewCell.xib in Resources */,
@@ -261,6 +292,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		731B6BEE2C99E2A0EC4C0F35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Silent Rock-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CB65857738B44B8E3994988 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Silent Rock/Pods-Silent Rock-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Silent Rock/Pods-Silent Rock-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Silent Rock/Pods-Silent Rock-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C91D8707273C2F6B00283190 /* Sources */ = {
@@ -433,6 +506,7 @@
 		};
 		C91D8720273C2F6F00283190 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00ABC693533075B2D94844D /* Pods-Silent Rock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -465,6 +539,7 @@
 		};
 		C91D8721273C2F6F00283190 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35C1DA65F07F96F2F6FE174C /* Pods-Silent Rock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
