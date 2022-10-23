@@ -20,16 +20,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var inRegion: Bool = false
     let player: Player = Player()
     
-    //    Acutal silent rock coordinates
     let targetLat:Double = 45.306558
     let targetLon:Double = -121.830166
     let span:Double = 0.005
     
-//    For testing near my house
-//    let targetLat:Double = 47.654151
-//    let targetLon:Double = -122.348564
-//    let span:Double = 0.0002
-//
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var startButton: BorderButton!
     @IBOutlet weak var stopButton: BorderButton!
@@ -59,6 +53,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // disable the right buttons
         self.startButton.isHidden = false
         self.stopButton.isHidden = true
+        self.addFriendsButton.isHidden = true
+        self.addFriendsTable.isHidden = true
         self.monitoringProximityStack.isHidden = true
         
         // Set up local notifications
@@ -97,15 +93,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager!.startUpdatingLocation()
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
+        self.addFriendsButton.isHidden = false
         self.monitoringProximityStack.isHidden = false
+        if self.addFriendsTable.indexPathsForVisibleRows != nil {
+            self.addFriendsTable.reloadRows(at: self.addFriendsTable.indexPathsForVisibleRows!, with: .none)
+        }
     }
     
     @IBAction func stopButtonTapped(_ sender: Any) {
         self.locationManager!.stopUpdatingLocation()
         self.startButton.isHidden = false
         self.stopButton.isHidden = true
+        self.addFriendsButton.isHidden = true
+        self.addFriendsTable.isHidden = true
         self.monitoringProximityStack.isHidden = true
-        
+        self.addedPlayerIDs = []
     }
     
     // opens and closes the table view and loads player data
@@ -201,21 +203,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func alertIfNeeded() {
-        if CLLocationManager.locationServicesEnabled() {
-            switch(locationManager!.authorizationStatus) {
-            case .notDetermined, .restricted, .denied, .authorizedWhenInUse:
+        if self.startButton.isHidden {
+            if CLLocationManager.locationServicesEnabled() {
+                switch(locationManager!.authorizationStatus) {
+                case .notDetermined, .restricted, .denied, .authorizedWhenInUse:
+                    self.locationPermissionAlert()
+                    break
+                case .authorizedAlways:
+                    break
+                @unknown default:
+                    fatalError()
+                }
+            } else {
                 self.locationPermissionAlert()
-                break
-            case .authorizedAlways:
-                break
-            @unknown default:
-                fatalError()
             }
-        } else {
-            self.locationPermissionAlert()
+            
+            self.unsilencePhoneReminderIfNeeded()
         }
-        
-        self.unsilencePhoneReminderIfNeeded()
     }
     
     func locationPermissionAlert() {
@@ -248,9 +252,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func unsilencePhoneReminderIfNeeded() {
-        
-        print("checking for silencing")
-
         self.soundModeManager.updateCurrentMode{ mode in
             if mode == .silent {
                 // Create a new alert

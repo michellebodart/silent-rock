@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select &quot;allow&quot; until you quit the app.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select &quot;allow&quot; until you quit the app.</string>
+	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the &quot;start&quot; button until you press the &quot;stop&quot; button or the app is closed.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select &quot;allow&quot; until you quit the app.</string>
+	<string>The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the &quot;start&quot; button until you press the &quot;stop&quot; button or the app is closed.</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
