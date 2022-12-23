@@ -3,13 +3,7 @@ Silent Rock app - to notify users when approaching silent rock.
 
 <img src="https://user-images.githubusercontent.com/71563911/154183063-fb1e0631-28eb-4975-a055-a9718c6fdf59.jpeg" width="250" height="541"> <img src="https://user-images.githubusercontent.com/71563911/154183077-7936a62d-9789-4c56-9387-b9cb97ddee7f.jpeg" width="250" height="541"> <img src="https://user-images.githubusercontent.com/71563911/154183122-2a5c84de-3440-4936-a350-999a47a5a72f.jpeg" width="250" height="541">
 
-# Capstone Concept - Michelle Bodart
-
-## Team members
-
-None
-
-## Problem Statement #1
+## About
 
 Silent Rock is a mound of rock en route to Mt. Hood on Hwy 26 just above Rhodedendron. When you pass Silent Rock, you must be absolutely silent. You have to stop talking, turn the radio off, and do whatever you can to remain silent when passing through the Rock.
 
@@ -19,45 +13,15 @@ If, like me, you ALWAYS forget where Silent Rock is on the dark early morning dr
 
 Additionally, you will be able to track the number of times you and your passengers pass Silent Rock and compete on a global leaderboard of other Silent Rock app users.
 
-## Feature Set
-
-1. Approaching Silent Rock warning
-    - Sign in/sign up with a phone number and sms sent verification code, or use without an account
-    - Enable location services and notifications when prompted for full functionality
-    - Once signed in or using without an account, the app automatically begins tracking your location
-    - When you get within ~500 feet of Silent Rock, the phone sends you a local notification alerting you
-    - Your number of trips is updated on the global leaderboard
-2. Add friends to your trip
-    - If signed in, you can add friends to your trip on the homepage via their usernames
-    - Once you pass Silent Rock, notifications are sent to all added friends, where they can accept or reject the trip
-3. Global leaderboard
-    - The global leaderboard ranks all users by the number of trips they've made
-    - Sort and filter the leaderboard by username and ski season
-    - Tap any user to view details on their past trips
-4. User profile
-    - Update your phone or username from the profile page
-    - Select whether or not you want your stats to be visible on the global leaderboard
-    - View the details of your trips whether or not you are visible on the leaderboard
-    - Option to delete your account
-
-## Draft Technology Choices
-
-- Swift
-- Xcode
-- Python/flask/heroku for management of the leaderboard
-- Google firebase for phone authentication
-
 ## Additional content, diagrams, wireframes, user flows, etc.
-- wireframe: https://drive.google.com/file/d/1sz6eJ1DoMS5-F3OjlLjK8MsFUz2RBbhG/view?usp=sharing
-- database structure: https://drive.google.com/file/d/1tGvE534EoHaKS44U2VmLgftNqrSrtOGn/view?usp=sharing
+- [initial wireframe](https://drive.google.com/file/d/1sz6eJ1DoMS5-F3OjlLjK8MsFUz2RBbhG/view?usp=sharing)
+- [database structure](https://drive.google.com/file/d/1tGvE534EoHaKS44U2VmLgftNqrSrtOGn/view?usp=sharing)
 
 ## Developer contact info
 - michelle.bodart.dev@gmail.com
 
 ## Deployment
-- Currently only available for iPhone
-- Pending App Store approval
-- Contact michelle.bodart.dev@gmail.com for access/beta testing
+- Currently only available for iPhone on the [App Store](https://apps.apple.com/us/app/silent-rock/id1604910167)
 
 ## Privacy Policy
 
