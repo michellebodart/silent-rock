@@ -22,6 +22,7 @@ class loginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         signInButton.isEnabled = false
+        phoneNumberTextField.isEnabled = true
         phoneNumberTextField.text = ""
         errorMessageLabel.text = ""
         
@@ -52,6 +53,7 @@ class loginViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         if let phoneNumber = phoneNumberTextField.text {
+            phoneNumberTextField.isEnabled = false
             self.errorMessageLabel.text = "loading..."
             player.checkPlayerDataFromLogin(phoneNumber: phoneNumber, vc: self, completion: { phoneNumber, json in
                 self.signInOrError(phoneNumber: phoneNumber, json: json)
@@ -72,6 +74,7 @@ class loginViewController: UIViewController {
         if !phoneUsed {
             DispatchQueue.main.async {
                 self.signInButton.isEnabled = false
+                self.phoneNumberTextField.isEnabled = true
                 self.errorMessageLabel.text = "The phone number you entered is not registered with an account"
             }
         } else {

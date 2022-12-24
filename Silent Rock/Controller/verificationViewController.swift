@@ -44,6 +44,7 @@ class verificationViewController: UIViewController {
     @IBAction func signInTapped(_ sender: Any) {
         
         self.errorMessageLabel.text = "loading..."
+        verificationCodeTextField.isEnabled = false
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
         
@@ -53,6 +54,7 @@ class verificationViewController: UIViewController {
                 self.errorMessageLabel.text = "The code you entered was incorrect"
                 self.signInButton.isEnabled = false
                 self.verificationCodeTextField.text = ""
+                self.verificationCodeTextField.isEnabled = true
               // ...
               return
             }
