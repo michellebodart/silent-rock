@@ -159,7 +159,6 @@ class profileViewController: UIViewController {
     
     @IBAction func notificationButtonTapped(_ sender: Any) {
         self.notificationTable.isHidden = !self.notificationTable.isHidden
-        print(self.pendingTrips)
         let tableHeight: CGFloat
         if self.pendingTrips.count < 1 {
             tableHeight = CGFloat(self.notificationCellHeight)
@@ -383,7 +382,6 @@ class profileViewController: UIViewController {
 // Setting up notification table
 extension profileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected a notification")
     }
 }
 

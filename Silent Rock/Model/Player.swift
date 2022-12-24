@@ -9,15 +9,8 @@ import UIKit
 import Firebase
 
 class Player: NSObject {
-    
-//    var API_KEY: String = ProcessInfo.processInfo.environment["API_KEY"]!
-    // for home testing
-//    var API_KEY: String = "123456"
-//    let DB_URL: String = "http://localhost:5000"
-    
-    // for deployed
     var API_KEY: String = ""
-    let DB_URL: String = "https://silent-rock-api.onrender.com/"
+    let DB_URL: String = ""
     
     func addToDatabase(username: String, phoneNumber: String, vc: verificationViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/?API_KEY=\(API_KEY)")!)
@@ -76,6 +69,7 @@ class Player: NSObject {
                 if let error = error {
                     vc.errorMessageLabel.text = "The phone number you entered is not valid"
                     vc.phoneNumberTextField.text = ""
+                    vc.phoneNumberTextField.isEnabled = true
                     return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
@@ -97,7 +91,6 @@ class Player: NSObject {
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationId")
                 vc.verificationID = verificationID!
-//                print("register verification id:", vc.verificationID, "end")
                 vc.performSegue(withIdentifier: "verificationViewController", sender: vc)
             }
     }
@@ -128,6 +121,7 @@ class Player: NSObject {
                 print("error")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.phoneNumberTextField.isEnabled = true
                 }
                 return
             }
@@ -135,6 +129,7 @@ class Player: NSObject {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.phoneNumberTextField.isEnabled = true
                 }
                 return
             }
@@ -142,6 +137,7 @@ class Player: NSObject {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Oops, something went wrong"
+                    vc.phoneNumberTextField.isEnabled = true
                 }
                 return
             }
@@ -639,8 +635,6 @@ class Player: NSObject {
     func addPendingTripToUsers(vc: ViewController, tripID: Int, playerIDs: Array<Int?>, tripOwnerUsername: String) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/pending_players_trips/?API_KEY=\(API_KEY)")!)
         request.httpMethod = "POST"
-
-        print("in add pending trip", "trip id:", tripID, "player ids:", playerIDs)
         
         struct UploadData: Codable {
             let trip_id: Int

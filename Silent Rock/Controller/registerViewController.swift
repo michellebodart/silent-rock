@@ -15,8 +15,8 @@ class registerViewController: UIViewController {
     var player: Player = Player()
     var phoneNumber: String = ""
     var verificationID:String = ""
-    var phoneNumberUsed: Bool = false //NEW
-    var usernameUsed: Bool = false //NEW
+    var phoneNumberUsed: Bool = false
+    var usernameUsed: Bool = false
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneNumberErrorMessage: UILabel!
@@ -119,7 +119,6 @@ class registerViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: Any) {
-        print("in sign in tapped!!")
         self.navigationController?.popViewController(animated: true);
     }
     

@@ -144,7 +144,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             })
         } else {
             self.addFriendsTable.isHidden = !self.addFriendsTable.isHidden
-            print("added player IDs!!", self.addedPlayerIDs)
         }
     }
     
