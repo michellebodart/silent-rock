@@ -42,6 +42,7 @@ class profileViewController: UIViewController {
     @IBOutlet weak var submitPhoneButton: UIButton!
     @IBOutlet weak var cancelPhoneButton: UIButton!
     @IBOutlet weak var editPhoneButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,7 +56,9 @@ class profileViewController: UIViewController {
         self.playerID = (self.tabBarController! as! TabBarController).playerID
         
         // Say that it's loading
-        self.errorMessageLabel.text = "loading..."
+//        self.errorMessageLabel.text = "loading..."
+        spinner.startAnimating()
+        spinner.isHidden = false
         
         // Set up notification table
         self.notificationTable.dataSource = self
@@ -88,6 +91,7 @@ class profileViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.notificationTable.reloadData()
                     self.errorMessageLabel.text = ""
+                    self.spinner.isHidden = true
                 }
             })
         } else {
@@ -240,12 +244,14 @@ class profileViewController: UIViewController {
     @IBAction func submitButtonTapped(_ sender: Any) {
         
         if self.username.isAppropriate(username: self.usernameTextField.text!) {
-            self.errorMessageLabel.text = "loading..."
+//            self.errorMessageLabel.text = "loading..."
+            spinner.isHidden = false
             // disable submit phone button
             self.submitPhoneButton.isEnabled = false
             // updates username in DB, if successful, returns to main page, otherwise displays an error message
             player.updateUsername(playerID: self.playerID!, username: self.usernameTextField.text!, vc: self, completion: {
                 DispatchQueue.main.async {
+                    self.spinner.isHidden = true
                     self.submitButton.isHidden = true
                     self.cancelButton.isHidden = true
                     self.usernameTextField.isHidden = true
@@ -263,7 +269,8 @@ class profileViewController: UIViewController {
     }
     
     @IBAction func submitPhoneButtonTapped(_ sender: Any) {
-        self.errorMessageLabel.text = "loading..."
+//        self.errorMessageLabel.text = "loading..."
+        spinner.isHidden = false
         
         // disable submit username button
         self.submitButton.isEnabled = false
@@ -285,6 +292,7 @@ class profileViewController: UIViewController {
         }
         if phoneUsed {
             DispatchQueue.main.async {
+                self.spinner.isHidden = true
                 self.submitButton.isEnabled = true
                 self.errorMessageLabel.text = "Sorry, that phone number is taken"
                 self.submitPhoneButton.isEnabled = false
@@ -293,6 +301,7 @@ class profileViewController: UIViewController {
         } else {
             DispatchQueue.main.async {
                 self.errorMessageLabel.text = ""
+                self.spinner.isHidden = true
             }
             self.player.verifyFromProfile(phoneNumber: phoneNumber, vc: self)
         }

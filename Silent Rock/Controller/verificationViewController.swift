@@ -20,6 +20,7 @@ class verificationViewController: UIViewController {
     var verificationID: String = ""
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var signInButton: BorderButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,13 @@ class verificationViewController: UIViewController {
         if self.newPlayer {
             self.signInButton.setTitle("Sign up", for: .normal)
         }
+        spinner.startAnimating()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        spinner.isHidden = true
     }
 
     @IBAction func verificationCodeTextFieldUpdated(_ sender: Any) {
@@ -42,8 +49,7 @@ class verificationViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: Any) {
-        
-        self.errorMessageLabel.text = "loading..."
+        spinner.isHidden = false
         verificationCodeTextField.isEnabled = false
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
@@ -52,6 +58,7 @@ class verificationViewController: UIViewController {
             if let error = error {
               let authError = error as NSError
                 self.errorMessageLabel.text = "The code you entered was incorrect"
+                self.spinner.isHidden = true
                 self.signInButton.isEnabled = false
                 self.verificationCodeTextField.text = ""
                 self.verificationCodeTextField.isEnabled = true

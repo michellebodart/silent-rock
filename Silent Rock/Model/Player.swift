@@ -100,6 +100,7 @@ class Player: NSObject {
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "The phone number you entered is not valid"
                     vc.phoneNumberTextField.text = ""
                     vc.submitButton.isEnabled = true
@@ -202,6 +203,7 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.submitButton.isEnabled = true
                 }
@@ -210,6 +212,7 @@ class Player: NSObject {
             guard let data = data else {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.submitButton.isEnabled = true
                 }
@@ -218,6 +221,7 @@ class Player: NSObject {
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "oops, something went wrong"
                     vc.submitButton.isEnabled = true
                 }
@@ -242,6 +246,7 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Failed to load account information"
                     vc.refreshButton.isHidden = false
                 }
@@ -250,6 +255,7 @@ class Player: NSObject {
             guard let data = data else {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.refreshButton.isHidden = false
                 }
@@ -258,6 +264,7 @@ class Player: NSObject {
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.refreshButton.isHidden = false
                 }
@@ -318,6 +325,7 @@ class Player: NSObject {
         
         guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
             DispatchQueue.main.async {
+                vc.spinner.isHidden = true
                 vc.errorMessageLabel.text = "oops, something went wrong"
                 vc.submitPhoneButton.isEnabled = true
             }
@@ -333,6 +341,7 @@ class Player: NSObject {
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "oops, something went wrong"
                     vc.submitPhoneButton.isEnabled = true
+                    vc.spinner.isHidden = true
                 }
                 return
             }
@@ -340,11 +349,13 @@ class Player: NSObject {
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "oops, something went wrong"
                     vc.submitPhoneButton.isEnabled = true
+                    vc.spinner.isHidden = true
                 }
                 return
             }
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     if (response as? HTTPURLResponse)?.statusCode == 400 {
                         vc.errorMessageLabel.text = "Sorry, that username is taken"
                         vc.usernameTextField.text = ""
@@ -463,6 +474,7 @@ class Player: NSObject {
                 print("error")
                 DispatchQueue.main.async {
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
+                    vc.spinner.isHidden = true
                     vc.refreshButton.isHidden = false
                     vc.tableIsHidden(bool: true)
                 }
@@ -471,6 +483,7 @@ class Player: NSObject {
             guard let data = data else {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
                     vc.refreshButton.isHidden = false
                     vc.tableIsHidden(bool: true)
@@ -480,6 +493,7 @@ class Player: NSObject {
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Failed to load leaderboard information"
                     vc.refreshButton.isHidden = false
                     vc.tableIsHidden(bool: true)

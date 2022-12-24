@@ -20,14 +20,21 @@ class ProfileVerificationViewController: UIViewController {
     @IBOutlet weak var verificationCodeTextField: UITextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var signInButton: BorderButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         signInButton.isEnabled = false
+        spinner.startAnimating()
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        spinner.isHidden = true
+    }
+    
     @IBAction func verificationCodeTextFieldUpdated(_ sender: Any) {
         verificationCodeTextField.text = verificationCode.format(with: "XXXXXX", code: verificationCodeTextField.text ?? "")
         self.errorMessageLabel.text = ""
@@ -39,7 +46,7 @@ class ProfileVerificationViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: Any) {
-        self.errorMessageLabel.text = "loading..."
+        spinner.isHidden = false
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: self.verificationID, verificationCode: verificationCodeTextField.text ?? "")
 
@@ -47,6 +54,7 @@ class ProfileVerificationViewController: UIViewController {
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
               let authError = error as NSError
+                self.spinner.isHidden = true
                 self.errorMessageLabel.text = "The code you entered was incorrect"
                 self.signInButton.isEnabled = false
                 self.verificationCodeTextField.text = ""

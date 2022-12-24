@@ -27,6 +27,7 @@ class leaderboardDetailViewController: UIViewController {
     @IBOutlet weak var totalTripsStackView: UIStackView!
     @IBOutlet weak var filterByButton: UIButton!
     @IBOutlet weak var totalTripsLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class leaderboardDetailViewController: UIViewController {
         player.getTrips(playerID: self.detailPlayerID!, vc: self, completion: doAfterGetTrips(json:))
         
         // hide everything till api call loads
-        self.errorMessageLabel.text = "loading..."
+        self.spinner.isHidden = false
         apiStuffHidden(bool: true)
         refreshButton.isHidden = true
         
@@ -56,7 +57,14 @@ class leaderboardDetailViewController: UIViewController {
         // customize navigation bar
         self.navigationItem.rightBarButtonItem = nil
         
+        spinner.startAnimating()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        spinner.isHidden = true
     }
     
     // Set up pull down to refresh
@@ -116,6 +124,7 @@ class leaderboardDetailViewController: UIViewController {
             self.totalTripsStackView.isHidden = false
             self.apiStuffHidden(bool: false)
             self.errorMessageLabel.text = ""
+            self.spinner.isHidden = true
         }
     }
     
@@ -125,7 +134,6 @@ class leaderboardDetailViewController: UIViewController {
     }
     
 }
-
 
 extension leaderboardDetailViewController: UITableViewDelegate {
     

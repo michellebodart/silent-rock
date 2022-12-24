@@ -29,6 +29,7 @@ class leaderboardViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tripsLabel: UILabel!
     @IBOutlet weak var refreshButton: BorderButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,7 +37,7 @@ class leaderboardViewController: UIViewController {
         // hide everything till API call works
         self.tableIsHidden(bool: true)
         self.refreshButton.isHidden = true
-        self.errorMessageLabel.text = "loading..."
+        spinner.isHidden = false
         
         // get leaderboard information and set the labels
         player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: self.season, completion: {json in
@@ -54,7 +55,7 @@ class leaderboardViewController: UIViewController {
         // hide everything till API call works
         self.tableIsHidden(bool: true)
         self.refreshButton.isHidden = true
-        self.errorMessageLabel.text = "loading..."
+        self.spinner.isHidden = false
         
         // get leaderboard information and set the labels
         player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: self.season, completion: {json in
@@ -78,6 +79,8 @@ class leaderboardViewController: UIViewController {
         // get rid of the navigation bar menu
         self.navigationItem.rightBarButtonItem = nil
         
+        spinner.startAnimating()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -91,6 +94,7 @@ class leaderboardViewController: UIViewController {
     }
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
+        errorMessageLabel.text = ""
         self.viewDidLoad()
     }
     
@@ -177,6 +181,7 @@ class leaderboardViewController: UIViewController {
             self.leaderboardTableView.reloadData()
             self.tableIsHidden(bool: false)
             self.errorMessageLabel.text = ""
+            self.spinner.isHidden = true
             self.refreshButton.isHidden = true
         }
     }

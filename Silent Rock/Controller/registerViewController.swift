@@ -22,12 +22,14 @@ class registerViewController: UIViewController {
     @IBOutlet weak var phoneNumberErrorMessage: UILabel!
     @IBOutlet weak var usernameErrorMessage: UILabel!
     @IBOutlet weak var signUpButton: BorderButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         phoneNumberTextField.isEnabled = true
         usernameTextField.isEnabled = true
         usernameErrorMessage.text = ""
+        spinner.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -36,6 +38,7 @@ class registerViewController: UIViewController {
         phoneNumberTextField.text = phoneNumber
         signUpButton.isEnabled = false
         self.hideKeyboardWhenTappedAround()
+        spinner.startAnimating()
         // Do any additional setup after loading the view.
     }
     
@@ -72,7 +75,7 @@ class registerViewController: UIViewController {
             if self.username.isAppropriate(username: username) {
                 phoneNumberTextField.isEnabled = false
                 usernameTextField.isEnabled = false
-                usernameErrorMessage.text = "loading..."
+                spinner.isHidden = false
                 player.checkPlayerDataFromRegister(phoneNumber: phoneNumber, username: username, vc: self, completion: { phoneNumber, username, json in
                     self.signUpOrError(phoneNumber: phoneNumber, username: username, json: json)
                 })
@@ -100,6 +103,7 @@ class registerViewController: UIViewController {
                 self.signUpButton.isEnabled = false
                 self.phoneNumberTextField.isEnabled = true
                 self.usernameTextField.isEnabled = true
+                self.spinner.isHidden = true
                 if phoneUsed {
                     self.phoneNumberErrorMessage.text = "The phone number you entered is already registered with an account"
                     self.phoneNumberTextField.text = ""
