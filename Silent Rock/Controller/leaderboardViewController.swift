@@ -38,6 +38,7 @@ class leaderboardViewController: UIViewController {
         self.tableIsHidden(bool: true)
         self.refreshButton.isHidden = true
         spinner.isHidden = false
+        errorMessageLabel.text = ""
         
         // get leaderboard information and set the labels
         player.getPlayerDataForLeaderboard(vc: self, sortBasis: self.sortBy, filterBy: self.season, completion: {json in

@@ -56,8 +56,8 @@ class profileViewController: UIViewController {
         self.playerID = (self.tabBarController! as! TabBarController).playerID
         
         // Say that it's loading
-//        self.errorMessageLabel.text = "loading..."
         spinner.startAnimating()
+        errorMessageLabel.text = ""
         spinner.isHidden = false
         
         // Set up notification table
@@ -220,6 +220,7 @@ class profileViewController: UIViewController {
     
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
+        errorMessageLabel.text = ""
         self.viewDidLoad()
     }
     

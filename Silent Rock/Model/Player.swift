@@ -67,6 +67,7 @@ class Player: NSObject {
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "The phone number you entered is not valid"
                     vc.phoneNumberTextField.text = ""
                     vc.phoneNumberTextField.isEnabled = true
@@ -82,6 +83,7 @@ class Player: NSObject {
         PhoneAuthProvider.provider()
             .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                 if let error = error {
+                    vc.spinner.isHidden = true
                     vc.phoneNumberErrorMessage.text = "The phone number you entered is not valid"
                     vc.usernameErrorMessage.text = ""
                     vc.phoneNumberTextField.text = ""
@@ -121,6 +123,7 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.phoneNumberTextField.isEnabled = true
                 }
@@ -129,6 +132,7 @@ class Player: NSObject {
             guard let data = data else {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.phoneNumberTextField.isEnabled = true
                 }
@@ -137,6 +141,7 @@ class Player: NSObject {
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.phoneNumberTextField.isEnabled = true
                 }
@@ -160,6 +165,7 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.usernameErrorMessage.text = "Oops, something went wrong"
                     vc.phoneNumberTextField.isEnabled = true
                     vc.usernameTextField.isEnabled = true
@@ -169,6 +175,7 @@ class Player: NSObject {
             guard let data = data else {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.usernameErrorMessage.text = "Oops, something went wrong"
                     vc.phoneNumberTextField.isEnabled = true
                     vc.usernameTextField.isEnabled = true
@@ -178,6 +185,7 @@ class Player: NSObject {
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.usernameErrorMessage.text = "Oops, something went wrong"
                     vc.phoneNumberTextField.isEnabled = true
                     vc.usernameTextField.isEnabled = true
@@ -519,6 +527,7 @@ class Player: NSObject {
             guard error == nil else {
                 print("error")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Failed to load trips"
                     vc.refreshButton.isHidden = false
                     vc.table.isHidden = true
@@ -530,6 +539,7 @@ class Player: NSObject {
             guard let data = data else {
                 print("error, did not receive data")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.refreshButton.isHidden = false
                     vc.table.isHidden = true
@@ -541,6 +551,7 @@ class Player: NSObject {
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
                 print("error, HTTP request failed")
                 DispatchQueue.main.async {
+                    vc.spinner.isHidden = true
                     vc.errorMessageLabel.text = "Oops, something went wrong"
                     vc.refreshButton.isHidden = false
                     vc.table.isHidden = true

@@ -43,13 +43,14 @@ class leaderboardDetailViewController: UIViewController {
         // configure refresh control
         refreshControl.addTarget(self, action: #selector(refreshTable(_:)), for: .valueChanged)
         
-        // get trips
-        player.getTrips(playerID: self.detailPlayerID!, vc: self, completion: doAfterGetTrips(json:))
-        
         // hide everything till api call loads
+        spinner.startAnimating()
         self.spinner.isHidden = false
         apiStuffHidden(bool: true)
         refreshButton.isHidden = true
+        
+        // get trips
+        player.getTrips(playerID: self.detailPlayerID!, vc: self, completion: doAfterGetTrips(json:))
         
         // set up filter by button
         self.setUpFilterByMenu()
@@ -57,14 +58,13 @@ class leaderboardDetailViewController: UIViewController {
         // customize navigation bar
         self.navigationItem.rightBarButtonItem = nil
         
-        spinner.startAnimating()
-        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         spinner.isHidden = true
+        errorMessageLabel.text = ""
     }
     
     // Set up pull down to refresh
@@ -130,6 +130,7 @@ class leaderboardDetailViewController: UIViewController {
     
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
+        errorMessageLabel.text = ""
         self.viewDidLoad()
     }
     

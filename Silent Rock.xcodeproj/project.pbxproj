@@ -519,9 +519,9 @@
 				DEVELOPMENT_TEAM = 3AP6R4PMV3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Silent Rock/Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select \"allow\" until you quit the app.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select \"allow\" until you quit the app.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select \"allow\" until you quit the app.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -532,7 +532,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Michelle-Bodart.Silent-Rock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -553,9 +553,9 @@
 				DEVELOPMENT_TEAM = 3AP6R4PMV3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Silent Rock/Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select \"allow\" until you quit the app.";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select \"allow\" until you quit the app.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location once you select \"allow\" until you quit the app.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app uses your location in order to monitor your proximity to Silent Rock. The app collects your location starting when you press the \"start\" button until you press the \"stop\" button or the app is closed.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -566,7 +566,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Michelle-Bodart.Silent-Rock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
