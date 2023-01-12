@@ -578,7 +578,6 @@ class Player: NSObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
-        
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             guard error == nil else {
@@ -746,7 +745,6 @@ class Player: NSObject {
         task.resume()
     }
     
-    
     // getting player names to add to trip
     func getAllPlayers (vc: ViewController, completion: @escaping (_ json: Array<Dictionary<String, Any>>) -> Void) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/?API_KEY=\(API_KEY)")!)
@@ -783,5 +781,4 @@ class Player: NSObject {
         })
         task.resume()
     }
-    
 }

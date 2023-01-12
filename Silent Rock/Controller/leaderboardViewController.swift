@@ -84,7 +84,6 @@ class leaderboardViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
     
     //set up pull to refresh
     @objc private func refreshTable(_ sender: Any) {
@@ -99,7 +98,6 @@ class leaderboardViewController: UIViewController {
         self.viewDidLoad()
     }
     
-    
     func setUpSortByMenu() {
         var menuItems: [UIAction] {
             return [
@@ -110,7 +108,7 @@ class leaderboardViewController: UIViewController {
                     })
                 }),
                 UIAction(title: "Username", image: nil, handler: { (_) in
-                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: "username", filterBy: "all", completion: {json in
+                    self.player.getPlayerDataForLeaderboard(vc: self, sortBasis: "username", filterBy: self.season, completion: {json in
                         self.doAfterGetPlayerData(json: json)
                         self.sortBy = "username"
                     })
@@ -156,7 +154,6 @@ class leaderboardViewController: UIViewController {
         filterByButton.changesSelectionAsPrimaryAction = true
         filterByButton.menu = filterByMenu
     }
-    
     
     func doAfterGetPlayerData(json: Array<Any>) {
         self.playerList = []
@@ -206,7 +203,6 @@ class leaderboardViewController: UIViewController {
     }
 }
 
-
 // Setting up table view
 extension leaderboardViewController: UITableViewDelegate {
     
@@ -222,7 +218,7 @@ extension leaderboardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        var numTrips = self.playerList[indexPath.row].trips.count
+        let numTrips = self.playerList[indexPath.row].trips.count
         
         let username = self.playerList[indexPath.row].username
         let id = self.playerList[indexPath.row].id
@@ -231,7 +227,6 @@ extension leaderboardViewController: UITableViewDataSource {
 
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.playerList.count
