@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import SoundModeManager
+import SwiftUI
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -87,6 +88,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if touch?.view != self.addFriendsTable {
             self.addFriendsTable.isHidden = true
         }
+    }
+    
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://silentrock.net/")!)
     }
     
     @IBAction func startButtonTapped(_ sender: Any) {

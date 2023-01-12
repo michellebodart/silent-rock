@@ -189,6 +189,21 @@
                                     <constraint firstAttribute="height" constant="25" id="wRC-aV-T1m"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ech-pk-G4e">
+                                <rect key="frame" x="335" y="189" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="hpc-vR-ZkL"/>
+                                    <constraint firstAttribute="height" constant="20" id="zj9-Ox-sGE"/>
+                                </constraints>
+                                <color key="tintColor" red="0.75364416837692261" green="0.078915141522884369" blue="0.21419700980186462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="infoButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dyu-em-MvE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2oS-Mh-ldg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -198,6 +213,7 @@
                             <constraint firstItem="Bbf-xs-2cw" firstAttribute="leading" secondItem="2oS-Mh-ldg" secondAttribute="leading" constant="20" id="32d-yJ-nRb"/>
                             <constraint firstItem="Rtq-0E-abt" firstAttribute="height" secondItem="3p0-no-FDq" secondAttribute="height" id="56w-xe-0ub"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="centerX" secondItem="FAq-C9-K61" secondAttribute="centerX" id="7oY-8c-l3B"/>
+                            <constraint firstItem="2oS-Mh-ldg" firstAttribute="trailing" secondItem="Ech-pk-G4e" secondAttribute="trailing" constant="20" id="99L-GJ-HqT"/>
                             <constraint firstItem="2oS-Mh-ldg" firstAttribute="trailing" secondItem="3p0-no-FDq" secondAttribute="trailing" constant="50" id="9Qr-qa-cSO"/>
                             <constraint firstItem="5bz-ZJ-66P" firstAttribute="top" secondItem="Bej-zu-0rN" secondAttribute="bottom" id="B4d-AJ-l1T"/>
                             <constraint firstItem="Fhw-g4-tif" firstAttribute="centerX" secondItem="wRi-jm-g75" secondAttribute="centerX" id="BbF-e0-UOP"/>
@@ -210,6 +226,7 @@
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="leading" secondItem="wRi-jm-g75" secondAttribute="leading" id="LAz-7I-LzC"/>
                             <constraint firstAttribute="trailing" secondItem="FAq-C9-K61" secondAttribute="trailing" constant="-50" id="NLc-fR-mvD"/>
                             <constraint firstItem="Fhw-g4-tif" firstAttribute="top" secondItem="FAq-C9-K61" secondAttribute="bottom" constant="15" id="Nup-zx-Lqb"/>
+                            <constraint firstItem="78L-Ws-1mi" firstAttribute="top" secondItem="Ech-pk-G4e" secondAttribute="bottom" constant="20" id="OnG-5G-XbQ"/>
                             <constraint firstItem="Fhw-g4-tif" firstAttribute="centerX" secondItem="wRi-jm-g75" secondAttribute="centerX" id="Pt6-Dy-a9l"/>
                             <constraint firstItem="YZr-UH-3mm" firstAttribute="top" secondItem="78L-Ws-1mi" secondAttribute="bottom" id="V72-EP-mBk"/>
                             <constraint firstItem="Rtq-0E-abt" firstAttribute="width" secondItem="3p0-no-FDq" secondAttribute="width" id="Zte-O4-C5v"/>
@@ -293,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4164.6153846153848" y="1596.6824644549763"/>
+            <point key="canvasLocation" x="4164" y="1596.0591133004928"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="rwS-GF-6sn">
@@ -2441,6 +2458,7 @@
         <image name="homeSmall" width="58" height="58"/>
         <image name="leaderboardSmall" width="58" height="58"/>
         <image name="profileSmall" width="58" height="58"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <image name="silent_rock_2-removebg-preview" width="650" height="384"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
