@@ -162,21 +162,19 @@ class leaderboardViewController: UIViewController {
         self.playerList = []
         for eachPlayer in json {
             let player = eachPlayer as! [String: Any]
-            if player["visible_on_leaderboard"] as! Bool {
-                let id = player["id"] as! Int
-                let username = player["username"] as! String
-                var trips = [Trip?]()
-                if (player["trips"] as! Array<Trip>).count > 0 {
-                    for eachTrip in (player["trips"] as! Array<Any>) {
-                        let trip = eachTrip as! [String: Any]
-                        let id = trip["id"] as! Int
-                        let season = trip["season"] as! String
-                        let date = trip["date"] as! String
-                        trips.append(Trip(date: date, season: season, id: id))
-                    }
+            let id = player["id"] as! Int
+            let username = player["username"] as! String
+            var trips = [Trip?]()
+            if (player["trips"] as! Array<Trip>).count > 0 {
+                for eachTrip in (player["trips"] as! Array<Any>) {
+                    let trip = eachTrip as! [String: Any]
+                    let id = trip["id"] as! Int
+                    let season = trip["season"] as! String
+                    let date = trip["date"] as! String
+                    trips.append(Trip(date: date, season: season, id: id))
                 }
-                self.playerList.append(PlayerForLB(username: username, id: id, trips: trips))
             }
+            self.playerList.append(PlayerForLB(username: username, id: id, trips: trips))
         }
         DispatchQueue.main.async {
             self.leaderboardTableView.reloadData()
@@ -224,35 +222,13 @@ extension leaderboardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        var numTrips = 0
-        if self.season == "all" {
-            numTrips = self.playerList[indexPath.row].trips.count
-        } else {
-            numTrips = (self.playerList[indexPath.row].trips.filter { $0?.season == self.season}).count
-        }
+        var numTrips = self.playerList[indexPath.row].trips.count
         
         let username = self.playerList[indexPath.row].username
         let id = self.playerList[indexPath.row].id
-
-        
         let cell = leaderboardTableView.dequeueReusableCell(withIdentifier: "LeaderboardTableViewCell", for: indexPath) as! LeaderboardTableViewCell
         cell.configure(id: id, username: username, trips: numTrips)
-        
-        // add medal colors
-        if self.sortBy == "trips" {
-            // only add medals if it's sorted by trips
-            if indexPath.row == 0 {
-                cell.backgroundColor = #colorLiteral(red: 0.831372549, green: 0.6862745098, blue: 0.2156862745, alpha: 0.65)
-            } else if indexPath.row == 1 {
-                cell.backgroundColor = #colorLiteral(red: 0.7529411765, green: 0.7529411765, blue: 0.7529411765, alpha: 0.65)
-            } else if indexPath.row == 2 {
-                cell.backgroundColor = #colorLiteral(red: 0.662745098, green: 0.4431372549, blue: 0.2588235294, alpha: 0.65)
-            } else {
-                cell.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0)
-            }
-        } else {
-            cell.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 0)
-        }
+
         return cell
     }
     
