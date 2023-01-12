@@ -98,6 +98,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.addFriendsTable.indexPathsForVisibleRows != nil {
             self.addFriendsTable.reloadRows(at: self.addFriendsTable.indexPathsForVisibleRows!, with: .none)
         }
+        self.alertIfNeeded()
     }
     
     @IBAction func stopButtonTapped(_ sender: Any) {
