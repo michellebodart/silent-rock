@@ -210,6 +210,9 @@ extension leaderboardViewController: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! LeaderboardTableViewCell
         self.detailPlayerID = cell.playerID
         self.detailPlayerUsername = cell.usernameLabel.text!
+            .replacingOccurrences(of: " 🥇", with: "")
+            .replacingOccurrences(of: " 🥈", with: "")
+            .replacingOccurrences(of: " 🥉", with: "")
         self.performSegue(withIdentifier: "leaderboardDetailView", sender: self)
     }
 }
