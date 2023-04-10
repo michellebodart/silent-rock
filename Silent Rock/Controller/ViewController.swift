@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import SoundModeManager
+import SwiftUI
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -89,6 +90,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://silentrock.net/")!)
+    }
+    
     @IBAction func startButtonTapped(_ sender: Any) {
         self.locationManager!.startUpdatingLocation()
         self.startButton.isHidden = true
@@ -98,6 +103,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.addFriendsTable.indexPathsForVisibleRows != nil {
             self.addFriendsTable.reloadRows(at: self.addFriendsTable.indexPathsForVisibleRows!, with: .none)
         }
+        self.alertIfNeeded()
     }
     
     @IBAction func stopButtonTapped(_ sender: Any) {

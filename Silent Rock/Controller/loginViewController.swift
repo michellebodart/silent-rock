@@ -58,6 +58,7 @@ class loginViewController: UIViewController {
             phoneNumberTextField.isEnabled = false
             spinner.startAnimating()
             spinner.isHidden = false
+            errorMessageLabel.text = ""
             player.checkPlayerDataFromLogin(phoneNumber: phoneNumber, vc: self, completion: { phoneNumber, json in
                 self.signInOrError(phoneNumber: phoneNumber, json: json)
             })
