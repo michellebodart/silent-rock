@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import SoundModeManager
 import SwiftUI
+import SafariServices
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -91,7 +92,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func infoButtonTapped(_ sender: Any) {
-        UIApplication.shared.open(URL(string: "https://silentrock.net/")!)
+       let safari = SFSafariViewController(url: URL(string: "https://silentrock.net/")!)
+        safari.modalPresentationStyle = .popover
+        self.present(safari, animated: true)
     }
     
     @IBAction func startButtonTapped(_ sender: Any) {
