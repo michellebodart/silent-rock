@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>DB_URL</key>
-	<string>$(DB_URL)</string>
 	<key>API_KEY</key>
 	<string>$(API_KEY)</string>
 	<key>CFBundleURLTypes</key>
@@ -17,6 +15,8 @@
 			</array>
 		</dict>
 	</array>
+	<key>DB_URL</key>
+	<string>$(DB_URL)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
