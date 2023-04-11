@@ -9,14 +9,13 @@ import UIKit
 import Firebase
 
 class Player: NSObject {
-    let API_KEY: String;
-    var DB_URL: String = "https://"
+    var API_KEY: String
+    let DB_URL: String
     
     override init() {
-        let api_key = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String
-        self.API_KEY = api_key ?? "error_causing_key"
-        let db_url = Bundle.main.object(forInfoDictionaryKey: "DB_URL") as? String
-        self.DB_URL += db_url ?? "bad_url"
+        self.API_KEY = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String ?? "error_causing_key"
+        let db_url = Bundle.main.object(forInfoDictionaryKey: "DB_URL") as? String ?? "bad_url"
+        self.DB_URL = "https://" + db_url
         super.init()
     }
     
