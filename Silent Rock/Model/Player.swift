@@ -9,8 +9,15 @@ import UIKit
 import Firebase
 
 class Player: NSObject {
-    var API_KEY: String = ""
-    let DB_URL: String = ""
+    var API_KEY: String
+    let DB_URL: String
+    
+    override init() {
+        self.API_KEY = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String ?? "error_causing_key"
+        let db_url = Bundle.main.object(forInfoDictionaryKey: "DB_URL") as? String ?? "bad_url"
+        self.DB_URL = "https://" + db_url
+        super.init()
+    }
     
     func addToDatabase(username: String, phoneNumber: String, vc: verificationViewController, completion: @escaping (_ json: Dictionary<String, Any>) -> Void) {
         var request = URLRequest(url: URL(string: "\(DB_URL)/players/?API_KEY=\(API_KEY)")!)
