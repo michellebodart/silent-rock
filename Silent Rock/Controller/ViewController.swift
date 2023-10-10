@@ -92,7 +92,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func infoButtonTapped(_ sender: Any) {
-       let safari = SFSafariViewController(url: URL(string: "https://silentrock.net/")!)
+       let safari = SFSafariViewController(url: URL(string: "https://www.atlasobscura.com/places/silent-rock")!)
         safari.modalPresentationStyle = .popover
         self.present(safari, animated: true)
     }
